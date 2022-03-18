@@ -27,7 +27,6 @@
         'views/views.xml',
         'views/templates.xml',
         'views/location_price.xml',
-        'views/product_template.xml',
         'views/rental_wizard.xml',
         'views/sale_renting.xml',
         'security/ir.model.access.csv',
