@@ -62,7 +62,7 @@ class Inherit_rental_wizard(models.TransientModel):
         for data in self:
             data.unit_price=data.location_price_id.location_price*data.duration
             data.location_price=data.location_price_id.location_price
-        
+
 
 
 
