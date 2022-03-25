@@ -9,3 +9,6 @@ class Sale_order_line(models.Model):
     @api.onchange('location_price_id')
     def onchange_location_price(self):
         self.price_unit=self.location_price_id.location_price
+
+    
+

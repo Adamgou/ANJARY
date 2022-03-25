@@ -7,9 +7,9 @@
             <field name="arch" type="xml">
                 <xpath expr="//group[@name='rental_pricing']" position="after">
                     <group name="price_location">
-<!--                        <label for="location_price_id" class="oe_edit_only" />-->
-                        <field name="location_price_id"/>
-                        <field name="location_price" widget='monetary'/>
+<!--                    <label for="location_price_id" class="oe_edit_only" />-->
+                        <field name="location_price_id" options="{'no_quick_create':True,'no_create_edit':True, 'no_create': True, 'no_open':True}"/>
+                        <field name="location_price" widget='monetary' force_save="1" />
                     </group>
 
                 </xpath>
