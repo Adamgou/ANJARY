@@ -4,6 +4,8 @@ from odoo import models, fields, api,_
 
 class Passenger(models.Model):
     _name='passenger.list.praxi'
+    _description = 'list of all passenger '
+
     name = fields.Char('Name')
     passenger_sale_order_id = fields.Many2one('sale.order', string='Order Transfert')
     cin = fields.Char('CIN/Passeport')
