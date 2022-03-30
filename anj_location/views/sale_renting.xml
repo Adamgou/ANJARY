@@ -36,8 +36,8 @@
                                         </control>
 
 
-                                        <field name="cin" />
                                         <field name="name" />
+                                        <!-- <field name="cin" /> -->
                                         <field name="age" />
                                         <field name="number_passenger" />
                                     </tree>

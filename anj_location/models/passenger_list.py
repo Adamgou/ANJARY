@@ -6,7 +6,7 @@ class Passenger(models.Model):
     _name='passenger.list.praxi'
     name = fields.Char('Name')
     passenger_sale_order_id = fields.Many2one('sale.order', string='Order Transfert')
-    cin = fields.Char('CIN')
+    cin = fields.Char('CIN/Passeport')
     age = fields.Integer('Age')
     
     number_passenger = fields.Integer(
