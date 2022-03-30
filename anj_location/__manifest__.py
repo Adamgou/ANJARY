@@ -29,6 +29,9 @@
         'views/location_price.xml',
         'views/rental_wizard.xml',
         'views/sale_renting.xml',
+        # 'views/order_transfert.xml',
+        'views/passenger_list.xml',
+        'report/report_transfert_order.xml',
         'security/ir.model.access.csv',
     ],
     # only loaded in demonstration mode
@@ -36,4 +39,9 @@
         'demo/demo.xml',
     ],
     'license': 'LGPL-3',
+    # 'assets': {
+    #     'web.assets_backend': [
+    #         'anj_location/static/src/**/*',
+    #     ],
+    # },
 }

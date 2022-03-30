@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<odoo>
+    <record id="anj_transfert_order" model="ir.actions.report">
+        <field name="name">Transfert order</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">anj_location.anj_transfert_order</field>
+        <field name="report_file">anj_location.anj_transfert_order</field>
+        <field name="attachment_use" eval="True" />
+    </record>
+
+    <record id="paperformat_sale_summary_report" model="report.paperformat">
+        <field name="name">Sale Summary</field>
+        <field name="default" eval="False" />
+        <field name="format">A4</field>
+        <field name="page_width">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">30</field>
+        <field name="margin_bottom">28</field>
+        <field name="margin_right">7</field>
+        <field name="margin_left">7</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">15</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="anj_location.anj_transfert_order" model="ir.actions.report">
+        <field name="paperformat_id" ref="anj_location.paperformat_sale_summary_report" />
+    </record>
+
+    <!-- template tsiky  -->
+    <template id="anj_transfert_order">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-if="not o" t-set="o" t-value="doc" />
+                <!-- ####odoo defaults#### -->
+                <t t-if="not company">
+                    <!-- Multicompany -->
+                    <t t-if="company_id">
+                        <t t-set="company" t-value="company_id" />
+                    </t>
+                    <t t-elif="o and 'company_id' in o">
+                        <t t-set="company" t-value="o.company_id.sudo()" />
+                    </t>
+                    <t t-else="else">
+                        <t t-set="company" t-value="res_company" />
+                    </t>
+                </t>
+                <div class="header" style="border-bottom: 1px solid black;">
+                    <!-- TODO here we can create header -->
+                </div>
+                <div class="article mt0 o_report_layout_standard" style="font-size:12px">
+                    <!-- TODO here for custom body -->
+                    <table style="width:100%;border-collapse: collapse;">
+                        <thead style="text-align:center">
+                            <tr>
+                                <th colspan="6">
+                                    <img t-if="company.logo" style="max-height:80px" t-att-src="image_data_uri(company.logo)" />
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="6" style="text-align:center">
+                                    <strong>
+                                        ORDRE DE TRANSFERT
+                                    </strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Date de transfert</td>
+                                <td>
+                                    <t t-esc="o.transfert_date" />
+                                </td>
+                                <td colspan="3">Compane opérant le vol</td>
+                                <td>
+                                    <t t-esc="o.fligth_company" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Immatriculation</td>
+                                <td colspan="2">5588 THA</td>
+                                <td colspan="2">Nissan blanche</td>
+                                <td>minibus</td>
+                            </tr>
+                            <tr>
+                                <td>Nom complet du chauffeur</td>
+                                <td colspan="2">
+                                    <t t-esc="o.employee_id.name" />
+                                </td>
+                                <td colspan="2">
+                                    <t t-esc="o.employee_id.mobile_phone" />
+                                </td>
+                                <td>
+                                    <t t-esc="o.employee_id.identification_id" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Hotel</td>
+                                <td colspan="3">liste passager</td>
+                                <td>Nombre</td>
+                                <td>observation</td>
+                            </tr>
+                            <t t-foreach="o.passenger_list_ids" t-as="line" t-key="lot.cid">
+                                <tr>
+                                    <td></td>
+                                    <td colspan="3">
+                                        <t t-esc="line.name" />
+                                    </td>
+                                    <td>
+                                        <t t-esc="line.number_passenger" />
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                
+                            </t>
+                            
+                            <!-- <tr>
+                                <td></td>
+                                <td colspan="5">Liste additive des passager transferes</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td colspan="3"></td>
+                                <td></td>
+                                <td></td>
+                            </tr> -->
+                            
+                            <tr>
+                                <td colspan="5">Total pax in car(incluant les enfants)</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="footer o_standard_footer" style="border-top: 1px solid black;">
+                    <div class="row text-center">
+                        <div class="col col-12 text-center">
+                            <div>
+                                <span t-esc="company.phone" />
+                                <span t-esc="company.website" />
+
+                            </div>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">Page:</li>
+                                <li class="list-inline-item">
+                                    <span class="page" />
+                                </li>
+                                <li class="list-inline-item">/</li>
+                                <li class="list-inline-item">
+                                    <span class="topage" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </t>
+
+        </t>
+    </template>
+
+
+</odoo>

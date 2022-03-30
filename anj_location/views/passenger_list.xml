@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+    
+        <record id="view_order_passenger_list_view" model="ir.ui.view">
+            <field name="name">mds_form.form</field>
+            <field name="model">passenger.list.praxi</field>
+            <field name="arch" type="xml">
+                <form string="Price rental">
+                    <sheet>
+                        <group>
+                            <group name="order_passenger_list" string="Passenger list">
+                                <field name="name" />
+                                <field name="cin" />
+                                <field name="age" />
+                                <field name="number_passenger" />
+                                <!-- <field name="hotel" /> -->
+
+                            </group>
+                        </group>
+                        
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_order_passenger_list_tree" model="ir.ui.view">
+            <field name="name">passenger_list.tree</field>
+            <field name="model">passenger.list.praxi</field>
+            <field name="arch" type="xml">
+                <tree string="passenger list">
+                    <field name="name" />
+                    <field name="cin" />
+                    <field name="age" />
+                    <field name="number_passenger" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_order_passenger_list">
+            <field name="name">passenger list</field>
+            <field name="res_model">passenger.list.praxi</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="context">{"search_default_sector_id":1,"search_default_directory_id":1}</field> -->
+        </record>
+        <!-- <menuitem id="order_passenger_list_menu" name="Passenger list" action="action_order_passenger_list" parent="sale_renting.menu_rental_config" /> -->
+    
+    </data>
+    
+</odoo>

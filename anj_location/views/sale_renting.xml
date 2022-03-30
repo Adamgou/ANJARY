@@ -5,14 +5,54 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale_renting.rental_order_primary_form_view"/>
             <field name="arch" type="xml">
+                
                 <xpath expr="//field[@name='order_line']/tree//field[@name='product_uom']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
                 <xpath expr="//field[@name='order_line']/tree//field[@name='product_uom_qty']" position="after">
                     <field name="location_price_id" options="{'no_quick_create':True,'no_create_edit':True, 'no_create': True, 'no_open':True}"/>
                 </xpath>
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="is_transfert" />
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page name="order_transfert" string="Order transfert" attrs="{'invisible':[('is_transfert','=',False)]}">
+                        <div>
+                            <group>
+                                <group name="order_transfert" string="Order of transfert">
+                                    <field name="hotel_partner" />
+                                    <field name="transfert_date" />
+                                    <field name="fligth_company" />
+                                    <field name="car_registration" />
+                                    <field name="employee_id" />
+
+                                </group>
+                                <field name="passenger_list_ids" widget="section_and_note_one2many" mode="tree">
+                                    <tree string="Sales Order Lines" editable="bottom">
+                                        <control>
+                                            <create name="add_product_control" string="Add a passenger" />
+                                            <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}" />
+                                            <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note'}" />
+                                        </control>
+
+
+                                        <field name="cin" />
+                                        <field name="name" />
+                                        <field name="age" />
+                                        <field name="number_passenger" />
+                                    </tree>
+                                </field>
+
+                            </group>
+                        </div>
+
+                    </page>
+                    
+                </xpath>
 
             </field>
         </record>
+        
+        
     </data>
 </odoo>
