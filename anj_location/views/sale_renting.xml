@@ -28,7 +28,7 @@
 
                                 </group>
                                 <field name="passenger_list_ids" widget="section_and_note_one2many" mode="tree">
-                                    <tree string="Sales Order Lines" editable="bottom">
+                                    <tree string="Passenger" editable="bottom">
                                         <control>
                                             <create name="add_product_control" string="Add a passenger" />
                                             <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}" />
@@ -42,7 +42,24 @@
                                         <field name="number_passenger" />
                                     </tree>
                                 </field>
+                                <group>
+                                    <field name="is_additive_passenger" />
+                                </group>
+                                <field name="passenger_additive_list_ids" widget="section_and_note_one2many" mode="tree" attrs="{'invisible':[('is_additive_passenger','=',False)]}">
+                                    <tree string="Passenger additive" editable="bottom">
+                                        <control>
+                                            <create name="add_product_control" string="Add a passenger" />
+                                            <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}" />
+                                            <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note'}" />
+                                        </control>
 
+
+                                        <field name="name" />
+                                        <!-- <field name="cin" /> -->
+                                        <field name="age" />
+                                        <field name="number_passenger" />
+                                    </tree>
+                                </field>
                             </group>
                         </div>
 

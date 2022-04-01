@@ -12,7 +12,7 @@ var RentalConfiguratorFormController = FormController.extend({
 
     _getRentalInfo: function (state) {
         return {
-            location_price_id:1 ,
+            location_price_id:1,
         };
     },
 

@@ -40,7 +40,8 @@ class Sale(models.Model):
 
     # liste initial de passager
     passenger_list_ids = fields.One2many('passenger.list.praxi', 'passenger_sale_order_id', string='Passenger List')
-    
+    passenger_additive_list_ids = fields.One2many('passenger.list.additive', 'passenger_additive_sale_order_id', string='Passenger List')
+    is_additive_passenger = fields.Boolean('Liste additive')
     # liaison sale order
     sale_order_id = fields.Many2one('sale.order', string='Sale Order')
 
