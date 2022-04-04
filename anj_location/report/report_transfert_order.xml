@@ -64,48 +64,55 @@
                                                     <strong>
 
                                                         <span>
-                                                            <t t-esc="company.name"/>
+                                                            <t t-esc="company.name" />
                                                         </span>
                                                     </strong>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <t t-esc="company.street" />,Antananarivo</td>
+                                                    <t t-esc="company.street" />
+                                                    ,Antananarivo
+                                                </td>
                                             </tr>
-                                            
+
                                             <tr>
-                                                <td>NIF :
+                                                <td>
+                                                    NIF :
                                                     <t t-esc="company.nif" />
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>STAT :
+                                                <td>
+                                                    STAT :
                                                     <t t-esc="company.stat" />
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>CIF :
+                                                <td>
+                                                    CIF :
                                                     <t t-esc="company.cif" />
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </td>
-                                
+
                             </tr>
                         </thead>
                     </table>
                 </div>
                 <div class="article mt0 o_report_layout_standard" style="font-size:14px">
                     <!-- TODO here for custom body -->
-                    <br/>
-                    <br/>
-                    <br/>
+                    <br />
+                    <br />
+                    <br />
                     <div style="width: 100%;text-align:center; margin-top: 10px;">
-                        <H3><b>ORDRE DE TRANSFERT</b></H3>
+                        <H3>
+                            <b>ORDRE DE TRANSFERT</b>
+                        </H3>
                     </div>
-                    
+
                     <div class="row mt32 mb32">
 
                         <div class="col-auto col-1 mw-100 mb-2">
@@ -122,9 +129,20 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="col-auto col-1 mw-100 mb-2" >
+                        <div class="col-auto col-1 mw-100 mb-2">
                             <table style="width:100%;margin-top:20px ;">
                                 <tbody>
+                                    <tr>
+                                        <td>
+                                            <b>
+    
+                                                Immatriculation véhicule:
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <t t-esc="o.car_registration" />
+                                        </td>
+                                    </tr>
                                     <tr>
                                         <td>
                                             <b>
@@ -137,13 +155,21 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td >Mobile</td>
+                                        <td>
+                                            <b>
+                                                Mobile :
+                                            </b>
+                                        </td>
                                         <td>
                                             <t t-esc="o.employee_id.mobile_phone" />
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>CIN</td>
+                                        <td>
+                                            <b>
+                                                CIN :
+                                            </b>
+                                        </td>
 
                                         <td>
                                             <t t-esc="o.employee_id.identification_id" />
@@ -156,7 +182,7 @@
                     <div>
                         <u>
                             <h2 class="mt16">
-                                
+
                                 <span t-field="o.name" />
                             </h2>
 
@@ -189,7 +215,7 @@
                                         </b>
                                     </td>
                                 </tr>
-                                <t t-foreach="o.passenger_list_ids" t-as="line" >
+                                <t t-foreach="o.passenger_list_ids" t-as="line">
                                     <tr>
                                         <td style="border: 1px solid;">
                                             <t t-esc="o.hotel_partner" />
@@ -201,9 +227,7 @@
                                             <t t-esc="line.number_passenger" />
                                             <t t-set="count" t-value="count+line.number_passenger" />
                                         </td>
-                                        <td style="border: 1px solid;">
-                                            
-                                        </td>
+                                        <td style="border: 1px solid;"></td>
                                     </tr>
 
                                 </t>
@@ -214,7 +238,7 @@
                                         </td>
                                     </tr>
                                     <t t-foreach="o.passenger_additive_list_ids" t-as="line_add">
-                                        
+
                                         <tr>
                                             <td style="border: 1px solid;">
                                                 <t t-esc="o.hotel_partner" />
@@ -224,19 +248,17 @@
                                             </td>
                                             <td style="border: 1px solid;">
                                                 <t t-esc="line_add.number_passenger" />
-                                            <t t-set="count" t-value="count+line_add.number_passenger" />
+                                                <t t-set="count" t-value="count+line_add.number_passenger" />
 
                                             </td>
-                                            <td style="border: 1px solid;">
-
-                                            </td>
+                                            <td style="border: 1px solid;"></td>
                                         </tr>
                                     </t>
 
 
                                 </t>
                                 <tr>
-                                    <td style="border: 1px solid;"  colspan="3">
+                                    <td style="border: 1px solid;" colspan="3">
                                         <b>
                                             TOTAL PAX IN CAR (incluant les enfants)
                                         </b>
@@ -247,7 +269,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        
+
                     </div>
                     <div style="margin-top: 30px;">
                         <table style="width: 100%;">
@@ -261,15 +283,19 @@
                                     <td>
                                         <div style="text-align: center;">
 
-                                            <b>VISA <br/> Gendarmerie National</b>
+                                            <b>
+                                                VISA
+                                                <br />
+                                                Gendarmerie National
+                                            </b>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        <br/>
-                                        <br/>
-                                        <br/>
+                                        <br />
+                                        <br />
+                                        <br />
                                     </td>
                                 </tr>
                                 <tr>
