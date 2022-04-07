@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','anj_base','sale_renting','stock','mail','sale_renting'],
+    'depends': ['base','anj_base','sale_renting','stock','mail','sale_renting','sms'],
 
     # always loaded
     'data': [
@@ -29,7 +29,7 @@
         'views/location_price.xml',
         'views/rental_wizard.xml',
         'views/sale_renting.xml',
-        # 'views/order_transfert.xml',
+        'views/send_sms_location.xml',
         'views/passenger_list.xml',
         'report/report_transfert_order.xml',
         'security/ir.model.access.csv',

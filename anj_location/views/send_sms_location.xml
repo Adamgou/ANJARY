@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- TODO set to noupdate="1" -->
+    <data noupdate="0">
+        
+
+        <record id="sale_location_act_window_sms_composer_single" model="ir.actions.act_window">
+            <field name="name">Envoyer un SMS au client</field>
+            <field name="res_model">sms.composer</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <!-- <field name="context">{
+                'default_composition_mode': 'mass',
+                'default_mass_keep_log': True,
+            }</field> -->
+            <field name="binding_model_id" ref="model_sale_order" />
+            <field name="binding_view_types">form</field>
+        </record>
+        
+        
+    </data>
+</odoo>
