@@ -9,8 +9,8 @@
             <field name="arch" type="xml">
                 <!-- find field description and add the field
                      new_field after it -->
-                <xpath expr="//field[@name='subscription_template_id']" position="after">
-                    <field name="is_insubscription" />
+                <xpath expr="//field[@name='uom_po_id']" position="after">
+                    <field name="is_insubscription"  invisible="1" />
                 </xpath>
 
             </field>
