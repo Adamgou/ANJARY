@@ -28,6 +28,10 @@
         'views/views.xml',
         'views/templates.xml',
         'views/company.xml',
+        'views/res_users.xml',
+        # security
+        'security/security.xml',
+
     ],
     # only loaded in demonstration mode
     'demo': [
