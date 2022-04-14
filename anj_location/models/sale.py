@@ -20,36 +20,37 @@ class Sale(models.Model):
     is_transfert = fields.Boolean('Transfert')
 
     hotel_partner = fields.Char(
-        string='Partner hotel',
+        string='Hotel partenaire', default="Anjary Hotel",
         required=False)
 
     transfert_date = fields.Date(
-        string='Transfert date',
+        string='Date de transfert',
         required=False)
 
     fligth_company = fields.Char(
-        string='Company operating the flight',
+        string='Companie aériène',
         required=False)
 
     # immatriculation
-    car_registration = fields.Char('Car registration')
+    car_registration = fields.Char('Plaque véhicule')
 
     # nom complet du chauffeur
     # driver_name = fields.Char('Driver Name')
-    employee_id = fields.Many2one('hr.employee', string='Driver')
+    employee_id = fields.Many2one('hr.employee', string='Conducteur')
 
     # liste initial de passager
-    passenger_list_ids = fields.One2many('passenger.list.praxi', 'passenger_sale_order_id', string='Passenger List')
-    passenger_additive_list_ids = fields.One2many('passenger.list.additive', 'passenger_additive_sale_order_id', string='Passenger List')
+    passenger_list_ids = fields.One2many('passenger.list.praxi', 'passenger_sale_order_id', string='Liste de passager')
+    passenger_additive_list_ids = fields.One2many('passenger.list.additive', 'passenger_additive_sale_order_id', string='Liste additive des passagers')
     is_additive_passenger = fields.Boolean('Liste additive')
     # liaison sale order
     sale_order_id = fields.Many2one('sale.order', string='Sale Order')
 
     def action_sms(self):
         date= self.date_order.strftime("%d/%m/%Y")
+        driver=self.employee_id.name or ''
+        registration_car=self.car_registration or ''
 
-        template_sms=f"""
-                        Bonjour {self.partner_id.name}. Votre commande a été confirmée pour le {date}. Véhicule .. Chauffeur : Nom contact. Praxi vous remercie pour votre confiance."""
+        template_sms=f"""Bonjour {self.partner_id.name}. Votre commande a été confirmée pour le {date}. Véhicule {registration_car}. Chauffeur : {driver}. Praxi vous remercie pour votre confiance."""
 
         ctx = self._context.copy()
         

@@ -31,7 +31,7 @@
         'views/rental_wizard.xml',
         'views/sale_renting.xml',
         'views/passenger_list.xml',
-        'report/report_transfert_order.xml',
+        # 'report/report_transfert_order.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

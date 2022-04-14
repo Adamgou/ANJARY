@@ -13,10 +13,12 @@
                     <field name="location_price_id" options="{'no_quick_create':True,'no_create_edit':True, 'no_create': True, 'no_open':True}"/>
                 </xpath>
                 <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="employee_id" />
+                    <field name="car_registration" />
                     <field name="is_transfert" />
                 </xpath>
                 <xpath expr="//notebook" position="inside">
-                    <page name="order_transfert" string="Order transfert" attrs="{'invisible':[('is_transfert','=',False)]}">
+                    <page name="order_transfert" string="Ordre de transfert" attrs="{'invisible':[('is_transfert','=',False)]}">
                         <div>
                             <group>
                                 <group name="order_transfert" string="Order of transfert">
