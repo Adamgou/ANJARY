@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 
 <odoo>
-    <record id="anj_transfert_order_report" model="ir.actions.report">
+    <record id="anj_transfert_order_reporting" model="ir.actions.report">
         <field name="name">Transfert order</field>
         <field name="model">sale.order</field>
         <field name="report_type">qweb-pdf</field>
@@ -26,7 +26,7 @@
         <field name="dpi">90</field>
     </record>
 
-    <record id="anj_location.anj_transfert_order_report" model="ir.actions.report">
+    <record id="anj_location.anj_transfert_order_reporting" model="ir.actions.report">
         <field name="paperformat_id" ref="anj_location.paperformat_sale_summary_report" />
     </record>
 
