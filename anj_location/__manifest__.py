@@ -29,7 +29,6 @@
         'views/location_price.xml',
         'views/rental_wizard.xml',
         'views/sale_renting.xml',
-        'views/send_sms_location.xml',
         'views/passenger_list.xml',
         'report/report_transfert_order.xml',
         'security/ir.model.access.csv',

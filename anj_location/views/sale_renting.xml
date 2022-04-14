@@ -69,6 +69,19 @@
 
             </field>
         </record>
+
+        <record id="inherit_sale_order_form_add_sms_button" model="ir.ui.view">
+            <field name="name">sale.order.button.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_renting.rental_order_primary_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//form//header" position="inside">
+                    
+                    <!-- <button name="action_sms" class="btn-info" string="Envoyer SMS" type="button_type" /> -->
+                    <button name="action_sms" string="Envoyer SMS au client" type="object" states="sale" class="btn-primary" data-hotkey="g" />
+                </xpath>
+            </field>
+        </record>
         
         
     </data>

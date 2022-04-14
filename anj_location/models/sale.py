@@ -45,6 +45,39 @@ class Sale(models.Model):
     # liaison sale order
     sale_order_id = fields.Many2one('sale.order', string='Sale Order')
 
+    def action_sms(self):
+        date= self.date_order.strftime("%d/%m/%Y")
+
+        template_sms=f"""
+                        Bonjour {self.partner_id.name}. Votre commande a été confirmée pour le {date}. Véhicule .. Chauffeur : Nom contact. Praxi vous remercie pour votre confiance."""
+
+        ctx = self._context.copy()
+        
+        print(ctx)
+        if self.partner_id.mobile:
+            tel_phone=self.partner_id.mobile
+        elif self.partner_id.phone:
+            tel_phone=self.partner_id.phone
+
+
+        ctx.update({'default_recipient_single_number_itf': tel_phone, 'default_body': template_sms})
+
+        return {
+
+            'type': 'ir.actions.act_window', 
+
+            'view_type': 'form', 
+
+            'view_mode': 'form',
+
+            'res_model': 'sms.composer', 
+
+            'target': 'new', 
+
+            'context':ctx,
+
+        }
+
 
     # origin = fields.Char('Origin')
     # def redirect_order_transfert(self):
