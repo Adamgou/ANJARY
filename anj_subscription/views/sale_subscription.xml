@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+    
+        <record id="sale_subscription_template_form_view_inherit" model="ir.ui.view">
+            <field name="name">sale.subscription.template.form.inherit.pos</field>
+            <field name="model">sale.subscription.template</field>
+            <field name="inherit_id" ref="sale_subscription.sale_subscription_template_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='health']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                
+                <xpath expr="//field[@name='user_closable']" position="attributes">
+                    
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                
+            </field>
+        </record>
+
+        <!-- TODO  hide menu -->
+        <record id="make_invisible" model="res.groups">
+            <field name="name">Invisible</field>
+        </record>
+        <record model="ir.ui.menu" id="account.menu_finance_payables">
+            <field name="groups_id" eval="[(6,0,[ref('make_invisible')])]" />
+        </record>
+    
+    </data>
+    
+</odoo>
