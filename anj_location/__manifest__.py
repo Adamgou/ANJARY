@@ -24,6 +24,7 @@
 
     # always loaded
     'data': [
+        'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
         'views/location_price.xml',
@@ -31,7 +32,6 @@
         'views/sale_renting.xml',
         'views/passenger_list.xml',
         'report/report_transfert_order.xml',
-        'security/ir.model.access.csv',
     ],
     # only loaded in demonstration mode
     'demo': [

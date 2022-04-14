@@ -12,7 +12,7 @@
     </record>
 
     <record id="paperformat_sale_summary_report" model="report.paperformat">
-        <field name="name">Sale Summary</field>
+        <field name="name">Transfert_order</field>
         <field name="default" eval="False" />
         <field name="format">A4</field>
         <field name="page_width">0</field>
@@ -27,7 +27,7 @@
         <field name="dpi">90</field>
     </record>
 
-    <record id="anj_location.anj_transfert_order" model="ir.actions.report">
+    <record id="anj_location.anj_transfert_order_report" model="ir.actions.report">
         <field name="paperformat_id" ref="anj_location.paperformat_sale_summary_report" />
     </record>
 
