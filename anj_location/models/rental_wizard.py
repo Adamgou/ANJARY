@@ -7,12 +7,12 @@ class Inherit_rental_wizard(models.TransientModel):
     _inherit='rental.wizard'
     location_price_id = fields.Many2one(
         comodel_name='location.price',
-        string='Location price',
+        string='Prix de location',
         store=True,
         required=True)
 
     location_price = fields.Float(
-        string='Price',
+        string='Montant',
         store=True,
         readonly=True)
 

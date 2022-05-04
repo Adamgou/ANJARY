@@ -3,7 +3,7 @@ class Sale_order_line(models.Model):
     _inherit="sale.order.line"
     location_price_id = fields.Many2one(
         comodel_name='location.price',
-        string='Location price',
+        string='Prix de location',
         required=False)
 
     

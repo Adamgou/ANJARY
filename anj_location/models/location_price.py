@@ -6,9 +6,9 @@ class Location_price(models.Model):
     _inherit = ['mail.thread']
     
     name = fields.Char(
-        string='Name',
+        string='Nom',
         required=False)
 
     location_price = fields.Float(
-        string='Location price',
+        string='Prix',
         required=False)
