@@ -2,7 +2,7 @@
 
 <odoo>
     <record id="anj_transfert_order_reporting" model="ir.actions.report">
-        <field name="name">Transfert order</field>
+        <field name="name">Ordre de transfert</field>
         <field name="model">sale.order</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">anj_location.anj_transfert_order</field>
