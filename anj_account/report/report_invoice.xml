@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+    
+        <template id="report_invoice_inherit" inherit_id="account.report_invoice_document">
+            <xpath expr="//div[hasclass('page')]//h2[1]" position="before">
+                <div style="width:100%;">
+                    <table style="width:40%;margin-left:503px;text-align:left">
+                        <tbody>
+                            <tr >
+                                <td style="width:20%;">NIF: </td>
+                                <td>
+                                    <t t-esc="o.partner_id.nif" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>STAT: </td>
+                                    
+                                <td>
+                                    <t t-esc="o.partner_id.stat" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>CIF: </td>
+                                <td>
+                                    <t t-esc="o.partner_id.cif"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>RCS: </td>
+                                <td>
+                                    <t t-esc="o.partner_id.rcs"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </xpath>
+        </template>
+    
+    </data>
+    
+</odoo>
