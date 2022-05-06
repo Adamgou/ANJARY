@@ -20,12 +20,12 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','anj_base'],
+    'depends': ['base','anj_base', 'hr_contract', 'hr_payroll'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'views/views.xml',
+        'views/hr_contract_view.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode
