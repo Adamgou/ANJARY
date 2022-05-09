@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+    
+        <record id="infoadditional_tnx_inherit_account_move" model="ir.ui.view">
+            <field name="name">account.move.view.form.inherit</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form" />
+            <field name="arch" type="xml">
+                
+                <xpath expr="//field[@name='invoice_line_ids']//field[@name='discount']" position="before">
+                    <field name="unit_price_discounted" attrs="{'invisible': [('company_id', '!=', 4)]}" />
+                </xpath>
+            </field>
+        </record>
+    
+    </data>
+    
+</odoo>
