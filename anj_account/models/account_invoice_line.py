@@ -5,7 +5,7 @@ from odoo import models, fields, api
 class Account_invoice_line(models.Model):
     _inherit='account.move.line'
 
-    unit_price_discounted = fields.Float('Prix unitaire remisé',compute='_get_unit_price_discounted',)
+    unit_price_discounted = fields.Float('Prix unitaire remisé',compute='_get_unit_price_discounted',company_dependent=True)
 
     
     @api.depends('discount')
