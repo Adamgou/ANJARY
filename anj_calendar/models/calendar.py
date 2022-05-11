@@ -10,6 +10,7 @@ class Calendar(models.Model):
         return self.env['calendar.alarm'].search([('is_default', '=', True)]).ids
     
     alarm_ids = fields.Many2many(default=get_alarm)
+    privacy=fields.Selection(default='private')
 
 class Calendar_alarm(models.Model):
     _inherit='calendar.alarm'
