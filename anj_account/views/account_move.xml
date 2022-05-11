@@ -9,7 +9,8 @@
             <field name="arch" type="xml">
                 
                 <xpath expr="//field[@name='invoice_line_ids']//field[@name='discount']" position="before">
-                    <field name="unit_price_discounted" attrs="{'invisible': [('company_id', '!=', 4)]}" />
+                    <field name="unit_price_discounted"  />
+                    <!-- <field name="unit_price_discounted" attrs="{'invisible': [('company_id','!=','JARA DISTRIBUTION')]}" /> -->
                 </xpath>
             </field>
         </record>
