@@ -80,8 +80,9 @@ class Sale(models.Model):
         }
     @api.onchange('partner_id')
     def _onchange_partner_id(self):
-        if self.partner_id.driver_id and self.company_id.id == 1:
-            self.employee_id=self.partner_id.driver_id
+        if self.partner_id.employee_id and self.company_id.id == 1:
+    
+            self.employee_id=self.partner_id.employee_id
         else:
             pass
 
