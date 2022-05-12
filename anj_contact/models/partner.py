@@ -17,3 +17,9 @@ class Res_partner(models.Model):
     rcs = fields.Char(
         string='RCS',
         required=False)
+
+    # nickname = fields.Char('Surnom',company_dependent=True)
+
+    # employee_id = fields.Many2one('hr.employee', string='Chauffeur attitré')
+    # product_id = fields.Many2one('product.template', string='Véhicule')
+    # nickname = fields.Char('Surnom')
