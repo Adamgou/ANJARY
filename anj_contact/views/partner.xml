@@ -20,7 +20,7 @@
                         <div>
                             <group>
                                 <group name="order_transfert" string="Informations complémentaire">
-                                    <field name="employee_id" />
+                                    <!-- <field name="employee_id" /> -->
                                     <field name="product_id" />
                                     <field name="best_room" />
                                 </group>
