@@ -18,8 +18,12 @@ class Res_partner(models.Model):
         string='RCS',
         required=False)
 
-    # nickname = fields.Char('Surnom',company_dependent=True)
+    nickname = fields.Char('Surnom',company_dependent=True)
 
-    # employee_id = fields.Many2one('hr.employee', string='Chauffeur attitré')
-    # product_id = fields.Many2one('product.template', string='Véhicule')
-    # nickname = fields.Char('Surnom')
+    employee_id = fields.Many2one('hr.employee', string='Chauffeur attitré')
+    product_id = fields.Many2one('product.template', string='Véhicule')
+    best_room = fields.Char('Chambre préférée')
+
+    company_anj_id = fields.Many2one('res.company_id', string='Company Anj')
+
+    

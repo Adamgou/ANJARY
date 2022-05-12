@@ -7,25 +7,22 @@
             <field name="arch" type="xml">
                 <!-- find field description and add the field
                      new_field after it -->
-                <!-- <xpath expr="//field[@name='function']" position="after">
-                    <field name="nickname" groups="anj_base.group_praxi_anj" />
+                 <xpath expr="//field[@name='function']" position="after">
+                    <field name="nickname" />
+                    <field name="company_id" />
                 </xpath>
-                <xpath expr="//field[@name='category_id']" position="after">
+                <!--<xpath expr="//field[@name='category_id']" position="after">
                     <field name="employee_id" />
                 </xpath> -->
 
-                <!-- <xpath expr="//notebook" position="inside">
+                <xpath expr="//notebook" position="inside">
                     <page name="additif_info_partner" string="Infos additionnel" >
                         <div>
                             <group>
                                 <group name="order_transfert" string="Informations complémentaire">
                                     <field name="employee_id" />
-                                    <field name="c_f" />
-                                    <field name="gross_weight" />
-                                    <field name="net_weight" />
-                                    <field name="volume" />
-                                    <field name="seal_serial" />
-                                    <field name="container_serial" />
+                                    <field name="product_id" />
+                                    <field name="best_room" />
 
                                 </group>
 
@@ -35,7 +32,7 @@
 
                     </page>
 
-                </xpath> -->
+                </xpath>
                 <xpath expr="//field[@name='vat']" position="replace">
                   <field name="nif"/>
                   <field name="stat"/>
