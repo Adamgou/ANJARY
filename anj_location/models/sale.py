@@ -78,6 +78,12 @@ class Sale(models.Model):
             'context':ctx,
 
         }
+    @api.onchange('partner_id')
+    def _onchange_partner_id(self):
+        if self.partner_id.driver_id and self.company_id.id == 1:
+            self.employee_id=self.partner_id.driver_id
+        else:
+            pass
 
 
     # origin = fields.Char('Origin')
