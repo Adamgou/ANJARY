@@ -21,8 +21,8 @@ class Res_partner(models.Model):
     nickname = fields.Char('Surnom',company_dependent=True)
 
     # employee_id = fields.Many2one('hr.employee', string='Chauffeur attitré',store=True)
-    product_id = fields.Many2one('product.template', string='Véhicule',store=True)
-    best_room = fields.Char('Chambre préférée',store=True)
+    # product_id = fields.Many2one('product.template', string='Véhicule',store=True)
+    # best_room = fields.Char('Chambre préférée',store=True)
 
 
     
