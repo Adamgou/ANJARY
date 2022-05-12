@@ -40,5 +40,5 @@
         'demo/demo.xml',
     ],
     'license': 'LGPL-3',
-    "external_dependencies": {"python": ["odoo-test-helper"]},
+    # "external_dependencies": {"python": ["odoo-test-helper"]},
 }
