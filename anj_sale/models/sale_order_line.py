@@ -18,5 +18,5 @@ class Sale_order_line(models.Model):
     @api.onchange('unit_price_discounted')
     def _onchange_unit_price_discounted(self):
         for val in self:
-            val.discount=((val.price_unit - val.unit_price_discounted ) * 100) / (val.price_unit) 
+            val.discount=((val.price_unit - val.unit_price_discounted ) * 100) / (val.price_unit) or 0
 
