@@ -8,7 +8,9 @@
             <field name="inherit_id" ref="sale.view_order_form" />
             <field name="arch" type="xml">
                 <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='discount']" position="after">
-                    <field name="unit_price_discounted" />
+                    <field name="unit_price_discounted" 
+                    readonly="0"
+                    />
                 </xpath>
 
             </field>
