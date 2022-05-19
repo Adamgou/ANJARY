@@ -1,5 +1,11 @@
 <odoo>
   <data>
+    <menuitem
+        id="menu_hr_payroll_work_entries_root"
+        name="Work Entries"
+        parent="hr_work_entry_contract_enterprise.menu_hr_payroll_root"
+        sequence="60"
+        groups="hr_payroll.group_hr_payroll_user"/>
     <!-- explicit list view definition -->
 <!--
     <record model="ir.ui.view" id="anj_payroll.list">

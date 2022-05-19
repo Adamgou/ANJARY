@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "anj_payroll",
+    'name': "alpha_payslip",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -20,17 +20,24 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','anj_base', 'hr_payroll', 'hr_work_entry_contract_enterprise'],
+    'depends': ['base', 'hr_contract',
+                'hr',
+                'hr_payroll'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
+        'views/base_external_layout.xml',
         'views/views.xml',
         'views/templates.xml',
+        'views/hr_employee.xml',
+        'views/hr_contract_view.xml',
+        'views/payslip_report.xml',
+        'views/hr_contract_view_too.xml',
+
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
-    ],
-'license': 'LGPL-3',
+    ], 'license': 'LGPL-3',
 }

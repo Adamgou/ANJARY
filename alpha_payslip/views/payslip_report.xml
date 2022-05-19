@@ -1,0 +1,150 @@
+<odoo>
+    <data>
+        <template id="report_payslip_inherit" inherit_id="hr_payroll.report_payslip">
+            <xpath expr="//t[@t-call='web.external_layout']" position="replace">
+                <t t-call="alpha_payslip.external_layout">
+
+                    <style type="text/css">
+                        .tg {border-collapse:collapse;border-spacing:0;}
+                        .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial,
+                        sans-serif;font-size:14px;
+                        overflow:hidden;padding:10px 5px;word-break:normal;}
+                        .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial,
+                        sans-serif;font-size:14px;
+                        font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+                        .tg .tg-34fe{background-color:#c0c0c0;border-color:inherit;text-align:center;vertical-align:top}
+                        .tg
+                        .tg-zlqz{background-color:#c0c0c0;border-color:inherit;font-weight:bold;text-align:center;vertical-align:top}
+                        .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+                    </style>
+                    <table class="tg" style="undefined;table-layout: fixed; width: 100%">
+                        <colgroup>
+                            <col style="width: 12.5%"/>
+                            <col style="width: 12.5%"/>
+                            <col style="width: 12.5%"/>
+                            <col style="width: 12.5%"/>
+                            <col style="width: 12.5%"/>
+                            <col style="width: 12.5%"/>
+                            <col style="width: 12.5%"/>
+                            <col style="width: 12.5%"/>
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td class="tg-0pky" colspan="2"><img t-att-src="image_data_uri(o.company_id.logo)"
+                                                                     width="100%"/></td>
+                                <td class="tg-0pky" colspan="6"><span t-esc="o.company_id.name"/><br/><span
+                                        t-esc="o.company_id.street + ', '+ o.company_id.zip + ' - ' + o.company_id.city"/><br/>
+                                    <t t-if="o.company_id.street and o.company_id.zip and o.company_id.city">
+                                        <span t-esc="o.company_id.street + ', '+ o.company_id.zip + ' - ' + o.company_id.city"/>
+                                    </t>
+
+                                    <span>Tel:</span>
+                                    <t t-if="o.company_id.phone">
+                                        <span t-esc="o.company_id.phone"/>
+                                    </t>
+                                    <t t-if="o.company_id.phone and o.company_id.mobile">
+                                        <span>/</span>
+                                    </t>
+                                    <t t-if="o.company_id.mobile">
+                                        <span t-esc="o.company_id.mobile"/>
+                                    </t>
+
+
+
+                                    <t t-if="o.company_id.email">
+                                        <span>Mail:</span>
+                                        <span t-esc="o.company_id.email"/>
+                                    </t><br/><t t-if="o.company_id.nif">
+                                        <span>NIF :</span>
+                                        <span t-esc="o.company_id.nif"/>
+                                    </t><br/><t t-if="o.company_id.stat">
+                                        <span>STAT :</span>
+                                        <span t-esc="o.company_id.stat"/>
+                                    </t></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-zlqz" colspan="2">PERIODE DE PAIE</td>
+                                <td class="tg-34fe" colspan="2"><span style="font-weight:bold;font-style:normal">
+                                    QUALIFICATION PROFESSIONNELLE</span></td>
+                                <td class="tg-34fe" colspan="2"><span style="font-weight:bold;font-style:normal">NUMERO
+                                    CNAPS</span></td>
+                                <td class="tg-34fe" colspan="2"><span style="font-weight:bold;font-style:normal">CODE
+                                    ADH OSTIE</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0pky" colspan="2" rowspan="4"></td>
+                                <td class="tg-0pky" colspan="2" rowspan="2"></td>
+                                <td class="tg-0pky" colspan="2" rowspan="2"></td>
+                                <td class="tg-0pky" colspan="2" rowspan="2"></td>
+                            </tr>
+                            <tr>
+                            </tr>
+                            <tr>
+                                <td class="tg-34fe" colspan="6"><span style="font-weight:bold;font-style:normal">
+                                    EMPLOYE(E)</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0pky" colspan="6" rowspan="3"></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-34fe" colspan="2"><span style="font-weight:bold">DATE DE PAIE</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0pky" colspan="2"><span style="font-weight:400;font-style:normal">(Date de
+                                    calcul)</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-34fe" colspan="2"><span style="font-weight:bold;font-style:normal">CONGES
+                                    PAYES</span></td>
+                                <td class="tg-34fe"><span style="font-weight:bold;font-style:normal">
+                                    Matricule</span></td>
+                                <td class="tg-34fe"><span style="font-weight:bold;font-style:normal">Date
+                                    d'entrée</span></td>
+                                <td class="tg-34fe"><span style="font-weight:bold;font-style:normal">Date de
+                                    sortie</span></td>
+                                <td class="tg-34fe"><span style="font-weight:bold;font-style:normal">
+                                    Ancienneté</span></td>
+                                <td class="tg-34fe"><span style="font-weight:bold;font-style:normal">Age</span></td>
+                                <td class="tg-34fe"><span style="font-weight:700;font-style:normal">Date
+                                    Naissance</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0pky" colspan="2" rowspan="4"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0pky" colspan="6" rowspan="3"></td>
+                            </tr>
+                            <tr>
+                            </tr>
+                            <tr>
+                            </tr>
+                            <tr>
+                                <td class="tg-34fe" colspan="2"><span style="font-weight:bold;font-style:normal">
+                                    RUBRIQUES</span></td>
+                                <td class="tg-34fe" colspan="2"><span style="font-weight:bold;font-style:normal">
+                                    NOMBRE</span></td>
+                                <td class="tg-34fe" colspan="2"><span style="font-weight:bold;font-style:normal">
+                                    BASE</span></td>
+                                <td class="tg-34fe" colspan="2"><span style="font-weight:bold;font-style:normal">
+                                    MONTANT</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0lax" colspan="2"></td>
+                                <td class="tg-0lax" colspan="2"></td>
+                                <td class="tg-0lax" colspan="2"></td>
+                                <td class="tg-0lax" colspan="2"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </t>
+            </xpath>
+        </template>
+    </data>
+</odoo>
