@@ -168,22 +168,22 @@
                                 </td>
                             </tr>
                             <tr>
-                                <!-- TODO: get_length_of_service -->
-                                <t t-set="get_length_of_service" t-value="o.get_age(o.employee_id.first_contract_date)" />
-                                <!-- TODO: get_age -->
-                                <t t-set="get_age" t-value="o.get_age(o.employee_id.birthday)" />
-
+                                
                                 <td class="tg-0pky" colspan="2" rowspan="4"></td>
                                 <td class="tg-0pky"><span t-esc="o.employee_id.matricule"/></td>
                                 <td class="tg-0pky">
-                                    <span t-esc="o.employee_id.first_contract_date" />
-                                </td>
-                                <td class="tg-0pky"></td>
-                                <td class="tg-0pky">
-                                    <t t-esc="o.get_age(o.employee_id.first_contract_date)" />
+                                    <span t-esc="o.contract_id.date_start" />
                                 </td>
                                 <td class="tg-0pky">
-                                    <t t-esc="o.get_age(o.employee_id.first_contract_date)" />
+                                    <span t-esc="o.contract_id.date_end" />
+                                </td>
+                                <!-- TODO: get_length_of_service -->
+                                <td class="tg-0pky">
+                                    <span t-esc="o.get_age(o.contract_id.date_start)" />
+                                </td>
+                                <!-- TODO: get_age -->
+                                <td class="tg-0pky">
+                                    <span t-esc="o.get_age(o.employee_id.birthday)" />
                                 </td>
                                 <td class="tg-0pky">
                                     <span t-esc="o.employee_id.birthday" />

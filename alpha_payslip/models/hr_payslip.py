@@ -8,7 +8,6 @@ class Hr_Payslip(models.Model):
 
 
     def get_age(self, birth_date):
-        import pudb; pudb.set_trace()
 
         today=date.today()
         age=today.year - birth_date.year -((today.month, today.day) < (birth_date.month, birth_date.day))
