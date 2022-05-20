@@ -235,12 +235,7 @@
                                 </td>
                             </tr>
 
-                            <tr>
-                                <td class="tg-0lax" colspan="2"></td>
-                                <td class="tg-0lax" colspan="2"></td>
-                                <td class="tg-0lax" colspan="2"></td>
-                                <td class="tg-0lax" colspan="2"></td>
-                            </tr>
+
 
                             <span t-foreach="o.worked_days_line_ids" t-as="worked_days">
                                 <t t-if="worked_days.code != 'OUT' and  worked_days.code != 'WORK100'">
