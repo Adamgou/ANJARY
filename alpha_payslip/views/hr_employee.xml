@@ -10,6 +10,7 @@
                 <data>
                     <xpath expr="//field[@name='marital']" position='after'>
                         <field name="cnaps" />
+                        <field name="ostie" />
                         <field name="cin" />
                         <field name="matricule" />
                         <field name="classification" />

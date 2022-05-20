@@ -6,6 +6,7 @@ from odoo import models, fields, api
 class Hr_employee(models.Model):
     _inherit='hr.employee'
     cnaps = fields.Char('CNAPS')
+    ostie = fields.Char('OSTIE')
     cin = fields.Char('CIN')
     matricule = fields.Char('Matricule')
     classification = fields.Selection([
