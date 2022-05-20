@@ -254,6 +254,7 @@
                                                                      t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'
                                                                      t-att-style="'color:#000000;' if line.total &lt; 0 else ''"/></td>
                                     </tr>
+                                <!--valisoa-->
                                 </span>
 
                         </tbody>
