@@ -212,7 +212,7 @@
                                         <div style="margin-left: 250px;">
                                             <span>Salaire de base : </span>
                                             <!-- PUT:set number of hour on contract -->
-                                            <span t-esc="o.contract_id.base_salary"/>
+                                            <span t-esc="o.contract_id.base_salary" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
 
                                         </div>
                                     </div>
