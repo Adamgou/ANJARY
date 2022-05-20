@@ -40,4 +40,9 @@
     'demo': [
         'demo/demo.xml',
     ], 'license': 'LGPL-3',
+    'assets': {
+        'web.report_assets_common': [
+            'alpha_payslip/static/src/css/account_move_invoice_report',
+        ],
+    },
 }
