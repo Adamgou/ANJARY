@@ -221,6 +221,13 @@
                                             Nombre de jours travaillé :
                                         </span>
                                         <!-- PUT:set number of day worked -->
+                                        <span t-foreach="o.worked_days_line_ids" t-as="worked_days">
+                                            <!-- <span t-esc="worked_days.code" /> -->
+                                            <t t-if="worked_days.code == 'WORK100'">
+                                                
+                                                <span t-esc="worked_days.number_of_days" />
+                                            </t>
+                                        </span>
 
                                     </div>
                                 </td>
