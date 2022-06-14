@@ -1,3 +1,4 @@
 # -*- coding: utf-8 -*-
 
-from . import models,account_invoice_line
+from . import models
+from . import account_invoice_line

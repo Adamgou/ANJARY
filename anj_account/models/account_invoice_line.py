@@ -8,12 +8,24 @@ class Account_invoice_line(models.Model):
 
     unit_price_discounted = fields.Float(
         "Prix unitaire remisé",
-        compute="_get_unit_price_discounted",
-        company_dependent=True,
+        store=True,
     )
 
-    @api.depends("discount")
-    def _get_unit_price_discounted(self):
+    @api.onchange("price_unit", "discount")
+    def _on_change_price_discounted(self):
         for val in self:
+            print(
+                """ 
+                    >>>
+                    >>>
+                    >>>
+                """
+            )
             value = val.price_unit - ((val.price_unit * val.discount) / 100)
             val.unit_price_discounted = value
+
+    @api.model
+    def create(self, vals):
+        if vals.get("price_unit"):
+            vals["unit_price_discounted"] = vals.get("price_unit")
+        return super(Account_invoice_line, self).create(vals)

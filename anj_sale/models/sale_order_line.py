@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from odoo import models, fields, api
 
 
@@ -8,10 +7,13 @@ class Sale_order_line(models.Model):
 
     # TODO for jara trade and jara distribution
 
-    unit_price_discounted = fields.Float("Prix unitaire remisé", store=True)
+    unit_price_discounted = fields.Float(
+        "Prix unitaire remisé",
+        store=True,
+    )
 
-    @api.onchange("discount")
-    def _onchange_discount(self):
+    @api.onchange("discount", "price_unit")
+    def _change_discount(self):
         for val in self:
             value = val.price_unit - ((val.price_unit * val.discount) / 100)
             val.unit_price_discounted = value
@@ -23,3 +25,9 @@ class Sale_order_line(models.Model):
                 val.discount = ((val.price_unit - val.unit_price_discounted) * 100) / (
                     val.price_unit
                 ) or 0
+
+    @api.model
+    def create(self, vals):
+        if vals.get("price_unit"):
+            vals["unit_price_discounted"] = vals.get("price_unit")
+        return super(Sale_order_line, self).create(vals)
