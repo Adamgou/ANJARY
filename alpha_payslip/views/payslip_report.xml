@@ -292,16 +292,30 @@
                                     <t t-set="line_style" t-value="'color:#000000;'"/>
                                     <t t-set="line_class" t-value="'o_subtotal o_border_bottom'"/>
                                 </t>
-                                <tr t-att-class="line_class" t-att-style="line_style">
-                                    <td class="tg-0lax" colspan="2"><span t-field="line.name"/></td>
-                                    <td class="tg-0lax" colspan="2"><span t-esc="line.nombre"/></td>
-                                    <td class="tg-0lax" colspan="2"><span t-esc="line.nombre"/></td>
-                                    <td class="tg-0lax" colspan="2"><span
-                                            t-esc="'{0:,.2f}'.format(int(line.total)).replace(',', ' ')"
-                                            t-att-style="'color:#000000;' if line.total &lt; 0 else ''"/>
-                                        <span t-esc="o.company_id.currency_id.symbol"/>
-                                    </td>
-                                </tr>
+                                <t t-if="(line.salary_rule_id.is_total == false)">
+                                    <tr t-att-class="line_class" t-att-style="line_style">
+                                        <td class="tg-0lax" colspan="2"><span t-field="line.name"/></td>
+                                        <td class="tg-0lax" colspan="2"><span t-esc="line.nombre"/></td>
+                                        <td class="tg-0lax" colspan="2"><span t-esc="line.base"/></td>
+                                        <td class="tg-0lax" colspan="2"><span
+                                                t-esc="'{0:,.2f}'.format(int(line.total)).replace(',', ' ')"
+                                                t-att-style="'color:#000000;' if line.total &lt; 0 else ''"/>
+                                            <span t-esc="o.company_id.currency_id.symbol"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                                <t t-else="">
+                                    <tr t-att-class="line_class" t-att-style="line_style">
+                                        <td class="tg-0lax" colspan="4"  style="background-color:#eeece1; text-align:center; font-weight:bold;"><span t-field="line.name"/></td>
+                                        <td class="tg-0lax" colspan="4" style="background-color:#eeece1; text-align:center; font-weight:bold;">
+                                            <span
+                                                t-esc="'{0:,.2f}'.format(int(line.total)).replace(',', ' ')"
+                                                t-att-style="'color:#000000;' if line.total &lt; 0 else ''"/>
+                                            <span t-esc="o.company_id.currency_id.symbol"/>
+                                        </td>
+                                    </tr>
+                                </t>
+
                                 <!--valisoa-->
                             </span>
 
@@ -312,7 +326,7 @@
                         sans-serif;font-size:11px;">
                         <br/>
                         <div>
-                            commentaires :
+                            COMMENTAIRES :
                         </div>
                         <div style="min-height: 30px; border:1px solid black;">
                             <span t-esc="o.commentaire"/>
