@@ -10,6 +10,9 @@ from odoo.tools import float_round, date_utils, convert_file, html2plaintext
 
 class Hr_Payslip(models.Model):
     _inherit = "hr.payslip"
+    commentaire = fields.Text(
+        string='Commentaire',
+        required=False)
 
     def get_age(self, birth_date, date_bis):
         age = 0
