@@ -9,14 +9,13 @@
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
                 <xpath expr="//group[@name='general_conditions']" position="inside">
-                    <group  colspan="4" string="Nombre d'heure">
-                        <field name="alpha_hour_python_compute"/>
-                       <!-- <field name="alpha_hour"/>-->
+                    <group  colspan="4" >
+                        <field name="salary_rule_nombre"/>
+                        <field name="salary_rule_base"/>
+                        <field name="is_total" widget="boolean_toggle"  string="Total"/>
                     </group>
-                    <group  colspan="4" string="Montant">
-                        <field name="alpha_base_salary_python_compute"/>
-                        <!--<field name="alpha_base_salary"/>-->
-                    </group>
+                    
+                    
                 </xpath>
 
             </field>
