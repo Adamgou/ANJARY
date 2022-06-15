@@ -7,11 +7,11 @@
                     <style type="text/css">
                         .tg {border-collapse:collapse;border-spacing:0;}
                         .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial,
-                        sans-serif;font-size:14px;
-                        overflow:hidden;padding:10px 5px;word-break:normal;}
+                        sans-serif;font-size:11px;
+                        overflow:hidden;padding:2px 2px;word-break:normal;}
                         .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial,
-                        sans-serif;font-size:14px;
-                        font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+                        sans-serif;font-size:11px;
+                        font-weight:normal;overflow:hidden;padding:2px 2px;word-break:normal;}
                         .tg .tg-34fe{background-color:#c0c0c0;border-color:inherit;text-align:center;vertical-align:top}
                         .tg
                         .tg-zlqz{background-color:#c0c0c0;border-color:inherit;font-weight:bold;text-align:center;vertical-align:top}
@@ -30,7 +30,8 @@
                         </colgroup>
                         <tbody>
                             <tr>
-                                <td class="tg-0pky" colspan="2" style="text-align:center; vertical-align:middle;font-weight:bold; font-size:21px;">
+                                <td class="tg-0pky" colspan="2"
+                                    style="text-align:center; vertical-align:middle;font-weight:bold; font-size:21px;">
                                     BULLETIN DE PAIE
 
                                 </td>
@@ -38,15 +39,15 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <span t-esc="o.company_id.name"/>
-                                            <br/>
-                                            <span t-esc="o.company_id.street + ', '+ o.company_id.zip + ' - ' + o.company_id.city"/>
+                                            <!--<br/>
+                                            <span t-esc="o.company_id.street + ', '+ o.company_id.zip + ' - ' + o.company_id.city"/>-->
                                             <br/>
                                             <t t-if="o.company_id.street and o.company_id.zip and o.company_id.city">
                                                 <span t-esc="o.company_id.street + ', '+ o.company_id.zip + ' - ' + o.company_id.city"/>
                                             </t>
 
-                                            <span>Tel:</span>
                                             <t t-if="o.company_id.phone">
+                                                <span>Tel:</span>
                                                 <span t-esc="o.company_id.phone"/>
                                             </t>
                                             <t t-if="o.company_id.phone and o.company_id.mobile">
@@ -73,13 +74,14 @@
                                             </t>
                                         </div>
                                         <div class="col-6">
-                                            <img t-att-src="image_data_uri(o.company_id.logo)" align="left" style="max-height: 150px; float:right;"/>
+                                            <img t-att-src="image_data_uri(o.company_id.logo)" align="left"
+                                                 style="max-height: 150px; float:right; max-width: 200px;"/>
                                         </div>
                                     </div>
 
                                 </td>
                             </tr>
-                            <tr>
+                            <tr style="padding: 0px;">
                                 <td class="tg-zlqz" colspan="2">PERIODE DE PAIE</td>
                                 <td class="tg-34fe" colspan="2">
                                     <span style="font-weight:bold;font-style:normal">
@@ -98,8 +100,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="tg-0pky" colspan="2" rowspan="4">Du <span t-esc="o.date_from"/> à <span
-                                        t-esc="o.date_to"/></td>
+                                <td class="tg-0pky" colspan="2" rowspan="4">Du <span
+                                        t-esc="o.date_from.strftime('%d/%m/%Y')"/> à <span
+                                        t-esc="o.date_to.strftime('%d/%m/%Y')"/></td>
                                 <td class="tg-0pky" colspan="2" rowspan="2">
                                     <span t-esc="o.contract_id.contract_type_id.name"/>
                                     <span t-esc="o.contract_id.contrat_categorie"/>
@@ -173,16 +176,39 @@
                                     <span style="font-weight:bold;font-style:normal">Age</span>
                                 </td>
                                 <td class="tg-34fe">
-                                    <span style="font-weight:700;font-style:normal">Date
+                                    <span style="font-weight:700;font-style:normal">Date de
                                         Naissance</span>
                                 </td>
                             </tr>
                             <tr>
 
-                                <td class="tg-0pky" colspan="2" rowspan="4"></td>
+                                <td class="tg-0pky" colspan="2" rowspan="4">
+                                    <div class="row">
+                                        <div class="col-6">Periode</div>
+                                        <div class="col-6">: <span t-esc="o.employee_id.allocation_display"/>
+                                            Jours</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">Acquis</div>
+                                        <div class="col-6">: 2.5 Jours</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">Pris</div>
+                                        <div class="col-6">: <span t-esc="o.employee_id.allocation_used_display"/>
+                                            Jours</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">Restant</div>
+                                        <div class="col-6">: <t t-set="foo"
+                                                                t-value="float(o.employee_id.allocation_display) - float(o.employee_id.allocation_used_display)"/>
+                                            <t t-out="foo"/> Jours
+                                        </div>
+                                    </div>
+
+                                </td>
                                 <td class="tg-0pky"><span t-esc="o.employee_id.matricule"/></td>
                                 <td class="tg-0pky">
-                                    <span t-esc="o.contract_id.date_start"/>
+                                    <span t-esc="o.contract_id.date_start.strftime('%d/%m/%Y')"/>
                                 </td>
                                 <td class="tg-0pky">
                                     <span t-esc="o.contract_id.date_end"/>
@@ -197,7 +223,7 @@
                                     <span t-esc="o.get_age(o.employee_id.birthday,0)"/> <span>ans</span>
                                 </td>
                                 <td class="tg-0pky">
-                                    <span t-esc="o.employee_id.birthday"/>
+                                    <span t-esc="o.employee_id.birthday.strftime('%d/%m/%Y')"/>
                                 </td>
                             </tr>
                             <tr>
@@ -212,7 +238,8 @@
                                         <div style="margin-left: 250px;">
                                             <span>Salaire de base : </span>
                                             <!-- PUT:set number of hour on contract -->
-                                            <span t-esc="o.contract_id.base_salary" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                            <span t-esc="o.contract_id.base_salary"
+                                                  t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
 
                                         </div>
                                     </div>
@@ -224,8 +251,8 @@
                                         <span t-foreach="o.worked_days_line_ids" t-as="worked_days">
                                             <!-- <span t-esc="worked_days.code" /> -->
                                             <t t-if="worked_days.code == 'WORK100'">
-                                                
-                                                <span t-esc="worked_days.number_of_days" />
+
+                                                <span t-esc="worked_days.number_of_days"/>
                                             </t>
                                         </span>
 
@@ -253,23 +280,6 @@
                                 </td>
                             </tr>
 
-
-                            <span t-foreach="o.worked_days_line_ids" t-as="worked_days">
-                                <t t-if="worked_days.code != 'OUT' and  worked_days.code != 'WORK100'">
-                                    <tr style="color:none">
-                                        <td class="tg-0lax" colspan="2">
-                                            <span t-field="worked_days.name"/>
-                                        </td>
-                                        <td class="tg-0lax" colspan="2"><span
-                                                t-field="worked_days.number_of_hours"/></td>
-                                        <td class="tg-0lax" colspan="2"><span
-                                                t-field="worked_days.number_of_days"/></td>
-                                        <td class="tg-0lax" colspan="2"><span t-esc="worked_days.amount"
-                                                                              digits="[42, 2]"
-                                                                              t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/></td>
-                                    </tr>
-                                </t>
-                            </span>
                             <span t-foreach="o.line_ids.filtered(lambda line: line.appears_on_payslip)"
                                   t-as="line">
                                 <t t-set="line_style"/>
@@ -297,6 +307,20 @@
 
                         </tbody>
                     </table>
+                    <div style="font-family:Arial,
+                        sans-serif;font-size:11px;">
+                        <div>
+                            commentaires :
+                        </div>
+                        <div style="min-height: 30px; border:1px solid black;">
+
+                        </div>
+                        <div class="row">
+                            <div class="col-6" style="text-align:left">Le salarié</div>
+                            <div class="col-6" style="text-align:right">L'employeur</div>
+                        </div>
+
+                    </div>
 
                 </t>
             </xpath>
