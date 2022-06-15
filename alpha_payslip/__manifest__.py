@@ -34,6 +34,7 @@
         'views/hr_contract_view.xml',
         'views/payslip_report.xml',
         'views/hr_contract_view_too.xml',
+        'views/hr_salary_rule_views.xml',
 
     ],
     # only loaded in demonstration mode

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="hr_salary_rule_form_inherit" model="ir.ui.view">
+            <field name="name">hr.salary.rule.form.inherit</field>
+            <field name="model">hr.salary.rule</field>
+            <field name="inherit_id" ref="hr_payroll.hr_salary_rule_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='general_conditions']" position="inside">
+                    <group  colspan="4" string="Nombre d'heure">
+                        <field name="alpha_hour_python_compute"/>
+                       <!-- <field name="alpha_hour"/>-->
+                    </group>
+                    <group  colspan="4" string="Montant">
+                        <field name="alpha_base_salary_python_compute"/>
+                        <!--<field name="alpha_base_salary"/>-->
+                    </group>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>
