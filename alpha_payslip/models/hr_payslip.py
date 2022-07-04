@@ -3,6 +3,7 @@ from datetime import date
 
 from odoo import fields, models, api, _
 from odoo.tools import float_round, date_utils, convert_file, html2plaintext
+from datetime import datetime
 
 # from odoo.exceptions import UserError, Warning
 # raise UserError(f"La date d'entrée ")
@@ -13,6 +14,21 @@ class Hr_Payslip(models.Model):
     commentaire = fields.Text(
         string='Commentaire',
         required=False)
+
+    paid_date = fields.Date(
+        string='Date de paie ',
+        required=False, readonly=True)
+
+    def compute_sheet(self):
+        payslips = self.filtered(lambda slip: slip.state in ['draft', 'verify'])
+        # delete old payslip lines
+        payslips.line_ids.unlink()
+        for payslip in payslips:
+            number = payslip.number or self.env['ir.sequence'].next_by_code('salary.slip')
+            lines = [(0, 0, line) for line in payslip._get_payslip_lines()]
+            payslip.write({'line_ids': lines, 'number': number, 'state': 'verify', 'compute_date': fields.Date.today()})
+        self.paid_date = datetime.now()
+        return True
 
     def get_age(self, birth_date, date_bis):
         age = 0
