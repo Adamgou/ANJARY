@@ -101,7 +101,7 @@ class SaleSubscription(models.Model):
                 self.recurring_next_date.year, self.recurring_next_date.month, 1)
             return [(0, 0, self._prepare_invoice_line(line, fiscal_position, revenue_date_start, revenue_date_stop)) for line in self.recurring_invoice_line_ids]
         else:
-            return super(self, SaleSubscription)._prepare_invoice_lines(fiscal_position)
+            return super(SaleSubscription, self)._prepare_invoice_lines(fiscal_position)
 
 
 class AccountMove(models.Model):
