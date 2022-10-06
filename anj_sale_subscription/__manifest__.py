@@ -13,6 +13,7 @@
     "data": [
 
         # views
+        "views/sale_subscription_views.xml"
     ],
     "license": "LGPL-3",
 }

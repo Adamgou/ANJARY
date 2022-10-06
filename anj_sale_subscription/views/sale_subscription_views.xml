@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sale_subscription_view_form" model="ir.ui.view">
+        <field name="name">anjary.sale.subscription.form.view</field>
+        <field name="model">sale.subscription</field>
+        <field name="inherit_id" ref="sale_subscription.sale_subscription_view_form"/>
+        <field name="arch" type="xml">
+            <!-- remove groups attribute value-->
+            <xpath expr="//group[@name='main']/group/div/button[@name='generate_recurring_invoice']" position="attributes">
+                <attribute name="groups">base.group_user</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
