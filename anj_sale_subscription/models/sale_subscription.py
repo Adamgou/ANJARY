@@ -102,18 +102,18 @@ class SaleSubscription(models.Model):
             return [(0, 0, self._prepare_invoice_line(line, fiscal_position, revenue_date_start, revenue_date_stop)) for line in self.recurring_invoice_line_ids]
         else:
             return super(SaleSubscription, self)._prepare_invoice_lines(fiscal_position)
-
-
-class AccountMove(models.Model):
-    _inherit = 'account.move'
-
-    @api.model
-    def create(self, vals_list):
-        """"Update quantity fields of line."""
-
-        account_move_ids = super(AccountMove, self).create(vals_list)
-
-        for line_id in account_move_ids.mapped('line_ids'):
+    
+    def generate_recurring_invoice(self):
+        res = self._recurring_create_invoice()
+        if res:
+            self.update_quantity_prorata()
+            return self.action_subscription_invoice()
+        else:
+            raise UserError("You already have generated an invoice for each period.")
+    
+    def update_quantity_prorata(self):
+        line_ids = self.env['account.move.line'].with_context(check_move_validity=False).search([('subscription_id', '=', self.id)])
+        for line_id in line_ids:
             if line_id.subscription_id and line_id.subscription_id.template_id.recurring_rule_type == 'monthly' and line_id.subscription_start_date and line_id.subscription_end_date:
                 date_from = line_id.subscription_start_date
                 date_to = line_id.subscription_end_date
@@ -124,5 +124,3 @@ class AccountMove(models.Model):
                     if number_of_days != month_range:
                         line_id.quantity = (number_of_days / month_range) + (
                             line_id.quantity - 1 if line_id.quantity > 0 else line_id.quantity)
-
-        return account_move_ids
