@@ -49,13 +49,13 @@
                 <div style="width:100%;">
                     <div style="margin-left:503px;">
                         <div>
-                            NIF:<span t-esc="o.partner_id.nif" /> 
+                            NIF:<span t-esc="o.company_id.nif" /> 
                         </div>
                         <div>
-                            STAT: <span t-esc="o.partner_id.stat"/>
+                            STAT: <span t-esc="o.company_id.stat"/>
                         </div>
-                        <div>CIF: <span t-esc="o.partner_id.cif"/></div>
-                        <div>RCS: <span t-esc="o.partner_id.rcs"/></div>
+                        <div>CIF: <span t-esc="o.company_id.cif"/></div>
+                        <div>RCS: <span t-esc="o.company_id.rcs"/></div>
                     </div>
                     <!-- <table style="width:40%;margin-left:503px;text-align:left;border: none;" >
                         <tbody>
