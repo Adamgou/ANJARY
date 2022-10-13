@@ -9,6 +9,7 @@ class AccountMove(models.Model):
         "line_ids.tax_base_amount",
         "line_ids.tax_line_id",
         "partner_id",
+        "line_ids.tax_ids",
         "currency_id",
         "amount_total",
         "amount_untaxed",
