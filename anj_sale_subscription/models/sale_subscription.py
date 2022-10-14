@@ -177,6 +177,3 @@ class SaleSubscription(models.Model):
                             if line_id.quantity > 0
                             else line_id.quantity
                         )
-                        old = line_id.tax_ids
-                        line_id.tax_ids = False
-                        line_id.tax_ids = old
