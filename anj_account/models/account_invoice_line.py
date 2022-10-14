@@ -14,13 +14,6 @@ class Account_invoice_line(models.Model):
     @api.onchange("price_unit", "discount")
     def _on_change_price_discounted(self):
         for val in self.with_context(check_move_validity=False):
-            print(
-                """ 
-                    >>>
-                    >>>
-                    >>>
-                """
-            )
             value = val.price_unit - ((val.price_unit * val.discount) / 100)
             val.unit_price_discounted = value
 
