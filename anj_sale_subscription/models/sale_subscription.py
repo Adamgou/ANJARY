@@ -28,9 +28,22 @@ PERIODS = {"daily": "days", "weekly": "weeks", "monthly": "months", "yearly": "y
 class SaleSubscription(models.Model):
     _inherit = "sale.subscription"
 
+    prorata = fields.Boolean(default=True)
+    can_read_move = fields.Boolean(default=lambda self: self.env['account.move'].check_access_rights('read', raise_exception=False))
+    
+    @api.constrains('prorata')
+    def _contrains_prorata(self):
+        for sale_subscription in self:
+            if sale_subscription.can_read_move and sale_subscription.invoice_count > 0:
+                raise UserError(_('Sorry, there is already invoice for this sale subscription!'))
+            elif not sale_subscription.can_read_move:
+                raise UserError(_('Sorry, you do not have access right for this operation!'))
+
     def _prepare_invoice_data(self):
         self.ensure_one()
-
+        if not self.prorata:
+            return super(SaleSubscription, self)._prepare_invoice_data()
+            
         if not self.partner_id:
             raise UserError(
                 _("You must first select a Customer for Subscription %s!", self.name)
@@ -123,6 +136,9 @@ class SaleSubscription(models.Model):
 
     def _prepare_invoice_lines(self, fiscal_position):
         self.ensure_one()
+        if not self.prorata:
+            return super(SaleSubscription, self)._prepare_invoice_lines(fiscal_position)
+
         if self.template_id and self.template_id.recurring_rule_type == "monthly":
             revenue_date_stop = self.recurring_next_date
             revenue_date_start = (
@@ -148,7 +164,8 @@ class SaleSubscription(models.Model):
     def generate_recurring_invoice(self):
         res = self._recurring_create_invoice()
         if res:
-            self.update_quantity_prorata()
+            if self.prorata:
+                self.update_quantity_prorata()
             return self.action_subscription_invoice()
         else:
             raise UserError("You already have generated an invoice for each period.")
