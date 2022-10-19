@@ -17,10 +17,12 @@ class HrContractInherit(models.Model):
         required=True)
     base_salary = fields.Monetary('Salaire de base')
     hourly_salary = fields.Monetary('Salaire horaire ', compute='_get_hourly_salary')
-    month_12_last_salary = fields.Monetary('Salaire des 12 derniers mois')
+    month_12_last_salary = fields.Monetary('Salaire moyen des 12 derniers mois')
     # production_bonus_participant = fields.Monetary('Prime de production participant')
     allow_transport = fields.Monetary('Indemnité de transport')
     allow_family = fields.Monetary('Allocations familiales')
+    allow_logement = fields.Monetary('Indemnité de logement')
+    other_allow = fields.Monetary('Autres ndemnités')
     wage = fields.Monetary('Wage', required=True, tracking=True, help="Employee's monthly gross wage.",
                            compute='_compute_base_salary')
 

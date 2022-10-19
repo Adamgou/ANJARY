@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import date
-
 from odoo import fields, models, api
-
-# from odoo.exceptions import UserError, Warning
-# raise UserError(f"La date d'entrée ")
 
 
 class HrPayslipLine(models.Model):
@@ -12,3 +8,4 @@ class HrPayslipLine(models.Model):
 
     nombre = fields.Float(default=0, string="Nombre")
     base = fields.Float(default=0, string="Base")
+    category_code = fields.Char(related="category_id.code")

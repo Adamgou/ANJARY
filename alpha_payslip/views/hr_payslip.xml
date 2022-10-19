@@ -10,7 +10,6 @@
                 <xpath expr="//field[@name='payslip_run_id']" position="after">
                     <field name="commentaire" />
                     <field name="paid_date" />
-
                 </xpath>
                 <xpath expr="//notebook/page[@name='salary_computation']/field/tree/field[@name='rate']" position="after">
                     <field name="nombre" />

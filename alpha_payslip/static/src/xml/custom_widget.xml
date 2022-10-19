@@ -1,0 +1,18 @@
+<templates id="template" xml:space="preserve">
+    <t t-name="CustomWidget">
+        <div>
+            <div class="custom-dec">
+                <!-- <div class="pro-bar">
+                    <small class="progress_bar_title">
+                        <span class="progress_number" />
+                    </small>
+                    <span class="progress-bar-inner" />
+                </div> -->
+                <input type="text" id="name" name="name" maxlength="4" size="5" />
+                <small>
+                    <span class="progress_number" />
+                </small>
+            </div>
+        </div>
+    </t>
+</templates>
