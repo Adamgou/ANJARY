@@ -8,11 +8,11 @@
     "category": "Sales/Sales",
     "version": "0.1",
     # any module necessary for this one to work correctly
-    "depends": ["sale_renting"],
+    "depends": ["anj_location"],
     # always loaded
     "data": [
-
         # views
+        'data/location_price.xml'
     ],
     "license": "LGPL-3",
 }
