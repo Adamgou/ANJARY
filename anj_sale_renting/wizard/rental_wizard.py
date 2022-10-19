@@ -31,6 +31,6 @@ class RentalWizard(models.TransientModel):
             self.pickup_date = self.pickup_date.replace(
                 hour=location_interval[0], minute=0, second=0, microsecond=0)
             day = (self.pickup_date +
-                timedelta(days=1 if location_interval[1] <= location_interval[0] else 0)).day
+                   timedelta(days=1 if location_interval[1] <= location_interval[0] else 0)).day
             self.return_date = self.return_date.replace(
-                day=day, hour=location_interval[1] if location_interval[1] != 21 else 0, minute=0, second=0, microsecond=0)
+                day=day, hour=location_interval[1], minute=0, second=0, microsecond=0)
