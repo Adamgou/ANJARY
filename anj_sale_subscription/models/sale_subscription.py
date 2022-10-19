@@ -22,28 +22,32 @@ INTERVAL_FACTOR = {
     "yearly": 1.0 / 12.0,
 }
 
-PERIODS = {"daily": "days", "weekly": "weeks", "monthly": "months", "yearly": "years"}
+PERIODS = {"daily": "days", "weekly": "weeks",
+           "monthly": "months", "yearly": "years"}
 
 
 class SaleSubscription(models.Model):
     _inherit = "sale.subscription"
 
     prorata = fields.Boolean(default=True)
-    can_read_move = fields.Boolean(default=lambda self: self.env['account.move'].check_access_rights('read', raise_exception=False))
-    
+    can_read_move = fields.Boolean(
+        default=lambda self: self.env['account.move'].check_access_rights('read', raise_exception=False))
+
     @api.constrains('prorata')
     def _contrains_prorata(self):
         for sale_subscription in self:
             if sale_subscription.can_read_move and sale_subscription.invoice_count > 0:
-                raise UserError(_('Sorry, there is already invoice for this sale subscription!'))
+                raise UserError(
+                    _('Sorry, there is already invoice for this sale subscription!'))
             elif not sale_subscription.can_read_move:
-                raise UserError(_('Sorry, you do not have access right for this operation!'))
+                raise UserError(
+                    _('Sorry, you do not have access right for this operation!'))
 
     def _prepare_invoice_data(self):
         self.ensure_one()
         if not self.prorata:
             return super(SaleSubscription, self)._prepare_invoice_data()
-            
+
         if not self.partner_id:
             raise UserError(
                 _("You must first select a Customer for Subscription %s!", self.name)
@@ -73,7 +77,8 @@ class SaleSubscription(models.Model):
             begin_date = next_date
         if not next_date:
             raise UserError(
-                _('Please define Date of Next Invoice of "%s".') % (self.display_name,)
+                _('Please define Date of Next Invoice of "%s".') % (
+                    self.display_name,)
             )
         recurring_next_date = self._get_recurring_next_date(
             self.recurring_rule_type,
@@ -82,7 +87,8 @@ class SaleSubscription(models.Model):
             self.recurring_invoice_day,
         )
         # remove 1 day as normal people thinks in term of inclusive ranges.
-        end_date = fields.Date.from_string(recurring_next_date) - relativedelta(days=1)
+        end_date = fields.Date.from_string(
+            recurring_next_date) - relativedelta(days=1)
         if self.template_id.recurring_rule_type == "monthly":
             end_date = self.recurring_next_date
         addr = self.partner_id.address_get(["delivery", "invoice"])
@@ -161,36 +167,40 @@ class SaleSubscription(models.Model):
         else:
             return super(SaleSubscription, self)._prepare_invoice_lines(fiscal_position)
 
-    def generate_recurring_invoice(self):
-        res = self._recurring_create_invoice()
-        if res:
-            if self.prorata:
-                self.update_quantity_prorata()
-            return self.action_subscription_invoice()
-        else:
-            raise UserError("You already have generated an invoice for each period.")
+    def _prepare_invoice_line(self, line, fiscal_position, date_start=False, date_stop=False):
+        company = self.env.company or line.analytic_account_id.company_id
+        tax_ids = line.product_id.taxes_id.filtered(
+            lambda t: t.company_id == company)
+        if fiscal_position and tax_ids:
+            tax_ids = self.env['account.fiscal.position'].browse(
+                fiscal_position).map_tax(tax_ids)
+            line.price_unit = self.env['account.tax']._fix_tax_included_price_company(
+                line.price_unit, line.product_id.taxes_id, tax_ids, self.company_id)
+        return {
+            'name': line.name,
+            'subscription_id': line.analytic_account_id.id,
+            'price_unit': line.price_unit or 0.0,
+            'discount': line.discount,
+            'quantity': self._get_quantity_prorata(line.quantity, date_start, date_stop),
+            'product_uom_id': line.uom_id.id,
+            'product_id': line.product_id.id,
+            'tax_ids': [(6, 0, tax_ids.ids)],
+            'analytic_account_id': line.analytic_account_id.analytic_account_id.id,
+            'analytic_tag_ids': [(6, 0, line.analytic_account_id.tag_ids.ids)],
+            'subscription_start_date': date_start,
+            'subscription_end_date': date_stop,
+        }
 
-    def update_quantity_prorata(self):
-        line_ids = (
-            self.env["account.move.line"]
-            .with_context(check_move_validity=False)
-            .search([("subscription_id", "=", self.id)])
-        )
-        for line_id in line_ids:
-            if (
-                line_id.subscription_id
-                and line_id.subscription_id.template_id.recurring_rule_type == "monthly"
-                and line_id.subscription_start_date
-                and line_id.subscription_end_date
-            ):
-                date_from = line_id.subscription_start_date
-                date_to = line_id.subscription_end_date
-                if date_from.month == date_to.month:
-                    number_of_days = (date_to - date_from).days + 1
-                    month_range = calendar.monthrange(date_to.year, date_from.month)[1]
-                    if number_of_days != month_range:
-                        line_id.quantity = (number_of_days / month_range) + (
-                            line_id.quantity - 1
-                            if line_id.quantity > 0
-                            else line_id.quantity
-                        )
+    def _get_quantity_prorata(self, quantity, date_from, date_to):
+        output = quantity
+        if date_from.month == date_to.month:
+            number_of_days = (date_to - date_from).days + 1
+            month_range = calendar.monthrange(
+                date_to.year, date_from.month)[1]
+            if number_of_days != month_range:
+                output = (number_of_days / month_range) + (
+                    quantity - 1
+                    if quantity > 0
+                    else quantity
+                )
+        return output
