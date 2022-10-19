@@ -1,0 +1,58 @@
+<odoo>
+  <data noupdate="0">
+    <record id="heure_sup" model="hr.payslip.input.type">
+      <field name="name">Heures supplémentaires</field>
+      <field name="code">HSUPP</field>
+      <field name="generate">True</field>
+      <field name="country_id" ref="base.mg" />
+    </record>
+    <record id="heure_sup_nuit_hab" model="hr.payslip.input.type">
+      <field name="name">Heures de nuit habituelles</field>
+      <field name="code">NUITHABT</field>
+      <field name="generate">True</field>
+      <field name="country_id" ref="base.mg" />
+    </record>
+    <record id="heure_sup_nuit_occ" model="hr.payslip.input.type">
+      <field name="name">Heures de nuit occasionnelles</field>
+      <field name="code">NUITOCC</field>
+      <field name="generate">True</field>
+      <field name="country_id" ref="base.mg" />
+    </record>
+    <record id="heure_sup_dim" model="hr.payslip.input.type">
+      <field name="name">Heures travaillées le dimanche</field>
+      <field name="code">HDIM</field>
+      <field name="generate">True</field>
+      <field name="country_id" ref="base.mg" />
+    </record>
+    <record id="heure_sup_fer" model="hr.payslip.input.type">
+      <field name="name">Heures travaillées en jour férié</field>
+      <field name="code">HTJF</field>
+      <field name="generate">True</field>
+      <field name="country_id" ref="base.mg" />
+    </record>
+    <record id="heure_sup_30" model="hr.payslip.input.type">
+      <field name="name">Heures supplémentaires 30%</field>
+      <field name="code">HSUPP30</field>
+      <field name="generate">True</field>
+      <field name="country_id" ref="base.mg" />
+    </record>
+    <record id="heure_sup_50" model="hr.payslip.input.type">
+      <field name="name">Heures supplémentaires 50%</field>
+      <field name="code">HSUPP50</field>
+      <field name="generate">True</field>
+      <field name="country_id" ref="base.mg" />
+    </record>
+    <record id="heure_sup_non_30" model="hr.payslip.input.type">
+      <field name="name">Heures supplémentaires NON IMPOSABLE 30%</field>
+      <field name="code">HSUPPNON30</field>
+      <field name="generate">True</field>
+      <field name="country_id" ref="base.mg" />
+    </record>
+    <record id="heure_sup_non_50" model="hr.payslip.input.type">
+      <field name="name">Heures supplémentaires NON IMPOSABLE 50%</field>
+      <field name="code">HSUPPNON50</field>
+      <field name="generate">True</field>
+      <field name="country_id" ref="base.mg" />
+    </record>
+  </data>
+</odoo>

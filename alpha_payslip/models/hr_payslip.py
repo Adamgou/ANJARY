@@ -11,22 +11,27 @@ from datetime import datetime
 
 class Hr_Payslip(models.Model):
     _inherit = "hr.payslip"
-    commentaire = fields.Text(
-        string='Commentaire',
-        required=False)
+    commentaire = fields.Text(string="Commentaire", required=False)
 
-    paid_date = fields.Date(
-        string='Date de paie ',
-        required=False, readonly=True)
+    paid_date = fields.Date(string="Date de paie ", required=False, readonly=True)
 
     def compute_sheet(self):
-        payslips = self.filtered(lambda slip: slip.state in ['draft', 'verify'])
+        payslips = self.filtered(lambda slip: slip.state in ["draft", "verify"])
         # delete old payslip lines
         payslips.line_ids.unlink()
         for payslip in payslips:
-            number = payslip.number or self.env['ir.sequence'].next_by_code('salary.slip')
+            number = payslip.number or self.env["ir.sequence"].next_by_code(
+                "salary.slip"
+            )
             lines = [(0, 0, line) for line in payslip._get_payslip_lines()]
-            payslip.write({'line_ids': lines, 'number': number, 'state': 'verify', 'compute_date': fields.Date.today()})
+            payslip.write(
+                {
+                    "line_ids": lines,
+                    "number": number,
+                    "state": "verify",
+                    "compute_date": fields.Date.today(),
+                }
+            )
         self.paid_date = datetime.now()
         return True
 
@@ -62,9 +67,7 @@ class Hr_Payslip(models.Model):
         blacklisted_rule_ids = self.env.context.get(
             "prevent_payslip_computation_line_ids", []
         )
-
         result = {}
-
         for rule in sorted(self.struct_id.rule_ids, key=lambda x: x.sequence):
             if rule.id in blacklisted_rule_ids:
                 continue
@@ -143,4 +146,5 @@ class Hr_Payslip(models.Model):
                     "base": base,
                     "nombre": nombre,
                 }
+
         return result.values()

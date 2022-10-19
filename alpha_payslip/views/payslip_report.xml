@@ -2,16 +2,18 @@
     <data>
         <template id="report_payslip_inherit" inherit_id="hr_payroll.report_payslip">
             <xpath expr="//t[@t-call='web.external_layout']" position="replace">
-                <t t-call="alpha_payslip.external_layout">
+                <t t-call='alpha_payslip.external_layout_alpha'>
+                    <meta charset="UTF-8"/>
 
-                    <style type="text/css">
+                    <style>
+                        td, table, th {padding: 2px 2px!important;}
                         .tgv {border-collapse:collapse;border-spacing:0;}
                         .tgv td{border-color:black;border-style:solid;border-width:1px;font-family:Arial,
                         sans-serif;font-size:11px;
-                        overflow:hidden;word-break:normal;padding-top: 2px; padding-bottom: 2px; padding-left: 5px;}
+                        overflow:hidden;word-break:normal;padding:2px 2px;}
                         .tgv th{border-color:black;border-style:solid;border-width:1px;font-family:Arial,
                         sans-serif;font-size:11px;
-                        font-weight:normal;overflow:hidden;padding:2px 2px;word-break:normal}
+                        font-weight:normal;overflow:hidden;word-break:normal;padding:2px 2px;}
                         .tgv .tgv-34fe{background-color:#c0c0c0;border-color:inherit;text-align:center;}
                         .tgv
                         .tgv-zlqz{background-color:#c0c0c0;border-color:inherit;font-weight:bold;text-align:center;}
@@ -35,50 +37,58 @@
                                     BULLETIN DE PAIE
 
                                 </td>
-                                <td class="tgv-0pky" colspan="6">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <span t-esc="o.company_id.name"/>
-                                            <!--<br/>
-                                            <span t-esc="o.company_id.street + ', '+ o.company_id.zip + ' - ' + o.company_id.city"/>-->
-                                            <br/>
-                                            <t t-if="o.company_id.street and o.company_id.zip and o.company_id.city">
-                                                <span t-esc="o.company_id.street + ', '+ o.company_id.zip + ' - ' + o.company_id.city"/>
-                                            </t>
+                                <td colspan="6">
+                                    <table style="width:100%">
+                                        <tr>
+                                            <td>
+                                                <div class="div1">
+                                                    <span t-esc="o.company_id.name"/>
+                                                    <!--<br/>
+                                                    <span t-esc="o.company_id.street + ', '+ o.company_id.zip + ' - ' + o.company_id.city"/>-->
+                                                    <br/>
+                                                    <t t-if="o.company_id.street and o.company_id.zip and o.company_id.city">
+                                                        <span t-esc="o.company_id.street + ', '+ o.company_id.zip + ' - ' + o.company_id.city"/>
+                                                    </t>
 
-                                            <t t-if="o.company_id.phone">
-                                                <span>Tel:</span>
-                                                <span t-esc="o.company_id.phone"/>
-                                            </t>
-                                            <t t-if="o.company_id.phone and o.company_id.mobile">
-                                                <span>/</span>
-                                            </t>
-                                            <t t-if="o.company_id.mobile">
-                                                <span t-esc="o.company_id.mobile"/>
-                                            </t>
+                                                    <t t-if="o.company_id.phone">
+                                                        <span>Tel:</span>
+                                                        <span t-esc="o.company_id.phone"/>
+                                                    </t>
+                                                    <t t-if="o.company_id.phone and o.company_id.mobile">
+                                                        <span>/</span>
+                                                    </t>
+                                                    <t t-if="o.company_id.mobile">
+                                                        <span t-esc="o.company_id.mobile"/>
+                                                    </t>
 
 
-                                            <t t-if="o.company_id.email">
-                                                <br/>
-                                                <span>Mail:</span>
-                                                <span t-esc="o.company_id.email"/>
-                                            </t>
-                                            <br/>
-                                            <t t-if="o.company_id.nif">
-                                                <span>NIF :</span>
-                                                <span t-esc="o.company_id.nif"/>
-                                            </t>
-                                            <br/>
-                                            <t t-if="o.company_id.stat">
-                                                <span>STAT :</span>
-                                                <span t-esc="o.company_id.stat"/>
-                                            </t>
-                                        </div>
-                                        <div class="col-6">
-                                            <img t-att-src="image_data_uri(o.company_id.logo)" align="left"
-                                                 style="max-height: 100px; float:right; max-width: 200px;"/>
-                                        </div>
-                                    </div>
+                                                    <t t-if="o.company_id.email">
+                                                        <br/>
+                                                        <span>Mail:</span>
+                                                        <span t-esc="o.company_id.email"/>
+                                                    </t>
+                                                    <br/>
+                                                    <t t-if="o.company_id.nif">
+                                                        <span>NIF :</span>
+                                                        <span t-esc="o.company_id.nif"/>
+                                                    </t>
+                                                    <br/>
+                                                    <t t-if="o.company_id.stat">
+                                                        <span>STAT :</span>
+                                                        <span t-esc="o.company_id.stat"/>
+                                                    </t>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="div2">
+                                                    <img t-att-src="image_data_uri(o.company_id.logo)" align="left"
+                                                         style="max-height: 100px; float:right; max-width: 200px;"/>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    </table>
+
 
                                 </td>
                             </tr>
@@ -97,7 +107,14 @@
                                 </td>
                                 <td class="tgv-34fe" colspan="2">
                                     <span style="font-weight:bold;font-style:normal">CODE
-                                        ADH OSTIE</span>
+                                        ADH</span>
+                                    <t t-if="o.employee_id.work_location_id.name == 'S2PC Tamatave' ">
+                                        <span style="font-weight:bold;font-style:normal">OMSIE</span>
+                                    </t><t t-else="">
+                                        <span style="font-weight:bold;font-style:normal">OSTIE</span>
+                                    </t>
+
+                                    <div class="oe_structure"/>
                                 </td>
                             </tr>
                             <tr>
@@ -114,7 +131,7 @@
                                 </td>
                                 <td class="tgv-0pky" colspan="2" rowspan="2">
                                     <span t-esc="o.contract_id.contract_type_id.name"/>
-                                    <span t-esc="o.contract_id.contrat_categorie"/>
+                                    <span t-esc="o.contract_id.contrat_categorie.upper()"/>
                                 </td>
                                 <td class="tgv-0pky" colspan="2" rowspan="2">
                                     <span t-esc="o.employee_id.cnaps"/>
@@ -198,26 +215,25 @@
                             <tr>
 
                                 <td class="tgv-0pky" colspan="2" rowspan="4">
-                                    <div class="row">
-                                        <div class="col-6">Periode</div>
-                                        <div class="col-6">: <span t-esc="o.employee_id.allocation_display"/>
+                                    <div>
+                                        <div>Periode : <span t-esc="o.employee_id.allocation_display"/>
                                             Jours</div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-6">Acquis</div>
-                                        <div class="col-6">: 2.5 Jours</div>
+                                    <div>
+                                        <div class="col-6">Acquis <span class="col-6">: 2.5 Jours</span></div>
+
                                     </div>
-                                    <div class="row">
-                                        <div class="col-6">Pris</div>
-                                        <div class="col-6">: <span t-esc="o.employee_id.allocation_used_display"/>
+                                    <div>
+                                        <div>Pris: <span t-esc="o.employee_id.allocation_used_display"/>
                                             Jours</div>
+
                                     </div>
-                                    <div class="row">
-                                        <div class="col-6">Restant</div>
-                                        <div class="col-6">: <t t-set="foo"
-                                                                t-value="float(o.employee_id.allocation_display) - float(o.employee_id.allocation_used_display)"/>
+                                    <div>
+                                        <div class="col-6">Restant : <t t-set="foo"
+                                                                        t-value="float(o.employee_id.allocation_display) - float(o.employee_id.allocation_used_display)"/>
                                             <t t-out="foo"/> Jours
                                         </div>
+
                                     </div>
 
                                 </td>
@@ -291,19 +307,19 @@
                             <tr style="padding-top: 2px; padding-bottom: 2px;"></tr>
                             <tr style="padding-top: 2px; padding-bottom: 2px;"></tr>
                             <tr style="padding-top: 2px; padding-bottom: 2px;">
-                                <td class="tgv-zlqz" colspan="2">
+                                <td id="tdval" colspan="2">
                                     <span style="font-weight:bold;font-style:normal">
                                         RUBRIQUES</span>
                                 </td>
-                                <td class="tgv-zlqz" colspan="2">
+                                <td id="tdval" colspan="2">
                                     <span style="font-weight:bold;font-style:normal">
                                         NOMBRE</span>
                                 </td>
-                                <td class="tgv-zlqz" colspan="2">
+                                <td id="tdval" colspan="2">
                                     <span style="font-weight:bold;font-style:normal">
                                         BASE</span>
                                 </td>
-                                <td class="tgv-zlqz" colspan="2">
+                                <td id="tdval" colspan="2">
                                     <span style="font-weight:bold;font-style:normal">
                                         MONTANT</span>
                                 </td>
@@ -316,7 +332,7 @@
                                     <tr>
                                         <td colspan="2"><span t-field="line.name"/></td>
                                         <td colspan="2"><span
-                                                t-esc="'{0:,.2f}'.format(float(line.total)).replace(',', ' ')"/></td>
+                                                t-esc="'{0:,.2f}'.format(float(line.nombre)).replace(',', ' ')"/></td>
                                         <td colspan="2"><span
                                                 t-esc="'{0:,.2f}'.format(float(line.base)).replace(',', ' ')"/></td>
                                         <td colspan="2"><span
@@ -365,6 +381,7 @@
                     </div>
 
                 </t>
+
             </xpath>
         </template>
     </data>

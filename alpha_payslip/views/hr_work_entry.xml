@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- <record id="hr_work_entry_view_form_inherit_alpha" model="ir.ui.view">
+            <field name="name">Alpha Inherit Hr Entry Work</field>
+            <field name="model">hr.work.entry</field>
+            <field name="inherit_id" ref="hr_work_entry.hr_work_entry_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='work_entry_type_id']" position="after">
+                    <field name="is_hs" invisible="1" />
+                    <field name="type_hs_ids" widget="many2many_tags" string="Type HS" attrs="{'invisible': [('is_hs', '=', False)] ,'required': [('is_hs', '=', True)]  }" />
+                </xpath>
+            </field>
+        </record> -->
+    </data>
+</odoo>

@@ -15,10 +15,10 @@
     "category": "Uncategorized",
     "version": "0.1",
     # any module necessary for this one to work correctly
-    "depends": ["base", "hr_contract", "hr", "hr_payroll"],
+    "depends": ["base", "hr_contract", "hr_work_entry", "hr", "hr_payroll"],
     # always loaded
     "data": [
-        # 'security/ir.model.access.csv',
+        "security/ir.model.access.csv",
         "views/base_external_layout.xml",
         "views/views.xml",
         "views/templates.xml",
@@ -26,17 +26,24 @@
         "views/hr_contract_view.xml",
         "views/payslip_report.xml",
         "views/hr_payslip.xml",
+        "views/heure_sup.xml",
         "views/hr_contract_view_too.xml",
         "views/hr_salary_rule_views.xml",
-    ],
-    # only loaded in demonstration mode
-    "demo": [
-        "demo/demo.xml",
+        "views/hr_work_entry.xml",
+        "views/company.xml",
+        "data/data.xml",
     ],
     "license": "LGPL-3",
     "assets": {
         "web.report_assets_common": [
-            "alpha_payslip/static/src/css/account_move_invoice_report",
+            "alpha_payslip/static/src/css/bootstrap.css",
         ],
+        "web.assets_backend": [
+            "alpha_payslip/static/src/css/custom_widget.css",
+            "alpha_payslip/static/src/js/custom_widget.js",
+        ],
+        "web.assets_qweb": {
+            "alpha_payslip/static/src/xml/custom_widget.xml",
+        },
     },
 }
