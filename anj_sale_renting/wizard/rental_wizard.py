@@ -29,7 +29,7 @@ class RentalWizard(models.TransientModel):
             location_interval = LOCATION_INTERVAL.get('night')
         self.pickup_date = self.pickup_date.replace(
             hour=location_interval[0], minute=0, second=0, microsecond=0)
-        day = (self.picking_date.date.day +
+        day = (self.pickup_date.date.day +
                timedelta(days=1 if location_interval[1] <= location_interval[0] else 0)).days
         self.return_date = self.return_date.replace(
             day=day, hour=location_interval[1], minute=0, second=0, microsecond=0)
