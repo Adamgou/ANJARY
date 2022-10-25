@@ -20,7 +20,7 @@ class RentalWizard(models.TransientModel):
         default=lambda _: fields.Datetime.now().replace(hour=17, minute=0, second=0, microsecond=0))
 
     @api.onchange('location_price_id')
-    def onchange_location_price_id(self):
+    def _onchange_location_price_id(self):
         if self.location_price_id:
             if self.location_price_id.id == self.env.ref('anj_sale_renting.journey_price').id:
                 location_interval = LOCATION_INTERVAL.get('journey')
