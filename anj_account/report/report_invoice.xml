@@ -3,8 +3,8 @@
     <data>
         <!-- <t t-esc="o.currency_id.amount_to_text(o.amount_total)" /> -->
         <template id="report_invoice_inherit" inherit_id="account.report_invoice_document">
-            <xpath expr="//div[hasclass('page')]/h2" position="after">
-                <h5>Client <span t-if="o.partner_sequence" t-field="o.partner_sequence"/></h5>
+            <xpath expr="//div[hasclass('page')]/h2//span[last()]" position="after">
+                <span t-if="o.partner_sequence"> - <span t-field="o.partner_sequence"/></span>
             </xpath>
             <xpath expr="//div[hasclass('page')]//table[@name='invoice_line_table']//th[@name='th_taxes']" position="before">
                 <t t-if="o.company_id.name == 'JARA DISTRIBUTION'">
@@ -62,7 +62,7 @@
                     </div>
                     <!-- <table style="width:40%;margin-left:503px;text-align:left;border: none;" >
                         <tbody>
-                            <tr >
+                            <tr>
                                 <td style="width:20%;">NIF: </td>
                                 <td>
                                     <t t-esc="o.partner_id.nif" />
