@@ -23,7 +23,7 @@ class AccountMove(models.Model):
 
     @api.depends('state', 'partner_id')
     def _depends_partner_sequence(self):
-        for move_id in self.filtered(lambda move_id: move_id.state == 'posted' and move_id.partner_id.invoice_sequence_code and move_id.partner_id.invoice_prefix):
+        for move_id in self.filtered(lambda move_id: move_id.state == 'posted' and move_id.partner_id.invoice_sequence_code and move_id.partner_id.invoice_prefix and not move_id.partner_sequence):
             move_id.partner_sequence = move_id._get_partner_sequence()
 
     @api.model
