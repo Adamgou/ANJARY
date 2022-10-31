@@ -14,7 +14,7 @@
                 </xpath>
                 <xpath expr="//field[@name='payment_term_id']" position="after">
                     <field name="employee_id" />
-                    <field name="car_registration" />
+                    <field name="car_registration_ids" widget="many2many_tags" />
                     <field name="is_transfert" />
                 </xpath>
                 <xpath expr="//notebook" position="inside">
@@ -25,9 +25,13 @@
                                     <field name="hotel_partner" />
                                     <field name="transfert_date" />
                                     <field name="fligth_company" />
-                                    <field name="car_registration" />
+                                    <field name="car_registration_ids" widget="many2many_tags" />
                                     <field name="employee_id" />
-
+                                </group>
+                                <group>
+                                    <field name="signatory_name"/>
+                                    <field name="signatory_fonction"/>
+                                    <field name="signatory_phone" widget="phone"/>
                                 </group>
                                 <field name="passenger_list_ids" widget="section_and_note_one2many" mode="tree">
                                     <tree string="Passenger" editable="bottom">

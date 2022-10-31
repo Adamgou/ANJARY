@@ -70,7 +70,7 @@
                                                     </strong>
                                                 </td>
                                             </tr>
-                                            <tr>
+                                            <tr>width
                                                 <td>
                                                     <t t-esc="company.street" />
                                                     ,Antananarivo
@@ -116,7 +116,7 @@
 
                     <div class="row mt32 mb32">
 
-                        <div class="col-auto col-1 mw-100 mb-2">
+                        <div class="col-auto col-6 mw-100 mb-2 text-left">
                             <div>
                                 <b>Date du transfert:</b>
                                 <span>
@@ -130,18 +130,17 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="col-auto col-1 mw-100 mb-2">
+                        <div class="col-auto col-6 mw-100 mb-2 text-left">
                             <table style="width:100%;margin-top:20px ;">
                                 <tbody>
                                     <tr>
                                         <td>
                                             <b>
-    
                                                 Immatriculation véhicule:
                                             </b>
                                         </td>
                                         <td>
-                                            <t t-esc="o.car_registration" />
+                                            <t t-esc="', '.join(o.car_registration_ids.mapped('name'))" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -199,7 +198,7 @@
                                             Hotel
                                         </b>
                                     </td>
-                                    <td style="border: 1px solid;">
+                                    <td style="border: 1px solid;">Immatriculation
                                         <b>
                                             List initial des passagers
                                         </b>
@@ -215,7 +214,7 @@
 
                                         </b>
                                     </td>
-                                </tr>
+                                </tr>Immatriculation
                                 <t t-foreach="o.passenger_list_ids" t-as="line">
                                     <tr>
                                         <td style="border: 1px solid;">
@@ -273,7 +272,7 @@
 
                     </div>
                     <div style="margin-top: 30px;">
-                        <table style="width: 100%;">
+                        <table class="text-left w-100">
                             <tbody>
                                 <tr>
                                     <td>
@@ -299,20 +298,19 @@
                                         <br />
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>Nom du signnataire:</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Fonction:</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Téléphone:</td>
-                                    <td></td>
-                                </tr>
+                                
                             </tbody>
                         </table>
+
+                        <p class="mt-2 mb-0">
+                            Nom du signataire: <t t-esc="o.signatory_name"/>
+                        </p>
+                        <p class="mt-0 mb-0">
+                            Fonction: <t t-esc="o.signatory_fonction"/>
+                        </p>
+                        <p class="mt-0">
+                            Téléphone: <t t-esc="o.signatory_phone"/>
+                        </p>
                     </div>
                 </div>
                 <div class="footer o_standard_footer" style="border-top: 1px solid black;">
