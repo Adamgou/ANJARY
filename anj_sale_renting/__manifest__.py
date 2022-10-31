@@ -11,8 +11,12 @@
     "depends": ["anj_location"],
     # always loaded
     "data": [
-        # views
-        'data/location_price.xml'
+        'data/location_price.xml',
     ],
+    'assets': {
+        'web.assets_backend': [
+            'anj_sale_renting/static/src/**/*',
+        ],
+    },
     "license": "LGPL-3",
 }
