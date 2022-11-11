@@ -7,24 +7,10 @@ class SaleSubscription(models.Model):
     _inherit = "sale.subscription"
 
     def start_subscription(self):
-        
         res = super(SaleSubscription, self).start_subscription()
-        for line in self.recurring_invoice_line_ids:
-            ref_intern=line.product_id.default_code or " "
-            if line.product_id.is_insubscription ==False:
-                line.product_id.write({"is_insubscription": True})
-            else:
-                raise UserError(f"L'immobilier {line.product_id.name} {ref_intern} est en cours d abonnement")
+        line_busy = self.env['sale.subscription.line'].search([('analytic_account_id.stage_id', '=', self.env.ref('sale_subscription.sale_subscription_stage_in_progress').id), ('analytic_account_id', '!=', self.id)])
 
-            
-        return res
+        if line_busy:
+            raise UserError(f"L'immobilier {','.join(line_busy.mapped('name'))} est en cours d abonnement")
 
-    def set_close(self):
-        res = super(SaleSubscription, self).set_close()
-        for line in self.recurring_invoice_line_ids:
-            if line.product_id.is_insubscription ==True:
-                line.product_id.write({"is_insubscription": False})
-            
-
-                
         return res
