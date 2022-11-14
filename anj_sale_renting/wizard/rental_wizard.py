@@ -19,10 +19,10 @@ class RentalWizard(models.TransientModel):
     return_date = fields.Datetime(
         default=lambda _: fields.Datetime.now().replace(hour=17, minute=0, second=0, microsecond=0))
     
-    @api.onchange('lot_ids')
-    def _onchange_lot_ids(self):
-        order_id = self.env['sale.order'].sudo().browse(self.env.context.get('default_sale_order_id'))
-        order_id.car_registration_ids = [(6, 0, self.lot_ids.ids)]
+    # @api.onchange('lot_ids')
+    # def _onchange_lot_ids(self):
+    #     order_id = self.env['sale.order'].sudo().browse(self.env.context.get('default_sale_order_id'))
+    #     order_id.car_registration_ids = [(6, 0, self.lot_ids.ids)]
 
     @api.onchange('location_price_id')
     def _onchange_location_price_id(self):
