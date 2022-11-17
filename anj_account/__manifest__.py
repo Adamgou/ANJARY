@@ -11,7 +11,7 @@
     """,
 
     'author': "My Company",
-    'website': "http://www.yourcompany.com",
+    'website': "http://www.nexources.com",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
@@ -25,8 +25,11 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
+        # views
         'views/views.xml',
         'views/templates.xml',
+        'views/res_partner_views.xml',
+        'views/account_move_views.xml',
         # 'views/account_move.xml',
         'report/report_invoice.xml',
     ],

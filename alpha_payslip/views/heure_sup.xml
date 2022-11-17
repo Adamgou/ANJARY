@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="heuresup_payslip_view_form_inherit" model="ir.ui.view">
+            <field name="name">Alpha Inherit Payslip Heure Supplementaire</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form" />
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@name='account_info']" position="after">
+                    <page string="Heures supplémentaires" name="heures_supp">
+                        <group>
+                            <group>
+                                <label for="nombre_de_semaine" string="Nombre de semaine" />
+                                <div class="o_row">
+                                    <field name="nombre_de_semaine" nolabel="1" widget="selection" required="True" />
+                                    <span> par mois</span>
+                                </div>
+                            </group>
+                            <group></group>
+                        </group>
+
+                        <table class="tg">
+                            <thead>
+                                <tr>
+                                    <th class="tg-0pky">Type d'heure supplémentaire</th>
+                                    <th class="tg-266k">Semaine 1</th>
+                                    <th class="tg-266k">Semaine 2</th>
+                                    <th class="tg-266k">Semaine 3</th>
+                                    <th class="tg-266k">Semaine 4</th>
+                                    <th class="tg-266k" attrs="{'invisible': [('nombre_de_semaine', '!=', 'cinq')]}">Semaine 5</th>
+                                    <th class="tg-266k">
+                                        <span style="font-weight:bold">TOTAL</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="tg-0pky">Heures supplémentaires</td>
+                                    <td class="tg-0pky">
+                                        <field name="heure_sup_s1" />
+                                    </td>
+                                    <td class="tg-0pky">
+                                        <field name="heure_sup_s2" />
+                                    </td>
+                                    <td class="tg-0pky">
+                                        <field name="heure_sup_s3" />
+                                    </td>
+                                    <td class="tg-0pky">
+                                        <field name="heure_sup_s4" />
+                                    </td>
+                                    <td class="tg-0pky" attrs="{'invisible': [('nombre_de_semaine', '!=', 'cinq')]}">
+                                        <field name="heure_sup_s5" />
+                                    </td>
+                                    <td class="tg-pidv">
+                                        <field name="total_heure_sup" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-0pky">Heures de nuit habituelles</td>
+                                    <td class="tg-0pky">
+                                        <field name="heure_nuit_hab_s1" />
+                                    </td>
+                                    <td class="tg-0pky">
+                                        <field name="heure_nuit_hab_s2" />
+                                    </td>
+                                    <td class="tg-0pky">
+                                        <field name="heure_nuit_hab_s3" />
+                                    </td>
+                                    <td class="tg-0pky">
+                                        <field name="heure_nuit_hab_s4" />
+                                    </td>
+                                    <td class="tg-0pky" attrs="{'invisible': [('nombre_de_semaine', '!=', 'cinq')]}">
+                                        <field name="heure_nuit_hab_s5" />
+                                    </td>
+                                    <td class="tg-pidv">
+                                        <field name="total_heure_nuit_hab" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-0pky">Heures de nuit occasionnelles</td>
+                                    <td class="tg-0pky">
+                                        <field name="heure_nuit_occ_s1" />
+                                    </td>
+                                    <td class="tg-0pky">
+                                        <field name="heure_nuit_occ_s2" />
+                                    </td>
+                                    <td class="tg-0pky">
+                                        <field name="heure_nuit_occ_s3" />
+                                    </td>
+                                    <td class="tg-0pky">
+                                        <field name="heure_nuit_occ_s4" />
+                                    </td>
+                                    <td class="tg-0pky" attrs="{'invisible': [('nombre_de_semaine', '!=', 'cinq')]}">
+                                        <field name="heure_nuit_occ_s5" />
+                                    </td>
+                                    <td class="tg-pidv">
+                                        <field name="total_heure_nuit_occ" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-0pky">Heures travaillées le dimanche</td>
+                                    <td class="tg-0pky">
+                                        <field name="heure_sup_dimanche_s1" />
+                                    </td>
+                                    <td class="tg-0pky">
+                                        <field name="heure_sup_dimanche_s2" />
+                                    </td>
+                                    <td class="tg-0pky">
+                                        <field name="heure_sup_dimanche_s3" />
+                                    </td>
+                                    <td class="tg-0pky">
+                                        <field name="heure_sup_dimanche_s4" />
+                                    </td>
+                                    <td class="tg-0pky" attrs="{'invisible': [('nombre_de_semaine', '!=', 'cinq')]}">
+                                        <field name="heure_sup_dimanche_s5" />
+                                    </td>
+                                    <td class="tg-pidv">
+                                        <field name="total_heure_sup_dimanche" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-0pky">Heures travaillées en jour férié</td>
+                                    <td class="tg-0pky">
+                                        <field name="heure_sup_ferie_s1" />
+                                    </td>
+                                    <td class="tg-0pky">
+                                        <field name="heure_sup_ferie_s2" />
+                                    </td>
+                                    <td class="tg-0pky">
+                                        <field name="heure_sup_ferie_s3" />
+                                    </td>
+                                    <td class="tg-0pky">
+                                        <field name="heure_sup_ferie_s4" />
+                                    </td>
+                                    <td class="tg-0pky" attrs="{'invisible': [('nombre_de_semaine', '!=', 'cinq')]}">
+                                        <field name="heure_sup_ferie_s5" />
+                                    </td>
+                                    <td class="tg-pidv">
+                                        <field name="total_heure_sup_ferie" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-pidv">
+                                        <span style="font-weight:bold">TOTAL</span>
+                                    </td>
+                                    <td class="tg-pidv">
+                                        <field name="total_s1" />
+                                    </td>
+                                    <td class="tg-pidv">
+                                        <field name="total_s2" />
+                                    </td>
+                                    <td class="tg-pidv">
+                                        <field name="total_s3" />
+                                    </td>
+                                    <td class="tg-pidv">
+                                        <field name="total_s4" />
+                                    </td>
+                                    <td class="tg-pidv" attrs="{'invisible': [('nombre_de_semaine', '!=', 'cinq')]}">
+                                        <field name="total_s5" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br></br>
+                        <button name="calcul_cell" type="object" string="Calcluler" class="btn-primary" />
+                    </page>
+                </xpath>
+                <xpath expr="//notebook/page[@name='worked_days_input']/field[@name='input_line_ids']/tree/field[@name='input_type_id']" position="attributes">
+                    <attribute name="domain">[('generate','=', False)]</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

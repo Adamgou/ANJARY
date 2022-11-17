@@ -33,6 +33,8 @@
                             <!--<field name="production_bonus_participant" />-->
                             <field name="allow_transport" />
                             <field name="allow_family" />
+                            <field name="allow_logement" />
+                            <field name="other_allow" />
                         </group>
                     </group>
 

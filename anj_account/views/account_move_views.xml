@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="anj_account_move_view_form_inherit" model="ir.ui.view">
+            <field name="name">anj.account.move.view.form.inherit</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form" />
+            <field name="arch" type="xml">
+                <field name="payment_reference" position="before">
+                    <field name="partner_sequence"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

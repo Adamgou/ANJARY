@@ -10,6 +10,14 @@
             <xpath expr="//group[@name='main']/group/div/button[@name='generate_recurring_invoice']" position="attributes">
                 <attribute name="groups">base.group_user</attribute>
             </xpath>
+            <field name="template_id" position="after">
+                <field name="can_read_move" invisible="1"/>
+                <field name="is_monthly" invisible="1"/>
+                <field name="prorata" attrs="{
+                    'readonly': [('can_read_move', '=', True),('invoice_count', '&gt;', 0)],
+                    'invisible': ['|', ('can_read_move', '=', False), ('is_monthly', '=', False)]
+                }"/>
+            </field>
         </field>
     </record>
 
