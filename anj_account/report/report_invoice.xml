@@ -98,7 +98,7 @@
 
         </template>
         
-        <template id="external_layout_standard_inherit" inherit_id="web.external_layout_standard">
+        <template id="external_layout_standard_inherit" inherit_id="web.external_layout_boxed">
             <xpath expr="//img[@t-att-src='image_data_uri(company.logo)']" position="attributes">
                 <attribute name="t-if">company.logo and not no_logo</attribute>
             </xpath>
