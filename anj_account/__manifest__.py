@@ -30,6 +30,7 @@
         'views/templates.xml',
         'views/res_partner_views.xml',
         'views/account_move_views.xml',
+        'views/journal_account_views.xml',
         # 'views/account_move.xml',
         'report/report_invoice.xml',
     ],

@@ -3,6 +3,13 @@
     <data>
         <!-- <t t-esc="o.currency_id.amount_to_text(o.amount_total)" /> -->
         <template id="report_invoice_inherit" inherit_id="account.report_invoice_document">
+            <xpath expr="//t[@t-call='web.external_layout']" position="before">
+                <style t-if="not o.journal_id.with_logo">
+                    img{
+                        display: none
+                    }
+                </style>
+            </xpath>
             <xpath expr="//div[hasclass('page')]/h2//span[last()]" position="after">
                 <span t-if="o.partner_sequence"> - <span t-field="o.partner_sequence"/></span>
             </xpath>
