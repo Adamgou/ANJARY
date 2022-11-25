@@ -5,4 +5,4 @@ from odoo import models, fields
 class AccountJournal(models.Model):
     _inherit = 'account.journal'
 
-    with_logo = fields.Boolean(default=True)
+    no_logo = fields.Boolean(default=False)
