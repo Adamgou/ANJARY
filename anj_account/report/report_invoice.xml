@@ -4,7 +4,7 @@
         <!-- <t t-esc="o.currency_id.amount_to_text(o.amount_total)" /> -->
         <template id="report_invoice_inherit" inherit_id="account.report_invoice_document">
             <xpath expr="//t[@t-call='web.external_layout']/t[1]" position="before">
-               <t t-set="no_logo" t-if="o.journal_id.no_logo">False</t>
+               <t t-set="no_header" t-if="o.journal_id.no_header">False</t>
             </xpath>
             <xpath expr="//div[hasclass('page')]/h2//span[last()]" position="after">
                 <span t-if="o.partner_sequence"> - <span t-field="o.partner_sequence"/></span>
@@ -99,8 +99,8 @@
         </template>
         
         <template id="external_layout_standard_inherit" inherit_id="web.external_layout_boxed">
-            <xpath expr="//img[@t-att-src='image_data_uri(company.logo)']" position="attributes">
-                <attribute name="t-if">company.logo and not no_logo</attribute>
+            <xpath expr="//div[@t-att-style='report_header_style']" position="attributes">
+                <attribute name="t-if">not no_header</attribute>
             </xpath>
         </template>
     </data>

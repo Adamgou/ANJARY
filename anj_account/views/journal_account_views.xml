@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="account.view_account_journal_form"/>
         <field name="arch" type="xml">
             <field name="type" position="after">
-                <field name="no_logo" string="Pas de logo"/>
+                <field name="no_header" string="Pas d'entête"/>
             </field>
         </field>
     </record>
