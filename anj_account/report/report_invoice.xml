@@ -3,6 +3,9 @@
     <data>
         <!-- <t t-esc="o.currency_id.amount_to_text(o.amount_total)" /> -->
         <template id="report_invoice_inherit" inherit_id="account.report_invoice_document">
+            <xpath expr="//t[@t-call='web.external_layout']/t[1]" position="before">
+               <t t-set="no_header" t-if="o.journal_id.no_header">False</t>
+            </xpath>
             <xpath expr="//div[hasclass('page')]/h2//span[last()]" position="after">
                 <span t-if="o.partner_sequence"> - <span t-field="o.partner_sequence"/></span>
             </xpath>
@@ -35,11 +38,9 @@
                     <div id="signature" class="row mt32 mb32" style="text-align:center">
                         <div class="col-auto col-3 mw-100 mb-2" name="responsable">
                             <span>Le Responsable</span>
-    
                         </div>
                         <div class="col-auto col-3 mw-100 mb-2" name="chauffeur">
                             <span>Le Chauffeur</span>
-    
                         </div>
                         <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_origin" name="client">
                             <span>Le Client</span>
@@ -49,16 +50,16 @@
 
             </xpath>
             <xpath expr="//div[hasclass('page')]" position="before">
-                <div style="width:100%;">
+                <div style="width:100%;" t-if="o.partner_id.company_type == 'company'">
                     <div style="margin-left:503px;">
                         <div>
-                            NIF:<span t-esc="o.company_id.nif" /> 
+                            NIF:<span t-esc="o.partner_id.nif" /> 
                         </div>
                         <div>
-                            STAT: <span t-esc="o.company_id.stat"/>
+                            STAT: <span t-esc="o.partner_id.stat"/>
                         </div>
-                        <div>CIF: <span t-esc="o.company_id.cif"/></div>
-                        <div>RCS: <span t-esc="o.company_id.rcs"/></div>
+                        <div>CIF: <span t-esc="o.partner_id.cif"/></div>
+                        <div>RCS: <span t-esc="o.partner_id.rcs"/></div>
                     </div>
                     <!-- <table style="width:40%;margin-left:503px;text-align:left;border: none;" >
                         <tbody>
@@ -96,7 +97,12 @@
             </xpath> -->
 
         </template>
-    
+        
+        <template id="external_layout_standard_inherit" inherit_id="web.external_layout_boxed">
+            <xpath expr="//div[@t-att-style='report_header_style']" position="attributes">
+                <attribute name="t-if">not no_header</attribute>
+            </xpath>
+        </template>
     </data>
     
 </odoo>
