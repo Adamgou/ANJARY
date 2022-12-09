@@ -16,13 +16,13 @@
                     </th>
                 </t>
             </xpath>
-            <xpath expr="//div[hasclass('page')]//table[@name='invoice_line_table']//td[5]" position="before">
+            <!-- <xpath expr="//div[hasclass('page')]//table[@name='invoice_line_table']//td[5]" position="before">
                 <t t-if="o.company_id.name == 'JARA DISTRIBUTION'">
                     <td t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
                         <span class="text-nowrap" t-field="line.unit_price_discounted" t-options='{"widget": "monetary", "display_currency": o.currency_id}' />
                     </td>
                 </t>
-            </xpath>
+            </xpath> -->
             <xpath expr="//p[@name='payment_communication']" position="before">
                 <t t-if="o.company_id.name == 'JARA DISTRIBUTION'">
                     <br/>
@@ -101,6 +101,9 @@
         <template id="external_layout_standard_inherit" inherit_id="web.external_layout_boxed">
             <xpath expr="//div[@t-att-style='report_header_style']" position="attributes">
                 <attribute name="t-if">not no_header</attribute>
+            </xpath>
+            <xpath expr="//t[@t-call='web.address_layout']" position="replace">
+                <t t-call="web.address_layout" t-if="not no_header"/>
             </xpath>
         </template>
     </data>
