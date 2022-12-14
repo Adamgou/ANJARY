@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+    <t t-inherit="mail.Message" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('o_Message_headerDate')]" position="replace">
+            <div class="o_Message_date o_Message_headerDate" t-att-class="{ 'o-message-selected': isSelected }" t-att-title="messageView.message.dateFromNow">
+                - <t t-esc="datetime"/>
+            </div>
+        </xpath>
+    </t>
+</templates>
