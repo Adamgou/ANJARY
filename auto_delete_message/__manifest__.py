@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 {
-    'name': 'Anjary Discussion auto delete',
+    'name': 'Discussion auto delete',
     'version': '1.5',
     'category': 'Productivity/Discuss',
     'sequence': 145,
