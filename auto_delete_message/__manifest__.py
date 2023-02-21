@@ -10,12 +10,12 @@
     'website': 'https://www.nexources.com',
     'depends': ['mail'],
     'data': [
-        'data/ir_cron.xml'
+        'views/mail_channel_views.xml',
     ],
     'demo': [
     ],
     'installable': True,
     'application': True,
-    
+
     'license': 'LGPL-3',
 }
