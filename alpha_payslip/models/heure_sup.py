@@ -403,13 +403,13 @@ class HrPayslipInheritHeureSup(models.Model):
 
         hsup30, hsup50, hsup30_old, hsup50_old, res1, res2 = 0, 0, 0, 0, 0, 0
         for index, total in enumerate(
-            [
-                self.total_s1,
-                self.total_s2,
-                self.total_s3,
-                self.total_s4,
-                self.total_s5,
-            ]
+                [
+                    self.total_s1,
+                    self.total_s2,
+                    self.total_s3,
+                    self.total_s4,
+                    self.total_s5,
+                ]
         ):
             res1, res2 = hsup30, hsup50
             if hsup30 + hsup50 > 20:
@@ -421,6 +421,13 @@ class HrPayslipInheritHeureSup(models.Model):
                     res1 = hsup30
                     res2 = 20 - res1
                 break
+            else:
+                x, y = exo(0, 0, total)
+                if hsup30 + hsup50 + x > 20:
+                    res1 = 20 - hsup50
+                    res2 = hsup50
+                    break
+
             hsup30_old, hsup50_old = hsup30, hsup50
             if index == 4:
                 if self.nombre_de_semaine == "cinq":
