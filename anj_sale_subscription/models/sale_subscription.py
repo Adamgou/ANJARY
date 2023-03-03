@@ -33,6 +33,13 @@ class SaleSubscription(models.Model):
     is_monthly = fields.Boolean(compute='compute_is_monthly', store=True)
     can_read_move = fields.Boolean(
         default=lambda self: self.env['account.move'].check_access_rights('read', raise_exception=False))
+    product_ids = fields.Many2many(
+        comodel_name='product.product', compute='_compute_product_ids')
+
+    def _compute_product_ids(self):
+        for rec in self:
+            rec.product_ids = [
+                (6, False, rec.recurring_invoice_line_ids.mapped('product_id').mapped('id'))]
 
     @api.depends('template_id.recurring_rule_type')
     def compute_is_monthly(self):
