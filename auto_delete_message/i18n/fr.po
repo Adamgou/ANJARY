@@ -40,7 +40,7 @@ msgstr "Canal de discussion"
 #: model_terms:ir.ui.view,arch_db:auto_delete_message.mail_channel_view_form_inherit
 #: model_terms:ir.ui.view,arch_db:auto_delete_message.res_partner_form_view_inherit
 msgid "Execute Every"
-msgstr "Executer tous les"
+msgstr "Durée de vie"
 
 #. module: auto_delete_message
 #: model:ir.model.fields,field_description:auto_delete_message.field_mail_channel__interval_type
