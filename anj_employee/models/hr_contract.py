@@ -1,5 +1,7 @@
 from odoo import fields, models, api
 
+import math
+
 
 class HrContractInherit(models.Model):
     _inherit = "hr.contract"
@@ -41,6 +43,7 @@ class HrContractInherit(models.Model):
     def _get_hourly_salary(self):
         for rec in self:
             if rec.hour_per_week:
-                rec.hourly_salary = rec.base_salary / ((rec.hour_per_week * 4))
+                hourly_salary = rec.base_salary / ((rec.hour_per_week * 4))
+                rec.hourly_salary = math.floor(hourly_salary * 100) / 100
             else:
                 rec.hourly_salary = 0
