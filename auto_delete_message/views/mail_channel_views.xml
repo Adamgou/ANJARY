@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="mail.mail_channel_view_form"/>
         <field name="arch" type="xml">
             <page name="members" position="after">
-                <page name="auto_delete" string="Deletion">
+                <page name="auto_delete" string="Deletion" groups="auto_delete_message.partner_create_write_group">
                     <group>
                         <group>
                             <field name="is_message_deletion_active"/>

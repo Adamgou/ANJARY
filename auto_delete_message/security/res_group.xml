@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="partner_create_write_group" model="res.groups">
+        <field name="name">Paramétrage pour la suppression des messages</field>
+    </record>
+</odoo>
