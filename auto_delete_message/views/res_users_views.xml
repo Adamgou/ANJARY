@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
             <page name="internal_notes" position="after">
-                <page name="mail_deletion" string="Message deletion">
+                <page name="mail_deletion" string="Message deletion" groups="auto_delete_message.partner_create_write_group">
                     <group>
                         <group>
                             <field name="is_message_deletion_active"/>
