@@ -8,14 +8,15 @@
     'summary': 'Chat, mail gateway and private channels',
     'description': "",
     'website': 'https://www.nexources.com',
-    'depends': ['mail'],
+    'depends': ['contacts', 'mail'],
     'data': [
-        'data/ir_cron.xml'
+        'views/mail_channel_views.xml',
+        'views/res_users_views.xml'
     ],
     'demo': [
     ],
     'installable': True,
     'application': True,
-    
+
     'license': 'LGPL-3',
 }
