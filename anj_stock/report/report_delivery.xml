@@ -1,14 +1,131 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-    
+
         <template id="report_delivery_inherit" inherit_id="stock.report_delivery_document">
+            <xpath expr="//t[1]/t[1]/t[3]" position="replace">
+                <t t-set="address">
+                    <div name="div_outgoing_address">
+                        <div t-if="o.move_ids_without_package and o.move_ids_without_package[0].partner_id and o.move_ids_without_package[0].partner_id != partner" style="border: 3px solid black;  border-radius: 10px; padding: 10px">
+                            <div t-field="o.move_ids_without_package[0].partner_id" t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>
+                        </div>
+                        <div t-if="o.picking_type_id.code != 'internal' and (not o.move_ids_without_package or not o.move_ids_without_package[0].partner_id or o.move_ids_without_package[0].partner_id == partner) and o.picking_type_id.warehouse_id.partner_id" style="border: 3px solid black;border-radius: 10px; padding: 10px">
+                            <div t-field="o.picking_type_id.warehouse_id.partner_id" t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>
+                        </div>
+                    </div>
+                </t>
+            </xpath>
+
+            <xpath expr="//div[@name='div_incoming_address']" position="replace">
+                <div class="col-7"></div>
+            </xpath>
+
+            <xpath expr="//div[hasclass('page')]/h2[1]" position="replace">
+                <div></div>
+                <h6 style="border: 3px solid black; margin-top: 10px; width: 50%; padding: 10px">BON DE LIVRAISON N°: <span t-field="o.name"/>
+                </h6>
+            </xpath>
+
+            <xpath expr="//div[@name='div_origin']" position="replace">
+                <div name="div_origin" class="col-auto"></div>
+            </xpath>
+
+            <xpath expr="//div[@name='div_sched_date']" position="replace">
+                <div t-if="o.state" class="col-auto" name="div_sched_date">
+
+                    <t t-if="o.state == 'done'">
+                        <p>Date de livraison: <span t-field="o.date_done"/>
+                        </p>
+                    </t>
+                    <t t-if="o.state != 'done'">
+                        <p>Date de livraison: <span t-field="o.scheduled_date"/>
+                        </p>
+                    </t>
+                </div>
+            </xpath>
+
+            <xpath expr="//table[@name='stock_move_table']" position="replace">
+                <t t-set="total" t-value="0"/>
+
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th name="th_sm_product" class="text-center">Ref</th>
+                            <th name="th_sm_ordered" class="text-center">Désignation</th>
+                            <th name="th_sm_quantity" class="text-center">Qté</th>
+                            <th name="th_sm_quantity" class="text-center">PU</th>
+                            <th name="th_sm_quantity" class="text-center">Rem(%)</th>
+                            <th name="th_sm_quantity" class="text-center">PU NET</th>
+                            <th name="th_sm_quantity" class="text-center">Montant</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="lines" t-value="o.move_lines.filtered(lambda x: x.product_uom_qty and x.sale_line_id)"/>
+                        <tr t-foreach="lines" t-as="move">
+                            <td style="text-align: center">
+                                <span t-field="move.product_id.default_code"/>
+                            </td>
+                            <td style="text-align: center">
+                                <span t-field="move.product_id.name"/>
+                            </td>
+                            <td style="text-align: center">
+                                <span t-field="move.quantity_done"/>
+                                <span t-field="move.product_uom"/>
+                            </td>
+                            <td style="text-align: right">
+                                <span t-field="move.sale_line_id.price_unit"/>
+                            </td>
+                            <td style="text-align: center">
+                                <span t-field="move.sale_line_id.discount"/>
+                            </td>
+                            <td style="text-align: center">
+                                <span t-field="move.sale_line_id.unit_price_discounted"/>
+                            </td>
+                            <td style="text-align: right">
+                                <span t-field="move.sale_line_id.price_subtotal"/>
+                                <t t-set="total" t-value="total+move.sale_line_id.price_subtotal"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="clearfix">
+                    <div id="total" class="row" name="total">
+                        <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
+                            <table class="table table-sm">
+                                <tr>
+                                    <td>TOTAL</td>
+                                    <td style="background-color: none; text-align: right">
+                                        <t t-esc="total" t-options="{'widget': 'float', 'precision': 2}"/>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: none; text-align: right">
+                                    <td>Net à payer Ar</td>
+                                    <td>
+                                        <t t-esc="total" t-options="{'widget': 'float', 'precision': 2}"/>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: none; text-align: right">
+                                    <td>Net à payer Fmg</td>
+                                    <td>
+                                        <t t-esc="total * 5" t-options="{'widget': 'float', 'precision': 2}"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+
+            <xpath expr="//table[@name='stock_move_line_table']" position="replace">
+
+            </xpath>
+
             <xpath expr="//div[hasclass('page')]" position="inside">
                 <t t-if="o.company_id.name in ('JARA DISTRIBUTION','JARA TRADE')">
-                    <div id="signature" class="row mt32 mb32" style="text-align:center">
+                    <div id="signature" class="row mt32 mb32" style="text-align:center; margin-top: 100px">
                         <div class="col-auto col-3 mw-100 mb-2" name="responsable">
                             <span>Signature Responsable</span>
-
                         </div>
                         <div class="col-auto col-3 mw-100 mb-2" name="chauffeur">
                             <span>Signature Chauffeur</span>
@@ -18,12 +135,11 @@
                             <span>Signature Client</span>
                         </div>
                     </div>
-
                 </t>
-
             </xpath>
+            
         </template>
-    
+
     </data>
-    
+
 </odoo>
