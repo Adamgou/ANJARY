@@ -6,10 +6,10 @@
             <xpath expr="//t[1]/t[1]/t[3]" position="replace">
                 <t t-set="address">
                     <div name="div_outgoing_address">
-                        <div t-if="o.move_ids_without_package and o.move_ids_without_package[0].partner_id and o.move_ids_without_package[0].partner_id != partner" style="border: 3px solid black;  border-radius: 10px; padding: padding: 10px 0 10px 0">
+                        <div t-if="o.move_ids_without_package and o.move_ids_without_package[0].partner_id and o.move_ids_without_package[0].partner_id != partner" style="border: 3px solid black;  border-radius: 10px; padding: 10px">
                             <div t-field="o.move_ids_without_package[0].partner_id" t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>
                         </div>
-                        <div t-if="o.picking_type_id.code != 'internal' and (not o.move_ids_without_package or not o.move_ids_without_package[0].partner_id or o.move_ids_without_package[0].partner_id == partner) and o.picking_type_id.warehouse_id.partner_id" style="border: 3px solid black;border-radius: 10px; padding: 10px 0 10px 0">
+                        <div t-if="o.picking_type_id.code != 'internal' and (not o.move_ids_without_package or not o.move_ids_without_package[0].partner_id or o.move_ids_without_package[0].partner_id == partner) and o.picking_type_id.warehouse_id.partner_id" style="border: 3px solid black;border-radius: 10px; padding: 10px">
                             <div t-field="o.picking_type_id.warehouse_id.partner_id" t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>
                         </div>
                     </div>
@@ -22,7 +22,7 @@
 
             <xpath expr="//div[hasclass('page')]/h2[1]" position="replace">
                 <div></div>
-                <h6 style="border: 3px solid black; margin-top: 10px; width: 50%">BON DE LIVRAISON N°: <span t-field="o.name"/>
+                <h6 style="border: 3px solid black; margin-top: 10px; width: 50%; padding: 10px">BON DE LIVRAISON N°: <span t-field="o.name"/>
                 </h6>
             </xpath>
 
@@ -62,26 +62,26 @@
                     <tbody>
                         <t t-set="lines" t-value="o.move_lines.filtered(lambda x: x.product_uom_qty and x.sale_line_id)"/>
                         <tr t-foreach="lines" t-as="move">
-                            <td>
+                            <td style="text-align: center">
                                 <span t-field="move.product_id.default_code"/>
                             </td>
-                            <td>
+                            <td style="text-align: center">
                                 <span t-field="move.product_id.name"/>
                             </td>
-                            <td>
+                            <td style="text-align: center">
                                 <span t-field="move.quantity_done"/>
                                 <span t-field="move.product_uom"/>
                             </td>
-                            <td>
+                            <td style="text-align: right">
                                 <span t-field="move.sale_line_id.price_unit"/>
                             </td>
-                            <td>
+                            <td style="text-align: center">
                                 <span t-field="move.sale_line_id.discount"/>
                             </td>
-                            <td>
+                            <td style="text-align: center">
                                 <span t-field="move.sale_line_id.unit_price_discounted"/>
                             </td>
-                            <td>
+                            <td style="text-align: right">
                                 <span t-field="move.sale_line_id.price_subtotal"/>
                                 <t t-set="total" t-value="total+move.sale_line_id.price_subtotal"/>
                             </td>
@@ -95,17 +95,17 @@
                             <table class="table table-sm">
                                 <tr>
                                     <td>TOTAL</td>
-                                    <td style="background-color: none">
+                                    <td style="background-color: none; text-align: right">
                                         <t t-esc="total" t-options="{'widget': 'float', 'precision': 2}"/>
                                     </td>
                                 </tr>
-                                <tr style="background-color: none">
+                                <tr style="background-color: none; text-align: right">
                                     <td>Net à payer Ar</td>
                                     <td>
                                         <t t-esc="total" t-options="{'widget': 'float', 'precision': 2}"/>
                                     </td>
                                 </tr>
-                                <tr style="background-color: none">
+                                <tr style="background-color: none; text-align: right">
                                     <td>Net à payer Fmg</td>
                                     <td>
                                         <t t-esc="total * 5" t-options="{'widget': 'float', 'precision': 2}"/>
