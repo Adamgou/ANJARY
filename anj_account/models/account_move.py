@@ -15,6 +15,20 @@ class AccountMove(models.Model):
 
     partner_sequence = fields.Char(compute="_depends_partner_sequence", store=True)
     period = fields.Char(compute="_compute_period", store=True)
+    quit_payment_ids = fields.Many2many("account.payment", string="Payment done", compute="_compute_payment_done")
+
+    @api.depends()
+    def _compute_payment_done(self):
+        for rec in self:
+            payment_info = rec._get_reconciled_info_JSON_values()
+            if payment_info:
+                list_payment_id = []
+                for pinfo in payment_info:
+                     list_payment_id.append(pinfo['account_payment_id'])
+                payment_ids = self.env["account.payment"].search([('id', 'in', list_payment_id)])
+                rec.quit_payment_ids = payment_ids
+            else:
+                rec.quit_payment_ids = False
 
     @api.depends("narration")
     def _compute_period(self):

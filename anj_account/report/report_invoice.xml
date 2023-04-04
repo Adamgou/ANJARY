@@ -20,6 +20,7 @@
                     <div class="col-auto col-3 mw-100 mb-2" t-if="o.ref" name="reference">
                         <span t-field="o.ref"/>
                     </div>
+                    
                 </t>
                 <t t-else="">
                     <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date" name="invoice_date">
@@ -218,7 +219,7 @@
                             </t>
 
                             <!--Payments-->
-                            <t t-if="print_with_payments">
+                            <!-- <t t-if="print_with_payments">
                                 <t t-if="o.payment_state != 'invoicing_legacy'">
                                     <t t-set="payments_vals" t-value="o.sudo()._get_reconciled_info_JSON_values()"/>
                                     <t t-foreach="payments_vals" t-as="payment_vals">
@@ -240,10 +241,25 @@
                                         </tr>
                                     </t>
                                 </t>
-                            </t>
+                            </t> -->
                         </table>
                     </div>
                 </div>
+            </xpath>
+
+            <xpath expr="//p[@name='payment_communication']" position="before">
+                <br/>
+            </xpath>
+
+            <xpath expr="//p[@name='incoterm']" position="after">
+                <br/>
+                <t t-if="print_with_payments">
+                <t t-foreach='o.quit_payment_ids' t-as='payment'>
+                    <p>
+                        <strong>Paid on : </strong><span t-field="payment.date"/> - <span t-esc="payment.amount" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/> (<span t-field="payment.ref"/>)
+                    </p>
+                </t>
+                </t>
             </xpath>
 
         </template>
@@ -254,6 +270,8 @@
             </xpath>
             <xpath expr="//t[@t-call='web.address_layout']" position="replace">
                 <t t-call="web.address_layout" t-if="not no_header"/>
+            </xpath>
+            <xpath expr="//div[@name='company_address']" position="replace">
             </xpath>
         </template>
     </data>
