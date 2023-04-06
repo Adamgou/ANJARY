@@ -105,8 +105,21 @@
                     </div>
                 </t>
             </xpath>
+            <xpath expr="//p[@name='payment_communication']" position="replace">
+                <p t-if="o.move_type in ('out_invoice', 'in_refund') and o.payment_reference" name="payment_communication">
+                    <span></span>
+                </p>
+            </xpath>
             <xpath expr="//p[@name='payment_communication']" position="before">
                 <t t-if="o.company_id.name == 'JARA DISTRIBUTION'">
+                    <br/>
+                    <div style="margin-top:10px;margin-bottm:10px" t-attf-class="#{'col-sm-7 col-md-6' if report_type == 'html' else pass} ml-auto">
+                        <span>Arrêtée la présente facture au montant de :</span>
+                        <span t-esc="o.currency_id.amount_to_text(o.amount_total)" />
+                    </div>
+                    <br/>
+                </t>
+                <t t-if="o.company_id.name == 'JARATRADE'">
                     <br/>
                     <div style="margin-top:10px;margin-bottm:10px" t-attf-class="#{'col-sm-7 col-md-6' if report_type == 'html' else pass} ml-auto">
                         <span>Arrêtée la présente facture au montant de :</span>
@@ -117,6 +130,19 @@
             </xpath>
             <xpath expr="//div[hasclass('page')]" position="inside">
                 <t t-if="o.company_id.name == 'JARA DISTRIBUTION'">
+                    <div id="signature" class="row mt32 mb32" style="text-align:center">
+                        <div class="col-auto col-3 mw-100 mb-2" name="responsable">
+                            <span>Le Responsable</span>
+                        </div>
+                        <div class="col-auto col-3 mw-100 mb-2" name="chauffeur">
+                            <span>Le Chauffeur</span>
+                        </div>
+                        <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_origin" name="client">
+                            <span>Le Client</span>
+                        </div>
+                    </div>
+                </t>
+                <t t-if="o.company_id.name == 'JARATRADE'">
                     <div id="signature" class="row mt32 mb32" style="text-align:center">
                         <div class="col-auto col-3 mw-100 mb-2" name="responsable">
                             <span>Le Responsable</span>

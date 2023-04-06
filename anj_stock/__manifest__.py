@@ -35,6 +35,11 @@
     'demo': [
         'demo/demo.xml',
     ],
+    'assets': {
+        'stock.assets': [
+            'anj_stock/static/src/css/report_bl.css',
+        ],
+    },
     'license': 'LGPL-3',
     "uninstall_hook": "uninstall_hook",
 }
