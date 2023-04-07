@@ -16,3 +16,4 @@ class SaleOrder(models.Model):
         default="mobile_money",
         required=True,
     )
+

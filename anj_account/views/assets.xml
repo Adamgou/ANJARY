@@ -1,0 +1,11 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+
+<!--<odoo>-->
+<!--    <data>-->
+<!--        <template id="anj_account.assets" inherit_id="account.assets" name="account assets">-->
+<!--            <xpath expr="." position="inside">-->
+<!--                <link rel="stylesheet" href="/anj_account/static/src/css/report_accnt_jd.css"/>-->
+<!--            </xpath>-->
+<!--        </template>-->
+<!--    </data>-->
+<!--</odoo>-->

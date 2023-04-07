@@ -38,5 +38,11 @@
     'demo': [
         'demo/demo.xml',
     ],
-'license': 'LGPL-3',
+    # 'assets': {
+    #     'account.assets': [
+    #         'anj_account/static/src/css/report_accnt_jd.css',
+    #     ],
+    #
+    # },
+    'license': 'LGPL-3',
 }

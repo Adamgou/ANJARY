@@ -32,8 +32,8 @@ class Sale_order_line(models.Model):
                     val.price_unit
                 ) or 0
 
-    @api.model
-    def create(self, vals):
-        if vals.get("price_unit"):
-            vals["unit_price_discounted"] = vals.get("price_unit")
-        return super(Sale_order_line, self).create(vals)
+    # @api.model
+    # def create(self, vals):
+    #     if vals.get("price_unit"):
+    #         vals["unit_price_discounted"] = vals.get("price_unit")
+    #     return super(Sale_order_line, self).create(vals)
