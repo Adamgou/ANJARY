@@ -7,7 +7,7 @@
                 <t t-set="no_header" t-if="o.journal_id.no_header">False</t>
             </xpath>
             <xpath expr="//div[hasclass('page')]/h2//span[last()]" position="before">
-                <span t-if="o.company_id.name.lower() == 'societe immobiliere anjary'"> N° </span>
+                <span t-if="not o.company_id.name.lower() == 'societe immobiliere anjary'"> N° </span>
             </xpath>
             <xpath expr="//div[hasclass('page')]/h2" position="attributes">
                 <attribute name="style">font-size: 16px; margin-top: 10px; border: 3px solid black; padding: 3px; width: 60%</attribute>
@@ -86,6 +86,9 @@
             </xpath>
             <xpath expr="//t[@t-set='address']" position="replace">
                 <t t-set="address">
+                    <t t-if="o.company_id.name.lower() == 'societe immobiliere anjary'">
+                            <br/><br/>
+                        </t>
                     <div t-att-style="'border: 3px solid black; border-radius: 10px; padding: 5px' if not o.company_id.name.lower().startswith('jara dis') else ''">
                         <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
                         <div t-if="o.partner_id.vat" class="mt16">
@@ -93,13 +96,17 @@
                             <t t-else="">Tax ID</t>:                            <span t-field="o.partner_id.vat"/>
                         </div>
                         <div t-if="o.partner_id.company_type == 'company'">
-                            <div t-if="o.partner_id.company_type == 'company'">
+                            <div t-if="o.partner_id.company_type == 'company' and o.partner_id.nif">
                             NIF:<span t-esc="o.partner_id.nif" />
                             </div>
-                            <div t-if="o.partner_id.company_type == 'company'">
+                            <div t-if="o.partner_id.company_type == 'company' and o.partner_id.stat">
                             STAT: <span t-esc="o.partner_id.stat"/>
                             </div>
-                            <div t-if="o.partner_id.company_type == 'company'">CIF: <span t-esc="o.partner_id.cif"/>
+                            <div t-if="o.partner_id.company_type == 'company' and o.partner_id.cif">
+                            CIF: <span t-esc="o.partner_id.cif"/>
+                            </div>
+                            <div t-if="o.partner_id.company_type == 'company' and o.partner_id.rcs">
+                            RCS: <span t-esc="o.partner_id.rcs"/>
                             </div>
                         </div>
                     </div>
@@ -157,20 +164,20 @@
                 </t>
 
             </xpath>
-            <xpath expr="//div[hasclass('page')]" position="before">
+            <!-- <xpath expr="//div[hasclass('page')]" position="before">
                 <t t-if="o.company_id.name != 'SOCIETE IMMOBILIERE ANJARY'">
                 <div style="width:100%;">
-                    <div>
+                    <div t-if="o.company_id.partner_id.nif">
                         NIF:<span t-esc="o.company_id.partner_id.nif" />
                     </div>
-                    <div t-if="o.company_id.partner_id.company_type == 'company'">
+                    <div t-if="(o.company_id.partner_id.company_type == 'company') and o.company_id.partner_id.stat">
                         STAT: <span t-esc="o.company_id.partner_id.stat"/>
                     </div>
-                    <div t-if="o.company_id.partner_id.company_type == 'company'">CIF: <span t-esc="o.company_id.partner_id.cif"/>
+                    <div t-if="(o.company_id.partner_id.company_type == 'company') and o.company_id.partner_id.cif">CIF: <span t-esc="o.company_id.partner_id.cif"/>
                     </div>
                 </div>
                 </t>
-            </xpath>
+            </xpath> -->
             <xpath expr="//th[@name='th_taxes']" position="attributes">
                 <attribute name="t-if">o.company_id.name.startswith('jara dist') or o.company_id.name.lower() == 'societe immobiliere anjary'</attribute>
             </xpath>
@@ -356,11 +363,11 @@
             </xpath>
             <xpath expr="//div[@name='company_address']" position="replace">
             </xpath>
-            <!-- <xpath expr="//div[@class='row mb8']" position="after">
+            <xpath expr="//div[@class='row mb8']" position="after">
                 <div name="company_address" class="">
                         <span t-if="company.company_details" style="font-size:5px!important;" t-field="company.company_details"></span>
                     </div>
-            </xpath> -->
+            </xpath>
         </template>
     </data>
 
