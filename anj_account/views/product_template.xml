@@ -9,7 +9,7 @@
             <field name="arch" type="xml">
 
                 <xpath expr="//field[@name='list_price']" position="after">
-                    <field name="price_unit_ht"/>
+                    <field name="price_unit_ht" invisible="1"/>
                 </xpath>
 
             </field>
