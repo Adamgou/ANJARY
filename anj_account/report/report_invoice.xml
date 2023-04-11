@@ -95,9 +95,10 @@
             <xpath expr="//t[@t-set='address']" position="replace">
                 <t t-set="address">
                     <t t-if="o.company_id.name.lower() == 'societe immobiliere anjary'">
-                            <br/><br/>
+                            <br/>
                         </t>
-                    <div t-att-style="'border: 3px solid black; border-radius: 10px; padding: 5px' if not o.company_id.name.lower().startswith('jara dis') else ''">
+                    <div t-att-style="'margin-top: 150px;' if o.company_id.name.lower() == 'societe immobiliere anjary' else ''">
+                    <div t-att-style="' border: 3px solid black; border-radius: 10px; padding: 5px' if not o.company_id.name.lower().startswith('jara dis') else ''">
                         <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
                         <div t-if="o.partner_id.vat" class="mt16">
                             <t t-if="o.company_id.account_fiscal_country_id.vat_label" t-esc="o.company_id.account_fiscal_country_id.vat_label" id="inv_tax_id_label"/>
@@ -117,6 +118,7 @@
                             RCS: <span t-esc="o.partner_id.rcs"/>
                             </div>
                         </div>
+                    </div>
                     </div>
                 </t>
             </xpath>
@@ -172,7 +174,7 @@
                 </t>
 
             </xpath>
-            <!-- <xpath expr="//div[hasclass('page')]" position="before">
+            <xpath expr="//div[hasclass('page')]" position="before">
                 <t t-if="o.company_id.name != 'SOCIETE IMMOBILIERE ANJARY'">
                 <div style="width:100%;">
                     <div t-if="o.company_id.partner_id.nif">
@@ -185,7 +187,7 @@
                     </div>
                 </div>
                 </t>
-            </xpath> -->
+            </xpath>
             <xpath expr="//th[@name='th_taxes']" position="attributes">
                 <attribute name="t-if">o.company_id.name.startswith('jara dist') or o.company_id.name.lower() == 'societe immobiliere anjary'</attribute>
             </xpath>
@@ -396,6 +398,21 @@
             </xpath>
             <xpath expr="//t[@t-call='web.address_layout']" position="replace">
                 <t t-call="web.address_layout" t-if="not no_header"/>
+            </xpath>
+            <xpath expr="//div[@name='company_address']" position="replace">
+                <t t-if="not company.name.lower() == 'societe immobiliere anjary'">
+                    <div name="company_address" class="float-right mb4">
+                        <span t-if="company.company_details" t-field="company.company_details"></span>
+                    </div>
+                </t>
+            </xpath>
+            <xpath expr="//div[@class='row mb8']" position="after">
+
+                <div name="company_address" class="">
+                    <t t-if="company.name.lower() == 'societe immobiliere anjary'">
+                        <span t-if="company.company_details" style="font-size:5px!important;" t-field="company.company_details"></span>
+                    </t>
+                </div>
             </xpath>
         </template>
 
