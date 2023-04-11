@@ -32,6 +32,7 @@
         'views/account_move_views.xml',
         'views/journal_account_views.xml',
         # 'views/account_move.xml',
+        'views/product_template.xml',
         'report/report_invoice.xml',
     ],
     # only loaded in demonstration mode

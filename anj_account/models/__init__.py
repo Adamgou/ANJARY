@@ -7,3 +7,4 @@ from . import account_payment_register
 from . import account_move
 from . import res_partner
 from . import account_journal
+from . import product_template
