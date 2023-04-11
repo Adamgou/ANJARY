@@ -417,6 +417,16 @@
             </xpath>
         </template>
 
+        <template id="address_layout_inherit" inherit_id="web.address_layout">
+            <xpath expr="//div[@name='address']" position="before">
+                <div name="nif_stat_company" t-if="o.company_id.name.lower() == 'jaratrade'">
+                    <p>NIF: <span t-esc="o.company_id.nif"></span></p>
+                    <p>STAT: <span t-esc="o.company_id.stat"></span></p>
+                    <p>CIF: <span t-esc="o.company_id.cif"></span></p>
+                </div>
+            </xpath>
+        </template>
+
     </data>
 
 </odoo>
