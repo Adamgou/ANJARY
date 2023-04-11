@@ -248,7 +248,8 @@
                 </th>
             </xpath>
             <xpath expr="//t[@name='account_invoice_line_accountable']/td[5]" position="after">
-                <td style="text-align: right;border: 1px solid;" t-if="not (o.company_id.name.startswith('jara dist') or o.company_id.name.lower() == 'societe immobiliere anjary')"><t t-esc="line.price_unit - line.price_unit * line.discount * 0.01"/></td>
+<!--                <td style="text-align: right;border: 1px solid;" t-if="not (o.company_id.name.startswith('jara dist') or o.company_id.name.lower() == 'societe immobiliere anjary')"><t t-esc="line.price_unit - line.price_unit * line.discount * 0.01"/></td>-->
+                <td style="text-align: right;border: 1px solid;"><t t-esc="line.product_id.price_unit_ht"/></td>
             </xpath>
 
 
@@ -399,13 +400,13 @@
             <xpath expr="//t[@t-call='web.address_layout']" position="replace">
                 <t t-call="web.address_layout" t-if="not no_header"/>
             </xpath>
-            <xpath expr="//div[@name='company_address']" position="replace">
-                <t t-if="not company.name.lower() == 'societe immobiliere anjary'">
-                    <div name="company_address" class="float-right mb4">
-                        <span t-if="company.company_details" t-field="company.company_details"></span>
-                    </div>
-                </t>
-            </xpath>
+<!--            <xpath expr="//div[@name='company_address']" position="replace">-->
+<!--                <t t-if="not company.name.lower() == 'societe immobiliere anjary'">-->
+<!--                    <div name="company_address" class="float-right mb4">-->
+<!--                        <span t-if="company.company_details" t-field="company.company_details"></span>-->
+<!--                    </div>-->
+<!--                </t>-->
+<!--            </xpath>-->
             <xpath expr="//div[@class='row mb8']" position="after">
 
                 <div name="company_address" class="">
@@ -415,8 +416,6 @@
                 </div>
             </xpath>
         </template>
-
-
 
     </data>
 
