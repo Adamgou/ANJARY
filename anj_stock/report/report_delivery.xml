@@ -168,13 +168,22 @@
 
         <template id="external_layout_standard_inherit" inherit_id="web.external_layout_standard">
             <xpath expr="//div[@t-att-style='report_header_style']" position="replace">
-                <t t-if="company.name.lower() == 'jara distribution' or company.name.lower() == 'jaratrade'">
+                <t t-if="company.name.lower() == 'jaratrade'">
                     <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
                         <div class="row">
                             <div class="col-6" name="company_address">
                                 <p style="margin-bottom: 0;font-weight: bold;">SOCIETE <span t-esc="o.company_id.name"></span> <br/></p>
                                 <p style="margin-bottom: 0;"><span t-esc="o.company_id.street"></span> <br/></p>
                                 <p style="margin-bottom: 0;"><span t-esc="o.company_id.street2" style="text-transform: uppercase;"></span><br/></p>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+                <t t-if="company.name.lower() == 'jara distribution'">
+                    <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
+                        <div class="row">
+                            <div class="col-6" name="company_address">
+                                
                             </div>
                         </div>
                     </div>
