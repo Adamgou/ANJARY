@@ -253,7 +253,7 @@
                     <t t-set="price_unit_ht_disc" t-value="line.product_id.price_unit_ht"/>
                 </t>
                 <t t-else="">
-                    <t t-set="price_unit_ht_disc" t-value="round((line.product_id.price_unit_ht * line.discount)/100, 2)"/>
+                    <t t-set="price_unit_ht_disc" t-value="line.product_id.price_unit_ht - round((line.product_id.price_unit_ht * line.discount)/100, 2)"/>
                 </t>
                 <td style="text-align: right;border: 1px solid;"><t t-esc="price_unit_ht_disc"/></td>
 <!--                <td style="text-align: right;border: 1px solid;"><t t-esc="line.product_id.price_unit_ht_disc"/></td>-->
@@ -426,7 +426,7 @@
 
         <template id="address_layout_inherit" inherit_id="web.address_layout">
             <xpath expr="//div[@class='address row']" position="after">
-                <div name="nif_stat_company" t-if="o.company_id.name.lower() == 'jaratrade'">
+                <div name="nif_stat_company" style="width: 50%;margin-top: -90px;margin-bottom: 90px;" t-if="o.company_id.name.lower() == 'jaratrade'">
                     <p t-if="o.company_id.nif">NIF: <span t-esc="o.company_id.nif"></span></p>
                     <p t-if="o.company_id.stat">STAT: <span t-esc="o.company_id.stat"></span></p>
                     <p t-if="o.company_id.cif">CIF: <span t-esc="o.company_id.cif"></span></p>
