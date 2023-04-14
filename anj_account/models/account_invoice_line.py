@@ -10,6 +10,13 @@ class Account_invoice_line(models.Model):
         "Prix unitaire remisé",
         store=True,
     )
+    price_unit_ht = fields.Float('Price HT', required=False, default=0.0, compute='compute_price_HT')
+
+    @api.depends('product_id.list_price', 'product_id.taxes_id')
+    def compute_price_HT(self):
+        for rec in self:
+            tax_rate = rec.product_id.taxes_id.filtered(lambda x: x.company_id == self.company_id).amount/100
+            rec.price_unit_ht = round(rec.product_id.list_price/(1 + tax_rate), 2)
 
     @api.onchange("price_unit", "discount")
     def _on_change_price_discounted(self):
@@ -118,4 +125,7 @@ class Account_invoice_line(models.Model):
 
         return lines
 
-    
+    def write(self, vals):
+        if vals.get("price_unit") is not None and vals.get("discount") is not None:
+            vals['unit_price_discounted'] = vals.get("price_unit") - ((vals.get("price_unit") * vals.get("discount")) / 100)
+        return super().write(vals)
