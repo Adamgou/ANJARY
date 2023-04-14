@@ -373,12 +373,12 @@ class HrPayslipInheritHeureSup(models.Model):
         ]
 
         hsup30, hsup50 = 0, 0
-        hsup30, hsup50 = exo(hsup30, hsup50, self.total_s1)
-        hsup30, hsup50 = exo(hsup30, hsup50, self.total_s2)
-        hsup30, hsup50 = exo(hsup30, hsup50, self.total_s3)
-        hsup30, hsup50 = exo(hsup30, hsup50, self.total_s4)
+        hsup30, hsup50 = exo(hsup30, hsup50, self.heure_sup_s1)
+        hsup30, hsup50 = exo(hsup30, hsup50, self.heure_sup_s2)
+        hsup30, hsup50 = exo(hsup30, hsup50, self.heure_sup_s3)
+        hsup30, hsup50 = exo(hsup30, hsup50, self.heure_sup_s4)
         if self.nombre_de_semaine == "cinq":
-            hsup30, hsup50 = exo(hsup30, hsup50, self.total_s5)
+            hsup30, hsup50 = exo(hsup30, hsup50, self.heure_sup_s5)
         self.input_line_ids = [
             (
                 0,
