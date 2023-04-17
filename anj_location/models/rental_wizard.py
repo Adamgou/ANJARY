@@ -16,13 +16,15 @@ class Inherit_rental_wizard(models.TransientModel):
         store=True,
         readonly=True)
 
-    @api.onchange('location_price_id')
+    @api.onchange('location_price_id', 'quantity', 'pickup_date', 'return_date')
     def onchange_location_price_id(self):
         for data in self:
-            data.unit_price=data.location_price_id.location_price*data.duration
+            data.unit_price=data.location_price_id.location_price
             data.location_price=data.location_price_id.location_price
 
-
+    @api.onchange('pricing_id', 'currency_id', 'duration', 'duration_unit')
+    def _compute_unit_price(self):
+        pass
 
     def get_sale_order_line_multiline_description_sale(self, product):
         """Add Rental information to the SaleOrderLine name."""

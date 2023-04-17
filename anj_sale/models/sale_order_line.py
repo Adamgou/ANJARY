@@ -12,6 +12,12 @@ class Sale_order_line(models.Model):
         store=True,
     )
 
+    is_jara = fields.Boolean(compute='_compute_is_jara')
+
+    def _compute_is_jara(self):
+        for rec in self:
+            rec.is_jara = rec.env.company.name.lower().startswith('jara')
+
     @api.onchange("discount", "price_unit")
     def _change_discount(self):
         for val in self:
@@ -26,8 +32,8 @@ class Sale_order_line(models.Model):
                     val.price_unit
                 ) or 0
 
-    @api.model
-    def create(self, vals):
-        if vals.get("price_unit"):
-            vals["unit_price_discounted"] = vals.get("price_unit")
-        return super(Sale_order_line, self).create(vals)
+    # @api.model
+    # def create(self, vals):
+    #     if vals.get("price_unit"):
+    #         vals["unit_price_discounted"] = vals.get("price_unit")
+    #     return super(Sale_order_line, self).create(vals)

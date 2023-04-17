@@ -1,0 +1,21 @@
+table{
+border: 1px solid black;
+}
+th, td {
+border: 1px solid black;
+}
+.invoice_tbody td{
+border: 1px solid black;
+}
+.invoice_tbody th{
+border: 1px solid black;
+}
+table table-sm o_main_table{
+border: 1px solid black;
+}
+table table-sm o_main_table th{
+border: 1px solid black;
+}
+table table-sm o_main_table td{
+border: 1px solid black;
+}

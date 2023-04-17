@@ -31,12 +31,19 @@
         'views/res_partner_views.xml',
         'views/account_move_views.xml',
         'views/journal_account_views.xml',
-        # 'views/account_move.xml',
+        'views/account_move.xml',
+        'views/product_template.xml',
         'report/report_invoice.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
-'license': 'LGPL-3',
+    # 'assets': {
+    #     'account.assets': [
+    #         'anj_account/static/src/css/report_accnt_jd.css',
+    #     ],
+    #
+    # },
+    'license': 'LGPL-3',
 }

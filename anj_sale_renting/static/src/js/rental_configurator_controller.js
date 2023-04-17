@@ -11,6 +11,7 @@ odoo.define('anj_sale_renting.RentalConfiguratorFormController', function(requir
                 return_date: state.return_date,
                 price_unit: state.unit_price,
                 product_uom_qty: state.quantity,
+                price_unit: state.unit_price,
                 discount: 0.0,
                 is_rental: true,
                 selected_lot_ids: this._anjConvertFromMany2Many(state.lot_ids),
