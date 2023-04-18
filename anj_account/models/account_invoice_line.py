@@ -113,7 +113,8 @@ class Account_invoice_line(models.Model):
                         move.company_id,
                         move.date,
                     ))
-            vals['unit_price_discounted'] = vals.get("price_unit") - ((vals.get("price_unit") * vals.get("discount")) / 100)
+            if vals.get("price_unit") is not None and vals.get("discount") is not None:
+                vals['unit_price_discounted'] = vals.get("price_unit") - ((vals.get("price_unit") * vals.get("discount")) / 100)
         lines = super(Account_invoice_line, self).create(vals_list)
 
         moves = lines.mapped('move_id')
