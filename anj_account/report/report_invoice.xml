@@ -34,14 +34,14 @@
                     <t t-if="o.company_id.name.lower() == 'societe immobiliere anjary'">
                         <div id="informations" class="row mt-4 mb-4">
                             <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date" name="invoice_date">
-                                <t t-if="o.move_type == 'out_invoice'"><strong>Invoice Date:</strong></t>
-                                <t t-elif="o.move_type == 'out_refund'"><strong>Credit Note Date:</strong></t>
-                                <t t-elif="o.move_type == 'out_receipt'"><strong>Receipt Date:</strong></t>
+                                <t t-if="o.move_type == 'out_invoice'"><strong>Date de facturation:</strong></t>
+                                <t t-elif="o.move_type == 'out_refund'"><strong>Date de la note de crédit:</strong></t>
+                                <t t-elif="o.move_type == 'out_receipt'"><strong>Date de réception:</strong></t>
                                 <t t-else=""><strong>Date:</strong></t>
                                 <p class="m-0" t-field="o.invoice_date"/>
                             </div>
                             <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'" name="due_date">
-                                <strong>Due Date:</strong>
+                                <strong>Date d'échéance:</strong>
                                 <p class="m-0" t-field="o.invoice_date_due"/>
                             </div>
                         </div>
@@ -289,7 +289,7 @@
                                     <t t-foreach="payments_vals" t-as="payment_vals">
                                         <tr>
                                             <td style="border: 1px solid black;">
-                                                <i class="oe_form_field text-right oe_payment_label">Paid on <t t-esc="payment_vals['date']" t-options='{"widget": "date"}'/></i>
+                                                <i class="oe_form_field text-right oe_payment_label">Payé le <t t-esc="payment_vals['date']" t-options='{"widget": "date"}'/></i>
                                             </td>
                                             <td style="border: 1px solid black;" class="text-right">
                                                 <span t-esc="payment_vals['amount']" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
@@ -298,7 +298,7 @@
                                     </t>
                                     <t t-if="len(payments_vals) > 0">
                                         <tr class="border-black">
-                                            <td style="border: 1px solid black;"><strong>Amount Due</strong></td>
+                                            <td style="border: 1px solid black;"><strong>Montant dû</strong></td>
                                             <td style="border: 1px solid black;" class="text-right">
                                                 <span t-field="o.amount_residual"/>
                                             </td>
@@ -391,7 +391,7 @@
                     <t t-if="print_with_payments">
                         <t t-foreach='o.quit_payment_ids' t-as='payment'>
                             <p>
-                                <strong>Paid on : </strong><span t-field="payment.date"/> (<span t-field="payment.ref"/>)
+                                <strong>Payé le : </strong><span t-field="payment.date"/> (<span t-field="payment.ref"/>)
                             </p>
                         </t>
                     </t>
