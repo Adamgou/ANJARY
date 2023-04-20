@@ -32,6 +32,7 @@
 
                 </xpath>
                 <xpath expr="//field[@name='vat']" position="replace">
+                  <field name="vat" placeholder="e.g. BE0477472701" attrs="{'readonly': [('parent_id','!=',False)]}" invisible="1"/>
                   <field name="nif"/>
                   <field name="stat"/>
                   <field name="cif"/>

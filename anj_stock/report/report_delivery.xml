@@ -143,9 +143,9 @@
                 </div>
             </xpath>
 
-            <xpath expr="//table[@name='stock_move_line_table']" position="replace">
+<!--            <xpath expr="//table[@name='stock_move_line_table']" position="replace">-->
 
-            </xpath>
+<!--            </xpath>-->
 
             <xpath expr="//div[hasclass('page')]" position="inside">
                 <t t-if="o.company_id.name in ('JARA DISTRIBUTION','JARA TRADE')">
