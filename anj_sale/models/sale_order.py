@@ -17,3 +17,11 @@ class SaleOrder(models.Model):
         required=True,
     )
 
+    def action_confirm(self):
+        res = super(SaleOrder, self).action_confirm()
+        stock_picking = self.env['stock.picking'].search([('id', '=', self.picking_ids.id)])
+        for moves in stock_picking.move_ids_without_package:
+            moves.write({
+                'quantity_done': moves.product_uom_qty
+            })
+        return res
