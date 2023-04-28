@@ -18,7 +18,7 @@
                 <span t-if="not o.company_id.name.lower() == 'societe immobiliere anjary'"> N° </span>
             </xpath>
             <xpath expr="//div[hasclass('page')]/h2" position="attributes">
-                <attribute name="t-att-style" add="(('font-size: 16px; margin-top: 10px; padding: 3px; width: 60%;') if o.company_id.name.lower()=='societe immobiliere anjary' else 'font-size: 16px; margin-top: 10px; border: 3px solid black; padding: 3px; width: 60%;')"/>
+                <attribute name="t-att-style" add="(('font-size: 16px; margin-top: 10px; padding: 3px; width: 60%;') if o.company_id.name.lower()=='societe immobiliere anjary' else 'font-size: 16px; margin-top: -90px; margin-bottom: 100px; border: 3px solid black; padding: 3px; width: 35%;')"/>
             </xpath>
             <xpath expr="//div[@id='informations']" position="replace">
                 <t t-if="not((not o.company_id.name.lower().startswith('jara dist')) or (not o.company_id.name.lower() == 'societe immobiliere anjary'))">
@@ -92,6 +92,11 @@
                     </th>
                 </t>
             </xpath>-->
+            <xpath expr="//div[@name='origin']" position="before">
+                <div style="width: 50%;text-align: center;margin-left: 430px;">
+                    <span>Antananarivo, le <t t-esc="datetime.datetime.now().strftime('%A %d %B %Y')"></t></span>
+                </div>
+            </xpath>
             <xpath expr="//t[@t-set='address']" position="replace">
                 <t t-set="address">
                     <t t-if="o.company_id.name.lower() == 'societe immobiliere anjary'">
@@ -193,7 +198,7 @@
             </xpath>
             <xpath expr="//th[@name='th_priceunit']" position="replace">
                 <th style="border: 1px solid black;" name="th_priceunit" t-if="o.company_id.name.startswith('jara dist') or o.company_id.name.lower() == 'societe immobiliere anjary'" t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}"><span>Prix unitaire</span></th>
-                <th style="border: 1px solid black;" t-else="" name="th_priceunit" t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}"><span>P.U HT</span></th>
+                <th style="border: 1px solid black;" t-else="" name="th_priceunit" t-attf-class="text-center {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}"><span>P.U TTC</span></th>
             </xpath>
             <xpath expr="//th[@name='th_price_unit']" position="after">
                 <th style="border: 1px solid black;" name="th_pu_net" t-if="not (o.company_id.name.startswith('jara dist') or o.company_id.name.lower() == 'societe immobiliere anjary')" t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}"><span>P.U NET</span></th>
@@ -207,10 +212,11 @@
             <!--            HT HT -->
             <xpath expr="//th[@name='th_quantity']" position="replace">
                 <th style="border: 1px solid black;" name="th_quantity" class="text-right" t-if="o.company_id.name.startswith('jara dist') or o.company_id.name.lower() == 'societe immobiliere anjary'"><span>Quantité</span></th>
-                <th style="border: 1px solid black;" name="th_quantity" class="text-right" t-else=""><span>Qté</span></th>
+                <th style="border: 1px solid black;" name="th_quantity" class="text-center" t-else=""><span>Qté</span></th>
+                <th style="border: 1px solid black;" name="th_unity" class="text-center"><span>Unité</span></th>
             </xpath>
             <xpath expr="//th[@name='th_description']" position="before">
-                <th style="border: 1px solid black;" name="th_product_ref" class="text-left" t-if="not (o.company_id.name.startswith('jara dist') or o.company_id.name.lower() == 'societe immobiliere anjary')">Ref</th>
+                <th style="border: 1px solid black;" name="th_product_ref" class="text-center" t-if="not (o.company_id.name.startswith('jara dist') or o.company_id.name.lower() == 'societe immobiliere anjary')">Ref</th>
             </xpath>
             <xpath expr="//th[@name='th_price_unit']" position="attributes">
                 <attribute name="t-att-style"
@@ -218,7 +224,15 @@
             </xpath>
             <xpath expr="//td[@name='account_invoice_line_name']" position="attributes">
                 <attribute name="t-att-style"
-                           add="('border: 1px solid black;')"/>
+                           add="('border: 1px solid black;font-size: 13px;')"/>
+            </xpath>
+            <xpath expr="//t[@name='account_invoice_line_accountable']/td[2]" position="replace">
+                <td class="text-right">
+                    <span t-field="line.quantity"/>
+                </td>
+                <td class="text-right">
+                    <span t-field="line.product_uom_id"  groups="uom.group_uom"/>
+                </td>
             </xpath>
             <xpath expr="//t[@name='account_invoice_line_accountable']/td[2]" position="attributes">
                 <attribute name="t-att-style"
@@ -232,22 +246,26 @@
                 <attribute name="t-att-style"
                            add="('border: 1px solid black;')"/>
             </xpath>
+            <xpath expr="//t[@name='account_invoice_line_accountable']/td[@t-if='display_discount']" position="attributes">
+                <attribute name="t-att-style"
+                           add="('border: 1px solid black;')"/>
+            </xpath>
             <xpath expr="//td[@name='account_invoice_line_name']" position="before">
-                <td style="border: 1px solid black;" t-if="not (o.company_id.name.startswith('jara dist') or o.company_id.name.lower() == 'societe immobiliere anjary')" name="account_invoice_line_ref"><span t-field="line.product_id.default_code"/></td>
+                <td style="border: 1px solid black;font-size: 14px;" t-if="not (o.company_id.name.startswith('jara dist') or o.company_id.name.lower() == 'societe immobiliere anjary')" name="account_invoice_line_ref"><span t-field="line.product_id.default_code"/></td>
             </xpath>
             <xpath expr="//th[@name='th_description']" position="replace">
-                <th style="border: 1px solid black;" name="th_description" class="text-left"><span t-if="not (o.company_id.name.startswith('jara dist') or o.company_id.name.lower() == 'societe immobiliere anjary')">Désignation</span><span t-else="">Description</span></th>
+                <th style="border: 1px solid black;" name="th_description" class="text-center"><span t-if="not (o.company_id.name.startswith('jara dist') or o.company_id.name.lower() == 'societe immobiliere anjary')">Désignation</span><span t-else="">Description</span></th>
             </xpath>
             <xpath expr="//th[@name='th_subtotal']" position="replace">
                 <th style="border: 1px solid black;" name="th_subtotal" class="text-right" t-if="o.company_id.name.startswith('jara dist') or o.company_id.name.lower() == 'societe immobiliere anjary'">
                     <span groups="account.group_show_line_subtotals_tax_excluded">Montant</span>
                     <span groups="account.group_show_line_subtotals_tax_included">Prix total</span>
                 </th>
-                <th style="border: 1px solid black;" name="th_subtotal" class="text-right" t-else="">
-                    <span>Montant HT</span>
+                <th style="border: 1px solid black;" name="th_subtotal" class="text-center" t-else="">
+                    <span>Montant TTC</span>
                 </th>
             </xpath>
-            <xpath expr="//t[@name='account_invoice_line_accountable']/td[5]" position="after">
+            <xpath expr="//t[@name='account_invoice_line_accountable']/td[6]" position="after">
                 <!--                <td style="text-align: right;border: 1px solid;" t-if="not (o.company_id.name.startswith('jara dist') or o.company_id.name.lower() == 'societe immobiliere anjary')"><t t-esc="line.price_unit - line.price_unit * line.discount * 0.01"/></td>-->
                 <t t-if="line.discount == 0">
                     <t t-set="price_unit_ht_disc" t-value="line.product_id.price_unit_ht"/>
@@ -260,7 +278,7 @@
             </xpath>
 
 
-            <xpath expr="//t[@name='account_invoice_line_accountable']/td[7]" position="attributes">
+            <xpath expr="//t[@name='account_invoice_line_accountable']/td[8]" position="attributes">
                 <attribute name="t-if">o.company_id.name.startswith('jara dist') or o.company_id.name.lower() == 'societe immobiliere anjary'</attribute>
             </xpath>
 
