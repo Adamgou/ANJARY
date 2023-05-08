@@ -17,6 +17,8 @@ class SaleOrder(models.Model):
         required=True,
     )
 
+    note_client = fields.Char(string="Note")
+
     def action_confirm(self):
         res = super(SaleOrder, self).action_confirm()
         stock_picking = self.env['stock.picking'].search([('id', '=', self.picking_ids.id)])
@@ -24,4 +26,10 @@ class SaleOrder(models.Model):
             moves.write({
                 'quantity_done': moves.product_uom_qty
             })
+        return res
+
+    def _prepare_invoice(self):
+        res = super(SaleOrder, self)._prepare_invoice()
+        res['note_client'] = self.note_client
+
         return res

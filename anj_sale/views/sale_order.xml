@@ -1,12 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-    
         <record id="add_unit_price_discounted_inherit_sale_order" model="ir.ui.view">
             <field name="name">sale.order.view.form.inherit</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form" />
             <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="note_client"/>
+                </field>
                 <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='discount']" position="after">
                     <field name="unit_price_discounted" 
                     readonly="0"
@@ -28,10 +30,6 @@
 
             </field>
         </record>
-
-        
-        
-    
     </data>
     
 </odoo>

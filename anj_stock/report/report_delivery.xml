@@ -25,8 +25,11 @@
                             <t t-else="">Tax ID</t>:                            <span t-field="o.partner_id.vat"/>
                         </div>
                         <div t-if="o.partner_id.company_type == 'company'">
+                            <div t-if="o.partner_id.company_type == 'company' and o.note_client">
+                                Note:<span t-esc="o.note_client"/>
+                            </div>
                             <div t-if="o.partner_id.company_type == 'company' and o.partner_id.nif">
-                                NIF:<span t-esc="o.partner_id.nif" />
+                                NIFA:<span t-esc="o.partner_id.nif" />
                             </div>
                             <div t-if="o.partner_id.company_type == 'company' and o.partner_id.stat">
                                 STAT: <span t-esc="o.partner_id.stat"/>

@@ -15,13 +15,15 @@
     "category": "Uncategorized",
     "version": "0.1",
     # any module necessary for this one to work correctly
-    "depends": ["base", "anj_base", "sale"],
+    "depends": ["base", "anj_base", "sale", "sale_stock"],
     # always loaded
     "data": [
         # 'security/ir.model.access.csv',
         "views/views.xml",
         "views/templates.xml",
         "views/sale_order.xml",
+        "views/account_move_views.xml",
+        "views/stock_picking_views.xml",
     ],
     # only loaded in demonstration mode
     "demo": [
