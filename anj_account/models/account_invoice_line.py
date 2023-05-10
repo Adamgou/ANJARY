@@ -6,8 +6,8 @@ from odoo import models, fields, api
 class Account_invoice_line(models.Model):
     _inherit = "account.move.line"
 
-    price_subtotal = fields.Monetary(string='Subtotal', store=True, readonly=False,
-                                     currency_field='currency_id')
+    # price_subtotal = fields.Monetary(string='Subtotal', store=True, readonly=False,
+    #                                  currency_field='currency_id')
     # discount = fields.Float(string='Discount (%)', digits='Discount', default=0.0, compute='_inverse_compute_discount', store=True, readonly=False)
     unit_price_discounted = fields.Float(
         "Prix unitaire remisé", compute='_compute_u_p_disc'
@@ -20,12 +20,12 @@ class Account_invoice_line(models.Model):
         for rec in self:
             rec.unit_price_discounted = rec.price_unit - ((rec.price_unit * rec.discount) / 100)
 
-    @api.onchange("price_subtotal")
-    def _inverse_compute_discount(self):
-        for rec in self:
-            if rec.quantity != 0 and rec.price_unit!=0:
-                pur = rec.price_subtotal / rec.quantity
-                rec.discount = ((rec.price_unit - pur)*100)/rec.price_unit
+    # @api.onchange("price_subtotal")
+    # def _inverse_compute_discount(self):
+    #     for rec in self:
+    #         if rec.quantity != 0 and rec.price_unit!=0:
+    #             pur = rec.price_subtotal / rec.quantity
+    #             rec.discount = ((rec.price_unit - pur)*100)/rec.price_unit
 
 
     @api.depends('product_id.list_price', 'product_id.taxes_id')

@@ -14,9 +14,9 @@
                     readonly="0"
                     />
                 </xpath>
-                <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='price_subtotal']" position="attributes">
+                <!--<xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='price_subtotal']" position="attributes">
                     <attribute name="readonly">0</attribute>
-                </xpath>
+                </xpath>-->
                 <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='price_unit']" position="before">
                     <field name="is_jara" invisible="1"/>
                 </xpath>

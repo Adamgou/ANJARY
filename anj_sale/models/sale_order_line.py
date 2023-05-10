@@ -32,12 +32,12 @@ class Sale_order_line(models.Model):
                     val.price_unit
                 ) or 0
 
-    @api.onchange("price_subtotal")
-    def _inverse_compute_discount(self):
-        for rec in self:
-            if rec.product_uom_qty != 0 and rec.price_unit!=0:
-                pur = rec.price_subtotal / rec.product_uom_qty
-                rec.discount = ((rec.price_unit - pur)*100)/rec.price_unit
+    # @api.onchange("price_subtotal")
+    # def _inverse_compute_discount(self):
+    #     for rec in self:
+    #         if rec.product_uom_qty != 0 and rec.price_unit!=0:
+    #             pur = rec.price_subtotal / rec.product_uom_qty
+    #             rec.discount = ((rec.price_unit - pur)*100)/rec.price_unit
     # @api.model
     # def create(self, vals):
     #     if vals.get("price_unit"):
