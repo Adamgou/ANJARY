@@ -34,6 +34,7 @@
         'views/account_move.xml',
         'views/product_template.xml',
         'report/report_invoice.xml',
+        'security/res_group.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
