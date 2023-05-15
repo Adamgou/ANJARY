@@ -24,7 +24,12 @@
                 <field name="invoice_date_due" position="before">
                     <field name="period"/>
                 </field>
+                <field name="amount_total_in_currency_signed" position="attributes">
+                    <attribute name="sum">Total</attribute>
+                </field>
             </field>
         </record>
+
+        
     </data>
 </odoo>
