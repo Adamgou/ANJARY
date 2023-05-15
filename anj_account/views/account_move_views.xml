@@ -9,6 +9,10 @@
                 <field name="payment_reference" position="before">
                     <field name="partner_sequence"/>
                 </field>
+                <xpath expr="//button[@name='action_register_payment']" position="attributes">
+                    <attribute name="groups">anj_account.group_paiement_validation</attribute>
+
+                </xpath>
             </field>
         </record>
 

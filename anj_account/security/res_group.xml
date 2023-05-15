@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="group_paiement_validation" model="res.groups">
+        <field name="name">Enregistrement Paiement</field>
+    </record>
+</odoo>
