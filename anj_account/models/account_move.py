@@ -16,6 +16,15 @@ class AccountMove(models.Model):
     partner_sequence = fields.Char(compute="_depends_partner_sequence", store=True)
     period = fields.Char(compute="_compute_period", store=True)
     quit_payment_ids = fields.Many2many("account.payment", string="Payment done", compute="_compute_payment_done")
+    compute_field_reset_draft = fields.Boolean(string="check field 1", compute='get_user_connect')
+
+    @api.depends("compute_field_reset_draft","user_id")
+    def get_user_connect(self):
+        # res_user = self.env['res.users'].search([('id', '=', self._uid)])
+        if self.env.user.has_group('anj_base.group_to_do_draft'):
+            self.compute_field_reset_draft = True
+        else:
+            self.compute_field_reset_draft = False
 
     @api.depends()
     def _compute_payment_done(self):

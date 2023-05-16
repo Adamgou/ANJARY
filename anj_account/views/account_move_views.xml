@@ -8,10 +8,14 @@
             <field name="arch" type="xml">
                 <field name="payment_reference" position="before">
                     <field name="partner_sequence"/>
+                    <field name="compute_field_reset_draft" invisible="1"/>
                 </field>
                 <xpath expr="//button[@name='action_register_payment']" position="attributes">
                     <attribute name="groups">anj_account.group_paiement_validation</attribute>
 
+                </xpath>
+                <xpath expr="//button[@name='button_draft']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('compute_field_reset_draft', '=', False)]}</attribute>
                 </xpath>
             </field>
         </record>
