@@ -29,7 +29,7 @@
                 <span t-if="not o.company_id.name.lower() == 'societe immobiliere anjary'"> N° </span>
             </xpath>
             <xpath expr="//div[hasclass('page')]/h2" position="attributes">
-                <attribute name="t-att-style" add="(('font-size: 16px; margin-top: 10px; padding: 3px; width: 60%;') if o.company_id.name.lower()=='societe immobiliere anjary' else 'font-size: 16px; border: 3px solid black; padding: 3px; width: 35%;')"/><!--margin-top: -70px; margin-bottom: 100px;-->
+                <attribute name="t-att-style" add="(('font-size: 16px; margin-top: 10px; padding: 3px; width: 60%;') if o.company_id.name.lower()=='societe immobiliere anjary' else 'font-size: 16px; padding: 3px; width: 35%;margin-bottom: -7px;')"/><!--font-size: 16px; border: 3px solid black; padding: 3px; width: 35%;--><!--margin-top: -70px; margin-bottom: 100px;-->
             </xpath>
             <xpath expr="//div[@id='informations']" position="replace">
                 <t t-if="not((not o.company_id.name.lower().startswith('jara dist')) or (not o.company_id.name.lower() == 'societe immobiliere anjary'))">
@@ -58,23 +58,23 @@
                         </div>
                     </t>
                     <t t-else="">
-                        <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date" name="invoice_date">
+                        <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date" name="invoice_date" style="width: 25%!important;display: inline-block;margin-left: 350px;margin-top: -20px;">
                             <t t-if="o.move_type == 'out_invoice'">
-                                <strong>Date de facturation:</strong>
+                                <strong style="text-decoration: underline;">Date de facturation:</strong>
                             </t>
                             <t t-elif="o.move_type == 'out_refund'">
-                                <strong>Date de la note de crédit:</strong>
+                                <strong style="text-decoration: underline;">Date de la note de crédit:</strong>
                             </t>
                             <t t-elif="o.move_type == 'out_receipt'">
-                                <strong>Date de réception:</strong>
+                                <strong style="text-decoration: underline;">Date de réception:</strong>
                             </t>
                             <t t-else="">
-                                <strong>Date:</strong>
+                                <strong style="text-decoration: underline;">Date:</strong>
                             </t>
                             <p class="m-0" t-field="o.invoice_date"/>
                         </div>
-                        <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'" name="due_date">
-                            <strong>Date d'échéance:</strong>
+                        <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'" name="due_date" style="width: 25%!important;display: inline-block;margin-left: 0px;margin-top: -20px;">
+                            <strong style="text-decoration: underline;">Date d'échéance:</strong>
                             <p class="m-0" t-field="o.invoice_date_due"/>
                         </div>
                         <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_origin" name="origin">
@@ -122,7 +122,7 @@
                             </div>
                             <div t-if="o.partner_id.company_type == 'company'">
                                 <div t-if="o.partner_id.company_type == 'company' and o.partner_id.nif">
-                                    NIFA:<span t-esc="o.partner_id.nif" />
+                                    NIF:<span t-esc="o.partner_id.nif" />
                                 </div>
                                 <div t-if="o.partner_id.company_type == 'company' and o.partner_id.stat">
                                     STAT: <span t-esc="o.partner_id.stat"/>
@@ -383,14 +383,14 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="border: 1px solid black;">Net à payer Ar</td>
-                                        <td style="border: 1px solid black;background-color: none; text-align: right">
+                                        <td style="border: 1px solid black;font-weight: bold;">Net à payer Ar</td>
+                                        <td style="border: 1px solid black;background-color: none; text-align: right;font-weight: bold;">
                                             <t t-esc="o.amount_total" t-options="{'widget': 'float', 'precision': 2}"/>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="border: 1px solid black;">Net à payer Fmg</td>
-                                        <td style="border: 1px solid black;background-color: none; text-align: right">
+                                        <td style="border: 1px solid black;font-style: italic;font-size: 14px;">Net à payer Fmg</td>
+                                        <td style="border: 1px solid black;background-color: none; text-align: right;font-weight: bold;">
                                             <t t-esc="o.amount_total * 5" t-options="{'widget': 'float', 'precision': 2}"/>
                                         </td>
                                     </tr>
@@ -470,12 +470,15 @@
         </template>
 
         <template id="address_layout_inherit" inherit_id="web.address_layout">
-            <xpath expr="//div[@class='address row']" position="after">
-                <div name="nif_stat_company" style="width: 50%;margin-top: -90px;margin-bottom: 90px;" t-if="o.company_id.name.lower() == 'jaratrade'">
-                    <p t-if="o.company_id.nif">NIF: <span t-esc="o.company_id.nif"></span></p>
-                    <p t-if="o.company_id.stat">STAT: <span t-esc="o.company_id.stat"></span></p>
-                    <p t-if="o.company_id.cif">CIF: <span t-esc="o.company_id.cif"></span></p>
-                </div>
+<!--            <xpath expr="//div[@class='address row']" position="after">-->
+<!--                <div name="nif_stat_company" style="width: 50%;margin-top: -200px;margin-bottom: 200px;" t-if="o.company_id.name.lower() == 'jaratrade'">-->
+<!--                    <p t-if="o.company_id.nif">NIFc: <span t-esc="o.company_id.nif"></span></p>-->
+<!--                    <p t-if="o.company_id.stat">STAT: <span t-esc="o.company_id.stat"></span></p>-->
+<!--                    <p t-if="o.company_id.cif">CIF: <span t-esc="o.company_id.cif"></span></p>-->
+<!--                </div>-->
+<!--            </xpath>-->
+            <xpath expr="//div[@class='address row']" position="attributes">
+                <attribute name="style">margin-top: -40px;</attribute>
             </xpath>
         </template>
 
