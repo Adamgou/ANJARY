@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import fields, models, api
+from datetime import date, datetime
 
 
 class HrContractInherit(models.Model):
@@ -34,6 +35,32 @@ class HrContractInherit(models.Model):
     other_allow = fields.Monetary('Autres ndemnités')
     wage = fields.Monetary('Wage', required=True, tracking=True, help="Employee's monthly gross wage.",
                            compute='_compute_base_salary')
+    seniority_percentag = fields.Float(string="Pourcentage d'ancienneté", default=5.0)
+    actual_salary = fields.Float('Salaire actuel', tracking=True, compute='_compute_actual_salary')
+    seniority = fields.Float('Ancienneté', tracking=True, compute='_compute_seniority')
+
+    @api.depends('date_start')
+    def _compute_seniority(self):
+        for record in self:
+            if record.date_start:
+                start_date = record.date_start
+                current_date = datetime.now().date()
+                year_difference = current_date.year - record.date_start.year
+                if current_date.month < start_date.month or (
+                        current_date.month == start_date.month and current_date.day <= start_date.day):
+                    year_difference -= 1
+                record.seniority = year_difference
+
+    @api.depends('seniority', 'seniority_percentag', 'base_salary')
+    def _compute_actual_salary(self):
+        for rec in self:
+            years_of_service = rec.seniority
+            num_increases = years_of_service // 3
+            num_increases = int(num_increases)
+            salary = rec.base_salary
+            for i in range(num_increases):
+                salary += salary * rec.seniority_percentag / 100  # Add a 5% increase to the salary
+            rec.actual_salary = salary
 
     def _compute_base_salary(self):
         for record in self:

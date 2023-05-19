@@ -36,6 +36,11 @@
                             <field name="allow_logement" />
                             <field name="other_allow" />
                         </group>
+                        <group>
+                            <field name="seniority"/>
+                            <field name="seniority_percentag"/>
+                            <field name="actual_salary"/>
+                        </group>
                     </group>
 
                 </xpath>
