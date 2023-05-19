@@ -14,6 +14,8 @@ class AccountMove(models.Model):
     _inherit = "account.move"
 
     partner_sequence = fields.Char(compute="_depends_partner_sequence", store=True)
+    partner_codes = fields.Char(readonly=True,
+                                related='partner_id.customer_codes')
     period = fields.Char(compute="_compute_period", store=True)
     quit_payment_ids = fields.Many2many("account.payment", string="Payment done", compute="_compute_payment_done")
     compute_field_reset_draft = fields.Boolean(string="check field 1", compute='get_user_connect')
