@@ -16,7 +16,12 @@
             </xpath>
             <xpath expr="//div[hasclass('page')]/h2" position="replace">
                 <h2>
-                    <span t-if="o.move_type == 'out_invoice' and o.state == 'posted'">Facture</span>
+                    <t t-if="o.company_id.name.lower().startswith('jara dist')">
+                        <span t-if="o.move_type == 'out_invoice' and o.state == 'posted'"></span>
+                    </t>
+                    <t t-else="">
+                        <span t-if="o.move_type == 'out_invoice' and o.state == 'posted'">Facture</span>
+                    </t>
                     <span t-if="o.move_type == 'out_invoice' and o.state == 'draft'"></span>
                     <span t-if="o.move_type == 'out_invoice' and o.state == 'cancel'"></span>
                     <span t-if="o.move_type == 'out_refund'">Credit Note</span>
@@ -29,7 +34,7 @@
                 <span t-if="not o.company_id.name.lower() == 'societe immobiliere anjary'"> N° </span>
             </xpath>
             <xpath expr="//div[hasclass('page')]/h2" position="attributes">
-                <attribute name="t-att-style" add="(('font-size: 16px; margin-top: 10px; padding: 3px; width: 60%;') if o.company_id.name.lower()=='societe immobiliere anjary' else 'font-size: 16px; padding: 3px; width: 35%;margin-bottom: -7px;margin-top: 10px')"/><!--font-size: 16px; border: 3px solid black; padding: 3px; width: 35%;--><!--margin-top: -70px; margin-bottom: 100px;-->
+                <attribute name="t-att-style" add="(('font-size: 16px; margin-top: 10px; padding: 3px; width: 60%;') if o.company_id.name.lower()=='societe immobiliere anjary' else 'font-size: 16px; padding: 3px; width: 35%;margin-bottom: -7px;margin-top: 50px')"/><!--font-size: 16px; border: 3px solid black; padding: 3px; width: 35%;--><!--margin-top: -70px; margin-bottom: 100px;-->
             </xpath>
             <xpath expr="//div[@id='informations']" position="replace">
                 <t t-if="not((not o.company_id.name.lower().startswith('jara dist')) or (not o.company_id.name.lower() == 'societe immobiliere anjary'))">
@@ -81,10 +86,10 @@
                             <!--<strong>Source:</strong>-->
                             <p class="m-0" t-field="o.invoice_origin"/>
                         </div>
-                        <div class="col-auto col-3 mw-100 mb-2" t-if="o.partner_id.ref" name="customer_code">
-                            <strong>Code client:</strong>
-                            <p class="m-0" t-field="o.partner_id.ref"/>
-                        </div>
+<!--                        <div class="col-auto col-3 mw-100 mb-2" t-if="o.partner_id.ref" name="customer_code">-->
+<!--                            <strong>Code client:</strong>-->
+<!--                            <p class="m-0" t-field="o.partner_id.ref"/>-->
+<!--                        </div>-->
                         <div class="col-auto col-3 mw-100 mb-2" t-if="o.ref" name="reference">
                             <strong>Référence:</strong>
                             <p class="m-0" t-field="o.ref"/>
@@ -114,7 +119,7 @@
                         <br/>
                     </t>
                     <div t-att-style="'margin-top: 150px;' if o.company_id.name.lower() == 'societe immobiliere anjary' else ''">
-                        <div t-att-style="' border: 3px solid black; border-radius: 10px; padding: 5px' if not o.company_id.name.lower().startswith('jara dis') else ''">
+                        <div Style="border: 3px solid black; border-radius: 10px; padding: 5px"><!--t-att-style="' border: 3px solid black; border-radius: 10px; padding: 5px' if not o.company_id.name.lower().startswith('jara dis') else ''"-->
 <!--                            <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />-->
                             <div>
                                 <span t-esc="o.partner_id.name" />
@@ -123,13 +128,13 @@
                                 <span t-esc="o.note_client" />
                             </div>
                             <div>
-                                <span t-esc="o.partner_id.customer_codes" />
-                            </div>
-                            <div>
-                                <span t-esc="o.partner_id.city" /><span t-esc="o.partner_id.zip" />
+                                <span t-esc="o.partner_id.city" />  <span t-esc="o.partner_id.zip" />
                             </div>
                             <div>
                                 <span t-esc="o.partner_id.country_id.name" />
+                            </div>
+                            <div>
+                                <span t-esc="o.partner_id.customer_codes" />
                             </div>
 
                             <div t-if="o.partner_id.vat" class="mt16">
