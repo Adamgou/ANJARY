@@ -31,7 +31,7 @@
                 </h2>
             </xpath>
             <xpath expr="//div[hasclass('page')]/h2//span[last()]" position="before">
-                <span t-if="not o.company_id.name.lower() == 'societe immobiliere anjary'"> N° </span>
+                <span t-if="not o.company_id.name.lower() == 'societe immobiliere anjary'">  </span> <!--N°-->
             </xpath>
             <xpath expr="//div[hasclass('page')]/h2" position="attributes">
                 <attribute name="t-att-style" add="(('font-size: 16px; margin-top: 10px; padding: 3px; width: 60%;') if o.company_id.name.lower()=='societe immobiliere anjary' else 'font-size: 16px; padding: 3px; width: 35%;margin-bottom: -7px;margin-top: 50px')"/><!--font-size: 16px; border: 3px solid black; padding: 3px; width: 35%;--><!--margin-top: -70px; margin-bottom: 100px;-->
@@ -488,12 +488,12 @@
                     </t>
                 </div>
             </xpath>
-            <xpath expr="//div[@t-att-style='report_header_style']" position="attributes">
-<!--                <attribute name="t-att-style" add="((';margin-bottom:100px;') if o.company_id.name.lower()=='societe immobiliere anjary' else '')"/>-->
+            <!--<xpath expr="//div[@t-att-style='report_header_style']" position="attributes">
+&lt;!&ndash;                <attribute name="t-att-style" add="((';margin-bottom:100px;') if o.company_id.name.lower()=='societe immobiliere anjary' else '')"/>&ndash;&gt;
                 <attribute name="t-attf-class">
                    mb-0.1
                 </attribute>
-            </xpath>
+            </xpath>-->
         </template>
 
         <template id="address_layout_inherit" inherit_id="web.address_layout">
