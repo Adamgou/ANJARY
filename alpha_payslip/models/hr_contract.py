@@ -37,7 +37,7 @@ class HrContractInherit(models.Model):
                            compute='_compute_base_salary')
     seniority_percentage = fields.Float(string="Pourcentage d'ancienneté", compute='_compute_actual_salary')
     actual_salary = fields.Float('Salaire actuel', tracking=True, compute='_compute_actual_salary')
-    seniority = fields.Float('Ancienneté', tracking=True, compute='_compute_seniority')
+    seniority = fields.Float('Ancienneté en année', tracking=True, compute='_compute_seniority')
 
     @api.depends('date_start')
     def _compute_seniority(self):
