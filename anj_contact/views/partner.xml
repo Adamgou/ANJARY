@@ -37,6 +37,7 @@
                   <field name="stat"/>
                   <field name="cif"/>
                   <field name="rcs"/>
+                  <field name="customer_codes" string="Code client"/>
                 </xpath>
             </field>
         </record>

@@ -23,6 +23,9 @@ class Res_partner(models.Model):
     driver_id = fields.Many2one('hr.employee', string='Chauffeur attitré',store = True)
     product_id = fields.Many2one('product.template', string='Véhicule',store = True)
     best_room = fields.Char('Chambre préférée',store = True)
+    customer_codes = fields.Char()
+    # check_comp = fields.Boolean(compute='_check_jara', store=True)
+
 
 
     

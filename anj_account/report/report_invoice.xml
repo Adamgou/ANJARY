@@ -29,7 +29,7 @@
                 <span t-if="not o.company_id.name.lower() == 'societe immobiliere anjary'"> N° </span>
             </xpath>
             <xpath expr="//div[hasclass('page')]/h2" position="attributes">
-                <attribute name="t-att-style" add="(('font-size: 16px; margin-top: 10px; padding: 3px; width: 60%;') if o.company_id.name.lower()=='societe immobiliere anjary' else 'font-size: 16px; padding: 3px; width: 35%;margin-bottom: -7px;')"/><!--font-size: 16px; border: 3px solid black; padding: 3px; width: 35%;--><!--margin-top: -70px; margin-bottom: 100px;-->
+                <attribute name="t-att-style" add="(('font-size: 16px; margin-top: 10px; padding: 3px; width: 60%;') if o.company_id.name.lower()=='societe immobiliere anjary' else 'font-size: 16px; padding: 3px; width: 35%;margin-bottom: -7px;margin-top: 10px')"/><!--font-size: 16px; border: 3px solid black; padding: 3px; width: 35%;--><!--margin-top: -70px; margin-bottom: 100px;-->
             </xpath>
             <xpath expr="//div[@id='informations']" position="replace">
                 <t t-if="not((not o.company_id.name.lower().startswith('jara dist')) or (not o.company_id.name.lower() == 'societe immobiliere anjary'))">
@@ -115,7 +115,23 @@
                     </t>
                     <div t-att-style="'margin-top: 150px;' if o.company_id.name.lower() == 'societe immobiliere anjary' else ''">
                         <div t-att-style="' border: 3px solid black; border-radius: 10px; padding: 5px' if not o.company_id.name.lower().startswith('jara dis') else ''">
-                            <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
+<!--                            <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />-->
+                            <div>
+                                <span t-esc="o.partner_id.name" />
+                            </div>
+                            <div>
+                                <span t-esc="o.note_client" />
+                            </div>
+                            <div>
+                                <span t-esc="o.partner_id.customer_codes" />
+                            </div>
+                            <div>
+                                <span t-esc="o.partner_id.city" /><span t-esc="o.partner_id.zip" />
+                            </div>
+                            <div>
+                                <span t-esc="o.partner_id.country_id.name" />
+                            </div>
+
                             <div t-if="o.partner_id.vat" class="mt16">
                                 <t t-if="o.company_id.account_fiscal_country_id.vat_label" t-esc="o.company_id.account_fiscal_country_id.vat_label" id="inv_tax_id_label"/>
                                 <t t-else="">Tax ID</t>:                            <span t-field="o.partner_id.vat"/>
@@ -364,7 +380,7 @@
                             <t t-call="account.document_tax_totals" t-if="o.company_id.name.startswith('jara dist')"/>
                             <t t-else="">
                                 <table class="table table-sm" style="border: 1px solid black;">
-                                    <tr>
+                                    <!--<tr>
                                         <td style="border: 1px solid black;">Total HT</td>
                                         <td style="border: 1px solid black;background-color: none; text-align: right">
                                             <t t-esc="o.amount_untaxed" t-options="{'widget': 'float', 'precision': 2}"/>
@@ -375,10 +391,10 @@
                                         <td style="background-color: none; text-align: right; border: 1px solid black;">
                                             <t t-esc="o.amount_total - o.amount_untaxed" t-options="{'widget': 'float', 'precision': 2}"/>
                                         </td>
-                                    </tr>
+                                    </tr>-->
                                     <tr>
                                         <td style="border: 1px solid black;">Total TTC</td>
-                                        <td style="background-color: none;  border: 1px solid black;text-align: right">
+                                        <td style="background-color: none;  border: 1px solid black;text-align: right;font-weight: bold;">
                                             <t t-esc="o.amount_total" t-options="{'widget': 'float', 'precision': 2}"/>
                                         </td>
                                     </tr>
@@ -388,12 +404,12 @@
                                             <t t-esc="o.amount_total" t-options="{'widget': 'float', 'precision': 2}"/>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <!--<tr>
                                         <td style="border: 1px solid black;font-style: italic;font-size: 14px;">Net à payer Fmg</td>
                                         <td style="border: 1px solid black;background-color: none; text-align: right;font-weight: bold;">
                                             <t t-esc="o.amount_total * 5" t-options="{'widget': 'float', 'precision': 2}"/>
                                         </td>
-                                    </tr>
+                                    </tr>-->
                                 </table>
                             </t>
 
@@ -467,6 +483,12 @@
                     </t>
                 </div>
             </xpath>
+            <xpath expr="//div[@t-att-style='report_header_style']" position="attributes">
+<!--                <attribute name="t-att-style" add="((';margin-bottom:100px;') if o.company_id.name.lower()=='societe immobiliere anjary' else '')"/>-->
+                <attribute name="t-attf-class">
+                   mb-0.1
+                </attribute>
+            </xpath>
         </template>
 
         <template id="address_layout_inherit" inherit_id="web.address_layout">
@@ -481,6 +503,12 @@
                 <attribute name="style">margin-top: -40px;</attribute>
             </xpath>
         </template>
+
+<!--        <template id="report_payment_receipt_document_inherit" inherit_id="account.report_payment_receipt_document">-->
+<!--            <xpath expr="//div[hasclass('page')]" position="attributes">-->
+<!--                <attribute name="style">margin-top: 100px;</attribute>-->
+<!--            </xpath>-->
+<!--        </template>-->
 
     </data>
 
