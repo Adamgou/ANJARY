@@ -38,7 +38,7 @@
                         </group>
                         <group>
                             <field name="seniority"/>
-                            <field name="seniority_percentag"/>
+                            <field name="seniority_percentage"/>
                             <field name="actual_salary"/>
                         </group>
                     </group>
