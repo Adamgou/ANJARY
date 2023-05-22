@@ -171,9 +171,9 @@
                         <span>Arrêtée la présente facture au montant de :</span>
                         <span t-esc="o.currency_id.amount_to_text(o.amount_total)" />
                     </div>
-                    <div t-if="o.partner_id.company_type == 'company' and o.note_client">
+                    <!--<div t-if="o.partner_id.company_type == 'company' and o.note_client">
                         Note:<span t-esc="o.note_client"/>
-                    </div>
+                    </div>-->
                     <br/>
                 </t>
                 <t t-if="o.company_id.name == 'JARATRADE'">
@@ -385,36 +385,72 @@
                             <t t-call="account.document_tax_totals" t-if="o.company_id.name.startswith('jara dist')"/>
                             <t t-else="">
                                 <table class="table table-sm" style="border: 1px solid black;">
-                                    <!--<tr>
-                                        <td style="border: 1px solid black;">Total HT</td>
-                                        <td style="border: 1px solid black;background-color: none; text-align: right">
-                                            <t t-esc="o.amount_untaxed" t-options="{'widget': 'float', 'precision': 2}"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="border: 1px solid black;">Total TVA</td>
-                                        <td style="background-color: none; text-align: right; border: 1px solid black;">
-                                            <t t-esc="o.amount_total - o.amount_untaxed" t-options="{'widget': 'float', 'precision': 2}"/>
-                                        </td>
-                                    </tr>-->
-                                    <tr>
-                                        <td style="border: 1px solid black;">Total TTC</td>
-                                        <td style="background-color: none;  border: 1px solid black;text-align: right;font-weight: bold;">
-                                            <t t-esc="o.amount_total" t-options="{'widget': 'float', 'precision': 2}"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="border: 1px solid black;font-weight: bold;">Net à payer Ar</td>
-                                        <td style="border: 1px solid black;background-color: none; text-align: right;font-weight: bold;">
-                                            <t t-esc="o.amount_total" t-options="{'widget': 'float', 'precision': 2}"/>
-                                        </td>
-                                    </tr>
-                                    <!--<tr>
-                                        <td style="border: 1px solid black;font-style: italic;font-size: 14px;">Net à payer Fmg</td>
-                                        <td style="border: 1px solid black;background-color: none; text-align: right;font-weight: bold;">
-                                            <t t-esc="o.amount_total * 5" t-options="{'widget': 'float', 'precision': 2}"/>
-                                        </td>
-                                    </tr>-->
+                                    <t t-if="o.company_id.name.lower() == 'jaratrade'">
+                                        <tr>
+                                            <td style="border: 1px solid black;">Total HT</td>
+                                            <td style="border: 1px solid black;background-color: none; text-align: right">
+                                                <t t-esc="o.amount_untaxed" t-options="{'widget': 'float', 'precision': 2}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border: 1px solid black;">Total TVA</td>
+                                            <td style="background-color: none; text-align: right; border: 1px solid black;">
+                                                <t t-esc="o.amount_total - o.amount_untaxed" t-options="{'widget': 'float', 'precision': 2}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border: 1px solid black;">Total TTC</td>
+                                            <td style="background-color: none;  border: 1px solid black;text-align: right;">
+                                                <t t-esc="o.amount_total" t-options="{'widget': 'float', 'precision': 2}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border: 1px solid black;font-weight: bold;">Net à payer Ar</td>
+                                            <td style="border: 1px solid black;background-color: none; text-align: right;font-weight: bold;">
+                                                <t t-esc="o.amount_total" t-options="{'widget': 'float', 'precision': 2}"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <t t-elif="o.company_id.name.lower() == 'jara distribution'">
+                                        <tr>
+                                            <td style="border: 1px solid black;font-weight: bold;">Total TTC Ar</td>
+                                            <td style="background-color: none;  border: 1px solid black;text-align: right;font-weight: bold;">
+                                                <t t-esc="o.amount_total" t-options="{'widget': 'float', 'precision': 2}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border: 1px solid black;font-weight: bold;">Net à payer Ar</td>
+                                            <td style="border: 1px solid black;background-color: none; text-align: right;font-weight: bold;">
+                                                <t t-esc="o.amount_total" t-options="{'widget': 'float', 'precision': 2}"/>
+                                            </td>
+                                        </tr>
+                                        <!--<tr>
+                                            <td style="border: 1px solid black;font-style: italic;font-size: 14px;">Net à payer Fmg</td>
+                                            <td style="border: 1px solid black;background-color: none; text-align: right;font-weight: bold;">
+                                                <t t-esc="o.amount_total * 5" t-options="{'widget': 'float', 'precision': 2}"/>
+                                            </td>
+                                        </tr>-->
+                                    </t>
+                                    <t t-else="">
+                                        <tr>
+                                            <td style="border: 1px solid black;font-weight: bold;">Total TTC Ar</td>
+                                            <td style="background-color: none;  border: 1px solid black;text-align: right;font-weight: bold;">
+                                                <t t-esc="o.amount_total" t-options="{'widget': 'float', 'precision': 2}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border: 1px solid black;font-weight: bold;">Net à payer Ar</td>
+                                            <td style="border: 1px solid black;background-color: none; text-align: right;font-weight: bold;">
+                                                <t t-esc="o.amount_total" t-options="{'widget': 'float', 'precision': 2}"/>
+                                            </td>
+                                        </tr>
+                                        <!--<tr>
+                                            <td style="border: 1px solid black;font-style: italic;font-size: 14px;">Net à payer Fmg</td>
+                                            <td style="border: 1px solid black;background-color: none; text-align: right;font-weight: bold;">
+                                                <t t-esc="o.amount_total * 5" t-options="{'widget': 'float', 'precision': 2}"/>
+                                            </td>
+                                        </tr>-->
+                                    </t>
                                 </table>
                             </t>
 
@@ -482,18 +518,22 @@
             </xpath>
             <xpath expr="//div[@class='row mb8']" position="after">
 
-                <div name="company_address" class="">
+                <div name="company_address" class="mb-4">
                     <t t-if="company.name.lower() == 'societe immobiliere anjary'">
                         <span t-if="company.company_details" style="font-size:5px!important;" t-field="company.company_details"></span>
                     </t>
                 </div>
             </xpath>
-            <!--<xpath expr="//div[@t-att-style='report_header_style']" position="attributes">
-&lt;!&ndash;                <attribute name="t-att-style" add="((';margin-bottom:100px;') if o.company_id.name.lower()=='societe immobiliere anjary' else '')"/>&ndash;&gt;
-                <attribute name="t-attf-class">
-                   mb-0.1
-                </attribute>
-            </xpath>-->
+<!--            <xpath expr="//div[@t-att-style='report_header_style']" position="attributes">-->
+<!--                <attribute name="t-att-style" add="(('margin-bottom:100px;') if o.company_id.name.lower()=='societe immobiliere anjary' else '')"/>-->
+<!--                <attribute name="t-attf-class">-->
+<!--                   mb-0.1-->
+<!--                </attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//div[@t-att-style='report_header_style']" position="after">-->
+<!--                <div style="margin-top=10px;"><p></p><br></br></div>-->
+<!--                <div style="margin-bottom=10px;"><p></p><br></br><br></br></div>-->
+<!--            </xpath>-->
         </template>
 
         <template id="address_layout_inherit" inherit_id="web.address_layout">
@@ -509,11 +549,11 @@
             </xpath>
         </template>
 
-<!--        <template id="report_payment_receipt_document_inherit" inherit_id="account.report_payment_receipt_document">-->
-<!--            <xpath expr="//div[hasclass('page')]" position="attributes">-->
-<!--                <attribute name="style">margin-top: 100px;</attribute>-->
-<!--            </xpath>-->
-<!--        </template>-->
+        <template id="report_payment_receipt_document_inherit" inherit_id="account.report_payment_receipt_document">
+            <xpath expr="//div[hasclass('page')]" position="attributes">
+                <attribute name="t-att-style" add="(('margin-top:100px;') if o.company_id.name.lower()=='societe immobiliere anjary' else '')"/>
+            </xpath>
+        </template>
 
     </data>
 
