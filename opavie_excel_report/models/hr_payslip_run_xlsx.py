@@ -19,7 +19,7 @@ class HrPayslipXlsx(models.AbstractModel):
     _inherit = 'report.report_xlsx.abstract'
 
     def generate_xlsx_report(self, workbook, data, lines):
-        employer_bank_account = add_zeros(lines.employer_bank_account.acc_number.replace(' ', ''), 23)
+        employer_bank_account = add_zeros(lines.employer_bank_account.acc_number.replace(' ', ''), 23) if lines.employer_bank_account.acc_number else " "
         report_name = 'OPAVI_' + lines.name + '_' + date.today().strftime("%d_%m_%y") + '_' + lines.company_id.name
         total = 0
         for value in lines.slip_ids:
