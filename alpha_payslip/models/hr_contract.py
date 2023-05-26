@@ -35,11 +35,11 @@ class HrContractInherit(models.Model):
     other_allow = fields.Monetary('Autres ndemnités')
     wage = fields.Monetary('Wage', required=True, tracking=True, help="Employee's monthly gross wage.",
                            compute='_compute_base_salary')
-    seniority_percentage = fields.Float(string="Pourcentage d'ancienneté", tracking=True, compute='_compute_seniority_percentage')
+    seniority_percentage = fields.Float(string="Pourcentage d'ancienneté", tracking=True, compute='_compute_seniority_percentage', store=True)
     actual_salary = fields.Float('Salaire actuel', tracking=True, compute='_compute_actual_salary')
     seniority = fields.Float('Ancienneté en année', tracking=True, compute='_compute_seniority')
 
-    @api.depends('date_start')
+    @api.onchange('date_start')
     def _compute_seniority(self):
         for record in self:
             if record.date_start:
@@ -51,7 +51,7 @@ class HrContractInherit(models.Model):
                     year_difference -= 1
                 record.seniority = year_difference
 
-    @api.depends('seniority', 'base_salary')
+    @api.onchange('seniority',)
     def _compute_seniority_percentage(self):
         for rec in self:
             num_increases = int(rec.seniority // 3)
