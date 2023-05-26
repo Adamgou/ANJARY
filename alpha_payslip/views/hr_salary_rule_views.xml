@@ -13,6 +13,7 @@
                         <field name="salary_rule_nombre" />
                         <field name="salary_rule_base" />
                         <field name="is_total" widget="boolean_toggle" string="Total" />
+                        <field name="is_net" widget="boolean_toggle"/>
                     </group>
                 </xpath>
             </field>
