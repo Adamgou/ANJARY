@@ -38,7 +38,7 @@
                         </group>
                         <group>
                             <field name="seniority"/>
-                            <field name="seniority_percentage" readonly="0"/>
+                            <field name="seniority_percent" readonly="0" widget="percentage"/>
                             <field name="actual_salary"/>
                         </group>
                     </group>
