@@ -35,7 +35,7 @@ class HrContractInherit(models.Model):
     other_allow = fields.Monetary('Autres ndemnités')
     wage = fields.Monetary('Wage', required=True, tracking=True, help="Employee's monthly gross wage.",
                            compute='_compute_base_salary')
-    seniority_percentage = fields.Float(string="Pourcentage d'ancienneté", tracking=True, rcompute='_compute_seniority_percentage')
+    seniority_percentage = fields.Float(string="Pourcentage d'ancienneté", tracking=True, compute='_compute_seniority_percentage')
     actual_salary = fields.Float('Salaire actuel', tracking=True, compute='_compute_actual_salary')
     seniority = fields.Float('Ancienneté en année', tracking=True, compute='_compute_seniority')
 
