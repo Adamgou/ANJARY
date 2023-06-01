@@ -325,6 +325,9 @@
                     <t t-if="o.company_id.name.lower() == 'jara distribution'">
                         <t t-esc="line.price_unit - ((line.price_unit * line.discount) / 100)"/>
                     </t>
+                    <t t-elif="o.company_id.name.lower() == 'jaratrade'">
+                        <t t-esc="line.price_unit - ((line.price_unit * line.discount) / 100)"/>
+                    </t>
                     <t t-else="">
                         <t t-esc="price_unit_ht_disc"/>
                     </t>
