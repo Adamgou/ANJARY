@@ -171,9 +171,9 @@
                         <span>Arrêtée la présente facture au montant de :</span>
                         <span t-esc="o.currency_id.amount_to_text(o.amount_total)" />
                     </div>
-                    <!--<div t-if="o.partner_id.company_type == 'company' and o.note_client">
-                        Note:<span t-esc="o.note_client"/>
-                    </div>-->
+                    <div t-if="o.note">
+                        Note:<span t-esc="o.note"/>
+                    </div>
                     <br/>
                 </t>
                 <t t-if="o.company_id.name == 'JARATRADE'">

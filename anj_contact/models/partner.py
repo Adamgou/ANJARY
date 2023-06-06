@@ -25,6 +25,14 @@ class Res_partner(models.Model):
     best_room = fields.Char('Chambre préférée',store = True)
     customer_codes = fields.Char()
     # check_comp = fields.Boolean(compute='_check_jara', store=True)
+    city = fields.Char(compute='get_the_city_id', store=True)
+    city_id = fields.Many2one('res.city', ondelete='restrict')
+
+    @api.depends('city_id')
+    def get_the_city_id(self):
+        for rec in self:
+            rec.city = rec.city_id.name
+            rec.zip = rec.city_id.zip
 
 
 
