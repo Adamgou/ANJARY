@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_city" model="ir.actions.act_window">
+        <field name="name">Villes</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.city</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No City Found!
+            </p><p>
+            Manage the list of City that can be set on your contacts.
+        </p>
+        </field>
+    </record>
+
+    <record id="view_city_tree" model="ir.ui.view">
+        <field name="name">res.city.tree</field>
+        <field name="model">res.city</field>
+        <field name="arch" type="xml">
+            <tree string="Ville">
+                <field name="name" string="Villes"/>
+                <field name="zip" string="Code postal"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_city_form" model="ir.ui.view">
+        <field name="name">res.city.form</field>
+        <field name="model">res.city</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group name="main_group">
+                        <group name="city_details">
+                            <field name="name" string="Ville"/>
+                            <field name="zip" string="Code postal"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <menuitem id="menu_city_partner"
+              action="anj_contact.action_city" parent="contacts.menu_localisation"
+              sequence="1"/>
+
+
+</odoo>
