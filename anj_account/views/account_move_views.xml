@@ -18,6 +18,11 @@
                 <xpath expr="//button[@name='button_draft']" position="attributes">
                     <attribute name="attrs">{'invisible': [('compute_field_reset_draft', '=', False)]}</attribute>
                 </xpath>
+                <xpath expr="//page[@name='other_info']" position="after">
+                    <page string="Note" name="note">
+                        <field name="note" string="Note" placeholder="Add an internal note that will be printed on the PDF account move"/>
+                    </page>
+                </xpath>
             </field>
         </record>
 
