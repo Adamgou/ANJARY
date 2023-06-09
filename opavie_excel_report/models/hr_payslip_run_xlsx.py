@@ -20,11 +20,11 @@ class HrPayslipXlsx(models.AbstractModel):
 
     def generate_xlsx_report(self, workbook, data, lines):
         employer_bank_account = add_zeros(lines.employer_bank_account.acc_number.replace(' ', ''), 23) if lines.employer_bank_account.acc_number else " "
-        report_name = 'OPAVI_' + lines.name + '_' + date.today().strftime("%d_%m_%y") + '_' + lines.company_id.name
+        report_name = 'Salaire' + ' ' + lines.date_start.strftime("%m%y")
         total = 0
         for value in lines.slip_ids:
             total = total + value.basic_wage
-        sheet = workbook.add_worksheet('OPAVIE report')
+        sheet = workbook.add_worksheet('OPAVI report')
         sheet.write(0, 0, employer_bank_account)
         sheet.write(0, 1, add_zeros(str(total).replace('.', ''), 12))
         # sheet.write(0, 2, '')
@@ -33,7 +33,7 @@ class HrPayslipXlsx(models.AbstractModel):
             employee_bank_account = add_zeros(value.employee_id.bank_account_id.acc_number.replace(' ', ''),
                                               23) if value.employee_id.bank_account_id.acc_number else " "
             employee_salary = add_zeros(str(value.basic_wage).replace('.', ''), 12)
-            employee_matricule = add_zeros(str(value.employee_id.matricule).replace(' ', ''), 6) if value.employee_id.matricule else " "
+            employee_matricule = value.employee_id.matricule if value.employee_id.matricule else " "
             employee_name = value.employee_id.name if value.employee_id.name else " "
             sheet.write(index + 1, 0, employee_bank_account)
             sheet.write(index + 1, 1, employee_salary)
