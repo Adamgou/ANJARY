@@ -24,7 +24,7 @@
 
     # always loaded
     'data': [
-        'data/res_city_data.xml',
+        # 'data/res_city_data.xml',
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
