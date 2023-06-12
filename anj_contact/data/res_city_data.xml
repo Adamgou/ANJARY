@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="amt" model="res.city">
+            <field name="name">Ambohidratrimo</field>
+            <field name="zip">105</field>
+        </record>
+
+        <record id="and" model="res.city">
+            <field name="name">Andramasina</field>
+            <field name="zip">106</field>
+        </record>
+
+        <record id="anj" model="res.city">
+            <field name="name">Anjozorobe</field>
+            <field name="zip">107</field>
+        </record>
+
+        <record id="ank" model="res.city">
+            <field name="name">Ankazobe</field>
+            <field name="zip">108</field>
+        </record>
+
+        <record id="antnr" model="res.city">
+            <field name="name">Antananarivo</field>
+            <field name="zip">101</field>
+        </record>
+
+        <record id="antn" model="res.city">
+            <field name="name">Antananarivo Nord</field>
+            <field name="zip">103</field>
+        </record>
+
+        <record id="ants" model="res.city">
+            <field name="name">Antananarivo Sud</field>
+            <field name="zip">102</field>
+        </record>
+
+        <record id="mjk" model="res.city">
+            <field name="name">Manjakandriana</field>
+            <field name="zip">116</field>
+        </record>
+
+        <record id="fec" model="res.city">
+            <field name="name">Fenoarivo Centre</field>
+            <field name="zip">115</field>
+        </record>
+
+        <record id="tsdd" model="res.city">
+            <field name="name">Tsiroanomandidy</field>
+            <field name="zip">119</field>
+        </record>
+
+        <record id="amt" model="res.city">
+            <field name="name">Arivonimamo</field>
+            <field name="zip">112</field>
+        </record>
+
+        <record id="amt" model="res.city">
+            <field name="name">Miarinarivo</field>
+            <field name="zip">117</field>
+        </record>
+
+        <record id="soav" model="res.city">
+            <field name="name">Soavinandriana</field>
+            <field name="zip">118</field>
+        </record>
+
+        <record id="ambt" model="res.city">
+            <field name="name">Ambatolampy</field>
+            <field name="zip">104</field>
+        </record>
+
+        <record id="amtfts" model="res.city">
+            <field name="name">Antanifotsy</field>
+            <field name="zip">109</field>
+        </record>
+
+        <record id="antsr" model="res.city">
+            <field name="name">Antsirabe Rural</field>
+            <field name="zip">111</field>
+        </record>
+
+        <record id="antsu" model="res.city">
+            <field name="name">Antsirabe Urban</field>
+            <field name="zip">110</field>
+        </record>
+
+        <record id="betaf" model="res.city">
+            <field name="name">Betafo</field>
+            <field name="zip">113</field>
+        </record>
+
+        <record id="farats" model="res.city">
+            <field name="name">Faratsiho</field>
+            <field name="zip">114</field>
+        </record>
+
+        <record id="ambj" model="res.city">
+            <field name="name">Ambanja</field>
+            <field name="zip">203</field>
+        </record>
+
+        <record id="ambl" model="res.city">
+            <field name="name">Ambilobe</field>
+            <field name="zip">204</field>
+        </record>
+
+        <record id="antsrrl" model="res.city">
+            <field name="name">Antsiranana Rural</field>
+            <field name="zip">202</field>
+        </record>
+
+        <record id="antsurb" model="res.city">
+            <field name="name">Antsiranana Urban</field>
+            <field name="zip">201</field>
+        </record>
+
+        <record id="nsb" model="res.city">
+            <field name="name">Nosy Be</field>
+            <field name="zip">207</field>
+        </record>
+
+        <record id="andp" model="res.city">
+            <field name="name">Andapa</field>
+            <field name="zip">205</field>
+        </record>
+
+        <record id="antll" model="res.city">
+            <field name="name">Antalaha</field>
+            <field name="zip">206</field>
+        </record>
+
+        <record id="smbv" model="res.city">
+            <field name="name">Sambava</field>
+            <field name="zip">208</field>
+        </record>
+
+        <record id="vohim" model="res.city">
+            <field name="name">Vohimarina (Iharana)</field>
+            <field name="zip">209</field>
+        </record>
+
+        <record id="ambtfdrn" model="res.city">
+            <field name="name">Ambatofinandrahana</field>
+            <field name="zip">304</field>
+        </record>
+
+        <record id="ambstr" model="res.city">
+            <field name="name">Ambositra</field>
+            <field name="zip">306</field>
+        </record>
+
+        <record id="fndrna" model="res.city">
+            <field name="name">Fandriana</field>
+            <field name="zip">308</field>
+        </record>
+
+        <record id="manndrn" model="res.city">
+            <field name="name">Manandriana</field>
+            <field name="zip">323</field>
+        </record>
+
+        <record id="bftk" model="res.city">
+            <field name="name">Befotaka</field>
+            <field name="zip">307</field>
+        </record>
+
+        <record id="frfngz" model="res.city">
+            <field name="name">Farafangana</field>
+            <field name="zip">309</field>
+        </record>
+
+        <record id="midngsud" model="res.city">
+            <field name="name">Midongy Sud</field>
+            <field name="zip">318</field>
+        </record>
+
+        <record id="vaingfdra" model="res.city">
+            <field name="name">Vangaindrano</field>
+            <field name="zip">320</field>
+        </record>
+
+        <record id="vndrz" model="res.city">
+            <field name="name">Vondrozo</field>
+            <field name="zip">322</field>
+        </record>
+
+        <record id="amblvo" model="res.city">
+            <field name="name">Ambalavao</field>
+            <field name="zip">303</field>
+        </record>
+
+        <record id="amboms" model="res.city">
+            <field name="name">Ambohimahasoa</field>
+            <field name="zip">305</field>
+        </record>
+
+        <record id="fnrtsr" model="res.city">
+            <field name="name">Fianarantsoa Rural</field>
+            <field name="zip">302</field>
+        </record>
+
+        <record id="fnrtsu" model="res.city">
+            <field name="name">Fianarantsoa Urban</field>
+            <field name="zip">301</field>
+        </record>
+
+        <record id="iklmv" model="res.city">
+            <field name="name">Ikalamavony</field>
+            <field name="zip">314</field>
+        </record>
+
+        <record id="iakor" model="res.city">
+            <field name="name">Iakora</field>
+            <field name="zip">311</field>
+        </record>
+
+        <record id="ohosjd" model="res.city">
+            <field name="name">Ihosy</field>
+            <field name="zip">313</field>
+        </record>
+
+        <record id="ifanaddnnn" model="res.city">
+            <field name="name">Ifanadiana</field>
+            <field name="zip">312</field>
+        </record>
+
+        <record id="ikokongo" model="res.city">
+            <field name="name">Ikongo</field>
+            <field name="zip">310</field>
+        </record>
+
+        <record id="mankrsd" model="res.city">
+            <field name="name">Manakara Sud</field>
+            <field name="zip">316</field>
+        </record>
+
+        <record id="manjry" model="res.city">
+            <field name="name">Mananjary</field>
+            <field name="zip">317</field>
+        </record>
+
+        <record id="nsyvar" model="res.city">
+            <field name="name">Nosy Varika</field>
+            <field name="zip">319</field>
+        </record>
+
+        <record id="vhpno" model="res.city">
+            <field name="name">Vohipeno</field>
+            <field name="zip">321</field>
+        </record>
+
+        <record id="kndreo" model="res.city">
+            <field name="name">Kandreho</field>
+            <field name="zip">411</field>
+        </record>
+
+        <record id="maevatn" model="res.city">
+            <field name="name">Maevatanana</field>
+            <field name="zip">412</field>
+        </record>
+
+        <record id="tsarattntnn" model="res.city">
+            <field name="name">Tsaratanana</field>
+            <field name="zip">421</field>
+        </record>
+
+        <record id="ambooiba" model="res.city">
+            <field name="name">Ambato-Boina</field>
+            <field name="zip">403</field>
+        </record>
+
+        <record id="mjngrur" model="res.city">
+            <field name="name">Mahajanga Rural</field>
+            <field name="zip">402</field>
+        </record>
+
+        <record id="manjgur" model="res.city">
+            <field name="name">Mahajanga Urban</field>
+            <field name="zip">401</field>
+        </record>
+
+        <record id="marvo" model="res.city">
+            <field name="name">Marovoay</field>
+            <field name="zip">416</field>
+        </record>
+
+        <record id="mintsinj" model="res.city">
+            <field name="name">Mitsinjo</field>
+            <field name="zip">417</field>
+        </record>
+
+        <record id="soala" model="res.city">
+            <field name="name">Soalala</field>
+            <field name="zip">420</field>
+        </record>
+
+        <record id="ambtmain" model="res.city">
+            <field name="name">Ambatomainty</field>
+            <field name="zip">404</field>
+        </record>
+
+        <record id="antslv" model="res.city">
+            <field name="name">Antsalova</field>
+            <field name="zip">406</field>
+        </record>
+
+        <record id="besalmp" model="res.city">
+            <field name="name">Besalampy</field>
+            <field name="zip">410</field>
+        </record>
+
+        <record id="maintrano" model="res.city">
+            <field name="name">Maintirano</field>
+            <field name="zip">413</field>
+        </record>
+
+        <record id="maorafano" model="res.city">
+            <field name="name">Morafanobe</field>
+            <field name="zip">418</field>
+        </record>
+
+        <record id="befandrnor" model="res.city">
+            <field name="name">Befandriana Nord</field>
+            <field name="zip">409</field>
+        </record>
+
+        <record id="mapmpiko" model="res.city">
+            <field name="name">Mampikony</field>
+            <field name="zip">414</field>
+        </record>
+
+        <record id="mandrtsa" model="res.city">
+            <field name="name">Mandritsara</field>
+            <field name="zip">415</field>
+        </record>
+
+        <record id="portbed" model="res.city">
+            <field name="name">Port Bergé</field>
+            <field name="zip">419</field>
+        </record>
+
+        <record id="ambtdrzk" model="res.city">
+            <field name="name">Ambatondrazaka</field>
+            <field name="zip">503</field>
+        </record>
+
+        <record id="ampajrzkv" model="res.city">
+            <field name="name">Amparafaravola</field>
+            <field name="zip">504</field>
+        </record>
+
+        <record id="andilamena" model="res.city">
+            <field name="name">Andilamena</field>
+            <field name="zip">505</field>
+        </record>
+
+        <record id="anosb" model="res.city">
+            <field name="name">Anosibe</field>
+            <field name="zip">506</field>
+        </record>
+
+        <record id="mornga" model="res.city">
+            <field name="name">Moramanga</field>
+            <field name="zip">514</field>
+        </record>
+
+        <record id="fenerants" model="res.city">
+            <field name="name">Fenoarivo Atsinanana</field>
+            <field name="zip">509</field>
+        </record>
+
+        <record id="manananara" model="res.city">
+            <field name="name">Mananara</field>
+            <field name="zip">511</field>
+        </record>
+
+        <record id="maroasetra" model="res.city">
+            <field name="name">Maroansetra</field>
+            <field name="zip">512</field>
+        </record>
+
+        <record id="stmarinsby" model="res.city">
+            <field name="name">Nosy-Boraha (Ste Marie)</field>
+            <field name="zip">515</field>
+        </record>
+
+        <record id="soaneranoiv" model="res.city">
+            <field name="name">Soanierana-Ivongo</field>
+            <field name="zip">516</field>
+        </record>
+
+        <record id="mahanoro" model="res.city">
+            <field name="name">Mahanoro</field>
+            <field name="zip">510</field>
+        </record>
+
+        <record id="maroalambo" model="res.city">
+            <field name="name">Marolambo</field>
+            <field name="zip">513</field>
+        </record>
+
+        <record id="toamasinru" model="res.city">
+            <field name="name">Toamasina Rural</field>
+            <field name="zip">502</field>
+        </record>
+
+        <record id="toamsnurb" model="res.city">
+            <field name="name">Toamasina Urban</field>
+            <field name="zip">501</field>
+        </record>
+
+        <record id="vatomadry" model="res.city">
+            <field name="name">Vatomandry</field>
+            <field name="zip">517</field>
+        </record>
+
+        <record id="ambovbeandr" model="res.city">
+            <field name="name">Ambovombe-Androy</field>
+            <field name="zip">604</field>
+        </record>
+
+        <record id="bekly" model="res.city">
+            <field name="name">Bekily</field>
+            <field name="zip">607</field>
+        </record>
+
+        <record id="ambsrsud" model="res.city">
+            <field name="name">Amboasary Sud</field>
+            <field name="zip">603</field>
+        </record>
+
+        <record id="betkr" model="res.city">
+            <field name="name">Betroka</field>
+            <field name="zip">613</field>
+        </record>
+
+        <record id="taolarn" model="res.city">
+            <field name="name">Taolagnaro</field>
+            <field name="zip">614</field>
+        </record>
+
+        <record id="ampanyh" model="res.city">
+            <field name="name">Ampanihy</field>
+            <field name="zip">605</field>
+        </record>
+
+        <record id="ankzhbsud" model="res.city">
+            <field name="name">Ankazoabo Sud</field>
+            <field name="zip">606</field>
+        </record>
+
+        <record id="benenitr" model="res.city">
+            <field name="name">Benenitra</field>
+            <field name="zip">610</field>
+        </record>
+
+        <record id="beroro" model="res.city">
+            <field name="name">Beroroha</field>
+            <field name="zip">611</field>
+        </record>
+
+        <record id="morommbe" model="res.city">
+            <field name="name">Morombe</field>
+            <field name="zip">618</field>
+        </record>
+
+        <record id="sakara" model="res.city">
+            <field name="name">Sakaraha</field>
+            <field name="zip">620</field>
+        </record>
+
+        <record id="toliarrur" model="res.city">
+            <field name="name">Toliara Rural</field>
+            <field name="zip">602</field>
+        </record>
+
+        <record id="taolarurb" model="res.city">
+            <field name="name">Toliara Urban</field>
+            <field name="zip">601</field>
+        </record>
+
+        <record id="mahnb" model="res.city">
+            <field name="name">Mahabo</field>
+            <field name="zip">615</field>
+        </record>
+
+        <record id="manjaa" model="res.city">
+            <field name="name">Manja</field>
+            <field name="zip">616</field>
+        </record>
+
+        <record id="miandrivaz" model="res.city">
+            <field name="name">Miandrivazo</field>
+            <field name="zip">617</field>
+        </record>
+
+        <record id="morondava" model="res.city">
+            <field name="name">Morondava</field>
+            <field name="zip">619</field>
+        </record>
+
+
+    </data>
+</odoo>

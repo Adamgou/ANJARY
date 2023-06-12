@@ -19,6 +19,7 @@ class AccountMove(models.Model):
     period = fields.Char(compute="_compute_period", store=True)
     quit_payment_ids = fields.Many2many("account.payment", string="Payment done", compute="_compute_payment_done")
     compute_field_reset_draft = fields.Boolean(string="check field 1", compute='get_user_connect')
+    note = fields.Html('Notes')
 
     @api.depends("compute_field_reset_draft","user_id")
     def get_user_connect(self):

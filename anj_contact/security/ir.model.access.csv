@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_anj_contact_anj_contact,anj_contact.anj_contact,model_anj_contact_anj_contact,base.group_user,1,1,1,1
+access_res_city,res.city,model_res_city,,1,1,1,1

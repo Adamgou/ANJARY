@@ -35,11 +35,11 @@ class HrContractInherit(models.Model):
     other_allow = fields.Monetary('Autres ndemnités')
     wage = fields.Monetary('Wage', required=True, tracking=True, help="Employee's monthly gross wage.",
                            compute='_compute_base_salary')
-    seniority_percentage = fields.Float(string="Pourcentage d'ancienneté", compute='_compute_actual_salary')
+    seniority_percent = fields.Float(string="Pourcentage d'ancienneté", tracking=True, compute='_compute_seniority_percentage', store=True)
     actual_salary = fields.Float('Salaire actuel', tracking=True, compute='_compute_actual_salary')
     seniority = fields.Float('Ancienneté en année', tracking=True, compute='_compute_seniority')
 
-    @api.depends('date_start')
+    @api.onchange('date_start')
     def _compute_seniority(self):
         for record in self:
             if record.date_start:
@@ -51,19 +51,19 @@ class HrContractInherit(models.Model):
                     year_difference -= 1
                 record.seniority = year_difference
 
-    @api.depends('seniority', 'base_salary')
+    @api.onchange('seniority',)
+    def _compute_seniority_percentage(self):
+        for rec in self:
+            num_increases = int(rec.seniority // 3)
+            percentage = 0
+            for i in range(num_increases):
+                percentage += 0.05
+            rec.seniority_percent = percentage
+
+    @api.depends('seniority_percent', 'base_salary')
     def _compute_actual_salary(self):
         for rec in self:
-            years_of_service = rec.seniority
-            num_increases = years_of_service // 3
-            num_increases = int(num_increases)
-            percentage = 0
-            salary = rec.base_salary
-            for i in range(num_increases):
-                salary += salary * 0.05  # Add a 5% increase to the salary
-                percentage += 5
-            rec.actual_salary = salary
-            rec.seniority_percentage = percentage
+            rec.actual_salary = rec.base_salary * (1 + rec.seniority_percent)
 
     def _compute_base_salary(self):
         for record in self:

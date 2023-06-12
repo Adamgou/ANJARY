@@ -16,6 +16,7 @@ class ModelName(models.Model):
     )
 
     is_total = fields.Boolean(string="Total", help="Pour faciliter le format du report")
+    is_net = fields.Boolean(string="Is Net?")
 
     def _compute_base(self, localdict):
         self.ensure_one()

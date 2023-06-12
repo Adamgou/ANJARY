@@ -7,6 +7,12 @@
             <field name="arch" type="xml">
                 <!-- find field description and add the field
                      new_field after it -->
+                <xpath expr="//field[@name='city']" position="replace">
+                    <field name="city" placeholder="City" class="o_address_city"
+                           attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}" invisible="1"/>
+                    <field name="city_id" placeholder="Ville" class="o_address_city"
+                           attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                </xpath>
                  <xpath expr="//field[@name='function']" position="after">
                     <field name="nickname" groups="anj_base.group_praxi_anj" />
                 </xpath>
