@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from termios import CINTR
 from odoo import models, fields, api
 
 
