@@ -20,6 +20,15 @@ class AccountMove(models.Model):
     quit_payment_ids = fields.Many2many("account.payment", string="Payment done", compute="_compute_payment_done")
     compute_field_reset_draft = fields.Boolean(string="check field 1", compute='get_user_connect')
     note = fields.Html('Notes')
+    remove_name_pdf = fields.Char(compute='get_sequence_padding')
+
+    def get_sequence_padding(self):
+        self.ensure_one()
+        if self.journal_id.is_customer_journal:
+            if self.name:
+                self.remove_name_pdf = self.name.split('/')[-2] + '/' + self.name.split('/')[-1]
+            else:
+                self.remove_name_pdf = ''
 
     @api.depends("compute_field_reset_draft","user_id")
     def get_user_connect(self):
