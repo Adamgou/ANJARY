@@ -255,7 +255,12 @@
 
             <xpath expr="//span[@t-field='line.price_unit']" position="replace">
                 <!--                <span class="text-nowrap" t-field="line.product_id.tax_string"/>-->
-                <span class="text-nowrap" t-field="line.product_id.price_unit_ht"/>
+                <t t-if="o.company_id.name.lower() == 'jaratrade'">
+                    <span class="text-nowrap" t-field="line.price_unit"/>
+                </t>
+                <t t-else="">
+                    <span class="text-nowrap" t-field="line.product_id.price_unit_ht"/>
+                </t>
             </xpath>
             <!--            HT HT -->
             <xpath expr="//th[@name='th_quantity']" position="replace">
