@@ -258,6 +258,9 @@
                 <t t-if="o.company_id.name.lower() == 'jaratrade'">
                     <span class="text-nowrap" t-field="line.price_unit"/>
                 </t>
+                <t t-elif="o.company_id.name.lower() == 'jara distribution'">
+                    <span class="text-nowrap" t-field="line.price_unit"/>
+                </t>
                 <t t-else="">
                     <span class="text-nowrap" t-field="line.product_id.price_unit_ht"/>
                 </t>
