@@ -19,20 +19,26 @@ class HrPayslipXlsx(models.AbstractModel):
     _inherit = 'report.report_xlsx.abstract'
 
     def generate_xlsx_report(self, workbook, data, lines):
-        employer_bank_account = add_zeros(lines.employer_bank_account.acc_number.replace(' ', ''), 23) if lines.employer_bank_account.acc_number else " "
+        employer_bank_account = add_zeros(lines.employer_bank_account.acc_number.replace(' ', ''),
+                                          23) if lines.employer_bank_account.acc_number else " "
         report_name = 'Salaire' + ' ' + lines.date_start.strftime("%m%y")
         total = 0
         for value in lines.slip_ids:
-            total = total + value.basic_wage
+            net_salary = value.line_ids.filtered(lambda payslip: payslip.salary_rule_id.is_net)[0].total if \
+            value.line_ids.filtered(lambda payslip: payslip.salary_rule_id.is_net)[0].total else 0
+            total = total + net_salary
         sheet = workbook.add_worksheet('OPAVI report')
         sheet.write(0, 0, employer_bank_account)
-        sheet.write(0, 1, add_zeros(str(total).replace('.', ''), 12))
+        sheet.write(0, 1, add_zeros(str(f"{total:.2f}").replace('.', ''), 12))
         # sheet.write(0, 2, '')
         sheet.write(0, 3, report_name)
         for index, value in enumerate(lines.slip_ids):
             employee_bank_account = add_zeros(value.employee_id.bank_account_id.acc_number.replace(' ', ''),
                                               23) if value.employee_id.bank_account_id.acc_number else " "
-            employee_salary = add_zeros(str(value.basic_wage).replace('.', ''), 12)
+            employee_salary = add_zeros(
+                str(f"{value.line_ids.filtered(lambda payslip: payslip.salary_rule_id.is_net)[0].total:.2f}").replace('.', ''),
+                12) if \
+                value.line_ids.filtered(lambda payslip: payslip.salary_rule_id.is_net)[0].total else "0"
             employee_matricule = value.employee_id.matricule if value.employee_id.matricule else " "
             employee_name = value.employee_id.name if value.employee_id.name else " "
             sheet.write(index + 1, 0, employee_bank_account)

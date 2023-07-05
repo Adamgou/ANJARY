@@ -2,7 +2,6 @@
 
 from odoo import models, fields
 
-
 class Hr_employee(models.Model):
     _inherit = 'hr.employee'
     cnaps = fields.Char('CNAPS')
