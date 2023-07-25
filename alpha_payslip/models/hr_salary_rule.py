@@ -1,11 +1,9 @@
 from odoo import fields, models, _, api
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError,ValidationError
 from odoo.tools.safe_eval import safe_eval
-from odoo.tools import float_round, date_utils, convert_file, html2plaintext
-from odoo.tools.float_utils import float_compare
 
 
-class ModelName(models.Model):
+class HrSalaryRule(models.Model):
     _inherit = "hr.salary.rule"
 
     salary_rule_nombre = fields.Text(
