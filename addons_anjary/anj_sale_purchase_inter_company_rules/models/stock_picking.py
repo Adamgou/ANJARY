@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api, _, SUPERUSER_ID
+from odoo import models, fields, _, SUPERUSER_ID
+from odoo.exceptions import UserError
+from odoo.tools import float_compare
 
 
 class StockPickingInherit(models.Model):
@@ -17,12 +19,14 @@ class StockPickingInherit(models.Model):
         res = True
         if self.env.company.rule_type == 'sale_purchase' and self.is_return and self.sale_id and not self.sale_id.auto_generated:
             move_lines = self.move_lines
+            if any(float_compare(move_line.product_uom_qty, move_line.quantity_done, precision_rounding=move_line.product_uom.rounding) != 0 for move_line in move_lines):
+                raise UserError(_("Can't validate return. Please click on 'Copy quantity' button first and try again."))
 
             # TODO: Manage this return process for:
-            #  - multiple purchase.order (purchase_id) linked to sale.order
             #  - multiple stock.picking (po_picking_id) linked to purchase.order
             #  - multiple stock.picking (so_picking_id) linked to sale.order in related company
-            purchase_id = self.sale_id._get_purchase_orders()
+            purchase_id = self.env['purchase.order'].search(
+                [('origin', 'like', self.sale_id.name)], order='id DESC', limit=1)
             po_picking_id = purchase_id.picking_ids.filtered(lambda x: x.state == 'done' and not x.is_return)
             po_sp_return_id = po_picking_id.create_po_sp_return(move_lines)
             po_sp_return_id.validate_picking()
@@ -60,5 +64,11 @@ class StockPickingInherit(models.Model):
         return self.browse(new_picking_id)
 
     def validate_picking(self):
-        self.action_set_quantities_to_reservation()
+        self.action_confirm()
+        if self.state != 'assigned':
+            self.action_assign()
+            if self.state != 'assigned':
+                raise UserError(_("Could not reserve all requested products. Please use the \'Mark as Todo\' button to handle the reservation manually."))
+
+        self.move_lines._set_quantities_to_reservation()
         self.button_validate()
