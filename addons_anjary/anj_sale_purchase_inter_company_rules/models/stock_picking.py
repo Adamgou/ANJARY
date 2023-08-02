@@ -64,11 +64,16 @@ class StockPickingInherit(models.Model):
         return self.browse(new_picking_id)
 
     def validate_picking(self):
-        self.action_confirm()
-        if self.state != 'assigned':
-            self.action_assign()
+        if self.state == 'waiting':
+            # Set done quantity manually
+            for move_line in self.move_lines:
+                move_line._set_quantity_done(move_line.product_uom_qty)
+        else:
+            self.action_confirm()
             if self.state != 'assigned':
-                raise UserError(_("Could not reserve all requested products. Please use the \'Mark as Todo\' button to handle the reservation manually."))
+                self.action_assign()
+                if self.state != 'assigned':
+                    raise UserError(_("Document: %s.\nCould not reserve all requested products.") % self.name)
+            self.move_lines._set_quantities_to_reservation()
 
-        self.move_lines._set_quantities_to_reservation()
         self.button_validate()
