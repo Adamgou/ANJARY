@@ -13,8 +13,9 @@
     "data": [
 
         # views
+        "security/security.xml",
         "views/sale_subscription_views.xml",
-        "security/security.xml"
+
     ],
     "license": "LGPL-3",
 }

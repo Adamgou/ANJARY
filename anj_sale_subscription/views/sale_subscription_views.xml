@@ -33,7 +33,7 @@
     </record>
 
     <record id="sale_subscription_model_sia" model="ir.actions.act_window">
-        <field name="name">Modèle abonement SIA</field>
+        <field name="name">Modèles abonement SIA</field>
         <field name="res_model">sale.subscription</field>
         <field name="view_mode">kanban,tree,form,pivot,graph,cohort,activity</field>
         <field name="context">{
@@ -55,7 +55,7 @@
         </field>
     </record>
 
-    <menuitem action="sale_subscription_model_sia" id="menu_subscription_model" name="Modèle abonement SIA" parent="sale_subscription.menu_sale_subscription" groups="anj_sale_subscription.group_see_subscription_model_sia"/>
+    <menuitem action="sale_subscription_model_sia" id="menu_subscription_model" name="Modèles d'abonement SIA" parent="sale_subscription.menu_sale_subscription" groups="anj_sale_subscription.group_see_subscription_model_sia"/>
 
 
 </odoo>
