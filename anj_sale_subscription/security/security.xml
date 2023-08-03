@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_see_subscription_model_sia" model="res.groups">
+        <field name="name">Modèle d'abonement "MON - Monthly Subscription SIA"</field>
+    </record>
+</odoo>

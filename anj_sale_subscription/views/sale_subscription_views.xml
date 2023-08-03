@@ -32,4 +32,30 @@
         </field>
     </record>
 
+    <record id="sale_subscription_model_sia" model="ir.actions.act_window">
+        <field name="name">Modèle abonement SIA</field>
+        <field name="res_model">sale.subscription</field>
+        <field name="view_mode">kanban,tree,form,pivot,graph,cohort,activity</field>
+        <field name="context">{
+            "search_default_my_subscriptions":0
+            }</field>
+        <field name="domain">[('template_id.name', '=', 'Monthly Subscription SIA')]</field>
+        <field name="search_view_id" eval='False'/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new subscription
+            </p><p>
+            Create subscriptions to manage recurring invoicing and payments. Subscriptions can
+            be time-bounded or not. In case of a limited period, they are flagged as to be renewed
+            one month from the end date.
+        </p><p>
+            Subscriptions can be automatically generated from sales orders in Sales or eCommerce
+            apps. To do so, set a subscription template on your subscription products.
+        </p>
+        </field>
+    </record>
+
+    <menuitem action="sale_subscription_model_sia" id="menu_subscription_model" name="Modèle abonement SIA" parent="sale_subscription.menu_sale_subscription" groups="anj_sale_subscription.group_see_subscription_model_sia"/>
+
+
 </odoo>

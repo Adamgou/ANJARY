@@ -13,7 +13,8 @@
     "data": [
 
         # views
-        "views/sale_subscription_views.xml"
+        "views/sale_subscription_views.xml",
+        "security/security.xml"
     ],
     "license": "LGPL-3",
 }
