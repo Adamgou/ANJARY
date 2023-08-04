@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.rule" id="subscription_template_user_restrict">
+        <field name="name">Restrict subscription template for certain users</field>
+        <field name="model_id" ref="sale_subscription.model_sale_subscription_template"/>
+        <field name="domain_force">['|', ('user_ids','=', False), ('id','in', user.get_allowed_subscription())]</field>
+    </record>
+    <record model="ir.rule" id="sale_subscription_user_restrict">
+        <field name="name">Restrict sale subscription for certain users</field>
+        <field name="model_id" ref="sale_subscription.model_sale_subscription"/>
+        <field name="domain_force">['|', ('template_id','=', False), ('template_id','in', user.get_allowed_subscription())]</field>
+    </record>
+</odoo>
