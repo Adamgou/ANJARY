@@ -1,0 +1,43 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* anj_sale_purchase_inter_company_rules
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-02 13:59+0000\n"
+"PO-Revision-Date: 2023-08-02 13:59+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: anj_sale_purchase_inter_company_rules
+#: model:ir.model.fields,field_description:anj_sale_purchase_inter_company_rules.field_stock_picking__is_return
+msgid "Is Return"
+msgstr "Est un Retour"
+
+#. module: anj_sale_purchase_inter_company_rules
+#: model:ir.model,name:anj_sale_purchase_inter_company_rules.model_stock_return_picking
+msgid "Return Picking"
+msgstr "Picking de retour"
+
+#. module: anj_sale_purchase_inter_company_rules
+#: model:ir.model,name:anj_sale_purchase_inter_company_rules.model_stock_picking
+msgid "Transfer"
+msgstr "Transfert"
+
+#. module: anj_sale_purchase_inter_company_rules
+#: code:addons/anj_sale_purchase_inter_company_rules/models/stock_picking.py:0
+#, python-format
+msgid "Can't validate return. Please click on 'Copy quantity' button first and try again."
+msgstr "Impossible de valider le retour. Veuillez d'abord cliquer sur le bouton 'Copier les quantités' et réessayer."
+
+#. module: anj_sale_purchase_inter_company_rules
+#: code:addons/anj_sale_purchase_inter_company_rules/models/stock_picking.py:0
+#, python-format
+msgid "Document: %s.\nCould not reserve all requested products."
+msgstr "Document: %s.\nImpossible de réserver tous les articles demandés."
