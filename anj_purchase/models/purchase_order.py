@@ -81,7 +81,11 @@ class PurchaseOrder(models.Model):
                 order.message_subscribe([order.partner_id.id])
             if order.picking_ids:
                 for order_picking in order.picking_ids:
-                    order_picking.button_validate()
+                    if order_picking.immediate_transfer is False and order_picking.show_validate:
+                        order_picking.action_set_quantities_to_reservation()
+                        order_picking.button_validate()
+                    else:
+                        order_picking.button_validate()
         # self.env['stock.picking'].browse(self.picking_ids.id).button_validate()
 
         return True
