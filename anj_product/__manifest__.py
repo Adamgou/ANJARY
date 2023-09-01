@@ -27,7 +27,7 @@ Pricelists preferences by product and/or partners.
 Print product labels with barcode.
     """,
     'data': [
-        'views/product_template_views.xml'
+        # 'views/product_template_views.xml'
     ],
     'installable': True,
     'auto_install': False,

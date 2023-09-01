@@ -29,6 +29,7 @@
         'views/templates.xml',
         'views/company.xml',
         'views/res_users.xml',
+        'views/res_partner_views.xml',
         # group
         'views/groups/groups_anj.xml',
         # security

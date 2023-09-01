@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_partner_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.form.anj._inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//h1" position="after">
+                    <group>
+                        <field name="is_product_supplier" string="Fournisseur par defaut de produit"/>
+                        <field name="pourcent_price_product" string="Pourcentage du prix de produit" attrs="{'invisible': [('is_product_supplier', '=', False)]}" widget="percentage"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
