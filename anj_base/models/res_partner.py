@@ -25,6 +25,16 @@ class Partner(models.Model):
 
     is_product_supplier = fields.Boolean()
     pourcent_price_product = fields.Float()
+    default_product_supplier = fields.Many2one('res.partner')
+
+    @api.depends('default_product_supplier')
+    def get_pourcent_price_product(self):
+        for partner in self:
+            if partner.default_product_supplier:
+                partner.is_product_supplier = True
+            else:
+                partner.is_product_supplier = False
+
 
 
 

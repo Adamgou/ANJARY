@@ -16,14 +16,19 @@ class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
     def _get_default_values_vendor(self):
-        default_values = [(0, 0, {
-            'name': self.env['res.partner'].search([('is_product_supplier', '=', True)], limit=1),
-        })]
+        default_values = []
+        if self.env.company.partner_id.default_product_supplier:
+            default_values = [(0, 0, {
+                'name': self.env['res.partner'].search([('id', '=', self.env.company.partner_id.default_product_supplier.id)], limit=1),
+            })]
         return default_values
 
     seller_ids = fields.One2many('product.supplierinfo', 'product_tmpl_id', 'Vendors', depends_context=('company',), help="Define vendor pricelists.", default=lambda self: self._get_default_values_vendor())
 
-
+    @api.onchange('list_price')
+    def _change_seller_ids_price(self):
+        if self.env.company.partner_id.default_product_supplier:
+            self.seller_ids.price = (self.list_price * self.env.company.partner_id.pourcent_price_product)/100
 
 
 
