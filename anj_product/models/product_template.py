@@ -44,7 +44,7 @@ class ProductTemplate(models.Model):
         templates = super(ProductTemplate, self).create(vals_list)
         for templates in templates:
             if templates.company_ids.filtered(lambda c: c.partner_id.default_product_supplier):
-            
+
                 self.env['product.supplierinfo'].sudo().create({
                     'product_tmpl_id': templates.id,
                     'name': templates.company_ids.filtered(lambda c: c.partner_id.default_product_supplier).partner_id.default_product_supplier.id,
