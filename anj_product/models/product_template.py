@@ -44,11 +44,7 @@ class ProductTemplate(models.Model):
         templates = super(ProductTemplate, self).create(vals_list)
         for templates in templates:
             if templates.company_ids.filtered(lambda c: c.partner_id.default_product_supplier):
-                # templates.seller_ids = [(0, 0, {
-                #     'name': templates.company_ids.filtered(lambda c: c.partner_id.default_product_supplier).partner_id.default_product_supplier.id,
-                #     'price': templates.list_price * templates.company_ids.filtered(lambda c: c.partner_id.default_product_supplier).partner_id.pourcent_price_product,
-                #     'company_id': templates.company_ids.filtered(lambda c: c.partner_id.default_product_supplier).id
-                #     })]
+            
                 self.env['product.supplierinfo'].sudo().create({
                     'product_tmpl_id': templates.id,
                     'name': templates.company_ids.filtered(lambda c: c.partner_id.default_product_supplier).partner_id.default_product_supplier.id,
@@ -59,17 +55,24 @@ class ProductTemplate(models.Model):
         return templates
 
 
-    # def write(self, vals):
-    #     templates = super(ProductTemplate, self).write(vals)
-    #
-    #     for templates in self:
-    #         if templates.company_ids.filtered(lambda c: c.partner_id.default_product_supplier):
-    #
-    #             self.env['product.supplierinfo'].sudo().create({
-    #                 'product_tmpl_id': templates.id,
-    #                 'name': templates.company_ids.filtered(lambda c: c.partner_id.default_product_supplier).partner_id.default_product_supplier.id,
-    #                 'price': templates.list_price * templates.company_ids.filtered(lambda c: c.partner_id.default_product_supplier).partner_id.pourcent_price_product,
-    #                 'company_id': templates.company_ids.filtered(lambda c: c.partner_id.default_product_supplier).id
-    #             })
-    #
-    #     return templates
+    def write(self, vals):
+        templates = super(ProductTemplate, self).write(vals)
+
+        for templates in self:
+            if templates.company_ids.filtered(lambda c: c.partner_id.default_product_supplier):
+                if self.env['product.supplierinfo'].sudo().search([('product_tmpl_id', '=', templates.id), ('name', '=', templates.company_ids.filtered(lambda c: c.partner_id.default_product_supplier).partner_id.default_product_supplier.id), ('company_id', '=', templates.company_ids.filtered(lambda c: c.partner_id.default_product_supplier).id)]):
+                    self.env['product.supplierinfo'].sudo().search([('product_tmpl_id', '=', templates.id), ('name', '=', templates.company_ids.filtered(lambda c: c.partner_id.default_product_supplier).partner_id.default_product_supplier.id), ('company_id', '=', templates.company_ids.filtered(lambda c: c.partner_id.default_product_supplier).id)]).sudo().write({
+                        'product_tmpl_id': templates.id,
+                        'name': templates.company_ids.filtered(lambda c: c.partner_id.default_product_supplier).partner_id.default_product_supplier.id,
+                        'price': templates.list_price * templates.company_ids.filtered(lambda c: c.partner_id.default_product_supplier).partner_id.pourcent_price_product,
+                        'company_id': templates.company_ids.filtered(lambda c: c.partner_id.default_product_supplier).id
+                    })
+                else:
+                    self.env['product.supplierinfo'].sudo().create({
+                        'product_tmpl_id': templates.id,
+                        'name': templates.company_ids.filtered(lambda c: c.partner_id.default_product_supplier).partner_id.default_product_supplier.id,
+                        'price': templates.list_price * templates.company_ids.filtered(lambda c: c.partner_id.default_product_supplier).partner_id.pourcent_price_product,
+                        'company_id': templates.company_ids.filtered(lambda c: c.partner_id.default_product_supplier).id
+                    })
+
+        return templates
