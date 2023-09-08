@@ -322,6 +322,16 @@
                 <attribute name="t-att-style"
                            add="('border: 1px solid black;')"/>
             </xpath>-->
+            <xpath expr="//div[hasclass('page')]//table[@name='invoice_line_table']" position="attributes">
+<!--                <t t-if="o.company_id.name == 'JARA DISTRIBUTION'">-->
+<!--                    <th name="th_pu_remise" t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else pass }}">-->
+<!--                        <span>Pu Remisé</span>-->
+<!--                    </th>-->
+<!--                </t>-->
+                <attribute name="t-attf-style">
+                    {{'font-size: 14px;' if o.company_id.name == 'JARATRADE' else pass}}
+                </attribute>
+            </xpath>
             <xpath expr="//td[@name='account_invoice_line_name']" position="attributes">
                 <attribute name="t-att-style"
                            add="('border: 1px solid black;font-size: 13px;')"/>
@@ -351,7 +361,7 @@
                            add="('border: 1px solid black;')"/>
             </xpath>-->
             <xpath expr="//td[@name='account_invoice_line_name']" position="before">
-                <td style="border: 1px solid black;font-size: 14px;" t-if="not (o.company_id.name.startswith('jara dist') or o.company_id.name.lower() == 'societe immobiliere anjary')" name="account_invoice_line_ref"><span t-field="line.product_id.default_code"/></td>
+                <td style="border: 1px solid black;font-size: 13px;" t-if="not (o.company_id.name.startswith('jara dist') or o.company_id.name.lower() == 'societe immobiliere anjary')" name="account_invoice_line_ref"><span t-field="line.product_id.default_code"/></td>
             </xpath>
             <xpath expr="//th[@name='th_description']" position="replace">
                 <th style="border: 1px solid black;" name="th_description" class="text-center"><span t-if="not (o.company_id.name.startswith('jara dist') or o.company_id.name.lower() == 'societe immobiliere anjary')">Désignation</span><span t-else="">Description</span></th>
@@ -476,25 +486,25 @@
                             <t t-else="">
                                 <table class="table table-sm" style="border: 1px solid black;">
                                     <t t-if="o.company_id.name.lower() == 'jaratrade'">
-                                        <tr>
+                                        <tr style="font-size: 13px;">
                                             <td style="border: 1px solid black;">Total HT</td>
                                             <td style="border: 1px solid black;background-color: none; text-align: right">
                                                 <t t-esc="o.amount_untaxed" t-options="{'widget': 'float', 'precision': 2}"/>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr style="font-size: 13px;">
                                             <td style="border: 1px solid black;">Total TVA</td>
                                             <td style="background-color: none; text-align: right; border: 1px solid black;">
                                                 <t t-esc="o.amount_total - o.amount_untaxed" t-options="{'widget': 'float', 'precision': 2}"/>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr style="font-size: 13px;">
                                             <td style="border: 1px solid black;">Total TTC</td>
                                             <td style="background-color: none;  border: 1px solid black;text-align: right;">
                                                 <t t-esc="o.amount_total" t-options="{'widget': 'float', 'precision': 2}"/>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr style="font-size: 13px;">
                                             <td style="border: 1px solid black;font-weight: bold;">Net à payer Ar</td>
                                             <td style="border: 1px solid black;background-color: none; text-align: right;font-weight: bold;">
                                                 <t t-esc="o.amount_total" t-options="{'widget': 'float', 'precision': 2}"/>

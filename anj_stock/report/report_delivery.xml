@@ -73,7 +73,7 @@
 
             <xpath expr="//table[@name='stock_move_table']" position="replace">
                 <t t-set="total" t-value="0"/>
-                <table class="table table-sm" style="border: 1px solid black;">
+                <table class="table table-sm" style="border: 1px solid black;font-size: 14px;">
                     <thead>
                         <tr>
                             <th name="th_sm_product" class="text-center" style="border: 1px solid black;">Ref</th>
@@ -91,10 +91,10 @@
                             <td style="text-align: center;border: 1px solid black;">
                                 <span t-field="move.product_id.default_code"/>
                             </td>
-                            <td style="text-align: center;border: 1px solid black;">
+                            <td style="border: 1px solid black;">
                                 <span t-field="move.product_id.name"/>
                             </td>
-                            <td style="text-align: center;border: 1px solid black;">
+                            <td style="border: 1px solid black;">
                                 <span t-field="move.quantity_done"/>
                                 <span t-field="move.product_uom"/>
                             </td>
@@ -118,7 +118,7 @@
                 <div class="clearfix">
                     <div id="total" class="row" name="total">
                         <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
-                            <table class="table table-sm" style="border: 1px solid black;">
+                            <table class="table table-sm" style="border: 1px solid black;font-size: 14px;">
                                 <tr style="border: 1px solid black;">
                                     <td style="border: 1px solid black;">TOTAL</td>
                                     <td style="background-color: none; text-align: left;border: 1px solid black;">
