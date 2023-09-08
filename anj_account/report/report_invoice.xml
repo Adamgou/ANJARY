@@ -464,7 +464,7 @@
                                     </t>
                                     <t t-if="len(payments_vals) > 0">
                                         <tr class="border-black">
-                                            <td style="border: 1px solid black;"><strong>Montant dû</strong></td>
+                                            <td style="border: 1px solid black;"><strong style="color:white;">Montant dû</strong></td>
                                             <td style="border: 1px solid black;" class="text-right">
                                                 <span t-field="o.amount_residual"/>
                                             </td>
@@ -623,6 +623,27 @@
                         <span t-if="company.company_details" style="font-size:5px!important;" t-field="company.company_details"></span>
                     </t>
                 </div>
+            </xpath>
+            <xpath expr="//div[contains(@t-attf-class, 'footer o_boxed_footer')]" position="replace">
+
+                <div t-attf-class="footer o_boxed_footer o_company_#{company.id}_layout">
+
+                    <t t-if="o.journal_id.no_footer">
+                        <div>
+
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <div class="text-center">
+                            <span t-esc="o.journal_id.no_footer" />
+                            <div t-field="company.report_footer"/>
+                            <div t-if="report_type == 'pdf'">
+                                Page: <span class="page"/> / <span class="topage"/>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+
             </xpath>
 <!--            <xpath expr="//div[@t-att-style='report_header_style']" position="attributes">-->
 <!--                <attribute name="t-att-style" add="(('margin-bottom:100px;') if o.company_id.name.lower()=='societe immobiliere anjary' else '')"/>-->

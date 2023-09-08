@@ -7,3 +7,4 @@ class AccountJournal(models.Model):
 
     no_header = fields.Boolean(default=False)
     is_customer_journal = fields.Boolean(default=False)
+    no_footer = fields.Boolean(default=False)

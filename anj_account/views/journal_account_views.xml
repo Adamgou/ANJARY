@@ -9,6 +9,7 @@
             <field name="type" position="after">
                 <field name="no_header" string="Pas d'entête"/>
                 <field name="is_customer_journal" string="Pas de nom de facture dans le pdf"/>
+                <field name="no_footer" string="Pas de pied de page"/>
             </field>
         </field>
     </record>
