@@ -15,7 +15,7 @@ from lxml import etree
 from random import randint
 from werkzeug import urls
 
-from odoo import api, fields, models, tools, SUPERUSER_ID, _, Command
+from odoo import api, fields, models, tools, SUPERUSER_ID, _, Command, exceptions
 from odoo.osv.expression import get_unaccent_wrapper
 from odoo.exceptions import RedirectWarning, UserError, ValidationError
 
@@ -35,6 +35,11 @@ class Partner(models.Model):
             else:
                 partner.is_product_supplier = False
 
+    @api.constrains('is_product_supplier')
+    def checked_is_product_supplier(self):
+        checked_is_product_supplier = self.search([('id', '!=', self.id), ('is_product_supplier', '=', True)], limit=1)
+        if self.is_product_supplier and checked_is_product_supplier:
+            raise exceptions.ValidationError(_('Un contact à déjàt un fournisseur par défaut'))
 
 
 

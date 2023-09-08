@@ -8,9 +8,9 @@
             <field name="arch" type="xml">
                 <xpath expr="//h1" position="after">
                     <group>
-                        <field name="is_product_supplier" invisible="1"/>
-                        <field name="default_product_supplier" string="Fournisseur par defaut de produit"/>
-                        <field name="pourcent_price_product" string="Pourcentage du prix de produit"  widget="percentage"/>
+                        <field name="is_product_supplier" string="Peut avoir un fournisseur par défaut"/>
+                        <field name="default_product_supplier" string="Fournisseur par defaut de produit" attrs="{'invisible': [('is_product_supplier', '=', False)]}"/>
+                        <field name="pourcent_price_product" string="Pourcentage du prix de produit" attrs="{'invisible': [('is_product_supplier', '=', False)]}"  widget="percentage"/>
                     </group>
                 </xpath>
             </field>
