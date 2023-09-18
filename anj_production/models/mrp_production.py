@@ -110,20 +110,55 @@ class MrpProduction(models.Model):
     #                 b_l_ids.product_qty = stock_m.filtered(lambda r: r.product_id.id == b_l_ids.product_id.id).quantity_done/self.product_qty
     #     return action
 
+    # def button_mark_done(self):
+    #     res = super().button_mark_done()
+    #
+    #     sum_qt_pr = 0
+    #     pid = 0
+    #     booml_dict = {}
+    #     for mv_row in self.move_raw_ids:
+    #         if pid == mv_row.product_id.id:
+    #             sum_qt_pr += mv_row.quantity_done
+    #         else:
+    #             sum_qt_pr = mv_row.quantity_done
+    #         if mv_row.bom_line_id:
+    #             booml_dict[mv_row.bom_line_id] = sum_qt_pr
+    #         pid = mv_row.product_id.id
+    #
+    #
+    #     for bl_ids in self.move_raw_ids.filtered(lambda m: m.bom_line_id):
+    #         if bl_ids:
+    #             if self.qty_producing != 0:
+    #                 self.env['mrp.bom.line'].browse(bl_ids.bom_line_id.id).write({'product_qty': bl_ids.quantity_done/self.qty_producing})
+    #
+    #                 booml_dict
+    #             else:
+    #                 self.env['mrp.bom.line'].browse(bl_ids.bom_line_id.id).write({'product_qty': 0.00})
+    #
+    #     return res
+
+
     def button_mark_done(self):
         res = super().button_mark_done()
-        # bom_lin_ids = self.bom_id.bom_line_ids
-        # for b_l_ids in bom_lin_ids:
-        #
-        #
-        #     if self.move_raw_ids.filtered(lambda r: r.product_id.id == b_l_ids.product_id.id):
-        #         for stock_m in self.move_raw_ids:
-        #             b_l_ids.product_qty = stock_m.filtered(lambda r: r.product_id.id == b_l_ids.product_id.id).quantity_done/self.product_qty
-        for bl_ids in self.move_raw_ids.filtered(lambda m: m.bom_line_id):
-            if bl_ids:
-                if self.qty_producing != 0:
-                    self.env['mrp.bom.line'].browse(bl_ids.bom_line_id.id).write({'product_qty': bl_ids.quantity_done/self.qty_producing})
-                else:
-                    self.env['mrp.bom.line'].browse(bl_ids.bom_line_id.id).write({'product_qty': 0.00})
-        return res
 
+        quantites_par_article = {}
+
+        for ligne in self.move_raw_ids:
+            article = ligne.product_id.id
+            quantite = ligne.quantity_done
+
+            if article in quantites_par_article:
+                quantites_par_article[article] += quantite
+            else:
+                quantites_par_article[article] = quantite
+
+        for products, qty in quantites_par_article.items():
+            for bl_ids in self.move_raw_ids.filtered(lambda m: m.bom_line_id):
+                if bl_ids:
+                    if self.qty_producing != 0:
+                        self.env['mrp.bom.line'].search([('id', '=', bl_ids.bom_line_id.id), ('product_id', '=', products)]).write({'product_qty': qty/self.qty_producing})
+                        # self.env['mrp.bom.line'].browse(bl_ids.bom_line_id.id).write({'product_qty': bl_ids.quantity_done/self.qty_producing})
+                    else:
+                        self.env['mrp.bom.line'].search([('id', '=', bl_ids.bom_line_id.id), ('product_id', '=', products)]).write({'product_qty': 0.00})
+
+        return res
