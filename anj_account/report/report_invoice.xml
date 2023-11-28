@@ -665,9 +665,9 @@
 <!--                    <p t-if="o.company_id.cif">CIF: <span t-esc="o.company_id.cif"></span></p>-->
 <!--                </div>-->
 <!--            </xpath>-->
-            <xpath expr="//div[@class='address row']" position="attributes">
+            <!--<xpath expr="//div[@class='address row']" position="attributes">
                 <attribute name="style">margin-top: -40px;</attribute>
-            </xpath>
+            </xpath>-->
         </template>
 
         <template id="report_payment_receipt_document_inherit" inherit_id="account.report_payment_receipt_document">
