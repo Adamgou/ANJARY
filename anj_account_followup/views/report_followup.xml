@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--<template id="template_followup_report" inherit_id="account_followup.template_followup_report">
+            <xpath expr="//div[@class='o_account_reports_summary']" position="replace">
+                <div style="height: 50%;background-color:black;">mlsdf</div>
+            </xpath>
+        </template>-->
+<!--        <template id="main_table_header">-->
+    </data>
+</odoo>
