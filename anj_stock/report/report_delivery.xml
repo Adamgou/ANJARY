@@ -175,12 +175,13 @@
                     <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
                         <div class="row">
                             <div class="col-6" name="company_address">
-                                <p style="margin-bottom: 0;font-weight: bold;">SOCIETE <span t-esc="o.company_id.name"></span> <br/></p>
-                                <p style="margin-bottom: 0;"><span t-esc="o.company_id.street"></span> <br/></p>
-                                <p style="margin-bottom: 0;"><span t-esc="o.company_id.street2" style="text-transform: uppercase;"></span><br/></p>
-                                <p style="margin-bottom: 0;" t-if="o.company_id.nif">NIF: <span t-esc="o.company_id.nif"></span></p>
-                                <p style="margin-bottom: 0;" t-if="o.company_id.stat">STAT: <span t-esc="o.company_id.stat"></span></p>
-                                <p style="margin-bottom: 0;" t-if="o.company_id.cif">CIF: <span t-esc="o.company_id.cif"></span></p>
+<!--                                <t t-set="company" t-value="docs.company_id if len(docs) == 1 else docs.env.company"/>-->
+                                <p style="margin-bottom: 0;font-weight: bold;">SOCIETE <span t-esc="company.name"></span> <br/></p>
+                                <p style="margin-bottom: 0;"><span t-esc="company.street"></span> <br/></p>
+                                <p style="margin-bottom: 0;"><span t-esc="company.street2" style="text-transform: uppercase;"></span><br/></p>
+                                <p style="margin-bottom: 0;" t-if="company.nif">NIF: <span t-esc="company.nif"></span></p>
+                                <p style="margin-bottom: 0;" t-if="company.stat">STAT: <span t-esc="company.stat"></span></p>
+                                <p style="margin-bottom: 0;" t-if="company.cif">CIF: <span t-esc="company.cif"></span></p>
                             </div>
                         </div>
                     </div>

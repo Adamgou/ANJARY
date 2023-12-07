@@ -627,20 +627,21 @@
             <xpath expr="//div[contains(@t-attf-class, 'footer o_boxed_footer')]" position="replace">
 
                 <div t-attf-class="footer o_boxed_footer o_company_#{company.id}_layout">
+                    <t t-if="o">
+                        <t t-if="o.journal_id.no_footer">
+                            <div>
 
-                    <t t-if="o.journal_id.no_footer">
-                        <div>
-
-                        </div>
-                    </t>
-                    <t t-else="">
-                        <div class="text-center">
-                            <span t-esc="o.journal_id.no_footer" />
-                            <div t-field="company.report_footer"/>
-                            <div t-if="report_type == 'pdf'">
-                                Page: <span class="page"/> / <span class="topage"/>
                             </div>
-                        </div>
+                        </t>
+                        <t t-else="">
+                            <div class="text-center">
+                                <span t-esc="o.journal_id.no_footer" />
+                                <div t-field="company.report_footer"/>
+                                <div t-if="report_type == 'pdf'">
+                                    Page: <span class="page"/> / <span class="topage"/>
+                                </div>
+                            </div>
+                        </t>
                     </t>
                 </div>
 
