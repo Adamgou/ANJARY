@@ -177,8 +177,8 @@
                             <div class="col-6" name="company_address">
 <!--                                <t t-set="company" t-value="docs.company_id if len(docs) == 1 else docs.env.company"/>-->
                                 <p style="margin-bottom: 0;font-weight: bold;">SOCIETE <span t-esc="company.name"></span> <br/></p>
-                                <p style="margin-bottom: 0;"><span t-esc="company.street"></span> <br/></p>
-                                <p style="margin-bottom: 0;"><span t-esc="company.street2" style="text-transform: uppercase;"></span><br/></p>
+                                <p style="margin-bottom: 0;"><span t-if="company.street" t-esc="company.street"></span> <br/></p>
+                                <p style="margin-bottom: 0;"><span t-if="company.street2" t-esc="company.street2" style="text-transform: uppercase;"></span><br/></p>
                                 <p style="margin-bottom: 0;" t-if="company.nif">NIF: <span t-esc="company.nif"></span></p>
                                 <p style="margin-bottom: 0;" t-if="company.stat">STAT: <span t-esc="company.stat"></span></p>
                                 <p style="margin-bottom: 0;" t-if="company.cif">CIF: <span t-esc="company.cif"></span></p>
