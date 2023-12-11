@@ -7,5 +7,27 @@
             </xpath>
         </template>-->
 <!--        <template id="main_table_header">-->
+        <template id="followup_filter_info_template_inherit_anj" inherit_id="account_followup.followup_filter_info_template">
+            <xpath expr="//div[@class='print_only']" position="replace">
+
+                <div t-if='context.get("mail") != True' class="print_only" style='margin-bottom: 20px;margin-top:80px;'>
+                    <t t-if="invoice_address_id" t-set="partner_addr" t-value="invoice_address_id"></t>
+                    <t t-else="" t-set="partner_addr" t-value="partner"></t>
+                    <t t-if="context.get('snailmail_layout')" t-set="contact_widget_fields" t-value="['address', 'name']"/>
+                    <t t-else="" t-set="contact_widget_fields" t-value="['address', 'name', 'phone']"/>
+                    <div class="row fallback_header">
+                        <div class="col-5 offset-7">
+                            <div t-field="partner_addr.self"
+                                 t-options='{"widget": "contact", "fields": contact_widget_fields, "no_marker": True}'/>
+                            <span t-field="partner_addr.vat"/>
+                        </div>
+                    </div>
+                    <p style="margin-top: 35px;">
+                        Date: <span t-esc="today" t-options="{'widget': 'date'}"/><br/>
+                        <t t-if='partner_addr.ref'>Customer ref: <span t-field="partner_addr.ref"/></t>
+                    </p>
+                </div>
+            </xpath>
+        </template>
     </data>
 </odoo>
