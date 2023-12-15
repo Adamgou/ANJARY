@@ -7,6 +7,11 @@
             </xpath>
         </template>-->
 <!--        <template id="main_table_header">-->
+        <template id="report_followup_print_all_inherit_anj" inherit_id="account_followup.report_followup_print_all">
+            <xpath expr="//t[@t-call='web.external_layout']/t[1]" position="before">
+                <t t-set="no_header" t-if="partner.invoice_ids[0].journal_id.no_header and company.name.lower() == 'societe immobiliere anjary'">True</t>
+            </xpath>
+        </template>
         <template id="followup_filter_info_template_inherit_anj" inherit_id="account_followup.followup_filter_info_template">
             <xpath expr="//div[@class='print_only']" position="replace">
 
