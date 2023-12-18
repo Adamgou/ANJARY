@@ -34,62 +34,88 @@
                             <tr>
                                 <td class="tgv-0pky" colspan="2"
                                     style="text-align:center; vertical-align:middle;font-weight:bold; font-size:21px;">
-                                    BULLETIN DE PAIE
-
+                                    <div>BULLETIN DE PAIE</div>
+                                    <img t-att-src="image_data_uri(o.company_id.logo)" align="left" style="max-height: 100px; float:center; max-width: 100px;"/>
                                 </td>
-                                <td colspan="6">
-                                    <table style="width:100%">
-                                        <tr>
-                                            <td>
-                                                <div class="div1">
-                                                    <span t-esc="o.company_id.name"/>
-                                                    <!--<br/>
-                                                    <span t-esc="o.company_id.street + ', '+ o.company_id.zip + ' - ' + o.company_id.city"/>-->
-                                                    <br/>
-                                                    <t t-if="o.company_id.street and o.company_id.zip and o.company_id.city">
-                                                        <span t-esc="o.company_id.street + ', '+ o.company_id.zip + ' - ' + o.company_id.city"/>
-                                                    </t>
-
-                                                    <t t-if="o.company_id.phone">
-                                                        <span>Tel:</span>
-                                                        <span t-esc="o.company_id.phone"/>
-                                                    </t>
-                                                    <t t-if="o.company_id.phone and o.company_id.mobile">
-                                                        <span>/</span>
-                                                    </t>
-                                                    <t t-if="o.company_id.mobile">
-                                                        <span t-esc="o.company_id.mobile"/>
-                                                    </t>
+                                <td colspan="4" style="text-align:left; vertical-align:top; line-height: 1.5;">
+                                    <div>
+                                        <span t-esc="o.company_id.name" style="font-weight:bold; font-size:16px;"/>
+                                        <!--<br/>
+                                        <span t-esc="o.company_id.street + ', '+ o.company_id.zip + ' - ' + o.company_id.city"/>-->
+                                        <br/>
+                                        <t t-if="o.company_id.street and o.company_id.zip and o.company_id.city">
+                                            <span t-esc="o.company_id.street + ', '+ o.company_id.zip + ' - ' + o.company_id.city"/>
+                                        </t>
+                                        <br/>
+                                        <t t-if="o.company_id.phone">
+                                            <span>Tel:</span>
+                                            <span t-esc="o.company_id.phone"/>
+                                        </t>
+                                        <t t-if="o.company_id.phone and o.company_id.mobile">
+                                            <span>/</span>
+                                        </t>
+                                        <t t-if="o.company_id.mobile">
+                                            <span t-esc="o.company_id.mobile"/>
+                                        </t>
 
 
-                                                    <t t-if="o.company_id.email">
-                                                        <br/>
-                                                        <span>Mail:</span>
-                                                        <span t-esc="o.company_id.email"/>
-                                                    </t>
-                                                    <br/>
-                                                    <t t-if="o.company_id.nif">
-                                                        <span>NIF :</span>
-                                                        <span t-esc="o.company_id.nif"/>
-                                                    </t>
-                                                    <br/>
-                                                    <t t-if="o.company_id.stat">
-                                                        <span>STAT :</span>
-                                                        <span t-esc="o.company_id.stat"/>
-                                                    </t>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="div2">
-                                                    <img t-att-src="image_data_uri(o.company_id.logo)" align="left"
-                                                         style="max-height: 100px; float:right; max-width: 200px;"/>
-                                                </div>
-                                            </td>
-                                        </tr>
-
+                                        <t t-if="o.company_id.email">
+                                            <br/>
+                                            <span>Mail:</span>
+                                            <span t-esc="o.company_id.email"/>
+                                        </t>
+                                        <br/>
+                                        <span t-esc="o.company_id.nif"/>
+                                        <t t-if="o.company_id.nif">
+                                            <span>NIF :</span>
+                                            <span t-esc="o.company_id.nif"/>
+                                        </t>
+                                        <br/>
+                                        <t t-if="o.company_id.stat">
+                                            <span>STAT :</span>
+                                            <span t-esc="o.company_id.stat"/>
+                                        </t>
+                                    </div>
+                                </td>
+                                <td colspan="2" style="text-align:left; vertical-align:top; line-height: 1.5;">
+                                    <table style="width:100%; border-collapse:collapse; border-spacing:0;heigth:100%;">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <span>SB :</span>
+                                                </td>
+                                                <td style="text-align:right;">
+                                                    <span t-esc="'{0:,.2f}'.format(float(o.contract_id.base_salary)).replace(',', ' ')"/>
+                                                    <span t-esc="o.currency_id.symbol"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span>Taux d'accienneté :</span>
+                                                </td>
+                                                <td style="text-align:right;">
+                                                    <span t-esc="'{0:,.2f} %'.format(float(o.contract_id.seniority_percent)).replace(',', ' ')"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span>SB + Ancienneté :</span>
+                                                </td>
+                                                <td style="text-align:right;">
+                                                    <span t-esc="'{0:,.2f}'.format(float(o.contract_id.actual_salary)).replace(',', ' ')"/>
+                                                    <span t-esc="o.currency_id.symbol"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span>HT :</span>
+                                                </td>
+                                                <td style="text-align:right;">
+                                                    <span t-esc="o.get_spent_monthly_hours(o.contract_id.resource_calendar_id.full_time_required_hours)"/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
                                     </table>
-
-
                                 </td>
                             </tr>
                             <tr>
@@ -151,7 +177,7 @@
                                 <td class="tgv-0pky" colspan="6" rowspan="3">
                                     <span>Nom et prénom: </span> <span t-esc="o.employee_id.name"/> <br/>
                                     <span>Adresse: </span> <span t-esc="o.employee_id.address_home_id.street"/> <br/>
-                                    <span>N°CIN: </span> <span t-esc="o.employee_id.identification_id"/> <br/>
+                                    <span>N°CIN: </span> <span t-esc="o.employee_id.cin"/> <br/>
                                     <div style="width:100%; overflow: hidden;">
                                         <div style="float: left;">
                                             <span>Poste: </span> <span t-esc="o.employee_id.job_id.name"/>
@@ -281,26 +307,12 @@
                                         <div style="margin-left: 250px;">
                                             <span>Salaire de base : </span>
                                             <!-- PUT:set number of hour on contract -->
-                                            <span t-esc="'{0:,.2f}'.format(float(o.contract_id.base_salary)).replace(',', ' ')"
+                                            <span t-esc="'{0:,.2f}'.format(float(o.contract_id.actual_salary)).replace(',', ' ')"/>
                                             />
                                             <span t-esc="o.currency_id.symbol"
                                             />
 
                                         </div>
-                                    </div>
-                                    <div>
-                                        <span>
-                                            Nombre de jours travaillé :
-                                        </span>
-                                        <!-- PUT:set number of day worked -->
-                                        <span t-foreach="o.worked_days_line_ids" t-as="worked_days">
-                                            <!-- <span t-esc="worked_days.code" /> -->
-                                            <t t-if="worked_days.code == 'WORK100'">
-
-                                                <span t-esc="worked_days.number_of_days"/>
-                                            </t>
-                                        </span>
-
                                     </div>
                                 </td>
                             </tr>

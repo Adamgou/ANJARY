@@ -19,7 +19,7 @@ class HrPayslipInheritHeureSup(models.Model):
     _inherit = "hr.payslip"
 
     nombre_de_semaine = fields.Selection(
-        [("quatre", "4"), ("cinq", "5")], string="Nombre de semaine", default="quatre"
+        [("quatre", "4"), ("cinq", "5")], string="Nombre de semaine", default="cinq"
     )
 
     # Liste de touts le collonnes du tableaux
