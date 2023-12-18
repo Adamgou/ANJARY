@@ -308,7 +308,6 @@
                                             <span>Salaire de base : </span>
                                             <!-- PUT:set number of hour on contract -->
                                             <span t-esc="'{0:,.2f}'.format(float(o.contract_id.actual_salary)).replace(',', ' ')"/>
-                                            />
                                             <span t-esc="o.currency_id.symbol"
                                             />
 
