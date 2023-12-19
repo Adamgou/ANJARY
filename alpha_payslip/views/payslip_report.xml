@@ -91,7 +91,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <span>Taux d'accienneté :</span>
+                                                    <span>Taux d'ancienneté :</span>
                                                 </td>
                                                 <td style="text-align:right;">
                                                     <span t-esc="'{0:,.2f} %'.format(float(o.contract_id.seniority_percent)).replace(',', ' ')"/>
