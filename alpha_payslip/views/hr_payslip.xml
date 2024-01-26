@@ -15,7 +15,12 @@
                     <field name="nombre" />
                     <field name="base" />
                 </xpath>
-
+                <xpath expr="//notebook/page[@name='salary_computation']/field[@name='line_ids']/tree/field[@name='quantity']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//notebook/page[@name='salary_computation']/field[@name='line_ids']/tree/field[@name='rate']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
             </field>
         </record>
     </data>
