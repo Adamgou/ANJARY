@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 15.0+e-20221103\n"
+"Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-06 08:08+0000\n"
-"PO-Revision-Date: 2023-04-06 08:08+0000\n"
+"POT-Creation-Date: 2024-02-06 06:46+0000\n"
+"PO-Revision-Date: 2024-02-06 06:46+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,8 +17,8 @@ msgstr ""
 
 #. module: anj_stock
 #: model_terms:ir.ui.view,arch_db:anj_stock.report_delivery_inherit
-msgid "<br/>Means of payment :"
-msgstr "Moyens de paiement :"
+msgid "<br/>Moyens de paiement :"
+msgstr ""
 
 #. module: anj_stock
 #: model_terms:ir.ui.view,arch_db:anj_stock.report_delivery_inherit
@@ -36,11 +36,22 @@ msgid "<span>Signature Responsable</span>"
 msgstr ""
 
 #. module: anj_stock
+#: model:res.groups,name:anj_stock.anj_is_applying_quant_stock
+msgid "Administrateur Stock: Applique la quantité de stock"
+msgstr ""
+
+#. module: anj_stock
+#: model_terms:ir.ui.view,arch_db:anj_stock.view_stock_quant_tree_inventory_editable_inherit_stock_quant
+msgid "Apply"
+msgstr "Appliquer"
+
+#. module: anj_stock
 #: model_terms:ir.ui.view,arch_db:anj_stock.report_delivery_inherit
 msgid "BON DE LIVRAISON N°:"
 msgstr ""
 
 #. module: anj_stock
+#: model_terms:ir.ui.view,arch_db:anj_stock.external_layout_standard_inherit
 #: model_terms:ir.ui.view,arch_db:anj_stock.report_delivery_inherit
 msgid "CIF:"
 msgstr ""
@@ -57,6 +68,11 @@ msgstr "Société"
 
 #. module: anj_stock
 #: model_terms:ir.ui.view,arch_db:anj_stock.report_delivery_inherit
+msgid "Date d'échéance :"
+msgstr ""
+
+#. module: anj_stock
+#: model_terms:ir.ui.view,arch_db:anj_stock.report_delivery_inherit
 msgid "Date de livraison:"
 msgstr ""
 
@@ -67,12 +83,17 @@ msgstr "Date d'échéanche"
 
 #. module: anj_stock
 #: model_terms:ir.ui.view,arch_db:anj_stock.report_delivery_inherit
-msgid "Date due :"
-msgstr "Date d'échéanche"
+msgid "Désignation"
+msgstr ""
 
 #. module: anj_stock
-#: model_terms:ir.ui.view,arch_db:anj_stock.report_delivery_inherit
-msgid "Désignation"
+#: model:ir.model.fields,field_description:anj_stock.field_stock_quant__is_applying_quant
+msgid "Is Applying Quant"
+msgstr ""
+
+#. module: anj_stock
+#: model_terms:ir.ui.view,arch_db:anj_stock.external_layout_standard_inherit
+msgid "Logo"
 msgstr ""
 
 #. module: anj_stock
@@ -81,8 +102,13 @@ msgid "Montant"
 msgstr ""
 
 #. module: anj_stock
-#: model_terms:ir.ui.view,arch_db:anj_stock.report_delivery_inherit
+#: model_terms:ir.ui.view,arch_db:anj_stock.external_layout_standard_inherit
 msgid "NIF:"
+msgstr ""
+
+#. module: anj_stock
+#: model_terms:ir.ui.view,arch_db:anj_stock.report_delivery_inherit
+msgid "NIFA:"
 msgstr ""
 
 #. module: anj_stock
@@ -98,6 +124,11 @@ msgstr ""
 #. module: anj_stock
 #: model:ir.model.fields,field_description:anj_stock.field_product_template__no_company_ids
 msgid "No Companies"
+msgstr ""
+
+#. module: anj_stock
+#: model_terms:ir.ui.view,arch_db:anj_stock.report_delivery_inherit
+msgid "Note:"
 msgstr ""
 
 #. module: anj_stock
@@ -126,6 +157,11 @@ msgid "Qté"
 msgstr ""
 
 #. module: anj_stock
+#: model:ir.model,name:anj_stock.model_stock_quant
+msgid "Quants"
+msgstr ""
+
+#. module: anj_stock
 #: model_terms:ir.ui.view,arch_db:anj_stock.report_delivery_inherit
 msgid "Ref"
 msgstr ""
@@ -141,6 +177,12 @@ msgid "Routes"
 msgstr ""
 
 #. module: anj_stock
+#: model_terms:ir.ui.view,arch_db:anj_stock.external_layout_standard_inherit
+msgid "SOCIETE"
+msgstr ""
+
+#. module: anj_stock
+#: model_terms:ir.ui.view,arch_db:anj_stock.external_layout_standard_inherit
 #: model_terms:ir.ui.view,arch_db:anj_stock.report_delivery_inherit
 msgid "STAT:"
 msgstr ""
