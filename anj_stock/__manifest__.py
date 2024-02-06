@@ -24,10 +24,13 @@
 
     # always loaded
     'data': [
+        #security
         # 'security/ir.model.access.csv',
+        'security/res_groups.xml',
         'views/views.xml',
         'views/templates.xml',
         'views/product_template_view.xml',
+        'views/stock_quant_views.xml',
         # report
         'report/report_delivery.xml',
     ],
