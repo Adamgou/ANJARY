@@ -115,7 +115,7 @@
             </xpath>
             <xpath expr="//t[@t-set='address']" position="replace">
                 <t t-set="address">
-                    <div t-att-style="'margin-top: 150px;' if o.company_id.name.lower() == 'societe immobiliere anjary' else ''">
+                    <div style="margin-top: 150px;">
                         <div Style="border: 3px solid black; border-radius: 10px; padding: 5px"><!--t-att-style="' border: 3px solid black; border-radius: 10px; padding: 5px' if not o.company_id.name.lower().startswith('jara dis') else ''"-->
 <!--                            <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />-->
                             <div>
