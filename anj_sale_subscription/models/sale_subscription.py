@@ -7,7 +7,7 @@ import calendar
 
 from dateutil.relativedelta import relativedelta
 from markupsafe import Markup
-from datetime import date
+from datetime import date, datetime, timedelta
 
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError
@@ -35,6 +35,36 @@ class SaleSubscription(models.Model):
         default=lambda self: self.env['account.move'].check_access_rights('read', raise_exception=False))
     product_ids = fields.Many2many(
         comodel_name='product.product', compute='_compute_product_ids')
+
+    augmentation = fields.Float("Percentage", readonly=False)
+
+    @api.model
+    def action_cron_auto_augmentation_activity(self):
+        subscription = self.env['sale.subscription'].search([])
+        for sub in subscription:
+            date_start_before = sub.date_start - timedelta(days=5)
+            date_start_before_compare = date_start_before + timedelta(days=365)
+            date_now = datetime.now()
+            if sub.stage_id.name == 'En cours' and date_start_before_compare.day == date_now.day and date_start_before_compare.month == date_now.month:
+                activty_type = self.env['mail.activity.type'].create({
+                    'name': 'Augmentation percentage',
+                    'category': 'default'
+                })
+
+                self.env['mail.activity'].create({
+                    'activity_type_id': activty_type.id,
+                    'date_deadline': sub.date_start + timedelta(days=365),
+                    'user_id': sub.user_id.id,
+                    'res_model_id': self.env['ir.model']._get_id('sale.subscription'),
+                    'res_id': sub.id,
+                })
+
+    @api.onchange('augmentation', 'recurring_invoice_line_ids')
+    def onchange_augmentation(self):
+        for sub_line in self.recurring_invoice_line_ids:
+            sub_line.update({
+                'price_unit': sub_line.product_id.list_price + (sub_line.product_id.list_price * self.augmentation),
+            })
 
     def _compute_product_ids(self):
         for rec in self:
