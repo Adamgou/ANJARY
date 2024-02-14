@@ -11,7 +11,8 @@
     "depends": ["sale_subscription"],
     # always loaded
     "data": [
-
+        #data
+        "data/cron.xml",
         # views
         "views/sale_subscription_views.xml"
     ],
