@@ -28,6 +28,7 @@
                     'readonly': [('can_read_move', '=', True),('invoice_count', '&gt;', 0)],
                     'invisible': ['|', ('can_read_move', '=', False), ('is_monthly', '=', False)]
                 }"/>
+                <field name="augmentation" string="Augmentation" widget="percentage" style="width:40% !important" class="oe_inline"/>
             </field>
         </field>
     </record>
