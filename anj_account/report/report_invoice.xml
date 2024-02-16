@@ -624,7 +624,7 @@
                 </div>
             </xpath>
             <xpath expr="//div[contains(@t-attf-class, 'footer o_boxed_footer')]" position="replace">
-                <t t-if="o.company_id.name.lower()=='societe immobiliere anjary'">
+                <t t-if="company.name.lower()=='societe immobiliere anjary'">
                   <div t-attf-class="footer o_boxed_footer o_company_#{company.id}_layout">
                     <t t-if="o">
                       <div class="text-center">
