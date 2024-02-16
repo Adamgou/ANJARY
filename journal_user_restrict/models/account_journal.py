@@ -21,4 +21,4 @@ class ResUsers(models.Model):
 
     @api.model
     def get_allowed_journal(self):
-        return self.env['account.journal'].search([]).filtered(lambda journal_id: not journal_id.user_ids or self.id in journal_id.user_ids.ids).ids
+        return self.env['account.journal'].with_context(active_test=False).search([]).filtered(lambda journal_id: not journal_id.user_ids or self.id in journal_id.user_ids.ids).ids
