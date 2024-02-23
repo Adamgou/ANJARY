@@ -150,3 +150,14 @@ class Hr_Payslip(models.Model):
                 }
 
         return result.values()
+
+
+    @api.model
+    def _get_attachment_types(self):
+        return {
+            'attachment': self.env.ref('hr_payroll.input_attachment_salary'),
+            'assignment': self.env.ref('hr_payroll.input_assignment_salary'),
+            'child_support': self.env.ref('hr_payroll.input_child_support'),
+            'special_advance': self.env.ref('alpha_payslip.input_special_advance'),
+            'advance_15th': self.env.ref('alpha_payslip.input_advance_15th'),
+        }

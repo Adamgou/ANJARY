@@ -6,7 +6,20 @@ from odoo.exceptions import UserError, Warning
 class HrSalaryAttachment(models.Model):
     _inherit = "hr.salary.attachment"
 
-    deduction_type = fields.Selection(selection_add=[('special_advance', 'Special Advance'),('advance_15th', 'Advance 15th')], ondelete={'special_advance': 'cascade', 'advance_15th': 'cascade'})
+    deduction_type = fields.Selection(
+        selection=[
+            ('attachment', 'Attachment of Salary'),
+            ('assignment', 'Assignment of Salary'),
+            ('child_support', 'Child Support'),
+            ('special_advance', 'Special Advance'),
+            ('advance_15th', 'Advance 15th'),
+        ],
+        string='Type',
+        required=True,
+        default='attachment',
+        tracking=True,
+    )
+    #deduction_type = fields.Selection(selection_add=[('special_advance', 'Special Advance'),('advance_15th', 'Advance 15th')], ondelete={'special_advance': 'cascade', 'advance_15th': 'cascade'})
 
     @api.onchange('total_amount')
     def _onchange_total_amount(self):

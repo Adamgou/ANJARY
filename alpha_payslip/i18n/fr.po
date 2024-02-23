@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 15.0+e\n"
+"Project-Id-Version: Odoo Server 15.0+e-20221103\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-23 11:57+0000\n"
-"PO-Revision-Date: 2024-02-23 11:57+0000\n"
+"POT-Creation-Date: 2024-02-23 14:43+0000\n"
+"PO-Revision-Date: 2024-02-23 14:43+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -275,6 +275,16 @@ msgid "Ancienneté en année"
 msgstr ""
 
 #. module: alpha_payslip
+#: model:ir.model.fields.selection,name:alpha_payslip.selection__hr_salary_attachment__deduction_type__assignment
+msgid "Assignment of Salary"
+msgstr "Cession de Salaire"
+
+#. module: alpha_payslip
+#: model:ir.model.fields.selection,name:alpha_payslip.selection__hr_salary_attachment__deduction_type__attachment
+msgid "Attachment of Salary"
+msgstr "Saisie sur Salaire"
+
+#. module: alpha_payslip
 #: model:ir.model.fields,field_description:alpha_payslip.field_hr_contract__other_allow
 msgid "Autres ndemnités"
 msgstr ""
@@ -335,6 +345,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:alpha_payslip.field_hr_contract__contrat_categorie
 msgid "Categorie de contrat"
 msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields.selection,name:alpha_payslip.selection__hr_salary_attachment__deduction_type__child_support
+msgid "Child Support"
+msgstr "Pension alimentaire"
 
 #. module: alpha_payslip
 #: model:ir.model.fields,field_description:alpha_payslip.field_hr_employee_public__cin
