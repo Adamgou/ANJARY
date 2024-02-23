@@ -1,0 +1,951 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* alpha_payslip
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-23 11:57+0000\n"
+"PO-Revision-Date: 2024-02-23 11:57+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid ""
+"<br/>\n"
+"                                            <span>Mail:</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid ""
+"<br/>\n"
+"                                    <span>Adresse: </span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid ""
+"<br/>\n"
+"                                    <span>N°CIN: </span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid ""
+"<span style=\"font-weight:700;font-style:normal\">Date de\n"
+"                                        Naissance</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "<span style=\"font-weight:bold\">DATE DE PAIE</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.heuresup_payslip_view_form_inherit
+msgid "<span style=\"font-weight:bold\">TOTAL</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid ""
+"<span style=\"font-weight:bold;font-style:normal\">\n"
+"                                        Ancienneté</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid ""
+"<span style=\"font-weight:bold;font-style:normal\">\n"
+"                                        BASE</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid ""
+"<span style=\"font-weight:bold;font-style:normal\">\n"
+"                                        EMPLOYE(E)</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid ""
+"<span style=\"font-weight:bold;font-style:normal\">\n"
+"                                        MONTANT</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid ""
+"<span style=\"font-weight:bold;font-style:normal\">\n"
+"                                        Matricule</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid ""
+"<span style=\"font-weight:bold;font-style:normal\">\n"
+"                                        NOMBRE</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid ""
+"<span style=\"font-weight:bold;font-style:normal\">\n"
+"                                        NUMERO\n"
+"                                        CNAPS\n"
+"                                    </span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid ""
+"<span style=\"font-weight:bold;font-style:normal\">\n"
+"                                        QUALIFICATION PROFESSIONNELLE\n"
+"                                    </span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid ""
+"<span style=\"font-weight:bold;font-style:normal\">\n"
+"                                        RUBRIQUES</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "<span style=\"font-weight:bold;font-style:normal\">Age</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid ""
+"<span style=\"font-weight:bold;font-style:normal\">CODE\n"
+"                                        ADH</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid ""
+"<span style=\"font-weight:bold;font-style:normal\">CONGES\n"
+"                                        PAYES</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid ""
+"<span style=\"font-weight:bold;font-style:normal\">Date\n"
+"                                        d'entrée</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid ""
+"<span style=\"font-weight:bold;font-style:normal\">Date de\n"
+"                                        sortie</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "<span style=\"font-weight:bold;font-style:normal\">OMSIE</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "<span style=\"font-weight:bold;font-style:normal\">OSTIE</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid ""
+"<span>\n"
+"                                    ans</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.hr_contract_view_form_inherit
+msgid "<span> / heure</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.hr_contract_view_form_inherit
+msgid "<span> heures / semaine</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.heuresup_payslip_view_form_inherit
+msgid "<span> par mois</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "<span>/</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "<span>HT :</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "<span>Lieu de travail: </span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "<span>NIF :</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "<span>Nom et prénom: </span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "<span>Nombre d'heure mensuel : </span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "<span>Poste: </span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "<span>SB + Ancienneté :</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "<span>SB :</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "<span>STAT :</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "<span>Salaire de base : </span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "<span>Taux d'ancienneté :</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "<span>Tel:</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "<span>ans</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "Acquis <span class=\"col-6\">: 2.5 Jours</span>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields.selection,name:alpha_payslip.selection__hr_salary_attachment__deduction_type__advance_15th
+msgid "Advance 15th"
+msgstr "Avance Quinzaine"
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_contract__allow_family
+msgid "Allocations familiales"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_contract__seniority
+msgid "Ancienneté en année"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_contract__other_allow
+msgid "Autres ndemnités"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "BULLETIN DE PAIE"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip_line__base
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_salary_rule__salary_rule_base
+msgid "Base"
+msgstr ""
+
+#. module: alpha_payslip
+#: code:addons/alpha_payslip/models/hr_payslip.py:0
+#, python-format
+msgid "Basic Salary"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields.selection,name:alpha_payslip.selection__hr_contract__contrat_categorie__cdd
+msgid "CDD"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields.selection,name:alpha_payslip.selection__hr_contract__contrat_categorie__cdi
+msgid "CDI"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_res_company__cif
+msgid "CIF"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_employee__cin
+msgid "CIN"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_employee__cnaps
+msgid "CNAPS"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "COMMENTAIRES :"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.heuresup_payslip_view_form_inherit
+msgid "Calcluler"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_contract__contrat_categorie
+msgid "Categorie de contrat"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_employee_public__cin
+msgid "Cin"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_employee__classification
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_employee_public__classification
+msgid "Classification"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_employee_public__cnaps
+msgid "Cnaps"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip_line__category_code
+msgid "Code"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__commentaire
+msgid "Commentaire"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model,name:alpha_payslip.model_res_company
+msgid "Companies"
+msgstr "Sociétés"
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.hr_contract_hr_contract_history_view_form_inherit
+msgid "Contract History"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.hr_contract_hr_contract_history_view_form_inherit
+msgid "Contract Name"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.hr_contract_hr_contract_history_view_form_inherit
+msgid "Current Contracts"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__paid_date
+msgid "Date de paie "
+msgstr ""
+
+#. module: alpha_payslip
+#: code:addons/alpha_payslip/models/hr_payslip.py:0
+#, python-format
+msgid "Deduction"
+msgstr ""
+
+#. module: alpha_payslip
+#: code:addons/alpha_payslip/models/hr_payslip.py:0
+#, python-format
+msgid "Double Holiday Pay"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "Du"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model,name:alpha_payslip.model_hr_employee
+msgid "Employee"
+msgstr "Employé"
+
+#. module: alpha_payslip
+#: model:ir.model,name:alpha_payslip.model_hr_contract
+msgid "Employee Contract"
+msgstr "Contrat de l'employé"
+
+#. module: alpha_payslip
+#: model:ir.model.fields,help:alpha_payslip.field_hr_contract__wage
+msgid "Employee's monthly gross wage."
+msgstr "Salaire brut mensuel de l'employé."
+
+#. module: alpha_payslip
+#: model:ir.model.fields.selection,name:alpha_payslip.selection__hr_employee__classification__etc
+#: model:ir.model.fields.selection,name:alpha_payslip.selection__hr_employee_public__classification__etc
+msgid "Etc"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip_input_type__generate
+msgid "Generate"
+msgstr ""
+
+#. module: alpha_payslip
+#: code:addons/alpha_payslip/models/hr_payslip.py:0
+#, python-format
+msgid "Gross"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields.selection,name:alpha_payslip.selection__hr_employee__classification__hc
+#: model:ir.model.fields.selection,name:alpha_payslip.selection__hr_employee_public__classification__hc
+msgid "HC"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_nuit_hab_s1
+msgid "Heure nuit habituelles S1"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_nuit_hab_s2
+msgid "Heure nuit habituelles S2"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_nuit_hab_s3
+msgid "Heure nuit habituelles S3"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_nuit_hab_s4
+msgid "Heure nuit habituelles S4"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_nuit_hab_s5
+msgid "Heure nuit habituelles S5"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_nuit_occ_s1
+msgid "Heure nuit occasionnelles S1"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_nuit_occ_s2
+msgid "Heure nuit occasionnelles S2"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_nuit_occ_s3
+msgid "Heure nuit occasionnelles S3"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_nuit_occ_s4
+msgid "Heure nuit occasionnelles S4"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_nuit_occ_s5
+msgid "Heure nuit occasionnelles S5"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_sup_s1
+msgid "Heure sup S1"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_sup_s2
+msgid "Heure sup S2"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_sup_s3
+msgid "Heure sup S3"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_sup_s4
+msgid "Heure sup S4"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_sup_s5
+msgid "Heure sup S5"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.heuresup_payslip_view_form_inherit
+msgid "Heures de nuit habituelles"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.heuresup_payslip_view_form_inherit
+msgid "Heures de nuit occasionnelles"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.heuresup_payslip_view_form_inherit
+msgid "Heures supplémentaires"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.heuresup_payslip_view_form_inherit
+msgid "Heures travaillées en jour férié"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_sup_ferie_s1
+msgid "Heures travaillées en jour férié S1"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_sup_ferie_s2
+msgid "Heures travaillées en jour férié S2"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_sup_ferie_s3
+msgid "Heures travaillées en jour férié S3"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_sup_ferie_s4
+msgid "Heures travaillées en jour férié S4"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_sup_ferie_s5
+msgid "Heures travaillées en jour férié S5"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.heuresup_payslip_view_form_inherit
+msgid "Heures travaillées le dimanche"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_sup_dimanche_s1
+msgid "Heures travaillées le dimanche S1"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_sup_dimanche_s2
+msgid "Heures travaillées le dimanche S2"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_sup_dimanche_s3
+msgid "Heures travaillées le dimanche S3"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_sup_dimanche_s4
+msgid "Heures travaillées le dimanche S4"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__heure_sup_dimanche_s5
+msgid "Heures travaillées le dimanche S5"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_contract__allow_logement
+msgid "Indemnité de logement"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_contract__allow_transport
+msgid "Indemnité de transport"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.hr_contract_view_form_inherit
+msgid "Informations sur les rémunérations"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_salary_rule__is_net
+msgid "Is Net?"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "Jours"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "L'employeur"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,help:alpha_payslip.field_hr_salary_rule__salary_rule_base
+msgid "La valeur de base dans la structure de base"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,help:alpha_payslip.field_hr_salary_rule__salary_rule_nombre
+msgid "La valeur de nombre dans la structure de base"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "Le salarié"
+msgstr ""
+
+#. module: alpha_payslip
+#: code:addons/alpha_payslip/models/heure_sup.py:0
+#, python-format
+msgid "Les heures supplémmentaires ont été calculées avec succès"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_employee__matricule
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_employee_public__matricule
+msgid "Matricule"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_res_company__nif
+msgid "NIF"
+msgstr ""
+
+#. module: alpha_payslip
+#: code:addons/alpha_payslip/models/hr_payslip.py:0
+#, python-format
+msgid "Net Salary"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip_line__nombre
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_salary_rule__salary_rule_nombre
+msgid "Nombre"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_contract__hour_per_week
+msgid "Nombre d'heures travaillé par semaine"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__nombre_de_semaine
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.heuresup_payslip_view_form_inherit
+msgid "Nombre de semaine"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,help:alpha_payslip.field_hr_contract__hour_per_week
+msgid "Number of hours to work to be considered as fulltime."
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields.selection,name:alpha_payslip.selection__hr_employee__classification__op
+#: model:ir.model.fields.selection,name:alpha_payslip.selection__hr_employee_public__classification__op
+msgid "OP"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_employee__ostie
+msgid "OSTIE"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_employee_public__ostie
+msgid "Ostie"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "PERIODE DE PAIE"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.external_layout_alpha
+msgid ""
+"Page:\n"
+"                <span class=\"page\"/>\n"
+"                /\n"
+"                <span class=\"topage\"/>"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model,name:alpha_payslip.model_hr_payslip
+msgid "Pay Slip"
+msgstr "Feuille de paie"
+
+#. module: alpha_payslip
+#: model:ir.model,name:alpha_payslip.model_hr_payslip_input_type
+msgid "Payslip Input Type"
+msgstr "Type d'entrée de la fiche de paie"
+
+#. module: alpha_payslip
+#: model:ir.model,name:alpha_payslip.model_hr_payslip_line
+msgid "Payslip Line"
+msgstr "Ligne de bulletin de salaire"
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "Periode :"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,help:alpha_payslip.field_hr_salary_rule__is_total
+msgid "Pour faciliter le format du report"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_contract__seniority_percent
+msgid "Pourcentage d'ancienneté"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "Pris:"
+msgstr ""
+
+#. module: alpha_payslip
+#: code:addons/alpha_payslip/models/hr_payslip.py:0
+#, python-format
+msgid "Prorated end-of-year bonus"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model,name:alpha_payslip.model_hr_employee_public
+msgid "Public Employee"
+msgstr "Employé public"
+
+#. module: alpha_payslip
+#: code:addons/alpha_payslip/models/hr_payslip.py:0
+#, python-format
+msgid "Reimbursement"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.report_payslip_inherit
+msgid "Restant :"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_res_company__stat
+msgid "STAT"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_contract__actual_salary
+msgid "Salaire actuel"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_contract__base_salary
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.hr_contract_hr_contract_history_view_form_inherit
+msgid "Salaire de base"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_contract__hourly_salary
+msgid "Salaire horaire "
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_contract__month_12_last_salary
+msgid "Salaire moyen des 12 derniers mois"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model,name:alpha_payslip.model_hr_salary_attachment
+msgid "Salary Attachment"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model,name:alpha_payslip.model_hr_salary_rule
+msgid "Salary Rule"
+msgstr "Règles salariales"
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.heuresup_payslip_view_form_inherit
+msgid "Semaine 1"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.heuresup_payslip_view_form_inherit
+msgid "Semaine 2"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.heuresup_payslip_view_form_inherit
+msgid "Semaine 3"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.heuresup_payslip_view_form_inherit
+msgid "Semaine 4"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.heuresup_payslip_view_form_inherit
+msgid "Semaine 5"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields.selection,name:alpha_payslip.selection__hr_salary_attachment__deduction_type__special_advance
+msgid "Special Advance"
+msgstr "Avance spéciale"
+
+#. module: alpha_payslip
+#: model:ir.model.fields.selection,name:alpha_payslip.selection__hr_contract__contrat_categorie__stagiaire
+msgid "Stagiaire"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields.selection,name:alpha_payslip.selection__hr_contract__contrat_categorie__temporaire
+msgid "Temporaire"
+msgstr ""
+
+#. module: alpha_payslip
+#: code:addons/alpha_payslip/models/hr_salary_attachment.py:0
+#, python-format
+msgid "The total amount is more than 50% of the wage of the employee."
+msgstr ""
+
+#. module: alpha_payslip
+#: code:addons/alpha_payslip/models/hr_salary_attachment.py:0
+#, python-format
+msgid "The total amount must be less than the wage of the employee."
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_salary_rule__is_total
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.hr_salary_rule_form_inherit
+msgid "Total"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__total_s1
+msgid "Total S1"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__total_s2
+msgid "Total S2"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__total_s3
+msgid "Total S3"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__total_s4
+msgid "Total S4"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__total_s5
+msgid "Total S5"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__total_heure_nuit_hab
+msgid "Total heure nuit habituelles"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__total_heure_nuit_occ
+msgid "Total heure nuit occasionnelles"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__total_heure_sup
+msgid "Total heure sup"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__total_heure_sup_ferie
+msgid "Total heures travaillées en jour férié"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_payslip__total_heure_sup_dimanche
+msgid "Total heures travaillées le dimanche"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_salary_attachment__deduction_type
+msgid "Type"
+msgstr ""
+
+#. module: alpha_payslip
+#: model_terms:ir.ui.view,arch_db:alpha_payslip.heuresup_payslip_view_form_inherit
+msgid "Type d'heure supplémentaire"
+msgstr ""
+
+#. module: alpha_payslip
+#: model:ir.model.fields,field_description:alpha_payslip.field_hr_contract__wage
+msgid "Wage"
+msgstr "Salaire"
+
+#. module: alpha_payslip
+#: code:addons/alpha_payslip/models/hr_salary_attachment.py:0
+#, python-format
+msgid "Warning"
+msgstr ""
+
+#. module: alpha_payslip
+#: code:addons/alpha_payslip/models/hr_salary_rule.py:0
+#, python-format
+msgid ""
+"Wrong python code defined for base rule %s (%s).\n"
+"Error: %s"
+msgstr ""
+
+#. module: alpha_payslip
+#: code:addons/alpha_payslip/models/hr_salary_rule.py:0
+#, python-format
+msgid ""
+"Wrong python code defined for nombre rule %s (%s).\n"
+"Error: %s"
+msgstr ""
