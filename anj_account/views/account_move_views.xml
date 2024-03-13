@@ -37,8 +37,8 @@
                 <field name="amount_total_in_currency_signed" position="attributes">
                     <attribute name="sum">Total</attribute>
                 </field>
-                <field name="invoice_partner_display_name" position="before">
-                    <field name="invoice_line_ids" widget="many2many_tags"/>
+                <field name="invoice_date" position="before">
+                    <field name="invoice_line_ids" string="Article/Libellé" widget="many2many_tags"/>
                 </field>
             </field>
         </record>
