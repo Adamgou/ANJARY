@@ -7,29 +7,42 @@
             <field name="inherit_id" ref="sale.view_order_form" />
             <field name="arch" type="xml">
                 <field name="partner_id" position="after">
-                    <field name="note_client"/>
+                    <field name="note_client" />
                 </field>
-                <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='discount']" position="after">
-                    <field name="unit_price_discounted" 
-                    readonly="0"
+                <xpath
+                    expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='discount']"
+                    position="after">
+                    <field name="unit_price_discounted"
+                        readonly="0"
                     />
                 </xpath>
-                <!--<xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='price_subtotal']" position="attributes">
+                <!--<xpath
+                expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='price_subtotal']"
+                position="attributes">
                     <attribute name="readonly">0</attribute>
                 </xpath>-->
-                <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='price_unit']" position="before">
-                    <field name="is_jara" invisible="1"/>
+                <xpath
+                    expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='price_unit']"
+                    position="before">
+                    <field name="is_jara" invisible="1" />
                 </xpath>
-                <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='price_unit']" position="attributes">
-                    <attribute name="attrs">{'readonly': ['|', ('is_jara', '=', True), ('qty_invoiced', '&gt;', 0)]}</attribute>
+                <xpath
+                    expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='price_unit']"
+                    position="attributes">
+                    <attribute name="attrs">{'readonly': ['|', ('is_jara', '=', True),
+                        ('qty_invoiced', '&gt;', 0)]}</attribute>
                     <attribute name="force_save">1</attribute>
                 </xpath>
                 <xpath expr="//field[@name='payment_term_id']" position="after">
-                    <field name="means_of_payment"/>
+                    <field name="means_of_payment" />
                 </xpath>
 
             </field>
         </record>
+
+        <record id="sale.action_quotations_with_onboarding" model="ir.actions.act_window">
+            <field name="context">{'search_default_my_quotation': 0}</field>
+        </record>
     </data>
-    
+
 </odoo>
