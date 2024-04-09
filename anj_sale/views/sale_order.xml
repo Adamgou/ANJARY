@@ -52,6 +52,7 @@
                                     decoration-success="state == 'done'" decoration-info="state not in ('done', 'cancel')"
                             >
                                 <field name="priority" optional="show" widget="priority" nolabel="1"/>
+                                <field name="scheduled_date_month_year" optional="show" string="Période"/>
                                 <field name="scheduled_date" optional="show" string="Date" options='{"date_format": "DD MMM YY"}'/>
                                 <field name="name" decoration-bf="1"/>
                                 <field name="move_line_ids" string="Article" widget="many2many_tags"/>
