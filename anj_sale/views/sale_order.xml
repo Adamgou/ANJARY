@@ -39,7 +39,7 @@
                 <xpath
                         expr="/form/sheet/notebook/page[@name='other_information']"
                         position="after">
-                    <page string="Planning de livraison">
+                    <page string="Planning de livraison" attrs="{'invisible': [('company_id', '!=', 9)]}">
                         <field
                                 name="picking_ids"
                                 mode="tree"
