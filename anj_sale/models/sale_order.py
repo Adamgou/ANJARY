@@ -24,7 +24,8 @@ class SaleOrder(models.Model):
         stock_picking = self.env['stock.picking'].search([('id', '=', self.picking_ids.id)])
         for moves in stock_picking.move_ids_without_package:
             moves.write({
-                'quantity_done': moves.product_uom_qty
+                'quantity_done': moves.product_uom_qty,
+                'state': 'draft'
             })
         return res
 
