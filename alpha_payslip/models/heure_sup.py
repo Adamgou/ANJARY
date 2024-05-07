@@ -372,20 +372,20 @@ class HrPayslipInheritHeureSup(models.Model):
             )
         ]
 
-        hsup30, hsup50 = 0, 0
-        hsup30, hsup50 = exo(hsup30, hsup50, self.heure_sup_s1)
-        hsup30, hsup50 = exo(hsup30, hsup50, self.heure_sup_s2)
-        hsup30, hsup50 = exo(hsup30, hsup50, self.heure_sup_s3)
-        hsup30, hsup50 = exo(hsup30, hsup50, self.heure_sup_s4)
+        only_hsup30, only_hsup50 = 0, 0
+        only_hsup30, only_hsup50 = exo(only_hsup30, only_hsup50, self.heure_sup_s1)
+        only_hsup30, only_hsup50 = exo(only_hsup30, only_hsup50, self.heure_sup_s2)
+        only_hsup30, only_hsup50 = exo(only_hsup30, only_hsup50, self.heure_sup_s3)
+        only_hsup30, only_hsup50 = exo(only_hsup30, only_hsup50, self.heure_sup_s4)
         if self.nombre_de_semaine == "cinq":
-            hsup30, hsup50 = exo(hsup30, hsup50, self.heure_sup_s5)
+            only_hsup30, only_hsup50 = exo(only_hsup30, only_hsup50, self.heure_sup_s5)
         self.input_line_ids = [
             (
                 0,
                 0,
                 {
                     "input_type_id": self.env.ref("alpha_payslip.heure_sup_30").id,
-                    "amount": hsup30,
+                    "amount": only_hsup30,
                 },
             )
         ]
@@ -396,7 +396,7 @@ class HrPayslipInheritHeureSup(models.Model):
                 0,
                 {
                     "input_type_id": self.env.ref("alpha_payslip.heure_sup_50").id,
-                    "amount": hsup50,
+                    "amount": only_hsup50,
                 },
             )
         ]
