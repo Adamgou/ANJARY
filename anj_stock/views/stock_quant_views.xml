@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_stock_quant_tree_inventory_editable_inherit_stock_quant" model="ir.ui.view">
+        <field name="name">stock.quant.inventory.tree.editable.inherit.stock.quant</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock.view_stock_quant_tree_inventory_editable"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='is_outdated']" position="after">
+                <field name="is_applying_quant" invisible="1"/>
+            </xpath>
+
+            <xpath expr="//button[@name='action_apply_inventory']" position="replace">
+                <button name="action_apply_inventory" groups="stock.group_stock_manager" type="object" string="Apply" class="btn btn-link" icon="fa-save" attrs="{'invisible': ['|', ('inventory_quantity_set', '=', False), ('is_applying_quant', '=', False)]}"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

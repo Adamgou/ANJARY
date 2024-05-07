@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "anj_stock",
+    'name': "anj_purchase_stock",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -20,29 +20,12 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','anj_base', 'product', 'stock'],
+    'depends': ['purchase_stock'],
 
     # always loaded
     'data': [
-        #security
         # 'security/ir.model.access.csv',
-        'security/res_groups.xml',
-        'views/views.xml',
-        'views/templates.xml',
-        'views/product_template_view.xml',
-        'views/stock_quant_views.xml',
-        # report
-        'report/report_delivery.xml',
     ],
-    # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
-    ],
-    'assets': {
-        'stock.assets': [
-            'anj_stock/static/src/css/report_bl.css',
-        ],
-    },
-    'license': 'LGPL-3',
-    "uninstall_hook": "uninstall_hook",
+
+'license': 'LGPL-3',
 }
