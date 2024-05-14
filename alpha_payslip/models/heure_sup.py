@@ -404,11 +404,11 @@ class HrPayslipInheritHeureSup(models.Model):
         hsup30, hsup50, hsup30_old, hsup50_old, res1, res2 = 0, 0, 0, 0, 0, 0
         for index, total in enumerate(
                 [
-                    self.total_s1,
-                    self.total_s2,
-                    self.total_s3,
-                    self.total_s4,
-                    self.total_s5,
+                    self.heure_sup_s1,
+                    self.heure_sup_s2,
+                    self.heure_sup_s3,
+                    self.heure_sup_s4,
+                    self.heure_sup_s5,
                 ]
         ):
             res1, res2 = hsup30, hsup50
