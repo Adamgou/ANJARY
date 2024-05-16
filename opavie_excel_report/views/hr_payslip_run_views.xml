@@ -11,6 +11,7 @@
             </button>
             <xpath expr="//field[@name='company_id']" position="after">
                 <field name="employer_bank_account"/>
+                <field name="bank_account_ids" invisible="True"/>
             </xpath>
         </field>
     </record>

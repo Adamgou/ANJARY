@@ -13,6 +13,12 @@ def float_to_string(float_num):
     num_str = num_str.replace('.', '')
     return num_str
 
+def is_row_empty(row):
+    for cell in row:
+        if cell.value is not None and cell.value != '':
+            return False
+    return True
+
 
 class HrPayslipXlsx(models.AbstractModel):
     _name = 'report.opavie_excel_report.report_opavie_xlsx'
@@ -33,15 +39,17 @@ class HrPayslipXlsx(models.AbstractModel):
         # sheet.write(0, 2, '')
         sheet.write(0, 3, report_name)
         for index, value in enumerate(lines.slip_ids):
-            employee_bank_account = add_zeros(value.employee_id.bank_account_id.acc_number.replace(' ', ''),
-                                              23) if value.employee_id.bank_account_id.acc_number else " "
-            employee_salary = add_zeros(
-                str(f"{value.line_ids.filtered(lambda payslip: payslip.salary_rule_id.is_net)[0].total:.2f}").replace('.', ''),
-                12) if \
-                value.line_ids.filtered(lambda payslip: payslip.salary_rule_id.is_net)[0].total else "0"
-            employee_matricule = value.employee_id.matricule if value.employee_id.matricule else " "
-            employee_name = value.employee_id.name if value.employee_id.name else " "
-            sheet.write(index + 1, 0, employee_bank_account)
-            sheet.write(index + 1, 1, employee_salary)
-            sheet.write(index + 1, 2, employee_matricule)
-            sheet.write(index + 1, 3, employee_name)
+            if value.payment_method and value.payment_method == 'virement':
+                employee_bank_account = add_zeros(value.employee_id.bank_account_id.acc_number.replace(' ', ''),
+                                                23) if value.employee_id.bank_account_id.acc_number else " "
+                employee_salary = add_zeros(
+                    str(f"{value.line_ids.filtered(lambda payslip: payslip.salary_rule_id.is_net)[0].total:.2f}").replace('.', ''),
+                    12) if \
+                    value.line_ids.filtered(lambda payslip: payslip.salary_rule_id.is_net)[0].total else "0"
+                employee_matricule = value.employee_id.matricule if value.employee_id.matricule else " "
+                employee_name = value.employee_id.name if value.employee_id.name else " "
+                sheet.write(index + 1, 0, employee_bank_account)
+                sheet.write(index + 1, 1, employee_salary)
+                sheet.write(index + 1, 2, employee_matricule)
+                sheet.write(index + 1, 3, employee_name.upper())
+

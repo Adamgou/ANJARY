@@ -15,6 +15,8 @@ class Hr_Payslip(models.Model):
     commentaire = fields.Text(string="Commentaire", required=False)
 
     paid_date = fields.Date(string="Date de paie ", required=False, readonly=True)
+    payment_method = fields.Selection([("especes", "Espèce"), ("virement", "Virement")], string="Méthode de payement", default="")
+
 
     def compute_sheet(self):
         payslips = self.filtered(lambda slip: slip.state in ["draft", "verify"])
