@@ -25,6 +25,34 @@ class HrPayslipXlsx(models.AbstractModel):
     _inherit = 'report.report_xlsx.abstract'
 
     def generate_xlsx_report(self, workbook, data, lines):
+        employer_bank_account = add_zeros(lines.employer_bank_account.acc_number.replace(' ', ''), 23) if lines.employer_bank_account.acc_number else " "
+        report_name = 'Salaire' + ' ' + lines.date_start.strftime("%m%y")
+        total = 0
+        for value in lines.slip_ids:
+            net_salary = value.line_ids.filtered(lambda payslip: payslip.salary_rule_id.is_net)[0].total if value.line_ids.filtered(lambda payslip: payslip.salary_rule_id.is_net)[0].total else 0
+            total = total + net_salary
+        
+        sheet = workbook.add_worksheet('OPAVI report')
+        sheet.write(0, 0, employer_bank_account)
+        sheet.write(0, 1, add_zeros(str(f"{total:.2f}").replace('.', ''), 12))
+        sheet.write(0, 3, report_name)
+        
+        row = 1  # Start from the second row, as the first row is written above
+        for value in lines.slip_ids:
+            if value.payment_method and value.payment_method == 'virement':
+                employee_bank_account = add_zeros(value.employee_id.bank_account_id.acc_number.replace(' ', ''), 23) if value.employee_id.bank_account_id.acc_number else " "
+                employee_salary = add_zeros(str(f"{value.line_ids.filtered(lambda payslip: payslip.salary_rule_id.is_net)[0].total:.2f}").replace('.', ''), 12) if value.line_ids.filtered(lambda payslip: payslip.salary_rule_id.is_net)[0].total else "0"
+                employee_matricule = value.employee_id.matricule if value.employee_id.matricule else " "
+                employee_name = value.employee_id.name if value.employee_id.name else " "
+                
+                # Check if any of the values are null or empty
+                if employee_bank_account and employee_salary and employee_matricule and employee_name:
+                    sheet.write(row, 0, employee_bank_account)
+                    sheet.write(row, 1, employee_salary)
+                    sheet.write(row, 2, employee_matricule)
+                    sheet.write(row, 3, employee_name.upper())
+                    row += 1
+    # def generate_xlsx_report(self, workbook, data, lines):
         employer_bank_account = add_zeros(lines.employer_bank_account.acc_number.replace(' ', ''),
                                           23) if lines.employer_bank_account.acc_number else " "
         report_name = 'Salaire' + ' ' + lines.date_start.strftime("%m%y")
