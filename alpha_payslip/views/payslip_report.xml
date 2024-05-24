@@ -241,25 +241,41 @@
                             <tr>
 
                                 <td class="tgv-0pky" colspan="2" rowspan="4">
+<!--                                    <div>-->
+<!--                                        <div>Periode : <span t-esc="o.employee_id.allocation_display"/>-->
+<!--                                            Jours</div>-->
+<!--                                    </div>-->
+<!--                                    <div>-->
+<!--                                        <div class="col-6">Acquis <span class="col-6">: 2.5 Jours</span></div>-->
+
+<!--                                    </div>-->
+<!--                                    <div>-->
+<!--                                        <div>Pris: <span t-esc="o.employee_id.allocation_used_display"/>-->
+<!--                                            Jours</div>-->
+
+<!--                                    </div>-->
+<!--                                    <div>-->
+<!--                                        <div class="col-6">Restant : <t t-set="foo"-->
+<!--                                                                        t-value="float(o.employee_id.allocation_display) - float(o.employee_id.allocation_used_display)"/>-->
+<!--                                            <t t-out="foo"/> Jours-->
+<!--                                        </div>-->
+
+<!--                                    </div>-->
                                     <div>
-                                        <div>Periode : <span t-esc="o.employee_id.allocation_display"/>
+                                        <div>Ancien solde : <span t-esc="o.previous_paid_leave_balance" t-if="o.previous_paid_leave_balance"/><span t-else="">0 </span>
                                             Jours</div>
                                     </div>
                                     <div>
-                                        <div class="col-6">Acquis <span class="col-6">: 2.5 Jours</span></div>
-
-                                    </div>
-                                    <div>
-                                        <div>Pris: <span t-esc="o.employee_id.allocation_used_display"/>
+                                        <div class="col-6">Jours acquis : <span t-esc="o.gain_on_current_month" t-if="o.gain_on_current_month"/><span t-else="">0 </span>
                                             Jours</div>
-
                                     </div>
                                     <div>
-                                        <div class="col-6">Restant : <t t-set="foo"
-                                                                        t-value="float(o.employee_id.allocation_display) - float(o.employee_id.allocation_used_display)"/>
-                                            <t t-out="foo"/> Jours
-                                        </div>
-
+                                        <div>Jours pris dans le mois : <span t-esc="o.days_taken_in_the_month" t-if="o.days_taken_in_the_month"/><span t-else="">0 </span>
+                                            Jours</div>
+                                    </div>
+                                    <div>
+                                        <div>Nouveau solde : <span t-esc="o.new_balance_in_the_month" t-if="o.new_balance_in_the_month"/><span t-else="">0 </span>
+                                            Jours</div>
                                     </div>
 
                                 </td>
