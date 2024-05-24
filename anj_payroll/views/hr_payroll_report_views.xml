@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="payroll_report_view_pivot_smt" model="ir.ui.view">
+            <field name="name">smt inherit view pivot</field>
+            <field name="model">hr.payroll.report</field>
+            <field name="inherit_id" ref="hr_payroll.payroll_report_view_pivot" />
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <xpath expr="//pivot" position="replace">
+                    <pivot string="Payroll Analysis" sample="1">
+                        <field name="department_id" type="row"/>
+                        <field name="idemnlog_wage" type="measure"/>
+                        <field name="tnh30_wage_base" type="measure"/>
+                        <field name="tnh50_wage_base" type="measure"/>
+                        <field name="tdim40_wage_base" type="measure"/>
+                        <field name="hsupp100_wage_base" type="measure"/>
+                        <field name="hsupp130_wage_base" type="measure"/>
+                        <field name="hsupp150_wage_base" type="measure"/>
+                        <field name="hsuppexo30_wage_base" type="measure"/>
+                        <field name="hsuppexo50_wage_base" type="measure"/>
+                        <field name="totalhsexo_wage" type="measure"/>
+                        <field name="gross_gross_wage" type="measure"/>
+                        <field name="cnaps_ps_wage" type="measure"/>
+                        <field name="cnaps_pp_wage" type="measure"/>
+                        <field name="ostie_ps_wage" type="measure"/>
+                        <field name="ostie_pp_wage" type="measure"/>
+                        <field name="fmfp_wage" type="measure"/>
+                        <field name="simpo_wage" type="measure"/>
+                        <field name="childnum_wage" type="measure"/>
+                        <field name="irsa01_wage" type="measure"/>
+                        <field name="irsa03_wage" type="measure"/>
+                        <field name="irsa02_wage" type="measure"/>
+                        <field name="net_net_wage" type="measure"/>
+                        <field name="alloc_wage" type="measure"/>
+                        <field name="net_wage" type="measure"/>
+                    </pivot>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -26,6 +26,7 @@
     'data': [
         'views/views.xml',
         'views/hr_payslip.xml',
+        'views/hr_payroll_report_views.xml',
     ],
 
     'license': 'LGPL-3',
