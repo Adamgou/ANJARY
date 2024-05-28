@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="mail_channel_view_form_inherit" model="ir.ui.view">
+        <field name="name">Mail Channel View Form</field>
+        <field name="model">discuss.channel</field>
+        <field name="inherit_id" ref="mail.discuss_channel_view_form"/>
+        <field name="arch" type="xml">
+            <page name="members" position="after">
+                <page name="auto_delete" string="Deletion" groups="auto_delete_message.partner_create_write_group">
+                    <group>
+                        <group>
+                            <field name="is_message_deletion_active"/>
+                            <label for="message_lifetime" string="Execute Every"/>
+                            <div>
+                                <field name="message_lifetime" class="oe_inline"/>
+                                <field name="interval_type" class="oe_inline"/>
+                            </div>
+                        </group>
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record>
+</odoo>

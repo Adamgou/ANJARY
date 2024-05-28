@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="res_partner_form_view_inherit" model="ir.ui.view">
+        <field name="name">res.partner.form.view.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <page name="internal_notes" position="after">
+                <page name="mail_deletion" string="Message deletion" groups="auto_delete_message.partner_create_write_group">
+                    <group>
+                        <group>
+                            <field name="is_message_deletion_active"/>
+                            <label for="message_lifetime" string="Execute Every"/>
+                            <div>
+                                <field name="message_lifetime" class="oe_inline"/>
+                                <field name="interval_type" class="oe_inline"/>
+                            </div>
+                        </group>
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,93 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* auto_delete_message
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e-20221103\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-03 13:43+0000\n"
+"PO-Revision-Date: 2023-03-03 13:43+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: auto_delete_message
+#: model:ir.model,name:auto_delete_message.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: auto_delete_message
+#: model:ir.model.fields.selection,name:auto_delete_message.selection__mail_channel__interval_type__days
+#: model:ir.model.fields.selection,name:auto_delete_message.selection__res_partner__interval_type__days
+msgid "Days"
+msgstr "Jours"
+
+#. module: auto_delete_message
+#: model_terms:ir.ui.view,arch_db:auto_delete_message.mail_channel_view_form_inherit
+msgid "Deletion"
+msgstr "Suppression"
+
+#. module: auto_delete_message
+#: model:ir.model,name:auto_delete_message.model_mail_channel
+msgid "Discussion Channel"
+msgstr "Canal de discussion"
+
+#. module: auto_delete_message
+#: model_terms:ir.ui.view,arch_db:auto_delete_message.mail_channel_view_form_inherit
+#: model_terms:ir.ui.view,arch_db:auto_delete_message.res_partner_form_view_inherit
+msgid "Execute Every"
+msgstr "Durée de vie"
+
+#. module: auto_delete_message
+#: model:ir.model.fields,field_description:auto_delete_message.field_mail_channel__interval_type
+#: model:ir.model.fields,field_description:auto_delete_message.field_res_partner__interval_type
+#: model:ir.model.fields,field_description:auto_delete_message.field_res_users__interval_type
+msgid "Interval Type"
+msgstr "Type d'interval"
+
+#. module: auto_delete_message
+#: model:ir.model.fields,field_description:auto_delete_message.field_mail_channel__is_message_deletion_active
+#: model:ir.model.fields,field_description:auto_delete_message.field_res_partner__is_message_deletion_active
+#: model:ir.model.fields,field_description:auto_delete_message.field_res_users__is_message_deletion_active
+msgid "Is Message Deletion Active"
+msgstr "Active"
+
+#. module: auto_delete_message
+#: model:ir.actions.server,name:auto_delete_message.delete_discussion_ir_actions_server
+#: model:ir.cron,cron_name:auto_delete_message.delete_discussion
+#: model:ir.cron,name:auto_delete_message.delete_discussion
+msgid "Mail Channel: delete discussion"
+msgstr "Mail Channel: suppression des discussions"
+
+#. module: auto_delete_message
+#: model:ir.model,name:auto_delete_message.model_mail_message
+msgid "Message"
+msgstr ""
+
+#. module: auto_delete_message
+#: model:ir.model.fields,field_description:auto_delete_message.field_mail_channel__message_lifetime
+#: model:ir.model.fields,field_description:auto_delete_message.field_res_partner__message_lifetime
+#: model:ir.model.fields,field_description:auto_delete_message.field_res_users__message_lifetime
+msgid "Message Lifetime"
+msgstr "Durée de vie"
+
+#. module: auto_delete_message
+#: model_terms:ir.ui.view,arch_db:auto_delete_message.res_partner_form_view_inherit
+msgid "Message deletion"
+msgstr "Suppression de message"
+
+#. module: auto_delete_message
+#: model:ir.model.fields.selection,name:auto_delete_message.selection__mail_channel__interval_type__months
+#: model:ir.model.fields.selection,name:auto_delete_message.selection__res_partner__interval_type__months
+msgid "Months"
+msgstr "Mois"
+
+#. module: auto_delete_message
+#: model:ir.model.fields.selection,name:auto_delete_message.selection__mail_channel__interval_type__weeks
+#: model:ir.model.fields.selection,name:auto_delete_message.selection__res_partner__interval_type__weeks
+msgid "Weeks"
+msgstr "Semaines"

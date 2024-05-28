@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="add_unit_price_discounted_inherit_sale_order" model="ir.ui.view">
+            <field name="name">sale.order.view.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="note_client" />
+                </field>
+                <xpath
+                    expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='discount']"
+                    position="after">
+                    <field name="unit_price_discounted"
+                        readonly="0"
+                    />
+                </xpath>
+                <xpath
+                    expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='price_unit']"
+                    position="before">
+                    <field name="is_jara" invisible="True" string=""/>
+                </xpath>
+                <xpath
+                    expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='price_unit']"
+                    position="attributes">
+                    <attribute name="readonly">not is_jara or qty_invoiced &gt; 0</attribute>
+                    <attribute name="force_save">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="means_of_payment" />
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="sale.action_quotations_with_onboarding" model="ir.actions.act_window">
+            <field name="context">{'search_default_my_quotation': 0}</field>
+        </record>
+    </data>
+
+</odoo>

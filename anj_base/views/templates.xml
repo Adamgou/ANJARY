@@ -1,0 +1,9 @@
+<odoo>
+  <data>
+    <template id="webclient_login" inherit_id="web.login_layout">
+      <xpath expr="//img" position="replace">
+        <img t-attf-src="/anj_base/static/src/img/logo.jpeg" alt="Logo" style="max-height:120px; max-width: 100%; width:auto" />
+      </xpath>
+    </template>
+  </data>
+</odoo>

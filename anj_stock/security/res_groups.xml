@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="anj_is_applying_quant_stock" model="res.groups">
+        <field name="name">Administrateur Stock: Applique la quantité de stock</field>
+    </record>
+
+</odoo>

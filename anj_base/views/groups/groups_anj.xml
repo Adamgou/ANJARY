@@ -1,0 +1,14 @@
+<odoo>
+    <data noupdate="0">
+
+        <record id="group_direction_anj" model="res.groups">
+            <field name="name">Direction</field>
+        </record>
+        <record id="group_praxi_anj" model="res.groups">
+            <field name="name">praxi</field>
+        </record>
+        <record id="group_to_do_draft" model="res.groups">
+            <field name="name">Remettre en brouillon</field>
+        </record>
+    </data>
+</odoo>

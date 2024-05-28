@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record model="ir.ui.view" id="product_template_form_view">
+        <field name="name">Product template form view (with multi-company)</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view" />
+        <field name="arch" type="xml">
+            <field name="company_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="company_id" position="after">
+                <field name="company_ids" 
+                    groups="anj_base.group_direction_anj"
+                    widget="many2many_tags"
+                    options="{'no_create': True}"
+                />
+            </field>
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="product_template_stock_tree_inh_anj">
+        <field name="name">product.template.anjary</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="stock.view_stock_product_template_tree" />
+        <field name="arch" type="xml">
+            <field name="default_code" position="replace">
+            </field> 
+            <field name="name" position="before">
+                <field name="default_code"/>
+            </field>
+            <field name="standard_price" position="replace">
+            </field>
+            <field name="name" position="after">
+                <field name="standard_price" widget="monetary" options="{'currency_field': 'cost_currency_id'}" optional="show" readonly="1"/>
+            </field>
+            <field name="responsible_id" position="replace">
+            </field>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo noupdate="1">
+    <record id="journey_price" model="location.price">
+        <field name="name">Journée</field>
+        <field name="location_price">170000</field>
+    </record>
+    <record id="evening_price" model="location.price">
+        <field name="name">Soirée</field>
+        <field name="location_price">115000</field>
+    </record>
+    <record id="night_price" model="location.price">
+        <field name="name">Nuit</field>
+        <field name="location_price">185000</field>
+    </record>
+</odoo>
