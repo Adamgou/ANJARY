@@ -20,20 +20,15 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['contacts','anj_base','hr','stock'],
+    'depends': ['contacts', 'anj_base', 'base_vat', 'hr', 'stock'],
 
     # always loaded
     'data': [
         # 'data/res_city_data.xml',
         'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
         'views/partner.xml',
         'views/contact_views.xml',
     ],
-    # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
-    ],
+
 'license': 'LGPL-3',
 }

@@ -1,3 +1,3 @@
-# -*- coding: utf-8 -*-
+# coding: utf-8
 
-from . import rental_wizard
+from . import rental_configurator

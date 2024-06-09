@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
+# coding: utf-8
 
 {
-    'name': 'Anjary Discuss',
-    'version': '1.5',
+    'name': 'ANJARY - Discuss',
+    'version': '17.0',
     'category': 'Productivity/Discuss',
     'sequence': 145,
     'summary': 'Chat, mail gateway and private channels',
@@ -16,8 +16,8 @@
     'installable': True,
     'application': True,
     'assets': {
-        'web.assets_qweb': [
-            'anj_mail/static/src/components/*/*.xml',
+        'web.assets_backend': [
+            'anj_mail/static/src/components/message/message.xml',
         ],
     },
     'license': 'LGPL-3',

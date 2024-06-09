@@ -1,2 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_anj_document_anj_document,anj_document.anj_document,model_anj_document_anj_document,base.group_user,1,1,1,1

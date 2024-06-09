@@ -1,34 +1,18 @@
-# -*- coding: utf-8 -*-
+# coding: utf-8
 {
-    'name': "anj_account",
+    'name': "ANJARY - ACCOUNT",
 
-    'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
-
-    'description': """
-        Long description of module's purpose
-    """,
-
-    'author': "My Company",
+    'author': "nexources",
     'website': "http://www.nexources.com",
 
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
-    # for the full list
-    'category': 'Uncategorized',
-    'version': '0.1',
+    'category': 'Accounting/Accounting',
+    'version': '17.0',
 
-    # any module necessary for this one to work correctly
-    'depends': ['base','anj_base', 'anj_contact', 'account'],
+    'depends': ['anj_contact', 'account'],
 
-    # always loaded
     'data': [
         'security/res_group.xml',
-        # 'security/ir.model.access.csv',
         # views
-        'views/views.xml',
-        'views/templates.xml',
         'views/res_partner_views.xml',
         'views/account_move_views.xml',
         'views/account_payment_view.xml',
@@ -37,15 +21,5 @@
         'views/product_template.xml',
         'report/report_invoice.xml',
     ],
-    # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
-    ],
-    # 'assets': {
-    #     'account.assets': [
-    #         'anj_account/static/src/css/report_accnt_jd.css',
-    #     ],
-    #
-    # },
     'license': 'LGPL-3',
 }

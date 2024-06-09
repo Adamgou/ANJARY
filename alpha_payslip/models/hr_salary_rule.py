@@ -1,5 +1,5 @@
-from odoo import fields, models, _, api
-from odoo.exceptions import UserError,ValidationError
+from odoo import fields, models, _
+from odoo.exceptions import UserError
 from odoo.tools.safe_eval import safe_eval
 
 

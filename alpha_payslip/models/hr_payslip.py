@@ -63,8 +63,8 @@ class Hr_Payslip(models.Model):
         if localdict is None:
             localdict = self._get_localdict()
 
-        rules_dict = localdict["rules"].dict
-        result_rules_dict = localdict["result_rules"].dict
+        rules_dict = localdict["rules"]
+        result_rules_dict = localdict["result_rules"]
 
         blacklisted_rule_ids = self.env.context.get(
             "prevent_payslip_computation_line_ids", []
@@ -101,7 +101,7 @@ class Hr_Payslip(models.Model):
                     localdict, tot_rule - previous_amount
                 )
                 # Retrieve the line name in the employee's lang
-                employee_lang = self.employee_id.sudo().address_home_id.lang
+                employee_lang = self.employee_id.sudo().lang
                 # This actually has an impact, don't remove this line
                 context = {"lang": employee_lang}
                 if localdict["result_name"]:
@@ -137,7 +137,7 @@ class Hr_Payslip(models.Model):
                     "sequence": rule.sequence,
                     "code": rule.code,
                     "name": rule_name,
-                    "note": html2plaintext(rule.note),
+                    # "note": html2plaintext(rule.note), note field does not exist anymore
                     "salary_rule_id": rule.id,
                     "contract_id": localdict["contract"].id,
                     "employee_id": localdict["employee"].id,

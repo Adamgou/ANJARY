@@ -7,7 +7,6 @@
             <field name="inherit_id" ref="account.view_move_form" />
             <field name="arch" type="xml">
                 <field name="payment_reference" position="before">
-                    <!--<field name="partner_sequence"/>-->
                     <field name="partner_codes" string="Code client"/>
                     <field name="compute_field_reset_draft" invisible="1"/>
                 </field>
@@ -16,7 +15,7 @@
 
                 </xpath>
                 <xpath expr="//button[@name='button_draft']" position="attributes">
-                    <attribute name="attrs">{'invisible': [('compute_field_reset_draft', '=', False)]}</attribute>
+                    <attribute name="invisible">compute_field_reset_draft == False</attribute>
                 </xpath>
                 <xpath expr="//page[@name='other_info']" position="after">
                     <page string="Note" name="note">

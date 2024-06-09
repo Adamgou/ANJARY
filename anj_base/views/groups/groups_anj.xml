@@ -7,17 +7,8 @@
         <record id="group_praxi_anj" model="res.groups">
             <field name="name">praxi</field>
         </record>
-        <record id="group_sia_anj" model="res.groups">
-            <field name="name">sia</field>
-        </record>
-        <record id="group_jara_anj" model="res.groups">
-            <field name="name">jara trade</field>
-        </record>
         <record id="group_to_do_draft" model="res.groups">
             <field name="name">Remettre en brouillon</field>
-        </record>
-        <record id="group_jara_distribution_anj" model="res.groups">
-            <field name="name">jara distribution</field>
         </record>
     </data>
 </odoo>

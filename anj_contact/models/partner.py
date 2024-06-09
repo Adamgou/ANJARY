@@ -5,6 +5,7 @@ from odoo import models, fields, api
 class Res_partner(models.Model):
     _inherit="res.partner"
 
+    chatId = fields.Char(string="Whatsapp Chat ID")
     nif = fields.Char(
         string='NIF',
         required=False)
@@ -24,7 +25,7 @@ class Res_partner(models.Model):
     product_id = fields.Many2one('product.template', string='Véhicule',store = True)
     best_room = fields.Char('Chambre préférée',store = True)
     customer_codes = fields.Char()
-    # check_comp = fields.Boolean(compute='_check_jara', store=True)
+
     city = fields.Char(compute='get_the_city_id', store=True)
     city_id = fields.Many2one('res.city', ondelete='restrict')
 

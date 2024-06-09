@@ -1,10 +1,13 @@
-from odoo import fields, models, api
+# coding: utf-8
 
 import math
 
+from odoo import fields, models, api
 
-class HrContractInherit(models.Model):
+
+class HrContract(models.Model):
     _inherit = "hr.contract"
+
     contrat_categorie = fields.Selection(
         [
             ("cdi", "CDI"),

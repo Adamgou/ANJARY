@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models, fields
+
 
 class SaleOrder(models.Model):
-    _inherit = 'sale.order'
+    _inherit = "sale.order"
 
     means_of_payment = fields.Selection(
         [
@@ -21,15 +22,21 @@ class SaleOrder(models.Model):
 
     def action_confirm(self):
         res = super(SaleOrder, self).action_confirm()
-        stock_picking = self.env['stock.picking'].search([('id', '=', self.picking_ids.id)])
+        stock_picking = self.env["stock.picking"].search(
+            [("id", "=", self.picking_ids.id)]
+        )
         for moves in stock_picking.move_ids_without_package:
-            moves.write({
-                'quantity_done': moves.product_uom_qty
-            })
+            moves.write({"quantity": moves.product_uom_qty})
         return res
 
     def _prepare_invoice(self):
         res = super(SaleOrder, self)._prepare_invoice()
-        res['note_client'] = self.note_client
-
+        res["note_client"] = self.note_client
         return res
+
+    def _get_action_view_picking(self, pickings):
+        """Hide create button."""
+        action = super()._get_action_view_picking(pickings)
+        if self.env.company.delivery_no_create_button:
+            action["context"].update({"create": False})
+        return action

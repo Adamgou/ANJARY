@@ -9,19 +9,19 @@
                      new_field after it -->
                 <xpath expr="//field[@name='city']" position="replace">
                     <field name="city" placeholder="City" class="o_address_city"
-                           attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}" invisible="1"/>
+                           readonly="type == 'contact' and parent_id" invisible="1"/>
                     <field name="city_id" placeholder="Ville" class="o_address_city"
-                           attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                           readonly="type == 'contact' and parent_id"/>
                 </xpath>
                  <xpath expr="//field[@name='function']" position="after">
-                    <field name="nickname" groups="anj_base.group_praxi_anj" />
+                    <field name="nickname" />
                 </xpath>
                 <!--<xpath expr="//field[@name='category_id']" position="after">
                     <field name="employee_id" />
                 </xpath> -->
 
                 <xpath expr="//notebook" position="inside">
-                    <page name="additif_info_partner" string="Infos additionnel" groups="anj_base.group_praxi_anj" >
+                    <page name="additif_info_partner" string="Infos additionnel">
                         <div>
                             <group>
                                 <group name="order_transfert" string="Informations complémentaire">
@@ -29,21 +29,31 @@
                                     <field name="product_id" />
                                     <field name="best_room" />
                                 </group>
-
-
                             </group>
                         </div>
-
                     </page>
-
                 </xpath>
+                <xpath expr="//div[@class='o_address_format'][1]" position="after">
+                    <field name="chatId" />
+                    <field name="nif" />
+                    <field name="stat" />
+                    <field name="rcs" />
+                    <field name="customer_codes" string="Code client"/>
+                  </xpath>
                 <xpath expr="//field[@name='vat']" position="replace">
-                  <field name="vat" placeholder="e.g. BE0477472701" attrs="{'readonly': [('parent_id','!=',False)]}" invisible="1"/>
-                  <field name="nif"/>
-                  <field name="stat"/>
-                  <field name="cif"/>
-                  <field name="rcs"/>
-                  <field name="customer_codes" string="Code client"/>
+                  <field name="vat" placeholder="e.g. BE0477472701" readonly="parent_id" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="inherit_view_partner_base_vat_form" model="ir.ui.view">
+            <field name="name">res.partner.base.vat.view.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base_vat.view_partner_base_vat_form"/>
+            <field name="priority">60</field>
+            <field name="arch" type="xml">
+                <xpath expr="//label[@for='vat']" position="attributes">
+                    <attribute name="invisible">1</attribute>
                 </xpath>
             </field>
         </record>

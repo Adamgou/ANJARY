@@ -18,7 +18,7 @@
 {
     'name': 'Access Restriction By IP',
     'summary': """User Can Access His Account Only From Specified IP Address""",
-    'version': '15.0.1.0.0',
+    'version': '16.0.1',
     'description': """User Can Access His Account Only From Specified IP Address""",
     'live_test_url': 'https://youtu.be/nn6dAL6eKPc',
     'author': 'Cybrosys Techno Solutions',
@@ -34,5 +34,6 @@
     'images': ['static/description/banner.png'],
     'installable': True,
     'auto_install': False,
+    'application': False,
 }
 

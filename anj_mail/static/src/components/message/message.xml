@@ -2,10 +2,11 @@
 
 <templates xml:space="preserve">
     <t t-inherit="mail.Message" t-inherit-mode="extension" owl="1">
-        <xpath expr="//div[hasclass('o_Message_headerDate')]" position="replace">
-            <div class="o_Message_date o_Message_headerDate" t-att-class="{ 'o-message-selected': isSelected }" t-att-title="messageView.message.dateFromNow">
-                - <t t-esc="datetime"/>
-            </div>
+        <xpath expr="//ActionSwiper/div/div/div[2]/div[1]/small[1]" position="replace">
+            <small t-if="!message.is_transient" class="o-mail-Message-date text-muted opacity-75" t-att-class="{ 'me-2': !isAlignedRight }" t-att-title="message.datetimeShort">
+                <t t-if="shouldDisplayAuthorName">- </t>
+                <t t-esc="message.datetimeShort"/>
+            </small>
         </xpath>
     </t>
 </templates>

@@ -150,7 +150,7 @@
                             <tr>
                                 <td class="tgv-0pky" colspan="6" rowspan="3">
                                     <span>Nom et prénom: </span> <span t-esc="o.employee_id.name"/> <br/>
-                                    <span>Adresse: </span> <span t-esc="o.employee_id.address_home_id.street"/> <br/>
+                                    <span>Adresse: </span> <span t-esc="o.employee_id.private_street"/> <br/>
                                     <span>N°CIN: </span> <span t-esc="o.employee_id.identification_id"/> <br/>
                                     <div style="width:100%; overflow: hidden;">
                                         <div style="float: left;">
@@ -224,13 +224,12 @@
 
                                     </div>
                                     <div>
-                                        <div>Pris: <span t-esc="o.employee_id.allocation_used_display"/>
+                                        <div>Pris: <span t-esc="float(o.employee_id.allocation_count) - float(o.employee_id.allocation_remaining_display)"/>
                                             Jours</div>
-
                                     </div>
                                     <div>
                                         <div class="col-6">Restant : <t t-set="foo"
-                                                                        t-value="float(o.employee_id.allocation_display) - float(o.employee_id.allocation_used_display)"/>
+                                                                        t-value="float(o.employee_id.allocation_remaining_display)"/>
                                             <t t-out="foo"/> Jours
                                         </div>
 

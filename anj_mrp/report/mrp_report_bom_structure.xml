@@ -2,12 +2,12 @@
 
 <odoo>
     <template id="report_mrp_bom_inherit" inherit_id="mrp.report_mrp_bom">
-        <xpath expr="//td[3]/span/t" position="attributes">
+        <xpath expr="//td[2]" position="attributes">
             <attribute name="t-options">{"widget": "float", "precision": 4}</attribute>
         </xpath>
     </template>
-    <template id="report_mrp_bom_line_inherit" inherit_id="mrp.report_mrp_bom_line">
-        <xpath expr="//td[3]/span/t" position="attributes">
+    <template id="report_mrp_bom_line_inherit" inherit_id="mrp.report_mrp_bom_pdf_line">
+        <xpath expr="//td[2]" position="attributes">
             <attribute name="t-options">{"widget": "float", "precision": 4}</attribute>
         </xpath>
     </template>

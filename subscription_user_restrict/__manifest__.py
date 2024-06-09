@@ -10,7 +10,7 @@
     'depends' : ['sale_subscription'],
     'data': [
         'security/ir_rule.xml',
-        'views/sale_subscription_views.xml'
+        'views/sale_order_template_views.xml'
     ],
     'license': 'LGPL-3',
 }

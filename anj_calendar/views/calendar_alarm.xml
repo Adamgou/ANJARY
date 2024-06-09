@@ -1,22 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
-    <data>
-    
-        <record id="calendar_alarm_view_form_inherit_calendar_alarm" model="ir.ui.view">
-            <field name="name">calendar.alarm.view.form.inherit</field>
-            <field name="model">calendar.alarm</field>
-            <field name="inherit_id" ref="calendar.calendar_alarm_view_form" />
-            <field name="arch" type="xml">
-                
-                <xpath expr="//div[hasclass('o_row')]" position="after">
-                    
-                    <field name="is_default" />
-                    
-                </xpath>
-                
-            </field>
-        </record>
-    
-    </data>
-    
+	<data>
+		<record id="calendar_alarm_view_form_inherit_calendar_alarm" model="ir.ui.view">
+			<field name="name">calendar.alarm.view.form.inherit</field>
+			<field name="model">calendar.alarm</field>
+			<field name="inherit_id" ref="calendar.calendar_alarm_view_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//div[hasclass('o_row')]" position="after">
+					<field name="is_default" />
+				</xpath>
+			</field>
+		</record>
+	</data>
 </odoo>

@@ -8,13 +8,13 @@
                 <xpath expr="//group[@name='banks']" position="after">
                     <group string="sequence">
                         <field name="sequence_started" invisible="1" />
-                        <field name="invoice_prefix" attrs="{'readonly': [('sequence_started', '=', True)]}"/>
+                        <field name="invoice_prefix" readonly="sequence_started == True"/>
                     </group>
                 </xpath>
                 <xpath expr="//page[@name='accounting_disabled']/div" position="before">
                     <group string="sequence">
                         <field name="sequence_started" invisible="1" />
-                        <field name="invoice_prefix" attrs="{'readonly': [('sequence_started', '=', True)]}"/>
+                        <field name="invoice_prefix" readonly="sequence_started == True"/>
                     </group>
                 </xpath>
             </field>

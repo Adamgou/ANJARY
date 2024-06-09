@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 15.0+e-20221103\n"
+"Project-Id-Version: Odoo Server 17.0+e-20240528\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-06 08:04+0000\n"
-"PO-Revision-Date: 2023-04-06 08:04+0000\n"
+"POT-Creation-Date: 2024-06-07 08:51+0000\n"
+"PO-Revision-Date: 2024-06-07 08:51+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,9 +21,29 @@ msgid "Check"
 msgstr "Chèque"
 
 #. module: anj_sale
+#: model:ir.model,name:anj_sale.model_res_company
+msgid "Companies"
+msgstr "Sociétés"
+
+#. module: anj_sale
+#: model:ir.model.fields,field_description:anj_sale.field_res_company__delivery_no_create_button
+msgid "Delivery No Create Button"
+msgstr "Cacher le bouton 'Créer' au niveau du BL"
+
+#. module: anj_sale
+#: model:ir.model.fields,help:anj_sale.field_res_company__delivery_no_create_button
+msgid "Hide create button when accessing delivery from sale order."
+msgstr "Masquer le bouton Créer lors de l’accès à la livraison à partir de la commande client."
+
+#. module: anj_sale
 #: model:ir.model.fields,field_description:anj_sale.field_sale_order_line__is_jara
 msgid "Is Jara"
 msgstr ""
+
+#. module: anj_sale
+#: model:ir.model,name:anj_sale.model_account_move
+msgid "Journal Entry"
+msgstr "Pièce comptable"
 
 #. module: anj_sale
 #: model:ir.model.fields,field_description:anj_sale.field_sale_order__means_of_payment
@@ -33,12 +53,26 @@ msgstr "Moyens de paiement"
 #. module: anj_sale
 #: model:ir.model.fields.selection,name:anj_sale.selection__sale_order__means_of_payment__mobile_money
 msgid "Mobile Money"
-msgstr "Mobile Money"
+msgstr ""
+
+#. module: anj_sale
+#: model:ir.model.fields,field_description:anj_sale.field_account_bank_statement_line__note_client
+#: model:ir.model.fields,field_description:anj_sale.field_account_move__note_client
+#: model:ir.model.fields,field_description:anj_sale.field_account_payment__note_client
+#: model:ir.model.fields,field_description:anj_sale.field_sale_order__note_client
+#: model:ir.model.fields,field_description:anj_sale.field_stock_picking__note_client
+msgid "Note"
+msgstr ""
 
 #. module: anj_sale
 #: model:ir.model.fields,field_description:anj_sale.field_sale_order_line__unit_price_discounted
 msgid "Prix unitaire remisé"
 msgstr ""
+
+#. module: anj_sale
+#: model_terms:ir.ui.view,arch_db:anj_sale.res_company_view_form
+msgid "Sales"
+msgstr "Ventes"
 
 #. module: anj_sale
 #: model:ir.model,name:anj_sale.model_sale_order
@@ -54,6 +88,11 @@ msgstr "Ligne de bons de commande"
 #: model:ir.model.fields.selection,name:anj_sale.selection__sale_order__means_of_payment__species
 msgid "Species"
 msgstr "Espèce"
+
+#. module: anj_sale
+#: model:ir.model,name:anj_sale.model_stock_picking
+msgid "Transfer"
+msgstr "Transfert"
 
 #. module: anj_sale
 #: model:ir.model.fields.selection,name:anj_sale.selection__sale_order__means_of_payment__treaty

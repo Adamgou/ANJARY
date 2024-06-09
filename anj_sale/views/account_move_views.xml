@@ -7,7 +7,7 @@
             <field name="inherit_id" ref="account.view_move_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//group//field[@name='partner_id']" position="after">
-                    <field name="note_client" readonly="1" attrs="{'invisible': [('note_client', '=', False)]}"/>
+                    <field name="note_client" readonly="1" invisible="not note_client" />
                 </xpath>
             </field>
         </record>

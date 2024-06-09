@@ -6,15 +6,10 @@
             <field name="model">account.move</field>
             <field name="inherit_id" ref="account.view_move_form" />
             <field name="arch" type="xml">
-                <!-- Add column unit_price_discounted to line invoice ids -->
                 <xpath expr="//field[@name='invoice_line_ids']//field[@name='discount']" position="after">
                     <field name="unit_price_discounted" readonly="1" force_save="1"/>
                     <field name="price_unit_ht" readonly="1" />
-
-                    <!-- <field name="unit_price_discounted" attrs="{'invisible': [('company_id','!=','JARA DISTRIBUTION')]}" /> -->
                 </xpath>
-
-
             </field>
         </record>
     

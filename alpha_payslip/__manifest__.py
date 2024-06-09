@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# coding: utf-8
 {
     "name": "alpha_payslip",
     "summary": """
@@ -20,8 +20,6 @@
     "data": [
         "security/ir.model.access.csv",
         "views/base_external_layout.xml",
-        "views/views.xml",
-        "views/templates.xml",
         "views/hr_employee.xml",
         "views/hr_contract_view.xml",
         "views/payslip_report.xml",
@@ -40,7 +38,7 @@
         ],
         "web.assets_backend": [
             "alpha_payslip/static/src/css/custom_widget.css",
-            "alpha_payslip/static/src/js/custom_widget.js",
+            # "alpha_payslip/static/src/js/custom_widget.js",
         ],
         "web.assets_qweb": {
             "alpha_payslip/static/src/xml/custom_widget.xml",

@@ -1,12 +1,14 @@
-# -*- coding: utf-8 -*-
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
+# coding: utf-8
 
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class ResConfigSettings(models.TransientModel):
-    _inherit = 'res.config.settings'
+    _inherit = "res.config.settings"
 
     number_of_mo = fields.Float(
-        string='Number of manufacturing orders', config_parameter="anj_production.number_of_mo",
-        required=False, default=2000)
+        string="Number of manufacturing orders",
+        config_parameter="anj_production.number_of_mo",
+        required=False,
+        default=2000,
+    )

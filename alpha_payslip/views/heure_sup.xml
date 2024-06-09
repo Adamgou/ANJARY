@@ -28,7 +28,7 @@
                                     <th class="tg-266k">Semaine 2</th>
                                     <th class="tg-266k">Semaine 3</th>
                                     <th class="tg-266k">Semaine 4</th>
-                                    <th class="tg-266k" attrs="{'invisible': [('nombre_de_semaine', '!=', 'cinq')]}">Semaine 5</th>
+                                    <th class="tg-266k" invisible="nombre_de_semaine != 'cinq'" >Semaine 5</th>
                                     <th class="tg-266k">
                                         <span style="font-weight:bold">TOTAL</span>
                                     </th>
@@ -49,7 +49,7 @@
                                     <td class="tg-0pky">
                                         <field name="heure_sup_s4" />
                                     </td>
-                                    <td class="tg-0pky" attrs="{'invisible': [('nombre_de_semaine', '!=', 'cinq')]}">
+                                    <td class="tg-0pky" invisible="nombre_de_semaine != 'cinq'">
                                         <field name="heure_sup_s5" />
                                     </td>
                                     <td class="tg-pidv">
@@ -70,7 +70,7 @@
                                     <td class="tg-0pky">
                                         <field name="heure_nuit_hab_s4" />
                                     </td>
-                                    <td class="tg-0pky" attrs="{'invisible': [('nombre_de_semaine', '!=', 'cinq')]}">
+                                    <td class="tg-0pky" invisible="nombre_de_semaine != 'cinq'">
                                         <field name="heure_nuit_hab_s5" />
                                     </td>
                                     <td class="tg-pidv">
@@ -91,7 +91,7 @@
                                     <td class="tg-0pky">
                                         <field name="heure_nuit_occ_s4" />
                                     </td>
-                                    <td class="tg-0pky" attrs="{'invisible': [('nombre_de_semaine', '!=', 'cinq')]}">
+                                    <td class="tg-0pky" invisible="nombre_de_semaine != 'cinq'">
                                         <field name="heure_nuit_occ_s5" />
                                     </td>
                                     <td class="tg-pidv">
@@ -112,7 +112,7 @@
                                     <td class="tg-0pky">
                                         <field name="heure_sup_dimanche_s4" />
                                     </td>
-                                    <td class="tg-0pky" attrs="{'invisible': [('nombre_de_semaine', '!=', 'cinq')]}">
+                                    <td class="tg-0pky" invisible="nombre_de_semaine != 'cinq'">
                                         <field name="heure_sup_dimanche_s5" />
                                     </td>
                                     <td class="tg-pidv">
@@ -133,7 +133,7 @@
                                     <td class="tg-0pky">
                                         <field name="heure_sup_ferie_s4" />
                                     </td>
-                                    <td class="tg-0pky" attrs="{'invisible': [('nombre_de_semaine', '!=', 'cinq')]}">
+                                    <td class="tg-0pky" invisible="nombre_de_semaine != 'cinq'">
                                         <field name="heure_sup_ferie_s5" />
                                     </td>
                                     <td class="tg-pidv">
@@ -156,7 +156,7 @@
                                     <td class="tg-pidv">
                                         <field name="total_s4" />
                                     </td>
-                                    <td class="tg-pidv" attrs="{'invisible': [('nombre_de_semaine', '!=', 'cinq')]}">
+                                    <td class="tg-pidv" invisible="nombre_de_semaine != 'cinq'">
                                         <field name="total_s5" />
                                     </td>
                                 </tr>

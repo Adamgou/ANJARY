@@ -1,0 +1,1 @@
+- do not statically implement the 15% price rule between jara and jatratrade
