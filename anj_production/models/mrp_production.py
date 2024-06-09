@@ -8,15 +8,15 @@ class MrpProduction(models.Model):
 
     def button_mark_done(self):
         res = super().button_mark_done()
-        number_of_mo = float(
+        date_from = (
             self.env["ir.config_parameter"]
             .sudo()
-            .get_param("anj_production.number_of_mo")
+            .get_param("anj_production.mo_date_from")
         )
+
         last_production_ids = self.search(
-            [("bom_id", "=", self.bom_id.id)],
+            [("create_date", ">=", date_from), ("bom_id", "=", self.bom_id.id)],
             order="create_date desc",
-            limit=number_of_mo,
         )
         BOMLine = self.env["mrp.bom.line"]
         for move_id in self.move_raw_ids.filtered(
@@ -40,16 +40,19 @@ class MrpProduction(models.Model):
         ).unlink()
 
         qty_producing_total = sum(last_production_ids.mapped("qty_producing"))
-        for line_id in self.bom_id.bom_line_ids:
-            line_id.write(
-                {
-                    "product_qty": sum(
-                        last_production_ids.mapped("move_raw_ids")
-                        .filtered(lambda move: move.product_id == line_id.product_id)
-                        .mapped("quantity")
-                    )
-                    / qty_producing_total
-                }
-            )
+        if qty_producing_total:
+            for line_id in self.bom_id.bom_line_ids:
+                line_id.write(
+                    {
+                        "product_qty": sum(
+                            last_production_ids.mapped("move_raw_ids")
+                            .filtered(
+                                lambda move: move.product_id == line_id.product_id
+                            )
+                            .mapped("quantity")
+                        )
+                        / qty_producing_total
+                    }
+                )
 
         return res

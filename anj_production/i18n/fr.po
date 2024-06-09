@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 15.0+e-20230126\n"
+"Project-Id-Version: Odoo Server 17.0+e-20240528\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-03 12:18+0000\n"
-"PO-Revision-Date: 2023-10-03 12:18+0000\n"
+"POT-Creation-Date: 2024-06-09 11:02+0000\n"
+"PO-Revision-Date: 2024-06-09 11:02+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,8 +17,8 @@ msgstr ""
 
 #. module: anj_production
 #: model_terms:ir.ui.view,arch_db:anj_production.res_config_settings_view_form
-msgid "<span class=\"col-lg-4 o_light_label\">Value : </span>"
-msgstr "<span class=\"col-lg-4 o_light_label\">Valeur : </span>"
+msgid "<span class=\"col-lg-4 o_light_label\">Date from: </span>"
+msgstr "<span class=\"col-lg-4 o_light_label\">Depuis: </span>"
 
 #. module: anj_production
 #: model_terms:ir.ui.view,arch_db:anj_production.res_config_settings_view_form
@@ -31,21 +31,27 @@ msgstr ""
 #. module: anj_production
 #: model:ir.model,name:anj_production.model_res_config_settings
 msgid "Config Settings"
-msgstr "Paramètres de config"
-
-#. module: anj_production
-#: model:ir.model.fields,field_description:anj_production.field_res_config_settings__number_of_mo
-msgid "Number of manufacturing orders"
-msgstr "Nombre d'ordres de fabrication"
-
-#. module: anj_production
-#: model_terms:ir.ui.view,arch_db:anj_production.res_config_settings_view_form
-msgid ""
-"Number of production orders to be taken into account when calculating the "
-"average of BOM components"
-msgstr "Nombre d'ordres de fabrication à prendre en compte lors du calcul de la moyenne des composants de la nomenclature"
+msgstr ""
 
 #. module: anj_production
 #: model:ir.model,name:anj_production.model_mrp_production
 msgid "Production Order"
-msgstr "Ordre de fabrication"
+msgstr "Ordre de production"
+
+#. module: anj_production
+#: model_terms:ir.ui.view,arch_db:anj_production.res_config_settings_view_form
+msgid ""
+"Production orders created from this date will be taken into account when "
+"calculating the average of BOM components"
+msgstr ""
+"Les ordres de fabrication créés à partir de cette date seront pris en compte lorsque "
+"calculer la moyenne des composants de la nomenclature"
+
+#. module: anj_production
+#: model:ir.model.fields,field_description:anj_production.field_res_config_settings__mo_date_from
+msgid ""
+"Production orders from this date will be taken into account when refreshing "
+"bom_line quantity"
+msgstr ""
+"Les commandes de production à partir de cette date seront prises en compte lors du rafraîchissement"
+"quantité bom_line"
