@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <data>
-    <record id="res_config_settings_view_form_inherit" model="ir.ui.view">
+    <record id="res_config_settings_view_form" model="ir.ui.view">
       <field name="name">res.config.settings.view.form.inherit.mrp</field>
       <field name="model">res.config.settings</field>
       <field name="priority" eval="35"/>
@@ -9,22 +9,17 @@
       <field name="arch" type="xml">
         <setting id="mrp_lock" position="after">
           <setting id="po_order_approval">
-            <!-- <div class="o_setting_left_pane">
-            </div> -->
-            <!-- <div class="o_setting_right_pane"> -->
-              <label for="number_of_mo"/>
-              <span class="fa fa-lg fa-building-o" title="Values set here are company-specific."
-                    aria-label="Values set here are company-specific." groups="base.group_multi_company" role="img"/>
-              <div class="text-muted">
-                Number of production orders to be taken into account when calculating the average of BOM components
+            <label for="mo_date_from"/>
+            <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." aria-label="Values set here are company-specific." groups="base.group_multi_company" role="img"/>
+            <div class="text-muted">
+                Production orders created from this date will be taken into account when calculating the average of BOM components
+            </div>
+            <div class="content-group">
+              <div class="row mt16">
+                <span class="col-lg-4 o_light_label">Date from: </span>
+                <field name="mo_date_from"/>
               </div>
-              <div class="content-group">
-                <div class="row mt16">
-                  <span class="col-lg-4 o_light_label">Value : </span>
-                  <field name="number_of_mo"/>
-                </div>
-              </div>
-            <!-- </div> -->
+            </div>
           </setting>
         </setting>
       </field>
