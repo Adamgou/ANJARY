@@ -28,10 +28,9 @@ class AccountMove(models.Model):
 
     @api.depends("compute_field_reset_draft", "user_id")
     def get_user_connect(self):
-        if self.env.user.has_group("anj_base.group_to_do_draft"):
-            self.compute_field_reset_draft = True
-        else:
-            self.compute_field_reset_draft = False
+        self.compute_field_reset_draft = self.env.user.has_group(
+            "anj_base.group_to_do_draft"
+        ) and self.state in ("posted", "cancel")
 
     @api.depends()
     def _compute_payment_done(self):
