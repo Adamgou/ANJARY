@@ -14,6 +14,7 @@ class Sale_order_line(models.Model):
 
     is_jara = fields.Boolean(compute='_compute_is_jara')
 
+    @api.depends("product_id")
     def _compute_is_jara(self):
         for rec in self:
             if rec.env.company.name.lower().startswith('jara') or rec.env.company.name.lower().startswith('societe immobiliere'):
