@@ -3,7 +3,7 @@
     <data>
         <template id="bordered_address">
             <div
-                t-att-style="'padding-top: 150px;' if o.company_id.name.lower() == 'societe immobiliere anjary' else ''">
+                t-att-style="'padding-top: 30px;' if o.company_id.name.lower() == 'societe immobiliere anjary' else ''">
                 <div style="border: 3px solid black; border-radius: 10px; padding: 5px">
                     <div>
                         <span t-esc="o.partner_id.name" />
@@ -470,167 +470,175 @@
                     </t>
                 </td>
             </xpath>
-            <xpath expr="//div[@id='total']" position="replace">
-                <div t-if="o.company_id.name.lower() == 'societe immobiliere anjary'" id="total"
-                    lass="clearfix row">
-                    <div class="ms-auto">
-                        <table class="table table-sm table-borderless avoid-page-break-inside">
-                            <t t-set="tax_totals" t-value="o.tax_totals" />
-                            <t t-call="account.document_tax_totals" />
+            <xpath expr="//div[@id='right-elements']" position="replace">
+                <div id="right-elements"
+                    t-attf-class="#{'col-5' if report_type != 'html' else 'col-12 col-md-5'} ms-5 d-inline-block float-end"
+                    style="padding-right: 0px !important;">
+                    <div t-if="o.company_id.name.lower() == 'societe immobiliere anjary'" id="total"
+                        lass="clearfix row">
+                        <div class="ms-auto">
+                            <table class="table table-sm table-borderless avoid-page-break-inside">
+                                <t t-set="tax_totals" t-value="o.tax_totals" />
+                                <t t-call="account.document_tax_totals" />
 
-                            <t t-if="print_with_payments">
-                                <t t-if="o.payment_state != 'invoicing_legacy'">
-                                    <t t-set="payments_vals"
-                                        t-value="o.sudo()._get_reconciled_payments()" />
-                                    <t t-foreach="payments_vals" t-as="payment_vals">
-                                        <tr>
-                                            <td style="border: 1px solid black;">
-                                                <i class="oe_form_field text-right oe_payment_label">Payé
-                                                    le <t t-esc="payment_vals['date']"
-                                                        t-options='{"widget": "date"}' /></i>
-                                            </td>
-                                            <td style="border: 1px solid black;" class="text-right">
-                                                <span t-esc="payment_vals['amount']"
-                                                    t-options='{"widget": "monetary", "display_currency": o.currency_id}' />
-                                            </td>
-                                        </tr>
-                                    </t>
-                                    <t t-if="len(payments_vals) > 0">
-                                        <tr class="border-black">
-                                            <td style="border: 1px solid black;">
-                                                <strong>Montant dû</strong>
-                                            </td>
-                                            <td style="border: 1px solid black;" class="text-right">
-                                                <span t-field="o.amount_residual" />
-                                            </td>
-                                        </tr>
+                                <t t-if="print_with_payments">
+                                    <t t-if="o.payment_state != 'invoicing_legacy'">
+                                        <t t-set="payments_vals"
+                                            t-value="o.sudo()._get_reconciled_payments()" />
+                                        <t t-foreach="payments_vals" t-as="payment_vals">
+                                            <tr>
+                                                <td style="border: 1px solid black;">
+                                                    <i
+                                                        class="oe_form_field text-right oe_payment_label">Payé
+                                                        le <t t-esc="payment_vals['date']"
+                                                            t-options='{"widget": "date"}' /></i>
+                                                </td>
+                                                <td style="border: 1px solid black;"
+                                                    class="text-right">
+                                                    <span t-esc="payment_vals['amount']"
+                                                        t-options='{"widget": "monetary", "display_currency": o.currency_id}' />
+                                                </td>
+                                            </tr>
+                                        </t>
+                                        <t t-if="len(payments_vals) > 0">
+                                            <tr class="border-black">
+                                                <td style="border: 1px solid black;">
+                                                    <strong>Montant dû</strong>
+                                                </td>
+                                                <td style="border: 1px solid black;"
+                                                    class="text-right">
+                                                    <span t-field="o.amount_residual" />
+                                                </td>
+                                            </tr>
+                                        </t>
                                     </t>
                                 </t>
-                            </t>
-                        </table>
+                            </table>
+                        </div>
+                    </div>
+                    <div t-else="" id="total" class="row">
+                        <div
+                            t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ml-auto">
+                            <table class="table table-sm" style="page-break-inside: avoid;">
+                                <t t-set="tax_totals" t-value="o.tax_totals" />
+    
+                                <t t-call="account.document_tax_totals"
+                                    t-if="o.company_id.name.startswith('jara dist')" />
+                                <t t-else="">
+                                    <table class="table table-sm" style="border: 1px solid black;">
+                                        <t t-if="o.company_id.name.lower() == 'jaratrade'">
+                                            <tr>
+                                                <td style="border: 1px solid black;">Total HT</td>
+                                                <td
+                                                    style="border: 1px solid black;background-color: none; text-align: right">
+                                                    <t t-esc="o.amount_untaxed"
+                                                        t-options="{'widget': 'float', 'precision': 2}" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border: 1px solid black;">Total TVA</td>
+                                                <td
+                                                    style="background-color: none; text-align: right; border: 1px solid black;">
+                                                    <t t-esc="o.amount_total - o.amount_untaxed"
+                                                        t-options="{'widget': 'float', 'precision': 2}" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border: 1px solid black;">Total TTC</td>
+                                                <td
+                                                    style="background-color: none;  border: 1px solid black;text-align: right;">
+                                                    <t t-esc="o.amount_total"
+                                                        t-options="{'widget': 'float', 'precision': 2}" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border: 1px solid black;font-weight: bold;">Net
+                                                    à payer Ar</td>
+                                                <td
+                                                    style="border: 1px solid black;background-color: none; text-align: right;font-weight: bold;">
+                                                    <t t-esc="o.amount_total"
+                                                        t-options="{'widget': 'float', 'precision': 2}" />
+                                                </td>
+                                            </tr>
+                                        </t>
+                                        <t t-elif="o.company_id.name.lower() == 'jara distribution'">
+                                            <tr>
+                                                <td style="border: 1px solid black;font-weight: bold;">Total
+                                                    TTC Ar</td>
+                                                <td
+                                                    style="background-color: none;  border: 1px solid black;text-align: right;font-weight: bold;">
+                                                    <t t-esc="o.amount_total"
+                                                        t-options="{'widget': 'float', 'precision': 2}" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border: 1px solid black;font-weight: bold;">Net
+                                                    à payer Ar</td>
+                                                <td
+                                                    style="border: 1px solid black;background-color: none; text-align: right;font-weight: bold;">
+                                                    <t t-esc="o.amount_total"
+                                                        t-options="{'widget': 'float', 'precision': 2}" />
+                                                </td>
+                                            </tr>
+                                        </t>
+                                        <t t-else="">
+                                            <tr>
+                                                <td style="border: 1px solid black;font-weight: bold;">Total
+                                                    TTC Ar</td>
+                                                <td
+                                                    style="background-color: none;  border: 1px solid black;text-align: right;font-weight: bold;">
+                                                    <t t-esc="o.amount_total"
+                                                        t-options="{'widget': 'float', 'precision': 2}" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border: 1px solid black;font-weight: bold;">Net
+                                                    à payer Ar</td>
+                                                <td
+                                                    style="border: 1px solid black;background-color: none; text-align: right;font-weight: bold;">
+                                                    <t t-esc="o.amount_total"
+                                                        t-options="{'widget': 'float', 'precision': 2}" />
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </table>
+                                </t>
+    
+                                <t t-if="print_with_payments">
+                                    <t t-if="o.payment_state != 'invoicing_legacy'">
+                                        <t t-set="payments_vals"
+                                            t-value="o.sudo()._get_reconciled_payments()" />
+                                        <t t-foreach="payments_vals" t-as="payment_vals">
+                                            <tr>
+                                                <td>
+                                                    <i class="oe_form_field text-right oe_payment_label">Payé
+                                                        le : <t t-esc="payment_vals['date']"
+                                                            t-options='{"widget": "date"}' /></i>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="payment_vals['amount']"
+                                                        t-options='{"widget": "monetary", "display_currency": o.currency_id}' />
+                                                </td>
+                                            </tr>
+                                        </t>
+                                        <t t-if="len(payments_vals) > 0">
+                                            <tr class="border-black">
+                                                <td>
+                                                    <strong>Montant dû : </strong>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-field="o.amount_residual" />
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </t>
+                                </t>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
-                <div t-else="" id="total" class="row">
-                    <div
-                        t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ml-auto">
-                        <table class="table table-sm" style="page-break-inside: avoid;">
-                            <t t-set="tax_totals" t-value="o.tax_totals" />
 
-                            <t t-call="account.document_tax_totals"
-                                t-if="o.company_id.name.startswith('jara dist')" />
-                            <t t-else="">
-                                <table class="table table-sm" style="border: 1px solid black;">
-                                    <t t-if="o.company_id.name.lower() == 'jaratrade'">
-                                        <tr>
-                                            <td style="border: 1px solid black;">Total HT</td>
-                                            <td
-                                                style="border: 1px solid black;background-color: none; text-align: right">
-                                                <t t-esc="o.amount_untaxed"
-                                                    t-options="{'widget': 'float', 'precision': 2}" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="border: 1px solid black;">Total TVA</td>
-                                            <td
-                                                style="background-color: none; text-align: right; border: 1px solid black;">
-                                                <t t-esc="o.amount_total - o.amount_untaxed"
-                                                    t-options="{'widget': 'float', 'precision': 2}" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="border: 1px solid black;">Total TTC</td>
-                                            <td
-                                                style="background-color: none;  border: 1px solid black;text-align: right;">
-                                                <t t-esc="o.amount_total"
-                                                    t-options="{'widget': 'float', 'precision': 2}" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="border: 1px solid black;font-weight: bold;">Net
-                                                à payer Ar</td>
-                                            <td
-                                                style="border: 1px solid black;background-color: none; text-align: right;font-weight: bold;">
-                                                <t t-esc="o.amount_total"
-                                                    t-options="{'widget': 'float', 'precision': 2}" />
-                                            </td>
-                                        </tr>
-                                    </t>
-                                    <t t-elif="o.company_id.name.lower() == 'jara distribution'">
-                                        <tr>
-                                            <td style="border: 1px solid black;font-weight: bold;">Total
-                                                TTC Ar</td>
-                                            <td
-                                                style="background-color: none;  border: 1px solid black;text-align: right;font-weight: bold;">
-                                                <t t-esc="o.amount_total"
-                                                    t-options="{'widget': 'float', 'precision': 2}" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="border: 1px solid black;font-weight: bold;">Net
-                                                à payer Ar</td>
-                                            <td
-                                                style="border: 1px solid black;background-color: none; text-align: right;font-weight: bold;">
-                                                <t t-esc="o.amount_total"
-                                                    t-options="{'widget': 'float', 'precision': 2}" />
-                                            </td>
-                                        </tr>
-                                    </t>
-                                    <t t-else="">
-                                        <tr>
-                                            <td style="border: 1px solid black;font-weight: bold;">Total
-                                                TTC Ar</td>
-                                            <td
-                                                style="background-color: none;  border: 1px solid black;text-align: right;font-weight: bold;">
-                                                <t t-esc="o.amount_total"
-                                                    t-options="{'widget': 'float', 'precision': 2}" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="border: 1px solid black;font-weight: bold;">Net
-                                                à payer Ar</td>
-                                            <td
-                                                style="border: 1px solid black;background-color: none; text-align: right;font-weight: bold;">
-                                                <t t-esc="o.amount_total"
-                                                    t-options="{'widget': 'float', 'precision': 2}" />
-                                            </td>
-                                        </tr>
-                                    </t>
-                                </table>
-                            </t>
-
-                            <t t-if="print_with_payments">
-                                <t t-if="o.payment_state != 'invoicing_legacy'">
-                                    <t t-set="payments_vals"
-                                        t-value="o.sudo()._get_reconciled_payments()" />
-                                    <t t-foreach="payments_vals" t-as="payment_vals">
-                                        <tr>
-                                            <td>
-                                                <i class="oe_form_field text-right oe_payment_label">Payé
-                                                    le : <t t-esc="payment_vals['date']"
-                                                        t-options='{"widget": "date"}' /></i>
-                                            </td>
-                                            <td class="text-right">
-                                                <span t-esc="payment_vals['amount']"
-                                                    t-options='{"widget": "monetary", "display_currency": o.currency_id}' />
-                                            </td>
-                                        </tr>
-                                    </t>
-                                    <t t-if="len(payments_vals) > 0">
-                                        <tr class="border-black">
-                                            <td>
-                                                <strong>Montant dû : </strong>
-                                            </td>
-                                            <td class="text-right">
-                                                <span t-field="o.amount_residual" />
-                                            </td>
-                                        </tr>
-                                    </t>
-                                </t>
-                            </t>
-                        </table>
-                    </div>
-                </div>
             </xpath>
             <xpath expr="//p[@name='payment_communication']" position="before">
                 <br />
