@@ -3,7 +3,7 @@
     <data>
         <template id="bordered_address">
             <div
-                t-att-style="'padding-top: 30px;' if o.company_id.name.lower() == 'societe immobiliere anjary' else ''">
+                t-att-style="'padding-top: 50px;' if o.company_id.name.lower() == 'societe immobiliere anjary' else ''">
                 <div style="border: 3px solid black; border-radius: 10px; padding: 5px">
                     <div>
                         <span t-esc="o.partner_id.name" />
