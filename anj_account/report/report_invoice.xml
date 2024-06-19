@@ -661,6 +661,11 @@
                     <div t-attf-class="footer o_boxed_footer o_company_#{company.id}_layout">
                         <t t-if="o">
                             <div class="text-center">
+                                <t t-if="o.journal_id.code == 'QUIT'">
+                                    <div> Compte bancaire MCB - Société Immobilière Anjary <br /> N°
+                                        00006-00014-00001279483-67</div>
+                                    <br />
+                                </t>
                                 <div t-if="report_type == 'pdf'"> Page: <span class="page" /> / <span
                                         class="topage" />
                                 </div>
