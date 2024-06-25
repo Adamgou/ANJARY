@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <template id="anj_report_payslip" inherit_id="alpha_payslip.report_payslip_inherit">
+        <xpath expr="//div[hasclass('row')][last()]" position="before">
+            <span><strong>Payment mode: </strong> <span t-field="o.payment_mode_id"/></span><br/><br/>
+        </xpath>
+    </template>
+</odoo>

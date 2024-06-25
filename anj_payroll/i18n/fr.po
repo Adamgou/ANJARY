@@ -1,0 +1,81 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* anj_payroll
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e-20240528\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-06-25 12:26+0000\n"
+"PO-Revision-Date: 2024-06-25 12:26+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: anj_payroll
+#: model_terms:ir.ui.view,arch_db:anj_payroll.anj_report_payslip
+msgid "<strong>Payment mode: </strong>"
+msgstr "<strong>Mode de paiement: </strong>"
+
+#. module: anj_payroll
+#: model:ir.model.fields,field_description:anj_payroll.field_hr_payslip_payment_mode__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: anj_payroll
+#: model:ir.model.fields,field_description:anj_payroll.field_hr_payslip_payment_mode__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: anj_payroll
+#: model:ir.model.fields,field_description:anj_payroll.field_hr_payslip_payment_mode__display_name
+msgid "Display Name"
+msgstr "Nom de l'affichage"
+
+#. module: anj_payroll
+#: model:ir.model,name:anj_payroll.model_hr_payslip_payment_mode
+msgid "HR Payslip Payment Mode"
+msgstr "Mode de paiement sur fiche de paie"
+
+#. module: anj_payroll
+#: model:ir.model.fields,field_description:anj_payroll.field_hr_payslip_payment_mode__id
+msgid "ID"
+msgstr ""
+
+#. module: anj_payroll
+#: model:ir.model.fields,field_description:anj_payroll.field_hr_payslip_payment_mode__write_uid
+msgid "Last Updated by"
+msgstr "Modifié par"
+
+#. module: anj_payroll
+#: model:ir.model.fields,field_description:anj_payroll.field_hr_payslip_payment_mode__write_date
+msgid "Last Updated on"
+msgstr "Modifié le"
+
+#. module: anj_payroll
+#: model:ir.model.fields,field_description:anj_payroll.field_hr_payslip_payment_mode__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: anj_payroll
+#: model:ir.model,name:anj_payroll.model_hr_payslip
+msgid "Pay Slip"
+msgstr "Fiche de paie"
+
+#. module: anj_payroll
+#: model:ir.model.fields,field_description:anj_payroll.field_hr_payslip__payment_mode_id
+msgid "Payment Mode"
+msgstr "Mode de paiement"
+
+#. module: anj_payroll
+#: model_terms:ir.ui.view,arch_db:anj_payroll.hr_payslip_view_form
+msgid "Payment mode..."
+msgstr "Mode de paiement..."
+
+#. module: anj_payroll
+#: model:ir.ui.menu,name:anj_payroll.menu_hr_payroll_work_entries_root
+msgid "Work Entries"
+msgstr ""

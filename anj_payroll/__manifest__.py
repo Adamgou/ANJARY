@@ -5,9 +5,15 @@
     "website": "http://www.nexources.com",
     "category": "Uncategorized",
     "version": "17.1",
-    "depends": ["hr_work_entry_contract_enterprise", "anj_base"],
+    "depends": ["alpha_payslip", "anj_base"],
     "data": [
+        # SECURITY
+        "security/ir.model.access.csv",
+        # VIEWS
         "views/menuitems.xml",
+        "views/hr_payslip_views.xml",
+        # REPORT
+        "report/payslip_report.xml",
     ],
     "license": "LGPL-3",
 }
