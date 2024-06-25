@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "ANJ - Product",
+    'name': "ANJ - Product subscription",
 
-    'summary': "ANJ - Product",
+    'summary': "ANJ - Product subscription",
 
     'author': "Nexources",
     'website': "https://www.nexources.com",
