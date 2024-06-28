@@ -147,6 +147,7 @@ class Hr_Payslip(models.Model):
                     "slip_id": self.id,
                     "base": base,
                     "nombre": nombre,
+                    'total': tot_rule,
                 }
 
         return result.values()
