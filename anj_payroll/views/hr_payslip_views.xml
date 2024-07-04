@@ -9,6 +9,12 @@
             <field name="paid_date" position="before">
                 <field name="payment_mode_id" placeholder="Payment mode..."/>
             </field>
+            <field name="quantity" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </field>
+            <field name="rate" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </field>
         </field>
     </record>
 </odoo>
