@@ -17,8 +17,7 @@ class Sale_order_line(models.Model):
     @api.depends("product_id")
     def _compute_is_jara(self):
         for rec in self:
-            if rec.env.company.name.lower().startswith('jara') or rec.env.company.name.lower().startswith('societe immobiliere'):
-                rec.is_jara = True
+            rec.is_jara = rec.env.company.name.lower().startswith('jara') or rec.env.company.name.lower().startswith('societe immobiliere')
 
     @api.onchange("discount", "price_unit")
     def _change_discount(self):
