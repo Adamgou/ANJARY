@@ -26,10 +26,12 @@ class HrPayslipXlsx(models.AbstractModel):
         title_body = workbook.add_format({'align': 'center','border': 1})
         total = 0
         total_net = 0
+        total_net = 0
         for value in lines.slip_ids:
             net_salary = value.line_ids.filtered(lambda payslip: payslip.salary_rule_id.is_net)[0].total if \
             value.line_ids.filtered(lambda payslip: payslip.salary_rule_id.is_net)[0].total else 0
             total = total + net_salary
+        total_net = add_zeros(str(total).replace('.', ''), 12)
         total_net = add_zeros(str(total).replace('.', ''), 12)
         sheet = workbook.add_worksheet('OPAVI report')
         sheet.set_column(0, 0, 10)
@@ -52,9 +54,9 @@ class HrPayslipXlsx(models.AbstractModel):
             sheet.write(0, 1, _(total_net),title_body)
             sheet.write(0, 2, _('V00721'),title_body)
             sheet.write(0, 3, _(report_name),title_body)
-        for index, value in enumerate(lines.slip_ids):
+        for index, value in enumerate(lines.slip_ids.filtered(lambda payment_mode: str(payment_mode.payment_mode_id.name).lower() == 'virement')):
             employee_bank_account = add_zeros(value.employee_id.bank_account_id.acc_number.replace(' ', ''),
-                                              23) if value.employee_id.bank_account_id.acc_number else " "
+                                            23) if value.employee_id.bank_account_id.acc_number else " "
             employee_salary = add_zeros(
                 str(f"{value.line_ids.filtered(lambda payslip: payslip.salary_rule_id.is_net)[0].total:.2f}").replace('.', ''),
                 12) if \
