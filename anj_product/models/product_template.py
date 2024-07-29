@@ -2,12 +2,14 @@
 
 from odoo import models, api
 
+from odoo.osv import expression
+
 
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    @api.model
-    def _prepare_and_domain(self, domain):
+    @staticmethod
+    def _prepare_and_domain(domain):
         """
         Prepares and transforms a given domain to handle the 'or' operator.
         This method takes a domain, which is a list of criteria, and transforms it
@@ -23,7 +25,12 @@ class ProductTemplate(models.Model):
         if domain.count("|") >= 1 and "&" not in domain:
             # TODO: manage 'or' operator between domains
             value = None
-            domain_list = list(filter(lambda param: isinstance(param, list), domain))
+            domain_list = list(
+                filter(
+                    lambda param: isinstance(param, list) or isinstance(param, tuple),
+                    domain,
+                )
+            )
             for param in domain_list:
                 value = param[-1]
                 break
@@ -47,5 +54,27 @@ class ProductTemplate(models.Model):
 
     @api.model
     def _search(self, domain, offset=0, limit=None, order=None, access_rights_uid=None):
-        domain = self._prepare_and_domain(domain)
+        domain = ProductTemplate._prepare_and_domain(domain)
         return super()._search(domain, offset, limit, order, access_rights_uid)
+
+
+class ProductProduct(models.Model):
+    _inherit = "product.product"
+
+    @api.model
+    def _prepare_and_domain_name_search(self, name):
+        domain = expression.OR(
+            [[("default_code", "ilike", name)], [("name", "ilike", name)]]
+        )
+        return ProductTemplate._prepare_and_domain(domain)
+
+    @api.model
+    def _name_search(self, name, domain=None, operator="ilike", limit=None, order=None):
+        domain = domain or []
+        if name:
+            domain2 = self._prepare_and_domain_name_search(name)
+            domain = expression.AND([domain, domain2])
+            product_ids = list(self._search(domain, limit=limit, order=order))
+        else:
+            product_ids = self._search(domain, limit=limit, order=order)
+        return product_ids
