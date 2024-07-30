@@ -40,18 +40,6 @@ class SaleSubscription(models.Model):
         for sale_sub in self:
             sale_sub.is_monthly = sale_sub.plan_id.billing_period_unit == "month"
 
-    @api.constrains("prorata")
-    def _contrains_prorata(self):
-        for sale_order in self:
-            if sale_order.can_read_move and sale_order.invoice_count > 0:
-                raise UserError(
-                    _("Sorry, there is already invoice for this sale subscription!")
-                )
-            elif not sale_order.can_read_move:
-                raise UserError(
-                    _("Sorry, you do not have access right for this operation!")
-                )
-
     def _compute_next_invoice_date(self):
         super()._compute_next_invoice_date()
         today = fields.Date.today()
