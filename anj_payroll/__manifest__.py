@@ -12,6 +12,7 @@
         # VIEWS
         "views/menuitems.xml",
         "views/hr_payslip_views.xml",
+        "views/hr_leave_type_views.xml",
         # REPORT
         "report/payslip_report.xml",
     ],
