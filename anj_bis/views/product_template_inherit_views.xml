@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <record id="inherit_product_views" model="ir.ui.view">
+        <field name="name">model.name.view.form.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='uom_po_id']" position="after">
+                <field name="spoon_displayed" invisible="True"/> 
+                <field name="spoon" invisible="not spoon_displayed"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

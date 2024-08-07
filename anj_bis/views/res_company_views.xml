@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="res_company_view_form" model="ir.ui.view">
+        <field name="name">res.company.view.form.inherit.anj_bis</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="anj_sale.res_company_view_form"/>
+        <field name="arch" type="xml">
+            <field name="delivery_no_create_button" position="after">
+                <field name="is_biskot"/>
+            </field>
+        </field>
+    </record>
+</odoo>
