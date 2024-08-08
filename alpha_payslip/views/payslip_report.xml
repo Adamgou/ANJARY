@@ -223,8 +223,12 @@
                                         <div class="col-6">Acquis <span class="col-6">: 2.5 Jours</span></div>
 
                                     </div>
+<!--                                    <div>-->
+<!--                                        <div>Pris: <span t-esc="float(o.employee_id.allocation_count) - float(o.employee_id.allocation_remaining_display)"/>-->
+<!--                                            Jours</div>-->
+<!--                                    </div>-->
                                     <div>
-                                        <div>Pris: <span t-esc="float(o.employee_id.allocation_count) - float(o.employee_id.allocation_remaining_display)"/>
+                                        <div>Pris: <span t-esc="float(o.days_taken_in_the_month)"/>
                                             Jours</div>
                                     </div>
                                     <div>
