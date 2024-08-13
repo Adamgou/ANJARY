@@ -9,3 +9,4 @@ class SaleOrderLine(models.Model):
     subscription_state = fields.Selection(
         related="order_id.subscription_state", store=True
     )
+    is_renewing = fields.Boolean(related="order_id.is_renewing", store=True)
