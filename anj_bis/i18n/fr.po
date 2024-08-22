@@ -1,0 +1,411 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* anj_bis
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e-20240528\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-07 13:05+0000\n"
+"PO-Revision-Date: 2024-08-07 13:05+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "0.00"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "10"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "100.00"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "1000"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "10000"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "10000.00"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "123.45"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "2-03-2000 9:00 AM"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "45"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "5.00"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "50.00"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "567789"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "7897"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "95.00"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "987657"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "99.99"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "<strong>Amount of discounts</strong>:"
+msgstr "<strong>Montant des réductions</strong>:"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "<strong>Config names</strong>"
+msgstr "<strong>Noms de configuration</strong>"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "<strong>End of session note:</strong>"
+msgstr "<strong>Remarque de fin de session :</strong>"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid ""
+"<strong>Number of discounts</strong>:\n"
+"                            <strong>Number of discounts</strong>:"
+msgstr ""
+"<strong>Nombre de réductions</strong> :\n"
+"                            <strong>Nombre de réductions</strong> :"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "<strong>Opening of session note:</strong>"
+msgstr "<strong>Note d'ouverture de la séance :</strong>"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "<strong>Total Spoon</strong>"
+msgstr "<strong>Total Spoon</strong>"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "<strong>Total</strong>"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Base Amount"
+msgstr "Montant de base"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Cash"
+msgstr "Espèces"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Cash Move 1"
+msgstr "Déplacement en espèces 1"
+
+#. module: anj_bis
+#: model:ir.model,name:anj_bis.model_res_company
+msgid "Companies"
+msgstr "Sociétés"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Counted"
+msgstr "Dénombré"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "DEMO_PRODUCT_NAME"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "DEMO_REF"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Daily Sales Report"
+msgstr "Rapport de ventes quotidien"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Demo 3-03-2000 5:00 PM"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Demo Name"
+msgstr "Nom de la démo"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Difference"
+msgstr "Différence"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Disc:"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Discounts:"
+msgstr "Réductions"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Expected"
+msgstr "Attendue"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Invoice Name"
+msgstr "Nom de la facture"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Invoices"
+msgstr "Factures"
+
+#. module: anj_bis
+#: model:ir.model.fields,field_description:anj_bis.field_product_product__spoon_displayed
+#: model:ir.model.fields,field_description:anj_bis.field_product_template__spoon_displayed
+#: model:ir.model.fields,field_description:anj_bis.field_res_company__is_biskot
+msgid "Is Biskot"
+msgstr "Est Biskot"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Laptop"
+msgstr "Ordinateur portable"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Laptop model x"
+msgstr "Modèle d'ordinateur portable x"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Name"
+msgstr "Nom"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Number of transactions:"
+msgstr "Nombre de transactions :"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Order Ref"
+msgstr "Réf de commande"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Order reference"
+msgstr "Référence de l'achat"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Payment Name Demo"
+msgstr "Démo du nom de paiement"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Payments"
+msgstr "Paiements"
+
+#. module: anj_bis
+#: model:ir.model,name:anj_bis.model_report_point_of_sale_report_saledetails
+msgid "Point of Sale Details"
+msgstr "Détails du point de vente"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Product"
+msgstr "Produit"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Product Category"
+msgstr "catégorie de produit"
+
+#. module: anj_bis
+#: model:ir.model,name:anj_bis.model_product_template
+msgid "Product Template (Multi-Company)"
+msgstr "Modèle de produit (multi-sociétés)"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Quantity"
+msgstr "Quantité"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Ref 876787"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Refunds"
+msgstr "Remboursements"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Sales"
+msgstr "Ventes"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Sales Details"
+msgstr "Détails des ventes"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Sample Closing Note"
+msgstr "Exemple de note de clôture"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Sample Config Name"
+msgstr "Exemple de nom de configuration"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Sample Opening Note"
+msgstr "Exemple de note d'ouverture"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Session Control"
+msgstr "Contrôle de session"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Session ID:"
+msgstr "ID de session :"
+
+#. module: anj_bis
+#: model:ir.model.fields,field_description:anj_bis.field_product_product__spoon
+#: model:ir.model.fields,field_description:anj_bis.field_product_template__spoon
+msgid "Spoon"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Tax Amount"
+msgstr "Montant de la taxe"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Tax Name"
+msgstr "Nom de la taxe"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Taxes on refunds"
+msgstr "Taxes sur les remboursements"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Taxes on sales"
+msgstr "Taxes sur les ventes"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Technical Stuff"
+msgstr "Trucs techniques"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Technical Stuffs"
+msgstr "Trucs techniques"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Total"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Total (Tax excluded)"
+msgstr "Total (hors taxes)"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Total:"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Unit"
+msgstr "Unité"
+
+#. module: anj_bis
+#: model:ir.model.fields,help:anj_bis.field_product_product__spoon_displayed
+#: model:ir.model.fields,help:anj_bis.field_product_template__spoon_displayed
+#: model:ir.model.fields,help:anj_bis.field_res_company__is_biskot
+msgid "Used on POS when managing spoon products"
+msgstr "Utilisé sur les points de vente lors de la gestion des produits en cuillère"

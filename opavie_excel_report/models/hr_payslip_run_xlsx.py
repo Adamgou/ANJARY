@@ -26,10 +26,12 @@ class HrPayslipXlsx(models.AbstractModel):
         title_body = workbook.add_format({'align': 'center','border': 1})
         total = 0
         total_net = 0
+        total_net = 0
         for value in lines.slip_ids:
             net_salary = value.line_ids.filtered(lambda payslip: payslip.salary_rule_id.is_net)[0].total if \
             value.line_ids.filtered(lambda payslip: payslip.salary_rule_id.is_net)[0].total else 0
             total = total + net_salary
+        total_net = add_zeros(str(total).replace('.', ''), 12)
         total_net = add_zeros(str(total).replace('.', ''), 12)
         sheet = workbook.add_worksheet('OPAVI report')
         sheet.set_column(0, 0, 10)
