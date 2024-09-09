@@ -19,7 +19,7 @@ class ResPartner(models.Model):
         for partner_id in self:
             if (
                 IrSequence.sudo().search_count(
-                    [("prefix", "=", partner_id.invoice_prefix)]
+                    [('prefix', '!=', False), ("prefix", "=", partner_id.invoice_prefix)]
                 )
                 > 0
             ):
