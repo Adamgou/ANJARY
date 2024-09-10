@@ -4,25 +4,25 @@
 
         <template id="report_delivery_inherit" inherit_id="stock.report_delivery_document">
             <!--            <link rel="stylesheet" href="/anj_stock/static/src/css/report_bl.css"/>-->
-            <!--            <xpath expr="//t[1]/t[1]/t[3]" position="replace">-->
-            <!--                <t t-set="address">-->
-            <!--                    <div name="div_outgoing_address">-->
-            <!--                        <div t-if="o.move_ids_without_package and o.move_ids_without_package[0].partner_id and o.move_ids_without_package[0].partner_id != partner" style="border: 3px solid black;  border-radius: 10px; padding: 10px">-->
-            <!--                            <div t-field="o.move_ids_without_package[0].partner_id" t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>-->
-            <!--                        </div>-->
-            <!--                        <div t-if="o.picking_type_id.code != 'internal' and (not o.move_ids_without_package or not o.move_ids_without_package[0].partner_id or o.move_ids_without_package[0].partner_id == partner) and o.picking_type_id.warehouse_id.partner_id" style="border: 3px solid black;border-radius: 10px; padding: 10px">-->
-            <!--                            <div t-field="o.picking_type_id.warehouse_id.partner_id" t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>-->
-            <!--                        </div>-->
-            <!--                    </div>-->
-            <!--                </t>-->
-            <!--            </xpath>-->
-            <xpath expr="//t[@t-set='address']" position="replace">
+            <!-- <xpath expr="//t[1]/t[1]/t[3]" position="replace">
                 <t t-set="address">
-                    <div t-att-style="'border: 3px solid black; border-radius: 10px; padding: 5px'"> <!--if not o.company_id.name.lower().startswith('jara dis') else ''-->
+                    <div name="div_outgoing_address">
+                        <div t-if="o.move_ids_without_package and o.move_ids_without_package[0].partner_id and o.move_ids_without_package[0].partner_id != partner" style="border: 3px solid black;  border-radius: 10px; padding: 10px">
+                            <div t-field="o.move_ids_without_package[0].partner_id" t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>
+                        </div>
+                        <div t-if="o.picking_type_id.code != 'internal' and (not o.move_ids_without_package or not o.move_ids_without_package[0].partner_id or o.move_ids_without_package[0].partner_id == partner) and o.picking_type_id.warehouse_id.partner_id" style="border: 3px solid black;border-radius: 10px; padding: 10px">
+                            <div t-field="o.picking_type_id.warehouse_id.partner_id" t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>
+                        </div>
+                    </div>
+                </t>
+            </xpath> -->
+            <xpath expr="//t[@t-set='address']" position="replace">
+                <!-- <t t-set="address">
+                    <div name="div_outgoing_address" t-att-style="'border: 3px solid black; border-radius: 10px; padding: 5px; margin-top: -8rem !important;'">
                         <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
                         <div t-if="o.partner_id.vat" class="mt16">
                             <t t-if="o.company_id.account_fiscal_country_id.vat_label" t-esc="o.company_id.account_fiscal_country_id.vat_label" id="inv_tax_id_label"/>
-                            <t t-else="">Tax ID</t>:                            <span t-field="o.partner_id.vat"/>
+                            <t t-else="">Tax ID</t>:<span t-field="o.partner_id.vat"/>
                         </div>
                         <div t-if="o.partner_id.company_type == 'company'">
                             <div t-if="o.partner_id.company_type == 'company' and o.note_client">
@@ -39,7 +39,7 @@
                             </div>
                         </div>
                     </div>
-                </t>
+                </t> -->
             </xpath>
 
             <xpath expr="//div[@name='div_incoming_address']" position="replace">
@@ -48,7 +48,7 @@
 
             <xpath expr="//div[hasclass('page')]/h2[1]" position="replace">
                 <div></div>
-                <h6 style="border: 3px solid black; margin-top: 10px; width: 50%; padding: 10px">BON DE LIVRAISON N°: <span t-field="o.name"/>
+                <h6 style="border: 3px solid black; margin-top: 15px; width: 50%; padding: 10px; font-size: 14px">BON DE LIVRAISON N°: <span t-field="o.name"/>
                 </h6>
             </xpath>
 
@@ -62,10 +62,8 @@
                 <attribute name="class" separator=" " add="mb-2"></attribute>
             </xpath>
             <xpath expr="//div[@name='div_sched_date']" position="replace">
-                <div t-if="o.state" class="col-auto" name="div_sched_date" style="margin-top: 0px !important">
-
+                <div t-if="o.state" name="div_sched_date" style="margin-top: 0px !important; font-size: 14px;">
                     <t t-if="o.state == 'done'">
-
                         <p>Date de livraison: <span t-field="o.date_done" t-options="{'widget': 'date'}"/>
                         </p>
                     </t>
@@ -122,9 +120,9 @@
                     </table>
 
                     <div class="clearfix">
-                        <div id="total" class="row" name="total">
+                        <div id="total" class="row" name="total" style="font-size: 12px;">
                             <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
-                                <table class="table table-sm" style="border: 1px solid black;font-size: 14px;">
+                                <table class="table table-sm" style="border: 1px solid black;">
                                     <tr style="border: 1px solid black;">
                                         <td style="border: 1px solid black;">TOTAL</td>
                                         <td style="background-color: none; text-align: left;border: 1px solid black;">
@@ -146,8 +144,9 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="row" name="date_due">
-                            <p>Date d'échéance : <span t-field="o.picking_date_due" t-options="{'widget': 'date'}"/><br/>Moyens de paiement : <span t-field="o.sale_id.means_of_payment"/></p>
+                        <div class="row" name="date_due" style="font-size: 13px;">
+                            <p>Date d'échéance : <span t-field="o.picking_date_due" t-options="{'widget': 'date'}"/><br/>
+                                Moyens de paiement : <span t-field="o.sale_id.means_of_payment"/></p>
                         </div>
                     </div>
                 </t>
@@ -198,7 +197,7 @@
                     <div class="clearfix">
                         <div id="total" class="row" name="total">
                             <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
-                                <table class="table table-sm" style="border: 1px solid black;font-size: 14px;">
+                                <table class="table table-sm" style="border: 1px solid black;font-size: 13px;">
                                     <tr style="border: 1px solid black;">
                                         <td style="border: 1px solid black;">TOTAL</td>
                                         <td style="background-color: none; text-align: left;border: 1px solid black;">
@@ -254,7 +253,7 @@
             <xpath expr="//div[@t-att-style='report_header_style']" position="replace">
                 <t t-if="company.name.lower() == 'jaratrade'">
                     <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
-                        <div class="row">
+                        <div class="row" style="font-size: 14px;">
                             <div class="col-6" name="company_address">
                                 <!--                                <t t-set="company" t-value="docs.company_id if len(docs) == 1 else docs.env.company"/>-->
                                 <p style="margin-bottom: 0;font-weight: bold;">SOCIETE <span t-esc="company.name"></span> <br/></p>
@@ -264,6 +263,29 @@
                                 <p style="margin-bottom: 0;" t-if="o">STAT: <span t-esc="o.company_id.stat"></span></p><p style="margin-bottom: 0;" t-elif="company">STAT: <span t-esc="company.stat"></span></p>
                                 <p style="margin-bottom: 0;" t-if="o">CIF: <span t-esc="o.company_id.cif"></span></p><p style="margin-bottom: 0;" t-elif="o">CIF: <span t-esc="company.cif"></span></p>
                             </div>
+                            <div class="col-6" style="margin-top: 3rem">
+                                <div name="div_outgoing_address" t-att-style="'border: 3px solid black; border-radius: 10px; padding: 5px;'">
+                                    <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
+                                    <div t-if="o.partner_id.vat" class="mt16">
+                                        <t t-if="o.company_id.account_fiscal_country_id.vat_label" t-esc="o.company_id.account_fiscal_country_id.vat_label" id="inv_tax_id_label"/>
+                                        <t t-else="">Tax ID</t>:<span t-field="o.partner_id.vat"/>
+                                    </div>
+                                    <div t-if="o.partner_id.company_type == 'company'">
+                                        <div t-if="o.partner_id.company_type == 'company' and o.note_client">
+                                            Note:<span t-esc="o.note_client"/>
+                                        </div>
+                                        <div t-if="o.partner_id.company_type == 'company' and o.partner_id.nif">
+                                            NIFA:<span t-esc="o.partner_id.nif" />
+                                        </div>
+                                        <div t-if="o.partner_id.company_type == 'company' and o.partner_id.stat">
+                                            STAT: <span t-esc="o.partner_id.stat"/>
+                                        </div>
+                                        <div t-if="o.partner_id.company_type == 'company' and o.partner_id.cif">
+                                            CIF: <span t-esc="o.partner_id.cif"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </t>
@@ -271,7 +293,7 @@
                     <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
                         <div class="row">
                             <div class="col-6" name="company_address">
-
+                                
                             </div>
                         </div>
                     </div>
