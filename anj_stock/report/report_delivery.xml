@@ -47,9 +47,11 @@
             </xpath>
 
             <xpath expr="//div[hasclass('page')]/h2[1]" position="replace">
-                <div></div>
-                <h6 style="border: 3px solid black; margin-top: 15px; width: 50%; padding: 10px; font-size: 14px">BON DE LIVRAISON N°: <span t-field="o.name"/>
-                </h6>
+                <t t-if="not o.company_id.name.lower() == 'jara distribution'">
+                    <div></div>
+                    <h6 style="border: 3px solid black; margin-top: 15px; width: 50%; padding: 10px; font-size: 14px">BON DE LIVRAISON N°: <span t-field="o.name"/>
+                    </h6>
+                </t>
             </xpath>
 
             <xpath expr="//div[@name='div_origin']" position="replace">
@@ -62,16 +64,31 @@
                 <attribute name="class" separator=" " add="mb-2"></attribute>
             </xpath>
             <xpath expr="//div[@name='div_sched_date']" position="replace">
-                <div t-if="o.state" name="div_sched_date" style="margin-top: 0px !important; font-size: 14px;">
-                    <t t-if="o.state == 'done'">
-                        <p>Date de livraison: <span t-field="o.date_done" t-options="{'widget': 'date'}"/>
-                        </p>
-                    </t>
-                    <t t-if="o.state != 'done'">
-                        <p>Date de livraison: <span t-field="o.scheduled_date" t-options="{'widget': 'date'}"/>
-                        </p>
-                    </t>
-                </div>
+                <t t-if="o.company_id.name.lower() == 'jara distribution'">
+                    <div t-if="o.state" name="div_sched_date" style="margin-top: -3rem !important; font-size: 14px;">
+                        <t t-if="o.state == 'done'">
+                            <p>Date de livraison: <span t-field="o.date_done" t-options="{'widget': 'date'}"/>
+                            </p>
+                        </t>
+                        <t t-if="o.state != 'done'">
+                            <p>Date de livraison: <span t-field="o.scheduled_date" t-options="{'widget': 'date'}"/>
+                            </p>
+                        </t>
+                    </div>
+                </t>
+                <t t-else="">
+                    <div t-if="o.state" name="div_sched_date" style="margin-top: 0px !important; font-size: 14px;">
+                        <t t-if="o.state == 'done'">
+                            <p>Date de livraison: <span t-field="o.date_done" t-options="{'widget': 'date'}"/>
+                            </p>
+                        </t>
+                        <t t-if="o.state != 'done'">
+                            <p>Date de livraison: <span t-field="o.scheduled_date" t-options="{'widget': 'date'}"/>
+                            </p>
+                        </t>
+                    </div>
+                </t>
+                
             </xpath>
 
             <xpath expr="//table[@name='stock_move_table']" position="replace">
@@ -226,10 +243,6 @@
                 </t>
             </xpath>
 
-            <!--            <xpath expr="//table[@name='stock_move_line_table']" position="replace">-->
-
-            <!--            </xpath>-->
-
             <xpath expr="//div[hasclass('page')]" position="inside">
                 <t t-if="o.company_id.name in ('JARA DISTRIBUTION','JARA TRADE')">
                     <div id="signature" class="row mt32 mb32" style="text-align:center; margin-top: 100px">
@@ -290,10 +303,12 @@
                     </div>
                 </t>
                 <t t-if="company.name.lower() == 'jara distribution'">
-                    <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
+                    <div t-attf-class="header o_company_#{company.id}_layout" >
                         <div class="row">
-                            <div class="col-6" name="company_address">
-                                
+                            <div class="col-12" name="company_address" style="margin-top: 50px;">
+                                <div></div>
+                                <h6 style="border: 3px solid black; width: 50%; padding: 10px; font-size: 14px">BON DE LIVRAISON N°: <span t-field="o.name"/>
+                                </h6>
                             </div>
                         </div>
                     </div>
