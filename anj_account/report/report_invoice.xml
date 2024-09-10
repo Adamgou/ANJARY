@@ -87,10 +87,10 @@
             </xpath>
             <xpath expr="//t[@t-call='web.external_layout']/t[1]" position="before">
                 <t t-set="no_header"
-                    t-if="o.journal_id.no_header or o.company_id.name.lower() == 'jara trade'">False</t>
+                    t-if="o.journal_id.no_header or o.company_id.name.lower() == 'jaratrade'">False</t>
             </xpath>
             <xpath expr="//t[@t-call='web.external_layout']/t[1]" position="before">
-                <t t-set="no_header" t-if="o.company_id.name.lower() == 'jara trade'">False</t>
+                <t t-set="no_header" t-if="o.company_id.name.lower() == 'jaratrade'">False</t>
             </xpath>
             <xpath expr="//div[@class='mt-5 clearfix']" position="attributes">
                 <attribute name="class" remove="mt-5" separator=" "/>
@@ -215,7 +215,10 @@
             </xpath>
             <xpath expr="//div[@name='address_not_same_as_shipping']/t[@t-set='address']"
                 position="replace">
-                <div class="col-6" name="address_not_same_as_shipping">
+                <div t-if="o.company_id.name.lower() == 'jaratrade'">
+                    
+                </div>
+                <div t-else="" class="col-6" name="address_not_same_as_shipping">
                     <t t-set="address">
                         <t t-call="anj_account.bordered_address" />
                     </t>
@@ -224,12 +227,18 @@
 
             <xpath expr="//div[@name='address_same_as_shipping']/t[@t-set='address']"
                 position="replace">
-                <t t-set="address">
+                <t t-if="o.company_id.name.lower() == 'jaratrade'">
+                    
+                </t>
+                <t t-else="" t-set="address">
                     <t t-call="anj_account.bordered_address" />
                 </t>
             </xpath>
             <xpath expr="//div[@name='no_shipping']/t[@t-set='address']" position="replace">
-                <t t-set="address">
+                <t t-if="o.company_id.name.lower() == 'jaratrade'">
+                    
+                </t>
+                <t t-else="" t-set="address">
                     <t t-call="anj_account.bordered_address" />
                 </t>
             </xpath>
