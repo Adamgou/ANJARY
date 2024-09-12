@@ -6,5 +6,11 @@
     "data": [
         "views/res_users_views.xml",
     ],
-    "depends": ["anj_pos"],
+    "depends": ["anj_pos", "pos_hr"],
+    "assets": {
+        "point_of_sale._assets_pos": [
+            "anj_security/static/src/app/store/pos_store.js",
+            "anj_security/static/src/navbar/navbar.xml",
+        ],
+    },
 }
