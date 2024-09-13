@@ -5,6 +5,8 @@
     "license": "AGPL-3",
     "data": [
         "views/res_users_views.xml",
+        "views/pos_config_views.xml",
+        "security/ir_rule.xml",
     ],
     "depends": ["anj_pos", "pos_hr"],
     "assets": {
