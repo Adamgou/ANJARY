@@ -108,7 +108,9 @@
                     <span t-if="o.move_type == 'out_refund'">Credit Note</span>
                     <span t-if="o.move_type == 'in_refund'">Vendor Credit Note</span>
                     <span t-if="o.move_type == 'in_invoice'">Vendor Bill</span>
-                    <!-- <span t-if="o.name != '/'" t-field="o.name" /> -->
+                    <t t-if="not o.company_id.name.lower().startswith('jara dist')">
+                        <span t-if="o.name != '/'" t-field="o.name" />
+                    </t>
                 </h2>
             </xpath>
             <xpath expr="//div[hasclass('page')]/h2//span[last()]" position="before">
