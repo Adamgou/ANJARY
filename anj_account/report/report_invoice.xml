@@ -159,7 +159,7 @@
                     <t t-elif="o.company_id.name.lower() == 'jara distribution'">
                         <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date"
                             name="invoice_date"
-                            style="width: 25%!important;display: inline-block;margin-left: 350px;margin-top: 60px;font-size:14px">
+                            style="width: 25%!important;display: inline-block;margin-left: 350px;margin-top: 20px;font-size:14px">
                             <t t-if="o.move_type == 'out_invoice'">
                                 <strong style="text-decoration: underline;">Date de facturation:</strong>
                             </t>

@@ -311,9 +311,11 @@
                                         <h6 style="border: 3px solid black; width: 70%; padding: 10px; font-size: 14px">BON DE LIVRAISON N°: <span t-field="o.name"/>
                                         </h6>
                                     </div>
-                                    <div class="col-5" style="margin-top: 2rem">
-                                        <t t-call="anj_account.bordered_address" />
-                                    </div>
+                                    <t t-if="o._name == 'account.move'" >
+                                        <div class="col-5">
+                                            <t t-call="anj_account.bordered_address" />
+                                        </div>
+                                    </t>
                                 </div>
                             </div>
                         </div>
