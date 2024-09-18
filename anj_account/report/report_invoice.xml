@@ -156,6 +156,41 @@
                             </div>
                         </div>
                     </t>
+                    <t t-elif="o.company_id.name.lower() == 'jara distribution'">
+                        <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date"
+                            name="invoice_date"
+                            style="width: 25%!important;display: inline-block;margin-left: 350px;margin-top: 60px;font-size:14px">
+                            <t t-if="o.move_type == 'out_invoice'">
+                                <strong style="text-decoration: underline;">Date de facturation:</strong>
+                            </t>
+                            <t t-elif="o.move_type == 'out_refund'">
+                                <strong style="text-decoration: underline;">Date de la note de
+                                    crédit:</strong>
+                            </t>
+                            <t t-elif="o.move_type == 'out_receipt'">
+                                <strong style="text-decoration: underline;">Date de réception:</strong>
+                            </t>
+                            <t t-else="">
+                                <strong style="text-decoration: underline;">Date:</strong>
+                            </t>
+                            <p class="m-0" t-field="o.invoice_date" />
+                        </div>
+                        <div class="col-auto col-3 mw-100 mb-2"
+                            t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'"
+                            name="due_date"
+                            style="width: 25%!important;display: inline-block;margin-left: 0px;margin-top: -20px;font-size:14px">
+                            <strong style="text-decoration: underline;">Date d'échéance:</strong>
+                            <p class="m-0" t-field="o.invoice_date_due" />
+                        </div>
+                        <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_origin"
+                            name="origin">
+                            <p class="m-0" t-field="o.invoice_origin" />
+                        </div>
+                        <div class="col-auto col-3 mw-100 mb-2" t-if="o.ref" name="reference">
+                            <strong>Référence:</strong>
+                            <p class="m-0" t-field="o.ref" />
+                        </div>
+                    </t>
                     <t t-else="">
                         <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date"
                             name="invoice_date"
@@ -218,6 +253,9 @@
                 <div t-if="o.company_id.name.lower() == 'jaratrade'">
                     
                 </div>
+                <div t-if="o.company_id.name.lower() == 'jara distribution'">
+                    
+                </div>
                 <div t-else="" class="col-6" name="address_not_same_as_shipping">
                     <t t-set="address">
                         <t t-call="anj_account.bordered_address" />
@@ -230,12 +268,18 @@
                 <t t-if="o.company_id.name.lower() == 'jaratrade'">
                     
                 </t>
+                <t t-if="o.company_id.name.lower() == 'jara distribution'">
+                    
+                </t>
                 <t t-else="" t-set="address">
                     <t t-call="anj_account.bordered_address" />
                 </t>
             </xpath>
             <xpath expr="//div[@name='no_shipping']/t[@t-set='address']" position="replace">
                 <t t-if="o.company_id.name.lower() == 'jaratrade'">
+                    
+                </t>
+                <t t-if="o.company_id.name.lower() == 'jara distribution'">
                     
                 </t>
                 <t t-else="" t-set="address">
