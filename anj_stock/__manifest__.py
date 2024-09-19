@@ -6,7 +6,7 @@
     "category": "Inventory/Inventory",
     "version": "17.1",
     # any module necessary for this one to work correctly
-    "depends": ["stock", "anj_base"],
+    "depends": ["stock", "anj_base", "anj_account"],
     # always loaded
     "data": [
         # security
