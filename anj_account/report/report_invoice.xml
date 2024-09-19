@@ -255,7 +255,7 @@
                 <div t-if="o.company_id.name.lower() == 'jaratrade'">
                     
                 </div>
-                <div t-if="o.company_id.name.lower() == 'jara distribution'">
+                <div t-elif="o.company_id.name.lower() == 'jara distribution'">
                     
                 </div>
                 <div t-else="" class="col-6" name="address_not_same_as_shipping">
@@ -270,7 +270,7 @@
                 <t t-if="o.company_id.name.lower() == 'jaratrade'">
                     
                 </t>
-                <t t-if="o.company_id.name.lower() == 'jara distribution'">
+                <t t-elif="o.company_id.name.lower() == 'jara distribution'">
                     
                 </t>
                 <t t-else="" t-set="address">
@@ -281,7 +281,7 @@
                 <t t-if="o.company_id.name.lower() == 'jaratrade'">
                     
                 </t>
-                <t t-if="o.company_id.name.lower() == 'jara distribution'">
+                <t t-elif="o.company_id.name.lower() == 'jara distribution'">
                     
                 </t>
                 <t t-else="" t-set="address">
