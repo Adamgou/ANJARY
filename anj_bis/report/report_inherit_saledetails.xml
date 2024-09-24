@@ -413,8 +413,8 @@
 				   t-value="(products_info['qty'] - sum(spoon_data['qty'] for spoon_data in spoons_data))"/>
 				<t t-set="ht_qty_spoon" t-value="(sum(spoon_data['qty'] for spoon_data in spoons_data))"/>
 				<t t-set="average_total_basket" t-value="currency['total_paid']/nbr_orders if nbr_orders else 0"/>
-				<t t-set="average_total_basket_biskot" t-value="ht_biskot/ht_qty_biskot if ht_qty_biskot else 0 "/>
-				<t t-set="average_total_basket_spoon" t-value="ht_spoon/ht_qty_spoon if ht_qty_spoon else 0"/>
+				<t t-set="average_total_basket_biskot" t-value="ttc_biskot/nbr_orders if nbr_orders else 0"/>
+				<t t-set="average_total_basket_spoon" t-value="ttc_spoon/nbr_orders if nbr_orders else 0"/>
 				<div t-if="company.is_biskot">
 					<div>
 						<span>Total average basket:</span>
@@ -526,11 +526,11 @@
 						<tr>
 							<td>10% royalty</td>
 							<td>
-								<span t-esc="(ht_biskot * 10)/100"/>
+								<span t-esc="(ht_biskot * 10)/100" t-options="{'widget': 'float', 'precision': currency['precision']}"/>
 								<span t-out='currency["symbol"]'>$</span>
 							</td>
 							<td>
-								<span t-esc="(ht_spoon * 10)/100"/>
+								<span t-esc="(ht_spoon * 10)/100" t-options="{'widget': 'float', 'precision': currency['precision']}"/>
 								<span t-out='currency["symbol"]'>$</span>
 							</td>
 						</tr>
