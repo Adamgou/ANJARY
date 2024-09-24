@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+	<record id="point_of_sale.sale_details_report" model="ir.actions.report">
+		<field name="paperformat_id" ref="anj_bis.paperformat_sale_details"/>
+  </record>
+
+</odoo>
