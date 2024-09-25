@@ -266,58 +266,13 @@
             <xpath expr="//div[@t-att-style='report_header_style']" position="replace">
                 <t t-if="company.name.lower() == 'jaratrade'">
                     <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
-                        <div class="row" style="font-size: 14px;">
-                            <div class="col-6" name="company_address">
-                                <!--                                <t t-set="company" t-value="docs.company_id if len(docs) == 1 else docs.env.company"/>-->
-                                <p style="margin-bottom: 0;font-weight: bold;">SOCIETE <span t-esc="company.name"></span> <br/></p>
-                                <p style="margin-bottom: 0;"><span t-if="o" t-esc="o.company_id.street"></span><span t-elif="company" t-esc="company.street"></span> <br/></p>
-                                <p style="margin-bottom: 0;"><span t-if="o" t-esc="o.company_id.street2" style="text-transform: uppercase;"></span><span t-elif="company" style="text-transform: uppercase;" t-esc="company.street2"></span><br/></p>
-                                <p style="margin-bottom: 0;" t-if="o">NIF: <span t-esc="o.company_id.nif"></span></p><p style="margin-bottom: 0;" t-elif="company">NIF: <span t-esc="company.nif"></span></p>
-                                <p style="margin-bottom: 0;" t-if="o">STAT: <span t-esc="o.company_id.stat"></span></p><p style="margin-bottom: 0;" t-elif="company">STAT: <span t-esc="company.stat"></span></p>
-                                <p style="margin-bottom: 0;" t-if="o">CIF: <span t-esc="o.company_id.cif"></span></p><p style="margin-bottom: 0;" t-elif="o">CIF: <span t-esc="company.cif"></span></p>
-                            </div>
-                            <div class="col-6" style="margin-top: 3rem">
-                                <div name="div_outgoing_address" t-att-style="'border: 3px solid black; border-radius: 10px; padding: 5px;'">
-                                    <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
-                                    <div t-if="o.partner_id.vat" class="mt16">
-                                        <t t-if="o.company_id.account_fiscal_country_id.vat_label" t-esc="o.company_id.account_fiscal_country_id.vat_label" id="inv_tax_id_label"/>
-                                        <t t-else="">Tax ID</t>:<span t-field="o.partner_id.vat"/>
-                                    </div>
-                                    <div t-if="o.partner_id.company_type == 'company'">
-                                        <div t-if="o.partner_id.company_type == 'company' and o.note_client">
-                                            Note:<span t-esc="o.note_client"/>
-                                        </div>
-                                        <div t-if="o.partner_id.company_type == 'company' and o.partner_id.nif">
-                                            NIF:<span t-esc="o.partner_id.nif" />
-                                        </div>
-                                        <div t-if="o.partner_id.company_type == 'company' and o.partner_id.stat">
-                                            STAT: <span t-esc="o.partner_id.stat"/>
-                                        </div>
-                                        <div t-if="o.partner_id.company_type == 'company' and o.partner_id.cif">
-                                            CIF: <span t-esc="o.partner_id.cif"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </t>
                 <t t-if="company.name.lower() == 'jara distribution'">
                     <div t-attf-class="header o_company_#{company.id}_layout" >
                         <div class="row">
-                            <div class="col-12" name="company_address" style="margin-top: 50px;">
-                                <div class="row">
-                                    <div class="col-7">
-                                        <h6 style="border: 3px solid black; width: 70%; padding: 10px; font-size: 14px">BON DE LIVRAISON N°: <span t-field="o.name"/>
-                                        </h6>
-                                    </div>
-                                    <t t-if="o._name == 'account.move'" >
-                                        <div class="col-5">
-                                            <t t-call="anj_account.bordered_address" />
-                                        </div>
-                                    </t>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </t>
