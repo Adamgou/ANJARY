@@ -100,6 +100,9 @@
                     <t t-if="o.company_id.name.lower().startswith('jara dist')">
                         <span t-if="o.move_type == 'out_invoice' and o.state == 'posted'"></span>
                     </t>
+                    <t t-elif="o.company_id.name.lower() == 'jaratrade'">
+                        
+                    </t>
                     <t t-else="">
                         <span t-if="o.move_type == 'out_invoice' and o.state == 'posted'">Facture</span>
                     </t>
@@ -108,7 +111,7 @@
                     <span t-if="o.move_type == 'out_refund'">Credit Note</span>
                     <span t-if="o.move_type == 'in_refund'">Vendor Credit Note</span>
                     <span t-if="o.move_type == 'in_invoice'">Vendor Bill</span>
-                    <t t-if="not o.company_id.name.lower().startswith('jara dist')">
+                    <t t-if="not o.company_id.name.lower().startswith('jara')">
                         <span t-if="o.name != '/'" t-field="o.name" />
                     </t>
                 </h2>
@@ -159,6 +162,19 @@
                         </div>
                     </t>
                     <t t-elif="o.company_id.name.lower() == 'jara distribution'">
+                        <div class="col-12" name="company_address" style="margin-top: -55px;">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h6 style="border: 3px solid black; width: 70%; padding: 10px; font-size: 14px">BON DE LIVRAISON N°: <span t-field="o.name"/>
+                                    </h6>
+                                </div>
+                                <t t-if="o._name == 'account.move'" >
+                                    <div class="col-5">
+                                        <t t-call="anj_account.bordered_address" />
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
                         <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date"
                             name="invoice_date"
                             style="width: 25%!important;display: inline-block;margin-left: 350px;margin-top: 30px;font-size:14px">
@@ -193,10 +209,49 @@
                             <p class="m-0" t-field="o.ref" />
                         </div>
                     </t>
+                    <t t-elif="o.company_id.name.lower() == 'jaratrade'">
+                        <div class="col-12" name="company_address" style="margin-top: -60px; margin-bottom: 20px;">
+                            <div class="row" style="font-size: 14px;">
+                                <div class="col-6" name="company_address">
+                                    <p style="margin-bottom: 0;font-weight: bold;">SOCIETE <span t-esc="o.company_id.name"></span> <br/></p>
+                                    <p style="margin-bottom: 0;"><span t-if="o" t-esc="o.company_id.street"></span> <br/></p>
+                                    <p style="margin-bottom: 0;"><span t-if="o" t-esc="o.company_id.street2" style="text-transform: uppercase;"></span><br/></p>
+                                    <p style="margin-bottom: 0;" t-if="o">NIF: <span t-esc="o.company_id.nif"></span></p>
+                                    <p style="margin-bottom: 0;" t-if="o">STAT: <span t-esc="o.company_id.stat"></span></p>
+                                    <p style="margin-bottom: 0;" t-if="o">CIF: <span t-esc="o.company_id.cif"></span></p><br/>
+                                    <span t-if="o.move_type == 'out_invoice' and o.state == 'posted'" style="padding-top: 30px;">Facture</span>
+                                    <span t-if="o.name != '/'" t-field="o.name" />
+                                </div>
+                                <div class="col-6" style="margin-top: 2px">
+                                    <div name="div_outgoing_address" t-att-style="'border: 3px solid black; border-radius: 10px; padding: 5px;'">
+                                        <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
+                                        <div t-if="o.partner_id.vat" class="mt16">
+                                            <t t-if="o.company_id.account_fiscal_country_id.vat_label" t-esc="o.company_id.account_fiscal_country_id.vat_label" id="inv_tax_id_label"/>
+                                            <t t-else="">Tax ID</t>:<span t-field="o.partner_id.vat"/>
+                                        </div>
+                                        <div t-if="o.partner_id.company_type == 'company'">
+                                            <div t-if="o.partner_id.company_type == 'company' and o.note_client">
+                                                Note:<span t-esc="o.note_client"/>
+                                            </div>
+                                            <div t-if="o.partner_id.company_type == 'company' and o.partner_id.nif">
+                                                NIF:<span t-esc="o.partner_id.nif" />
+                                            </div>
+                                            <div t-if="o.partner_id.company_type == 'company' and o.partner_id.stat">
+                                                STAT: <span t-esc="o.partner_id.stat"/>
+                                            </div>
+                                            <div t-if="o.partner_id.company_type == 'company' and o.partner_id.cif">
+                                                CIF: <span t-esc="o.partner_id.cif"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
                     <t t-else="">
                         <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date"
                             name="invoice_date"
-                            style="width: 25%!important;display: inline-block;margin-left: 350px;margin-top: -10px;font-size:14px">
+                            style="width: 25%!important;display: inline-block;margin-left: 350px;font-size:14px">
                             <t t-if="o.move_type == 'out_invoice'">
                                 <strong style="text-decoration: underline;">Date de facturation:</strong>
                             </t>
@@ -774,5 +829,9 @@
                     add="(('margin-top:100px;') if o.company_id.name.lower()=='societe immobiliere anjary' else '')" />
             </xpath>
         </template>
+        
+        <!-- <record id="account.account_invoices" model="ir.actions.report">
+            <field name="paperformat_id" ref="anj_account.paperformat_account_a4"></field>
+        </record> -->
     </data>
 </odoo>
