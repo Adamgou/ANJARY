@@ -49,7 +49,7 @@
             <xpath expr="//div[hasclass('page')]/h2[1]" position="replace">
                 <t t-if="not o.company_id.name.lower() == 'jara distribution'">
                     <div></div>
-                    <h6 style="border: 3px solid black; margin-top: 15px; width: 50%; padding: 10px; font-size: 14px">BON DE LIVRAISON N°: <span t-field="o.name"/>
+                    <h6 style="border: 3px solid black; margin-top: 15px; width: 50%; padding: 10px; font-size: 14px; font-weight: bold;">BON DE LIVRAISON N°: <span t-field="o.name"/>
                     </h6>
                 </t>
             </xpath>
