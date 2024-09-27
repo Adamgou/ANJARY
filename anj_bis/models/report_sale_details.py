@@ -140,13 +140,14 @@ class ReportSaleDetails(models.AbstractModel):
 
     def _get_payment_by_method(self, line, payment, payment_by_product):
         """Get payment amount according payment method"""
-        method = payment.payment_method_id
+        methods = payment.payment_method_id
 
         if line.company_id.is_biskot:
-            if line.product_id.spoon:
-                payment_by_product["spoon"][method] += line.price_subtotal_incl
-            else:
-                payment_by_product["biskot"][method] += line.price_subtotal_incl
+            for method in methods:
+                if line.product_id.spoon:
+                    payment_by_product["spoon"][method] += line.price_subtotal_incl
+                else:
+                    payment_by_product["biskot"][method] += line.price_subtotal_incl
         return payment_by_product
 
     @api.model
