@@ -157,9 +157,9 @@ class ReportSaleDetails(models.AbstractModel):
         out = super().get_sale_details(date_start, date_stop, config_ids, session_ids)
         orders = self._get_pos_order(date_start, date_stop, config_ids, session_ids)
         payments_method = self.env["pos.payment.method"].search([])
-        payment_by_product = self._get_default_payment(payments_method)
+        # payment_by_product = self._get_default_payment(payments_method)
         product_amount_info = {}
-        payments_by_method = {}
+        payments_by_method = self._get_default_payment(payments_method)
         for order in orders:
             payment = self.env["pos.payment"].search(
                 [("pos_order_id", "in", order.ids)]
@@ -170,7 +170,7 @@ class ReportSaleDetails(models.AbstractModel):
                     line, product_amount_info
                 )
                 payments_by_method = self._get_payment_by_method(
-                    line, payment, payment_by_product
+                    line, payment, payments_by_method
                 )
         categories = out.get("products")
         product_info = out.get("products_info")
