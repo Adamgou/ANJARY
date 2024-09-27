@@ -17,6 +17,9 @@
 					<t t-set="ht_spoon" t-value='sum(spoon_data["total"] for spoon_data in spoons_data)'/>
 					<t t-set="tva_spoon" t-value='sum(spoon_data["tax_amount"] for spoon_data in spoons_data)'/>
 					<t t-set="ttc_spoon" t-value='sum(spoon_data["amount_incl_vat"] for spoon_data in spoons_data)'/>
+					<t t-set="ht_qty_biskot"
+				   t-value="(products_info['qty'] - sum(spoon_data['qty'] for spoon_data in spoons_data))"/>
+				<t t-set="ht_qty_spoon" t-value="(sum(spoon_data['qty'] for spoon_data in spoons_data))"/>
 					<h3>Sales</h3>
 					<div class="oe_structure"></div>
 					<table class="table table-sm">
@@ -150,13 +153,13 @@
 								<td style="background-color: #b1b1b1;"/>
 								<td class="text-end" style="background-color: #b1b1b1;">
 									<strong>
-										<span t-out="products_info['qty'] - sum(spoon_data['qty'] for spoon_data in spoons_data)">5</span>
+										<span t-out="ht_qty_biskot">5</span>
 									</strong>
 								</td>
 								<td class="text-end" style="background-color: #b1b1b1;">
 									<t t-if="currency['position']">
 										<strong>
-											<span t-out='products_info["total"] - sum(spoon_data["total"] for spoon_data in spoons_data)'
+											<span t-out='ht_biskot'
 											      t-options="{'widget': 'float', 'precision': currency['precision']}">10000
 											</span>
 											<span t-out='currency["symbol"]'>$</span>
@@ -165,7 +168,7 @@
 									<t t-else="">
 										<strong>
 											<span t-out='currency["symbol"]'>$</span>
-											<span t-out='products_info["total"] - sum(spoon_data["total"] for spoon_data in spoons_data)'
+											<span t-out='ht_biskot'
 											      t-options="{'widget': 'float', 'precision': currency['precision']}">1000
 											</span>
 										</strong>
@@ -175,7 +178,7 @@
 									<t t-if="currency['position']">
 										<strong>
 											<span
-												t-out='products_info["all_tax_amount"] - sum(spoon_data["tax_amount"] for spoon_data in spoons_data)'
+												t-out='tva_biskot'
 												t-options="{'widget': 'float', 'precision': currency['precision']}">10000
 											</span>
 											<span t-out='currency["symbol"]'>$</span>
@@ -185,7 +188,7 @@
 										<strong>
 											<span t-out='currency["symbol"]'>$</span>
 											<span
-												t-out='products_info["all_tax_amount"] - sum(spoon_data["tax_amount"] for spoon_data in spoons_data)'
+												t-out='tva_biskot'
 												t-options="{'widget': 'float', 'precision': currency['precision']}">1000
 											</span>
 										</strong>
@@ -195,7 +198,7 @@
 									<t t-if="currency['position']">
 										<strong>
 											<span
-												t-out='products_info["all_amount_incl_vat"] - sum(spoon_data["amount_incl_vat"] for spoon_data in spoons_data)'
+												t-out='ttc_biskot'
 												t-options="{'widget': 'float', 'precision': currency['precision']}">10000
 											</span>
 											<span t-out='currency["symbol"]'>$</span>
@@ -205,7 +208,7 @@
 										<strong>
 											<span t-out='currency["symbol"]'>$</span>
 											<span
-												t-out='products_info["all_amount_incl_vat"] - sum(spoon_data["amount_incl_vat"] for spoon_data in spoons_data)'
+												t-out='ttc_biskot'
 												t-options="{'widget': 'float', 'precision': currency['precision']}">1000
 											</span>
 										</strong>
@@ -345,13 +348,13 @@
 								<td style="background-color: #b1b1b1;"/>
 								<td class="text-end" style="background-color: #b1b1b1;">
 									<strong>
-										<span t-out="sum(spoon_data['qty'] for spoon_data in spoons_data)">5</span>
+										<span t-out="ht_qty_spoon">5</span>
 									</strong>
 								</td>
 								<td class="text-end" style="background-color: #b1b1b1;">
 									<t t-if="currency['position']">
 										<strong>
-											<span t-out='sum(spoon_data["total"] for spoon_data in spoons_data)'
+											<span t-out='ht_spoon'
 											      t-options="{'widget': 'float', 'precision': currency['precision']}">10000
 											</span>
 											<span t-out='currency["symbol"]'>$</span>
@@ -360,7 +363,7 @@
 									<t t-else="">
 										<strong>
 											<span t-out='currency["symbol"]'>$</span>
-											<span t-out='sum(spoon_data["total"] for spoon_data in spoons_data)'
+											<span t-out='ht_spoon'
 											      t-options="{'widget': 'float', 'precision': currency['precision']}">1000
 											</span>
 										</strong>
@@ -369,7 +372,7 @@
 								<td class="text-end" style="background-color: #b1b1b1;">
 									<t t-if="currency['position']">
 										<strong>
-											<span t-out='sum(spoon_data["tax_amount"] for spoon_data in spoons_data)'
+											<span t-out='tva_spoon'
 											      t-options="{'widget': 'float', 'precision': currency['precision']}">10000
 											</span>
 											<span t-out='currency["symbol"]'>$</span>
@@ -378,7 +381,7 @@
 									<t t-else="">
 										<strong>
 											<span t-out='currency["symbol"]'>$</span>
-											<span t-out='sum(spoon_data["tax_amount"] for spoon_data in spoons_data)'
+											<span t-out='tva_spoon'
 											      t-options="{'widget': 'float', 'precision': currency['precision']}">1000
 											</span>
 										</strong>
@@ -387,7 +390,7 @@
 								<td class="text-end" style="background-color: #b1b1b1;">
 									<t t-if="currency['position']">
 										<strong>
-											<span t-out='sum(spoon_data["amount_incl_vat"] for spoon_data in spoons_data)'
+											<span t-out='ttc_spoon'
 											      t-options="{'widget': 'float', 'precision': currency['precision']}">10000
 											</span>
 											<span t-out='currency["symbol"]'>$</span>
@@ -396,7 +399,7 @@
 									<t t-else="">
 										<strong>
 											<span t-out='currency["symbol"]'>$</span>
-											<span t-out='sum(spoon_data["amount_incl_vat"] for spoon_data in spoons_data)'
+											<span t-out='ttc_spoon'
 											      t-options="{'widget': 'float', 'precision': currency['precision']}">1000
 											</span>
 										</strong>
@@ -409,9 +412,6 @@
 				</div>
 			</xpath>
 			<xpath expr="//t[@id='payments']" position="before">
-				<t t-set="ht_qty_biskot"
-				   t-value="(products_info['qty'] - sum(spoon_data['qty'] for spoon_data in spoons_data))"/>
-				<t t-set="ht_qty_spoon" t-value="(sum(spoon_data['qty'] for spoon_data in spoons_data))"/>
 				<t t-set="average_total_basket" t-value="currency['total_paid']/nbr_orders if nbr_orders else 0"/>
 				<t t-set="average_total_basket_biskot" t-value="ttc_biskot/nbr_orders if nbr_orders else 0"/>
 				<t t-set="average_total_basket_spoon" t-value="ttc_spoon/nbr_orders if nbr_orders else 0"/>
@@ -453,32 +453,27 @@
 						<table class="table table-bordered">
 							<tr>
 								<td/>
-								<t t-foreach="payments_method" t-as="method">
-									<td t-esc="method.name"/>
-								</t>
+								<td>CA TTC Biskot</td>
+								<td>CA TTC Spoon</td>
+								<td>CA TTC Total</td>
 							</tr>
-							<t t-foreach="['biskot', 'spoon']" t-as="item">
+							<t t-foreach="payments_method" t-as="method">
 								<tr>
-									<td t-esc="'CA TTC ' + item.capitalize()"/>
-									<t t-foreach="payments_method" t-as="method">
+									<td t-esc="method.name"/>
+									<t t-foreach="['biskot', 'spoon']" t-as="item">
 										<td>
 											<span t-esc="payments_by_method[item][method]"
 											      t-options="{'widget': 'float', 'precision': currency['precision']}"/>
 											<span t-out='currency["symbol"]'>$</span>
 										</td>
 									</t>
-								</tr>
-							</t>
-							<tr>
-								<td>Total CA TTC</td>
-								<t t-foreach="payments_method" t-as="method">
 									<td>
 										<span t-esc="payments_by_method['spoon'][method] + payments_by_method['biskot'][method]"
 										      t-options="{'widget': 'float', 'precision': currency['precision']}"/>
 										<span t-out='currency["symbol"]'>$</span>
 									</td>
-								</t>
-							</tr>
+								</tr>
+							</t>
 						</table>
 					</t>
 					<table class="table table-bordered">

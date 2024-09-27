@@ -74,30 +74,40 @@ class ReportSaleDetails(models.AbstractModel):
         orders = self.env["pos.order"].search(domain)
         return orders
 
-    def _get_product_info_by_categ(
-        self, date_start=False, date_stop=False, config_ids=False, session_ids=False
-    ):
+    def _get_product_info_by_categ(self, line, product_info):
         """Get product info by category"""
-        orders = self._get_pos_order(date_start, date_stop, config_ids, session_ids)
-        product_info = {}
-        for order in orders:
-
-            for line in order.lines:
-                product_info = self._get_products_info_by_line_categ(
-                    line, product_info, line.product_id.id
-                )
+        product_info = self._get_products_info_by_line_categ(
+            line, product_info, line.product_id.id
+        )
         return product_info
 
-    def _get_amount_per_category(self, categories, product_info):
+    def _get_amount_per_category(self, categories, product_amount_info, product_info):
         """Get amount by category"""
         tax_amount = 0
         amount_incl_vat = 0
+        product_ids = []
         for categ in categories:
-            for product in categ["products"]:
+            products = categ.get("products")
+            categ_name = categ.get("name")
+            for product in products:
+                product["tax_amount"] = 0
+                product["amount_incl_vat"] = 0
+                if (
+                    categ_name in product_amount_info
+                    and product["product_id"] in product_amount_info[categ_name]
+                ):
+                    product["tax_amount"] = product_amount_info[categ_name][
+                        product["product_id"]
+                    ]["tax_amount"]
+                    product["amount_incl_vat"] = product_amount_info[categ_name][
+                        product["product_id"]
+                    ]["amount_incl_vat"]
                 tax_amount += product["tax_amount"]
                 amount_incl_vat += product["amount_incl_vat"]
+                product_ids.append(product.get("product_id"))
             categ["tax_amount"] = tax_amount
             categ["amount_incl_vat"] = amount_incl_vat
+
         unique_products = list(
             {
                 tuple(sorted(product.items())): product
@@ -116,77 +126,64 @@ class ReportSaleDetails(models.AbstractModel):
             }
         )
 
-        return categories, product_info
+        return categories, product_info, product_ids
 
-    def _get_payment_by_method(
-        self, date_start=False, date_stop=False, config_ids=False, session_ids=False
-    ):
-        """Get payment amount according payment method"""
-        orders = self._get_pos_order(date_start, date_stop, config_ids, session_ids)
-        payment_methods = self.env["pos.payment.method"].search([])
+    def _get_default_payment(self, payments_method):
+        """Get default payment method dict"""
         payment_by_product = {}
         payment_by_product.setdefault("spoon", {})
         payment_by_product.setdefault("biskot", {})
+        for payment_method in payments_method:
+            payment_by_product["spoon"].setdefault(payment_method, 0.0)
+            payment_by_product["biskot"].setdefault(payment_method, 0.0)
+        return payment_by_product
 
-        for method in payment_methods:
-            payment_by_product["spoon"].setdefault(method, 0.0)
-            payment_by_product["biskot"].setdefault(method, 0.0)
+    def _get_payment_by_method(self, line, payment, payment_by_product):
+        """Get payment amount according payment method"""
+        method = payment.payment_method_id
 
-        for order in orders:
-            payment = self.env["pos.payment"].search(
-                [("pos_order_id", "in", order.ids)]
-            )
-            for line in order.lines:
-                if line.product_id.spoon:
-                    payment_by_product["spoon"][
-                        payment.payment_method_id
-                    ] += line.price_subtotal_incl
-                else:
-                    payment_by_product["biskot"][
-                        payment.payment_method_id
-                    ] += line.price_subtotal_incl
+        if line.company_id.is_biskot:
+            if line.product_id.spoon:
+                payment_by_product["spoon"][method] += line.price_subtotal_incl
+            else:
+                payment_by_product["biskot"][method] += line.price_subtotal_incl
         return payment_by_product
 
     @api.model
     def get_sale_details(
         self, date_start=False, date_stop=False, config_ids=False, session_ids=False
     ):
-        """Manage sale details for Biskot company case"""
+        """Manage sale details for Biskot company case (Biskot and spoon product)"""
         out = super().get_sale_details(date_start, date_stop, config_ids, session_ids)
-        product_info = self._get_product_info_by_categ(
-            date_start, date_stop, config_ids, session_ids
-        )
+        orders = self._get_pos_order(date_start, date_stop, config_ids, session_ids)
+        payments_method = self.env["pos.payment.method"].search([])
+        payment_by_product = self._get_default_payment(payments_method)
+        product_amount_info = {}
+        payments_by_method = {}
+        for order in orders:
+            payment = self.env["pos.payment"].search(
+                [("pos_order_id", "in", order.ids)]
+            )
+            for line in order.lines:
+
+                product_amount_info = self._get_product_info_by_categ(
+                    line, product_amount_info
+                )
+                payments_by_method = self._get_payment_by_method(
+                    line, payment, payment_by_product
+                )
         categories = out.get("products")
-        product_ids = []
-        for categ in categories:
-            products = categ.get("products")
-            categ_name = categ.get("name")
-            for product in products:
-                product["tax_amount"] = 0
-                product["amount_incl_vat"] = 0
-                if (
-                    categ_name in product_info
-                    and product["product_id"] in product_info[categ_name]
-                ):
-                    product["tax_amount"] = product_info[categ_name][
-                        product["product_id"]
-                    ]["tax_amount"]
-                    product["amount_incl_vat"] = product_info[categ_name][
-                        product["product_id"]
-                    ]["amount_incl_vat"]
-                product_ids.append(product.get("product_id"))
+        product_info = out.get("products_info")
+        categories, product_info, product_ids = self._get_amount_per_category(
+            categories, product_amount_info, product_info
+        )
+
         products = self.env["product.product"].search(
             [("id", "in", product_ids), ("spoon", "=", True)]
         )
         spoons = products.mapped("id")
 
         out.update({"spoons": spoons})
-
-        product_info = out.get("products_info")
-
-        categories, product_info = self._get_amount_per_category(
-            categories, product_info
-        )
 
         spoons_data = []
         removed = 0
@@ -217,10 +214,6 @@ class ReportSaleDetails(models.AbstractModel):
                     removed += 1
             if spoon_category.get("products"):
                 spoons_data.append(spoon_category)
-        payments_by_method = self._get_payment_by_method(
-            date_start, date_stop, config_ids, session_ids
-        )
-        payments_method = self.env["pos.payment.method"].search([])
         out.update(
             {
                 "spoons_data": spoons_data,
