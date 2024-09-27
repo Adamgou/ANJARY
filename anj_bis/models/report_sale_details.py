@@ -153,7 +153,7 @@ class ReportSaleDetails(models.AbstractModel):
     def get_sale_details(
         self, date_start=False, date_stop=False, config_ids=False, session_ids=False
     ):
-        """Manage sale details for Biskot company case"""
+        """Manage sale details for Biskot company case (Biskot and spoon product)"""
         out = super().get_sale_details(date_start, date_stop, config_ids, session_ids)
         orders = self._get_pos_order(date_start, date_stop, config_ids, session_ids)
         payments_method = self.env["pos.payment.method"].search([])
