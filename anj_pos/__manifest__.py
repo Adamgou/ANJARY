@@ -6,7 +6,11 @@
     "category": "Sales/Point of Sale", 
     "version": "17.1",
     "depends": ["point_of_sale", "anj_base", "account"],
-    "data": [
-    ],
+    "data": [],
     "license": "LGPL-3",
+    "assets": {
+        "point_of_sale._assets_pos": [
+            "anj_pos/static/src/app/**/*",
+        ]
+    },
 }
