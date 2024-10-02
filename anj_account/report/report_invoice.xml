@@ -800,26 +800,6 @@
                         </t>
                     </div>
                 </t>
-                <t t-elif="company.name.lower() == 'biskot'">
-                    <div t-attf-class="footer o_boxed_footer o_company_#{company.id}_layout">
-                        <div class="text-center">
-                            <div style="width:100%;">
-                                <span style="font-weight: bold;">BISKOT SARL</span><br/>
-                                <span t-if="o.company_id.partner_id.nif"> NIF <span
-                                        t-esc="o.company_id.partner_id.nif" />
-                                </span> - 
-                                <span
-                                    t-if="(o.company_id.partner_id.company_type == 'company') and o.company_id.partner_id.stat">
-                                    STAT  <span t-esc="o.company_id.partner_id.stat" />
-                                </span>  
-                                <span
-                                    t-if="(o.company_id.partner_id.company_type == 'company') and o.company_id.partner_id.rcs">
-                                    - RCS <span t-esc="o.company_id.partner_id.rcs" />
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </t>
                 <t t-else="">
                     <div t-attf-class="footer o_boxed_footer o_company_#{company.id}_layout">
                         <t t-if="o">
