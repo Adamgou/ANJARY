@@ -761,7 +761,7 @@
                 </div>
             </xpath>
             <xpath expr="//div[@id='right-elements']" position="after">
-                <div class="row mt-4" t-if="o.company_id.name.lower() == 'biskot'">
+                <!-- <div class="row mt-4" t-if="o.company_id.name.lower() == 'biskot'">
                     <div class="col-6">
                         <span style="font-weight: bold">INFORMATIONS BANCAIRES</span><br/>
                         <span>Banque: BNI Galaxy</span><br/>
@@ -774,7 +774,7 @@
                         <span style="font-weight: bold">CONDITIONS DE PAIEMENT</span><br/>
                         <span t-out="o.invoice_payment_term_id.name" />
                     </div>
-                </div>
+                </div> -->
             </xpath>
             <xpath expr="//p[@name='payment_communication']" position="before">
                 <br />
