@@ -112,7 +112,6 @@
                     <span t-if="o.move_type == 'in_refund'">Vendor Credit Note</span>
                     <span t-if="o.move_type == 'in_invoice'">Vendor Bill</span>
                     <t t-if="o.company_id.name.lower() == 'biskot'">
-                        <div t-if="o.move_type == 'out_invoice' " style="font-weight: bold; font-size: 14px">FACTURE</div>
                         <span t-if="o.name != '/'" t-field="o.name" style="font-weight: bold"/>
                     </t>
                     <t t-elif="not o.company_id.name.lower().startswith('jara')">
@@ -759,22 +758,6 @@
                         </div>
                     </div>
                 </div>
-            </xpath>
-            <xpath expr="//div[@id='right-elements']" position="after">
-                <!-- <div class="row mt-4" t-if="o.company_id.name.lower() == 'biskot'">
-                    <div class="col-6">
-                        <span style="font-weight: bold">INFORMATIONS BANCAIRES</span><br/>
-                        <span>Banque: BNI Galaxy</span><br/>
-                        <span>Nom: Biskot Saral</span><br/>
-                        <span>N° Compte: 00005-00006-72514390001-65</span>
-                    </div>
-                </div>
-                <div class="row mt-4" t-if="o.company_id.name.lower() == 'biskot'">
-                    <div class="col-6">
-                        <span style="font-weight: bold">CONDITIONS DE PAIEMENT</span><br/>
-                        <span t-out="o.invoice_payment_term_id.name" />
-                    </div>
-                </div> -->
             </xpath>
             <xpath expr="//p[@name='payment_communication']" position="before">
                 <br />
