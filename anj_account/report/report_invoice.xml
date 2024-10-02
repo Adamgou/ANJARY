@@ -111,7 +111,11 @@
                     <span t-if="o.move_type == 'out_refund'">Credit Note</span>
                     <span t-if="o.move_type == 'in_refund'">Vendor Credit Note</span>
                     <span t-if="o.move_type == 'in_invoice'">Vendor Bill</span>
-                    <t t-if="not o.company_id.name.lower().startswith('jara')">
+                    <t t-if="o.company_id.name.lower() == 'biskot'">
+                        <div t-if="o.move_type == 'out_invoice' " style="font-weight: bold; font-size: 14px">FACTURE</div>
+                        <span t-if="o.name != '/'" t-field="o.name" style="font-weight: bold"/>
+                    </t>
+                    <t t-elif="not o.company_id.name.lower().startswith('jara')">
                         <span t-if="o.name != '/'" t-field="o.name" style="font-weight: bold"/>
                     </t>
                 </h2>
@@ -409,7 +413,7 @@
                     display:none !important;
                     }
                 </style>
-                <t t-if="o.company_id.name != 'SOCIETE IMMOBILIERE ANJARY'">
+                <t t-if="o.company_id.name not in ('SOCIETE IMMOBILIERE ANJARY', 'BISKOT')">
                     <div style="width:100%;">
                         <div t-if="o.company_id.partner_id.nif"> NIF:<span
                                 t-esc="o.company_id.partner_id.nif" />
@@ -755,8 +759,22 @@
                         </div>
                     </div>
                 </div>
-
-
+            </xpath>
+            <xpath expr="//div[@id='right-elements']" position="after">
+                <div class="row mt-4" t-if="o.company_id.name.lower() == 'biskot'">
+                    <div class="col-6">
+                        <span style="font-weight: bold">INFORMATIONS BANCAIRES</span><br/>
+                        <span>Banque: BNI Galaxy</span><br/>
+                        <span>Nom: Biskot Saral</span><br/>
+                        <span>N° Compte: 00005-00006-72514390001-65</span>
+                    </div>
+                </div>
+                <div class="row mt-4" t-if="o.company_id.name.lower() == 'biskot'">
+                    <div class="col-6">
+                        <span style="font-weight: bold">CONDITIONS DE PAIEMENT</span><br/>
+                        <span t-out="o.invoice_payment_term_id.name" />
+                    </div>
+                </div>
             </xpath>
             <xpath expr="//p[@name='payment_communication']" position="before">
                 <br />
@@ -797,6 +815,26 @@
                                 </div>
                             </div>
                         </t>
+                    </div>
+                </t>
+                <t t-elif="company.name.lower() == 'biskot'">
+                    <div t-attf-class="footer o_boxed_footer o_company_#{company.id}_layout">
+                        <div class="text-center">
+                            <div style="width:100%;">
+                                <span style="font-weight: bold;">BISKOT SARL</span><br/>
+                                <span t-if="o.company_id.partner_id.nif"> NIF <span
+                                        t-esc="o.company_id.partner_id.nif" />
+                                </span> - 
+                                <span
+                                    t-if="(o.company_id.partner_id.company_type == 'company') and o.company_id.partner_id.stat">
+                                    STAT  <span t-esc="o.company_id.partner_id.stat" />
+                                </span>  
+                                <span
+                                    t-if="(o.company_id.partner_id.company_type == 'company') and o.company_id.partner_id.rcs">
+                                    - RCS <span t-esc="o.company_id.partner_id.rcs" />
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </t>
                 <t t-else="">
