@@ -93,6 +93,9 @@
           .mt0.h4 {
           display: none;
           }
+          img[alt="Logo"] {
+          max-height: 140px !important;
+          }
           [name="company_address"] {
           font-weight: 800 !important;
           margin-bottom: 0 !important;
@@ -865,7 +868,7 @@
       </xpath>
       <xpath expr="//div[@name='company_address']" position="replace">
         <t t-if="not company.name.lower() == 'societe immobiliere anjary'">
-          <div name="company_address" class="float-right mb4">
+          <div name="company_address" class="float-right mb4" style="font-weight:800!important;">
             <span t-if="company.company_details" t-field="company.company_details"></span>
           </div>
         </t>
