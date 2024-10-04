@@ -484,13 +484,20 @@
           .table-borderless th {
           background-color: #000;
           color: #fff !important;
-          font-size: 17px !important;
+          font-size: 14px !important;
           padding: 10px !important;
           }
           [name="company_address"] * {
           font-weight: 700 !important;
           font-size: 20px !important;
           margin-bottom: 0 !important;
+          }
+          .table-borderless th:not(:nth-child(2)) {
+          width: 130px;
+          }
+          .table-borderless th:nth-child(4),
+          .table-borderless td:nth-child(4) {
+          display:none;
           }
         </style>
         <t t-if="o.company_id.name not in ('SOCIETE IMMOBILIERE ANJARY', 'BISKOT')">
@@ -935,8 +942,8 @@
       </xpath>
     </template>
 
-    <record id="account.account_invoices" model="ir.actions.report">
-      <field name="paperformat_id" ref="anj_account.paperformat_account_a4"></field>
-    </record>
+<!--    <record id="account.account_invoices" model="ir.actions.report">-->
+<!--      <field name="paperformat_id" ref="anj_account.paperformat_account_a4"></field>-->
+<!--    </record>-->
   </data>
 </odoo>
