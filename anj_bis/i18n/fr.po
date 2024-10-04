@@ -396,7 +396,7 @@ msgstr "Produit"
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
-msgid "Product Category"
+msgid "Category"
 msgstr "Catégorie"
 
 #. module: anj_bis
