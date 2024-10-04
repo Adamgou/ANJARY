@@ -5,7 +5,7 @@
     "website": "http://www.nexources.com",
     "category": "Uncategorized",
     "version": "17.1",
-    "depends": ["alpha_payslip", "anj_base"],
+    "depends": ["alpha_payslip", "anj_base", "hr_holidays"],
     "data": [
         # SECURITY
         "security/ir.model.access.csv",
@@ -13,6 +13,7 @@
         "views/menuitems.xml",
         "views/hr_payslip_views.xml",
         "views/hr_leave_type_views.xml",
+        "views/hr_payroll_report_views.xml",
         # REPORT
         "report/payslip_report.xml",
     ],
