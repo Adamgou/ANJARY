@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_config_view_form_inherit_anj_bis" model="ir.ui.view">
+        <field name="name">pos.config.form.view.inherit.anj.bis</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//setting[@id='other_devices']" position="after">
+	            <setting name="config=info" id="config_info">
+		            <group>
+			            <field name="config_logo" widget="image"/>
+                  <field name="config_info"/>
+                  <field name="config_phone"/>
+                  <field name="config_address"/>
+		            </group>
+	            </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>
