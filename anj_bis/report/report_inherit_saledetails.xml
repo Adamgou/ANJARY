@@ -39,10 +39,10 @@
               <tr>
                 <th class="text-start">Category</th>
                 <th class="text-start">Product</th>
-                <th class="text-end" style="width:140px;">Quantity</th>
-                <th class="text-end" style="width:140px;">Total (Tax excluded)</th>
-                <th class="text-end" style="width:140px;">VAT amount</th>
-                <th class="text-end" style="width:140px;">Amount incl VAT</th>
+                <th class="text-end" style="width:100px;">Quantity</th>
+                <th class="text-end" style="width:130px;">Total (Tax excluded)</th>
+                <th class="text-end" style="width:130px;">VAT amount</th>
+                <th class="text-end" style="width:130px;">Amount incl VAT</th>
               </tr>
             </thead>
             <tbody>
@@ -235,10 +235,10 @@
               <tr>
                 <th class="text-start">Category</th>
                 <th class="text-start">Product</th>
-                <th class="text-end" style="width:140px;">Quantity</th>
-                <th class="text-end" style="width:140px;">Total (Tax excluded)</th>
-                <th class="text-end" style="width:140px;">VAT amount</th>
-                <th class="text-end" style="width:140px;">Amount incl VAT</th>
+                <th class="text-end" style="width:100px;">Quantity</th>
+                <th class="text-end" style="width:130px;">Total (Tax excluded)</th>
+                <th class="text-end" style="width:130px;">VAT amount</th>
+                <th class="text-end" style="width:130px;">Amount incl VAT</th>
               </tr>
             </thead>
             <tbody>
