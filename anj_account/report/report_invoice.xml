@@ -59,11 +59,6 @@
     <template id="report_invoice_inherit" inherit_id="account.report_invoice_document">
       <xpath expr="//t[@t-call='web.external_layout']" position="before">
         <style>
-          [name="company_address"] * {
-          font-weight: 700 !important;
-          font-size: 20px !important;
-          margin-bottom: 0 !important;
-          }
           .mt0.h4 p {
           margin-bottom: 0 !important;
           }
@@ -98,9 +93,6 @@
 
           table table-sm o_main_table td {
           border: 1px solid black !important;
-          }
-          .header img {
-          max-height: 130px !important;
           }
         </style>
       </xpath>
@@ -487,11 +479,6 @@
           font-size: 14px !important;
           padding: 10px !important;
           }
-          [name="company_address"] * {
-          font-weight: 700 !important;
-          font-size: 20px !important;
-          margin-bottom: 0 !important;
-          }
           .table-borderless th:not(:nth-child(2)) {
           width: 130px;
           }
@@ -868,21 +855,31 @@
       </xpath>
     </template>
     <template id="external_layout_standard_inherit" inherit_id="web.external_layout_boxed">
-      <xpath expr="//div[@t-att-style='report_header_style']" position="attributes">
-        <attribute name="t-if">not no_header</attribute>
-      </xpath>
-      <xpath expr="//div[@name='company_address']" position="replace">
-        <t t-if="not company.name.lower() == 'societe immobiliere anjary'">
-          <div name="company_address" class="float-right mb4" style="font-size:20px!important;">
-            <span t-if="company.company_details" t-field="company.company_details"></span>
+      <!--      <xpath expr="//div[@t-att-style='report_header_style']" position="attributes">-->
+      <!--        <attribute name="t-if">not no_header</attribute>-->
+      <!--      </xpath>-->
+      <xpath expr="//div[1]" position="replace">
+        <div class="header">
+          <table width="100%">
+            <tr>
+              <td width="50%" style="vertical-align:middle;border-color:#fff !important;">
+                <img style="height:100px;" t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo"/>
+              </td>
+              <td style="vertical-align:middle;border-color:#fff !important;" class="text-end">
+                <!--              <div class="mt0 h4" t-if="company.report_header" t-field="company.report_header">Company tagline</div>-->
+                <t t-if="not company.name.lower() == 'societe immobiliere anjary'">
+                  <div name="company_address" class="float-right"
+                       style="font-size:16px!important;font-weight:800!important;">
+                    <span t-if="company.company_details" t-field="company.company_details"></span>
+                  </div>
+                </t>
+              </td>
+            </tr>
+          </table>
+          <div t-if="company.name.lower() == 'societe immobiliere anjary'" name="company_address" class="mb-4">
+            <span t-if="company.company_details" style="font-size:5px!important;"
+                  t-field="company.company_details"></span>
           </div>
-        </t>
-      </xpath>
-      <xpath expr="//div[@class='row mb8']" position="after">
-
-        <div t-if="company.name.lower() == 'societe immobiliere anjary'" name="company_address" class="mb-4">
-          <span t-if="company.company_details" style="font-size:5px!important;"
-                t-field="company.company_details"></span>
         </div>
       </xpath>
       <xpath expr="//div[contains(@t-attf-class, 'footer o_boxed_footer')]" position="replace">
@@ -942,8 +939,8 @@
       </xpath>
     </template>
 
-<!--    <record id="account.account_invoices" model="ir.actions.report">-->
-<!--      <field name="paperformat_id" ref="anj_account.paperformat_account_a4"></field>-->
-<!--    </record>-->
+    <!--    <record id="account.account_invoices" model="ir.actions.report">-->
+    <!--      <field name="paperformat_id" ref="anj_account.paperformat_account_a4"></field>-->
+    <!--    </record>-->
   </data>
 </odoo>
