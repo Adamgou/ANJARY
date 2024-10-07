@@ -30,24 +30,24 @@
             <span
                     t-field="o.partner_id.vat"/>
           </div>
-          <div t-if="o.partner_id.company_type == 'company'">
+          <div>
             <div
-                    t-if="o.partner_id.company_type == 'company' and o.partner_id.nif">NIF:
+                    t-if="o.partner_id.nif">NIF:
               <span
                       t-esc="o.partner_id.nif"/>
             </div>
             <div
-                    t-if="o.partner_id.company_type == 'company' and o.partner_id.stat">
+                    t-if="o.partner_id.stat">
               STAT:
               <span t-esc="o.partner_id.stat"/>
             </div>
             <div
-                    t-if="o.partner_id.company_type == 'company' and o.partner_id.cif">CIF:
+                    t-if="o.partner_id.cif">CIF:
               <span
                       t-esc="o.partner_id.cif"/>
             </div>
             <div
-                    t-if="o.partner_id.company_type == 'company' and o.partner_id.rcs">RCS:
+                    t-if="o.partner_id.rcs">RCS:
               <span
                       t-esc="o.partner_id.rcs"/>
             </div>
