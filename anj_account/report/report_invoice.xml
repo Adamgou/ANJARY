@@ -665,11 +665,8 @@
           o.company_id.name.lower() == 'societe immobiliere anjary'
         </attribute>
       </xpath>
-      <xpath
-              expr="//t[@name='account_invoice_line_accountable']/td[hasclass('o_price_total')]"
-              position="replace">
-        <td style="border: 1px solid black;" class="text-center o_price_total"
-            t-if="o.company_id.name.startswith('jara dist') or o.company_id.name.lower() == 'societe immobiliere anjary'">
+      <xpath expr="//t[@name='account_invoice_line_accountable']/td[hasclass('o_price_total')]" position="replace">
+        <td style="border: 1px solid black;" class="text-center o_price_total" t-if="o.company_id.name.startswith('jara dist') or o.company_id.name.lower() in ('societe immobiliere anjary', 'biskot')">
           <span class="text-nowrap" t-field="line.price_total"/>
         </td>
         <td style="border: 1px solid black;" class="text-right o_price_total" t-else="">
