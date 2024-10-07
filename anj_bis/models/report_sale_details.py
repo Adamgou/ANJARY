@@ -150,6 +150,31 @@ class ReportSaleDetails(models.AbstractModel):
                     payment_by_product["biskot"][method] += line.price_subtotal_incl
         return payment_by_product
 
+    def _get_checking_client(self):
+        """
+            Get client who needs checking expendses
+        :return:
+        """
+        clients = self.env["res.partner"].search([("is_checking_partner", "=", True)])
+        checkings = {}
+        for client in clients:
+            checkings.setdefault(client.id, {})
+            checkings[client.id].setdefault(client.name, 0.0)
+        return checkings
+
+    def _get_checking_client_expenses(self, order, checking_clients):
+        """
+                Get expenses of checking clients
+        :param order:
+        :param checking_clients:
+        :return:
+        """
+        if order.partner_id.is_checking_partner:
+            checking_clients[order.partner_id.id][
+                order.partner_id.name
+            ] += order.amount_paid
+        return checking_clients
+
     @api.model
     def get_sale_details(
         self, date_start=False, date_stop=False, config_ids=False, session_ids=False
@@ -161,10 +186,12 @@ class ReportSaleDetails(models.AbstractModel):
         # payment_by_product = self._get_default_payment(payments_method)
         product_amount_info = {}
         payments_by_method = self._get_default_payment(payments_method)
+        checking_clients = self._get_checking_client()
         for order in orders:
             payment = self.env["pos.payment"].search(
                 [("pos_order_id", "in", order.ids)]
             )
+            self._get_checking_client_expenses(order, checking_clients)
             for line in order.lines:
 
                 product_amount_info = self._get_product_info_by_categ(
@@ -229,6 +256,7 @@ class ReportSaleDetails(models.AbstractModel):
                 "payments_method": payments_method.filtered(
                     lambda l: l.config_ids in configs
                 ),
+                "checking_clients": checking_clients,
             }
         )
 
