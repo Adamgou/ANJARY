@@ -673,7 +673,7 @@
           <span class="text-nowrap" t-field="line.price_total"/>
         </td>
         <td style="border: 1px solid black;" class="text-right o_price_total" t-else="">
-          <t t-if="o.company_id.name.lower() in ('jaratrade', 'biskot')">
+          <t t-if="o.company_id.name.lower() == 'jaratrade'">
             <span class="text-nowrap" t-field="line.price_total"/>
           </t>
           <t t-else="">
@@ -842,14 +842,27 @@
                       </tr>
                     </t>
                     <t t-if="len(payments_vals) > 0">
-                      <tr class="border-black" style="font-size:12px">
-                        <td>
-                          <strong>Montant dû :</strong>
-                        </td>
-                        <td class="text-right">
-                          <span t-field="o.amount_residual"/>
-                        </td>
-                      </tr>
+                      <t t-if="o.company_id.name.lower() == 'biskot'">
+                        <br/>
+                        <tr class="border-black" style="font-size:12px">
+                            <td>
+                              <strong>Montant dû :</strong>
+                            </td>
+                            <td class="text-right">
+                              <span t-field="o.amount_residual"/>
+                            </td>
+                          </tr>
+                      </t>
+                      <t t-else="">
+                        <tr class="border-black" style="font-size:12px">
+                            <td>
+                              <strong>Montant dû :</strong>
+                            </td>
+                            <td class="text-right">
+                              <span t-field="o.amount_residual"/>
+                            </td>
+                          </tr>
+                      </t>
                     </t>
                   </t>
                 </t>
