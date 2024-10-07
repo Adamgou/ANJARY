@@ -554,6 +554,20 @@
 							</td>
 						</tr>
 					</table>
+					<div>
+						<t t-if="checking_clients">
+							<span>Sales revenues: </span>
+							<t t-foreach="checking_clients.items()" t-as="clients">
+								<t t-foreach="clients[1].items()" t-as="item">
+									<div>
+										<span t-esc="item[0]"/>:
+										<span t-esc="item[1]" t-options="{'widget': 'float', 'precision': currency['precision']}"/>
+										<span t-out='currency["symbol"]'>$</span>
+									</div>
+								</t>
+							</t>
+						</t>
+					</div>
 				</t>
 			</xpath>
 			<xpath expr="//t[@id='closing_session']/table" position="attributes">
