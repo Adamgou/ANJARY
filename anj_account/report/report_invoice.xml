@@ -867,8 +867,13 @@
         <attribute name="t-if">not no_header</attribute>
       </xpath>
       <xpath expr="//div[@name='company_address']" position="replace">
-        <t t-if="not company.name.lower() == 'societe immobiliere anjary'">
+        <t t-if="company.name.lower() not in ('societe immobiliere anjary', 'biskot')">
           <div name="company_address" class="float-right mb4" style="font-weight:800!important;">
+            <span t-if="company.company_details" t-field="company.company_details"></span>
+          </div>
+        </t>
+        <t t-if="company.name.lower() == 'biskot'">
+          <div name="company_address" class="float-right mb4" style="font-weight:800!important; margin-top: -26px !important; margin-bottom: -12px !important;">
             <span t-if="company.company_details" t-field="company.company_details"></span>
           </div>
         </t>
