@@ -673,7 +673,7 @@
           <span class="text-nowrap" t-field="line.price_total"/>
         </td>
         <td style="border: 1px solid black;" class="text-right o_price_total" t-else="">
-          <t t-if="o.company_id.name.lower() == 'jaratrade'">
+          <t t-if="o.company_id.name.lower() in ('jaratrade', 'biskot')">
             <span class="text-nowrap" t-field="line.price_total"/>
           </t>
           <t t-else="">
