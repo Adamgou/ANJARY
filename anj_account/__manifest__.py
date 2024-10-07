@@ -19,6 +19,7 @@
         'views/journal_account_views.xml',
         'views/account_move.xml',
         'views/product_template.xml',
+        'report/paperformat_account_a4.xml',
         'report/report_invoice.xml',
     ],
     'license': 'LGPL-3',

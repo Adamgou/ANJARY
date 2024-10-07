@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0+e-20240923\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-24 12:01+0000\n"
-"PO-Revision-Date: 2024-09-24 12:01+0000\n"
+"POT-Creation-Date: 2024-10-04 06:43+0000\n"
+"PO-Revision-Date: 2024-10-04 06:43+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -206,6 +206,47 @@ msgid "Companies"
 msgstr "Sociétés"
 
 #. module: anj_bis
+#: model:ir.model.fields,field_description:anj_bis.field_res_config_settings__config_address
+msgid "Config Address"
+msgstr "Adresse"
+
+#. module: anj_bis
+#: model:ir.model.fields,field_description:anj_bis.field_res_config_settings__config_info
+msgid "Config Info"
+msgstr "Info"
+
+#. module: anj_bis
+#: model:ir.model.fields,field_description:anj_bis.field_pos_config__config_logo
+#: model:ir.model.fields,field_description:anj_bis.field_res_config_settings__config_logo
+msgid "Config Logo"
+msgstr "Logo"
+
+#. module: anj_bis
+#: model:ir.model.fields,field_description:anj_bis.field_res_config_settings__config_phone
+msgid "Config Phone"
+msgstr "Téléphone"
+
+#. module: anj_bis
+#: model:ir.model,name:anj_bis.model_res_config_settings
+msgid "Config Settings"
+msgstr "Paramètres de configuration"
+
+#. module: anj_bis
+#: model:ir.model.fields,field_description:anj_bis.field_pos_config__config_address
+msgid "Config address"
+msgstr "Adresse"
+
+#. module: anj_bis
+#: model:ir.model.fields,field_description:anj_bis.field_pos_config__config_info
+msgid "Config info"
+msgstr "Info"
+
+#. module: anj_bis
+#: model:ir.model.fields,field_description:anj_bis.field_pos_config__config_phone
+msgid "Config phone"
+msgstr "Téléphone"
+
+#. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "Counted"
 msgstr "Dénombré"
@@ -244,7 +285,7 @@ msgstr "Différence"
 #: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "Disc:"
-msgstr ""
+msgstr "Rem. :"
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
@@ -285,6 +326,14 @@ msgid "Laptop model x"
 msgstr "Modèle d'ordinateur portable x"
 
 #. module: anj_bis
+#. odoo-javascript
+#: code:addons/anj_bis/static/src/app/receipt_screen/receipt/receipt_header/receipt_header.xml:0
+#: code:addons/anj_bis/static/src/app/receipt_screen/receipt/receipt_header/receipt_header.xml:0
+#, python-format
+msgid "Logo"
+msgstr ""
+
+#. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "Name"
 msgstr "Nom"
@@ -323,9 +372,19 @@ msgid "Payments"
 msgstr "Paiements"
 
 #. module: anj_bis
+#: model:ir.model,name:anj_bis.model_pos_config
+msgid "Point of Sale Configuration"
+msgstr "Configuration du point de vente"
+
+#. module: anj_bis
 #: model:ir.model,name:anj_bis.model_report_point_of_sale_report_saledetails
 msgid "Point of Sale Details"
 msgstr "Détails du point de vente"
+
+#. module: anj_bis
+#: model:ir.model,name:anj_bis.model_pos_session
+msgid "Point of Sale Session"
+msgstr "Session du point de vente"
 
 #. module: anj_bis
 #: model:ir.model,name:anj_bis.model_product_template
@@ -337,8 +396,8 @@ msgstr "Produit"
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
-msgid "Product Category"
-msgstr "catégorie de produit"
+msgid "Category"
+msgstr "Catégorie"
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
@@ -387,6 +446,13 @@ msgstr "Exemple de nom de configuration"
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "Sample Opening Note"
 msgstr "Exemple de note d'ouverture"
+
+#. module: anj_bis
+#. odoo-javascript
+#: code:addons/anj_bis/static/src/app/receipt_screen/receipt/receipt_header/receipt_header.xml:0
+#, python-format
+msgid "Served by"
+msgstr "Servi par"
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
@@ -442,9 +508,16 @@ msgid "Technical Stuffs"
 msgstr "Trucs techniques"
 
 #. module: anj_bis
+#. odoo-javascript
+#: code:addons/anj_bis/static/src/app/receipt_screen/receipt/receipt_header/receipt_header.xml:0
+#, python-format
+msgid "Tel:"
+msgstr "Tél. :"
+
+#. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
@@ -460,7 +533,7 @@ msgstr ""
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "Total:"
-msgstr ""
+msgstr "Total :"
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails

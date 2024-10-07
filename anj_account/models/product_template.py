@@ -4,7 +4,7 @@ from odoo import api, fields, models, _
 from odoo.tools import format_amount
 
 
-class ProductTemplate(models.Model):
+class ProductTemplate(models.Model): 
     _inherit = "product.template"
 
     price_unit_ht = fields.Float(

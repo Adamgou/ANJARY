@@ -2,6 +2,8 @@
 <odoo>
 	<data>
 		<template id="inerit_report_saledetails" inherit_id="point_of_sale.report_saledetails">
+			<xpath expr="//div[@class='page']/br[1]" position="replace"/>
+			<xpath expr="//div[@class='page']/br[2]" position="replace"/>
 			<xpath expr="//div[@id='sales']" position="attributes">
 				<attribute name="t-if">products and not company.is_biskot</attribute>
 			</xpath>
@@ -18,19 +20,31 @@
 					<t t-set="tva_spoon" t-value='sum(spoon_data["tax_amount"] for spoon_data in spoons_data)'/>
 					<t t-set="ttc_spoon" t-value='sum(spoon_data["amount_incl_vat"] for spoon_data in spoons_data)'/>
 					<t t-set="ht_qty_biskot"
-				   t-value="(products_info['qty'] - sum(spoon_data['qty'] for spoon_data in spoons_data))"/>
-				<t t-set="ht_qty_spoon" t-value="(sum(spoon_data['qty'] for spoon_data in spoons_data))"/>
+					   t-value="(products_info['qty'] - sum(spoon_data['qty'] for spoon_data in spoons_data))"/>
+					<t t-set="ht_qty_spoon" t-value="(sum(spoon_data['qty'] for spoon_data in spoons_data))"/>
+					<style>
+						td, th {
+						padding:2px !important;
+						}
+						* {
+						font-size: 12px !important;
+						}
+						h3, h1, h2 {
+						font-size: 18px !important;
+						font-weight:700 !important;
+						}
+					</style>
 					<h3>Sales</h3>
 					<div class="oe_structure"></div>
 					<table class="table table-sm">
 						<thead>
 							<tr>
-								<th class="text-start">Product Category</th>
+								<th class="text-start">Category</th>
 								<th class="text-start">Product</th>
-								<th class="text-end">Quantity</th>
-								<th class="text-end">Total (Tax excluded)</th>
-								<th class="text-end">VAT amount</th>
-								<th class="text-end">Amount incl VAT</th>
+								<th class="text-end" style="width:100px;">Quantity</th>
+								<th class="text-end" style="width:130px;">Total (Tax excluded)</th>
+								<th class="text-end" style="width:130px;">VAT amount</th>
+								<th class="text-end" style="width:130px;">Amount incl VAT</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -221,12 +235,12 @@
 					<table class="table table-sm">
 						<thead>
 							<tr>
-								<th class="text-start">Product Category</th>
+								<th class="text-start">Category</th>
 								<th class="text-start">Product</th>
-								<th class="text-end">Quantity</th>
-								<th class="text-end">Total (Tax excluded)</th>
-								<th class="text-end">VAT amount</th>
-								<th class="text-end">Amount incl VAT</th>
+								<th class="text-end" style="width:100px;">Quantity</th>
+								<th class="text-end" style="width:130px;">Total (Tax excluded)</th>
+								<th class="text-end" style="width:130px;">VAT amount</th>
+								<th class="text-end" style="width:130px;">Amount incl VAT</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -411,11 +425,13 @@
 
 				</div>
 			</xpath>
+			<xpath expr="//div[@class='oe_structure']" position="replace"/>
+			<xpath expr="//div[@class='page']/br[4]" position="replace"/>
 			<xpath expr="//t[@id='payments']" position="before">
-				<t t-set="average_total_basket" t-value="currency['total_paid']/nbr_orders if nbr_orders else 0"/>
-				<t t-set="average_total_basket_biskot" t-value="ttc_biskot/nbr_orders if nbr_orders else 0"/>
-				<t t-set="average_total_basket_spoon" t-value="ttc_spoon/nbr_orders if nbr_orders else 0"/>
-				<div t-if="company.is_biskot">
+				<div t-if="company.is_biskot" style="margin-top: -20px">
+					<t t-set="average_total_basket" t-value="(currency['total_paid']/nbr_orders) if nbr_orders else 0"/>
+					<t t-set="average_total_basket_biskot" t-value="(ttc_biskot/nbr_orders) if nbr_orders else 0"/>
+					<t t-set="average_total_basket_spoon" t-value="(ttc_spoon/nbr_orders) if nbr_orders else 0"/>
 					<div>
 						<span>Total average basket:</span>
 						<span t-esc="average_total_basket" t-options="{'widget': 'float', 'precision': currency['precision']}"/>
@@ -435,6 +451,14 @@
 					</div>
 				</div>
 			</xpath>
+			<xpath expr="//div[@id='discounts']" position="attributes">
+				<attribute name="style">break-inside: avoid; margin-top: -25px;</attribute>
+			</xpath>
+			<xpath expr="//t[@id='closing_session']/h3" position="attributes">
+				<attribute name="style">margin-top: -30px;</attribute>
+			</xpath>
+			<xpath expr="//t[@id='closing_session']/br[1]" position="replace"/>
+			<xpath expr="//t[@id='closing_session']/br[2]" position="replace"/>
 			<xpath expr="//t[@id='closing_session']/div[2]/strong[2]" position="replace">
 				<t t-if="company.is_biskot">
 					<strong>Receipt number:
@@ -450,7 +474,7 @@
 			<xpath expr="//t[@id='closing_session']" position="after">
 				<t t-if="company.is_biskot">
 					<t t-if="payments_method">
-						<table class="table table-bordered">
+						<table class="table table-bordered" style="break-inside: avoid;">
 							<tr>
 								<td/>
 								<td>CA TTC Biskot</td>
@@ -476,7 +500,7 @@
 							</t>
 						</table>
 					</t>
-					<table class="table table-bordered">
+					<table class="table table-bordered" style="break-inside: avoid;">
 						<tr>
 							<td/>
 							<td>Biskot</td>
@@ -531,7 +555,9 @@
 						</tr>
 					</table>
 				</t>
-
+			</xpath>
+			<xpath expr="//t[@id='closing_session']/table" position="attributes">
+				<attribute name="style">margin-top: -25px</attribute>
 			</xpath>
 		</template>
 	</data>
