@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 17.0+e-20240528\n"
+"Project-Id-Version: Odoo Server 17.0+e-20240923\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-07 13:05+0000\n"
-"PO-Revision-Date: 2024-08-07 13:05+0000\n"
+"POT-Creation-Date: 2024-09-24 12:01+0000\n"
+"PO-Revision-Date: 2024-09-24 12:01+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,9 +21,15 @@ msgid "0.00"
 msgstr ""
 
 #. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "10"
 msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "10% royalty"
+msgstr "Redevande 10%"
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
@@ -101,6 +107,21 @@ msgid "99.99"
 msgstr ""
 
 #. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "<span>Total average basket Biskot:</span>"
+msgstr "<span>Panier Moyen Biskot: </span>"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "<span>Total average basket speon:</span>"
+msgstr "<span>Panier Moyen spoon: </span>"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "<span>Total average basket:</span>"
+msgstr "<span>Panier Moyen Total: </span>"
+
+#. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "<strong>Amount of discounts</strong>:"
 msgstr "<strong>Montant des réductions</strong>:"
@@ -131,19 +152,43 @@ msgstr "<strong>Note d'ouverture de la séance :</strong>"
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
-msgid "<strong>Total Spoon</strong>"
-msgstr "<strong>Total Spoon</strong>"
+msgid "<strong>Total Biskot</strong>"
+msgstr ""
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "<strong>Total Spoon</strong>"
+msgstr ""
+
+#. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "<strong>Total</strong>"
 msgstr ""
 
 #. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "Amount incl VAT"
+msgstr "Montant TTC"
+
+#. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "Base Amount"
 msgstr "Montant de base"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "Biskot"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "CA HT"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "CA TTC"
+msgstr ""
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
@@ -245,6 +290,14 @@ msgid "Name"
 msgstr "Nom"
 
 #. module: anj_bis
+#. odoo-python
+#: code:addons/anj_bis/models/report_sale_details.py:0
+#, python-format
+msgid "Not Categorized"
+msgstr "Non catégorisé"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "Number of transactions:"
 msgstr "Nombre de transactions :"
@@ -275,6 +328,7 @@ msgid "Point of Sale Details"
 msgstr "Détails du point de vente"
 
 #. module: anj_bis
+#: model:ir.model,name:anj_bis.model_product_template
 #: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "Product"
@@ -287,15 +341,15 @@ msgid "Product Category"
 msgstr "catégorie de produit"
 
 #. module: anj_bis
-#: model:ir.model,name:anj_bis.model_product_template
-msgid "Product Template (Multi-Company)"
-msgstr "Modèle de produit (multi-sociétés)"
-
-#. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "Quantity"
 msgstr "Quantité"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "Receipt number:"
+msgstr "Nombre de ticket de caisse:"
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
@@ -347,7 +401,13 @@ msgstr "ID de session :"
 #. module: anj_bis
 #: model:ir.model.fields,field_description:anj_bis.field_product_product__spoon
 #: model:ir.model.fields,field_description:anj_bis.field_product_template__spoon
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
 msgid "Spoon"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "TVA"
 msgstr ""
 
 #. module: anj_bis
@@ -393,6 +453,11 @@ msgid "Total (Tax excluded)"
 msgstr "Total (hors taxes)"
 
 #. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "Total CA TTC"
+msgstr ""
+
+#. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "Total:"
 msgstr ""
@@ -408,4 +473,10 @@ msgstr "Unité"
 #: model:ir.model.fields,help:anj_bis.field_product_template__spoon_displayed
 #: model:ir.model.fields,help:anj_bis.field_res_company__is_biskot
 msgid "Used on POS when managing spoon products"
-msgstr "Utilisé sur les points de vente lors de la gestion des produits en cuillère"
+msgstr ""
+"Utilisé sur les points de vente lors de la gestion des produits en cuillère"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "VAT amount"
+msgstr "Montant TVA"
