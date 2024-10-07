@@ -843,7 +843,7 @@
                     </t>
                     <t t-if="len(payments_vals) > 0">
                       <t t-if="o.company_id.name.lower() == 'biskot'">
-                        <br/>
+                        <!-- <br/>
                         <tr class="border-black" style="font-size:12px">
                             <td>
                               <strong>Montant dû :</strong>
@@ -851,7 +851,7 @@
                             <td class="text-right">
                               <span t-field="o.amount_residual"/>
                             </td>
-                          </tr>
+                          </tr> -->
                       </t>
                       <t t-else="">
                         <tr class="border-black" style="font-size:12px">
