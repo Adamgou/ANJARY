@@ -215,11 +215,20 @@ class ReportSaleDetails(models.AbstractModel):
                     removed += 1
             if spoon_category.get("products"):
                 spoons_data.append(spoon_category)
+        configs = []
+        if config_ids:
+            configs = self.env["pos.config"].search([("id", "in", config_ids)])
+        else:
+            sessions = self.env["pos.session"].search([("id", "in", session_ids)])
+            for session in sessions:
+                configs.append(session.config_id)
         out.update(
             {
                 "spoons_data": spoons_data,
                 "payments_by_method": payments_by_method,
-                "payments_method": payments_method,
+                "payments_method": payments_method.filtered(
+                    lambda l: l.config_ids in configs
+                ),
             }
         )
 
