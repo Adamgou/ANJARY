@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0+e-20240923\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-07 14:10+0000\n"
-"PO-Revision-Date: 2024-10-07 14:10+0000\n"
+"POT-Creation-Date: 2024-10-08 13:09+0000\n"
+"PO-Revision-Date: 2024-10-08 13:09+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "0.00"
 msgstr ""
@@ -25,11 +26,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "10"
 msgstr ""
-
-#. module: anj_bis
-#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
-msgid "10% royalty"
-msgstr "Redevande 10%"
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
@@ -108,8 +104,23 @@ msgstr ""
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
-msgid "<span>Sales revenues: </span>"
-msgstr "<span>Chiffre d'affaires: </span>"
+msgid "<span>10% royality Biskot</span>"
+msgstr "<span>Redevence Biskot 10%</span>"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "<span>10% royality Spoon</span>"
+msgstr "<span>Redevence Spoon 10%</span>"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "<span>TVA Biskot</span>"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "<span>TVA Spoon</span>"
+msgstr ""
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
@@ -157,6 +168,11 @@ msgstr "<strong>Note d'ouverture de la séance :</strong>"
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "<strong>Sales revenues:</strong>"
+msgstr "<strong>Chiffre d'affaires: </strong>"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
 msgid "<strong>Total Biskot</strong>"
 msgstr ""
 
@@ -172,6 +188,11 @@ msgstr ""
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "Amount TTC"
+msgstr "Montant TTC"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
 msgid "Amount incl VAT"
 msgstr "Montant TTC"
 
@@ -179,21 +200,6 @@ msgstr "Montant TTC"
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "Base Amount"
 msgstr "Montant de base"
-
-#. module: anj_bis
-#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
-msgid "Biskot"
-msgstr ""
-
-#. module: anj_bis
-#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
-msgid "CA HT"
-msgstr ""
-
-#. module: anj_bis
-#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
-msgid "CA TTC"
-msgstr ""
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
@@ -407,6 +413,11 @@ msgid "Point of Sale Details"
 msgstr "Détails du point de vente"
 
 #. module: anj_bis
+#: model:ir.model,name:anj_bis.model_pos_payment_method
+msgid "Point of Sale Payment Methods"
+msgstr "Modes de paiement du point de vente"
+
+#. module: anj_bis
 #: model:ir.model,name:anj_bis.model_pos_session
 msgid "Point of Sale Session"
 msgstr "Session du point de vente"
@@ -484,15 +495,10 @@ msgid "Session ID:"
 msgstr "ID de session :"
 
 #. module: anj_bis
+#: model:ir.model.fields,field_description:anj_bis.field_pos_payment_method__is_spoon_method
 #: model:ir.model.fields,field_description:anj_bis.field_product_product__spoon
 #: model:ir.model.fields,field_description:anj_bis.field_product_template__spoon
-#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
 msgid "Spoon"
-msgstr ""
-
-#. module: anj_bis
-#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
-msgid "TVA"
 msgstr ""
 
 #. module: anj_bis
