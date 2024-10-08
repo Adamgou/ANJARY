@@ -8,6 +8,7 @@
         <field name="arch" type="xml">
             <field name="type" position="after">
                 <field name="no_header" string="Pas d'entête"/>
+                <field name="no_footer" string="Pas de pied de page"/>
             </field>
         </field>
     </record>

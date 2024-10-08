@@ -7,3 +7,4 @@ class AccountJournal(models.Model):
     _inherit = "account.journal"
 
     no_header = fields.Boolean(default=False)
+    no_footer = fields.Boolean(default=False)
