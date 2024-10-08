@@ -18,17 +18,12 @@ class ReportSaleDetails(models.AbstractModel):
             if len(line.product_id.product_tmpl_id.pos_categ_ids)
             else _("Not Categorized")
         )
-
+        key2 = (product_id, line.price_unit)
         products.setdefault(key1, {})
 
-        products[key1].setdefault(product_id, {})
-        products[key1][product_id].setdefault("tax_amount", 0)
-        products[key1][product_id].setdefault("amount_incl_vat", 0)
-
-        products[key1][product_id]["tax_amount"] += (
-            line.price_subtotal_incl - line.price_subtotal
-        )
-        products[key1][product_id]["amount_incl_vat"] += line.price_subtotal_incl
+        products[key1].setdefault(key2, [0.0, 0.0])
+        products[key1][key2][0] += line.price_subtotal_incl - line.price_subtotal
+        products[key1][key2][1] += line.price_subtotal_incl
 
         return products
 
@@ -92,16 +87,13 @@ class ReportSaleDetails(models.AbstractModel):
             for product in products:
                 product["tax_amount"] = 0
                 product["amount_incl_vat"] = 0
+                key = (product["product_id"], product["price_unit"])
                 if (
                     categ_name in product_amount_info
-                    and product["product_id"] in product_amount_info[categ_name]
+                    and key in product_amount_info[categ_name]
                 ):
-                    product["tax_amount"] = product_amount_info[categ_name][
-                        product["product_id"]
-                    ]["tax_amount"]
-                    product["amount_incl_vat"] = product_amount_info[categ_name][
-                        product["product_id"]
-                    ]["amount_incl_vat"]
+                    product["tax_amount"] = product_amount_info[categ_name][key][0]
+                    product["amount_incl_vat"] = product_amount_info[categ_name][key][1]
                 tax_amount += product["tax_amount"]
                 amount_incl_vat += product["amount_incl_vat"]
                 product_ids.append(product.get("product_id"))
@@ -175,6 +167,30 @@ class ReportSaleDetails(models.AbstractModel):
             ] += order.amount_paid
         return checking_clients
 
+    def _get_pricelist(self):
+        """
+            Get client who needs checking expendses
+        :return:
+        """
+
+        product_pricelists = self.env["product.pricelist"].search([])
+        lists = {}
+        for price in product_pricelists:
+            lists.setdefault(price.id, {})
+            lists[price.id].setdefault(price.name, 0.0)
+        return lists
+
+    def _get_pricelist_value(self, order, lists):
+        """
+                Get expenses of checking clients
+        :param order:
+        :param checking_clients:
+        :return:
+        """
+        if order.pricelist_id:
+            lists[order.pricelist_id.id][order.pricelist_id.name] += order.amount_paid
+        return lists
+
     @api.model
     def get_sale_details(
         self, date_start=False, date_stop=False, config_ids=False, session_ids=False
@@ -186,12 +202,19 @@ class ReportSaleDetails(models.AbstractModel):
         # payment_by_product = self._get_default_payment(payments_method)
         product_amount_info = {}
         payments_by_method = self._get_default_payment(payments_method)
-        checking_clients = self._get_checking_client()
+        configs = []
+        if config_ids:
+            configs = self.env["pos.config"].search([("id", "in", config_ids)])
+        else:
+            sessions = self.env["pos.session"].search([("id", "in", session_ids)])
+            for session in sessions:
+                configs.append(session.config_id)
+        pricelists = self._get_pricelist()
         for order in orders:
             payment = self.env["pos.payment"].search(
                 [("pos_order_id", "in", order.ids)]
             )
-            self._get_checking_client_expenses(order, checking_clients)
+            self._get_pricelist_value(order, pricelists)
             for line in order.lines:
 
                 product_amount_info = self._get_product_info_by_categ(
@@ -242,13 +265,7 @@ class ReportSaleDetails(models.AbstractModel):
                     removed += 1
             if spoon_category.get("products"):
                 spoons_data.append(spoon_category)
-        configs = []
-        if config_ids:
-            configs = self.env["pos.config"].search([("id", "in", config_ids)])
-        else:
-            sessions = self.env["pos.session"].search([("id", "in", session_ids)])
-            for session in sessions:
-                configs.append(session.config_id)
+
         out.update(
             {
                 "spoons_data": spoons_data,
@@ -256,7 +273,7 @@ class ReportSaleDetails(models.AbstractModel):
                 "payments_method": payments_method.filtered(
                     lambda l: l.config_ids in configs
                 ),
-                "checking_clients": checking_clients,
+                "pricelists": pricelists,
             }
         )
 

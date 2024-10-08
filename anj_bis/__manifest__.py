@@ -12,6 +12,7 @@
         # 'security/ir.model.access.csv',
         # views
         "views/pos_config_views.xml",
+        "views/pos_payment_method_views.xml",
         "views/res_config_settings_views.xml",
         "views/product_template_inherit_views.xml",
         "views/res_company_views.xml",
