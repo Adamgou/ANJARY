@@ -425,8 +425,13 @@
 
 				</div>
 			</xpath>
-			<xpath expr="//t[@id='taxe_sales']/table/thead/tr" position="inside">
-				<th class="text-end">Amount TTC</th>
+			<xpath expr="//t[@id='taxe_sales']/table/thead/tr" position="replace">
+				<tr>
+					<th class="text-start">Name</th>
+					<th class="text-end">Amount TVA</th>
+					<th class="text-end">Amount HT</th>
+					<th class="text-end">Amount TTC</th>
+				</tr>
 			</xpath>
 			<xpath expr="//t[@id='taxe_sales']/table/tbody/tr[1]" position="attributes">
 				<attribute name="style">display: none;</attribute>
@@ -545,13 +550,23 @@
 			</xpath>
 			<xpath expr="//t[@id='taxe_sales']/table/tbody/tr[last()]" position="inside">
 				<td class="text-end" style="background-color: #b1b1b1;">
-            <t t-if="currency['position']">
-                <strong><span t-out='products_info["all_amount_incl_vat"]' t-options="{'widget': 'float', 'precision': currency['precision']}">0.00</span><span t-out='currency["symbol"]'>$</span></strong>
-            </t>
-            <t t-else="" >
-                <strong><span t-out='currency["symbol"]'>$</span><span t-out='products_info["all_amount_incl_vat"]' t-options="{'widget': 'float', 'precision': currency['precision']}">0.00</span></strong>
-            </t>
-        </td>
+					<t t-if="currency['position']">
+						<strong>
+							<span t-out='products_info["all_amount_incl_vat"]'
+							      t-options="{'widget': 'float', 'precision': currency['precision']}">0.00
+							</span>
+							<span t-out='currency["symbol"]'>$</span>
+						</strong>
+					</t>
+					<t t-else="">
+						<strong>
+							<span t-out='currency["symbol"]'>$</span>
+							<span t-out='products_info["all_amount_incl_vat"]'
+							      t-options="{'widget': 'float', 'precision': currency['precision']}">0.00
+							</span>
+						</strong>
+					</t>
+				</td>
 			</xpath>
 			<xpath expr="//div[@class='oe_structure']" position="replace"/>
 			<xpath expr="//div[@class='page']/br[4]" position="replace"/>
@@ -599,38 +614,51 @@
 			</xpath>
 			<xpath expr="//t[@id='closing_session']" position="after">
 				<t t-if="company.is_biskot">
-					<t t-if="payments_method">
-						<table class="table table-bordered" style="page-break-inside: avoid;">
-							<tr style="background-color: #b1b1b1;">
-								<td/>
-								<td class="text-center">CA TTC Biskot</td>
-								<td class="text-center">CA TTC Spoon</td>
-								<td class="text-center">CA TTC Total</td>
-							</tr>
-							<t t-foreach="payments_method" t-as="method">
-								<tr>
-									<td style="background-color: #b1b1b1;" t-esc="method.name"/>
-									<t t-foreach="['biskot', 'spoon']" t-as="item">
-										<t t-if="item == 'spoon' and not method.is_spoon_method">
-											<td/>
-										</t>
-										<t t-else="">
-											<td class="text-center">
-												<span t-esc="payments_by_method[item][method]"
-												      t-options="{'widget': 'float', 'precision': currency['precision']}"/>
-												<span t-out='currency["symbol"]'>$</span>
-											</td>
-										</t>
-									</t>
-									<td class="text-center">
-										<span t-esc="payments_by_method['spoon'][method] + payments_by_method['biskot'][method]"
-										      t-options="{'widget': 'float', 'precision': currency['precision']}"/>
-										<span t-out='currency["symbol"]'>$</span>
-									</td>
-								</tr>
-							</t>
-						</table>
-					</t>
+					<table class="table table-bordered" style="page-break-inside: avoid;">
+						<tr style="background-color: #b1b1b1;">
+							<td/>
+							<td class="text-center">Espèces</td>
+							<td class="text-center">CB</td>
+							<td class="text-center">MVOLA</td>
+						</tr>
+						<tr>
+							<td style="background-color: #b1b1b1;">CA TTC BISKOT</td>
+							<td class="text-center">
+								<span t-esc="ttc_biskot - (payments_by_method['mvola'] + payments_by_method['CB'])"
+								      t-options="{'widget': 'float', 'precision': currency['precision']}"/>
+								<span t-out='currency["symbol"]'>$</span>
+							</td>
+							<td class="text-center">
+								<span t-esc="payments_by_method['CB']"
+								      t-options="{'widget': 'float', 'precision': currency['precision']}"/>
+								<span t-out='currency["symbol"]'>$</span>
+							</td>
+							<td class="text-center">
+								<span t-esc="payments_by_method['mvola']"
+								      t-options="{'widget': 'float', 'precision': currency['precision']}"/>
+								<span t-out='currency["symbol"]'>$</span>
+							</td>
+						</tr>
+						<tr>
+							<td style="background-color: #b1b1b1;">CA TTC SPOON</td>
+							<td class="text-center">
+								<span t-esc="ttc_spoon" t-options="{'widget': 'float', 'precision': currency['precision']}"/>
+								<span t-out='currency["symbol"]'>$</span>
+							</td>
+							<td/>
+							<td/>
+						</tr>
+						<tr>
+							<td style="background-color: #b1b1b1;">Total CA TTC</td>
+							<td class="text-center">
+								<span t-esc="ttc_biskot + ttc_spoon"
+								      t-options="{'widget': 'float', 'precision': currency['precision']}"/>
+								<span t-out='currency["symbol"]'>$</span>
+							</td>
+							<td/>
+							<td/>
+						</tr>
+					</table>
 					<div>
 						<t t-if="pricelists">
 							<strong>Sales revenues:</strong>
