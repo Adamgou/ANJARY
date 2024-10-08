@@ -120,60 +120,35 @@ class ReportSaleDetails(models.AbstractModel):
 
         return categories, product_info, product_ids
 
-    def _get_default_payment(self, payments_method):
+    def _get_default_payment(self):
         """Get default payment method dict"""
         payment_by_product = {}
-        payment_by_product.setdefault("spoon", {})
-        payment_by_product.setdefault("biskot", {})
-        for payment_method in payments_method:
-            payment_by_product["spoon"].setdefault(payment_method, 0.0)
-            payment_by_product["biskot"].setdefault(payment_method, 0.0)
+        payment_by_product.setdefault("mvola", 0.0)
+        payment_by_product.setdefault("CB", 0.0)
         return payment_by_product
 
     def _get_payment_by_method(self, line, payment, payment_by_product):
         """Get payment amount according payment method"""
         methods = payment.payment_method_id
-
         if line.company_id.is_biskot:
             for method in methods:
-                if line.product_id.spoon:
-                    payment_by_product["spoon"][method] += line.price_subtotal_incl
-                else:
-                    payment_by_product["biskot"][method] += line.price_subtotal_incl
+                if method.is_mvola:
+                    payment_by_product["mvola"] += line.price_subtotal_incl
+                if method.is_cb:
+                    payment_by_product["CB"] += line.price_subtotal_incl
         return payment_by_product
 
-    def _get_checking_client(self):
+    def _get_pricelist(self, configs):
         """
             Get client who needs checking expendses
         :return:
         """
-        clients = self.env["res.partner"].search([("is_checking_partner", "=", True)])
-        checkings = {}
-        for client in clients:
-            checkings.setdefault(client.id, {})
-            checkings[client.id].setdefault(client.name, 0.0)
-        return checkings
-
-    def _get_checking_client_expenses(self, order, checking_clients):
-        """
-                Get expenses of checking clients
-        :param order:
-        :param checking_clients:
-        :return:
-        """
-        if order.partner_id.is_checking_partner:
-            checking_clients[order.partner_id.id][
-                order.partner_id.name
-            ] += order.amount_paid
-        return checking_clients
-
-    def _get_pricelist(self):
-        """
-            Get client who needs checking expendses
-        :return:
-        """
-
-        product_pricelists = self.env["product.pricelist"].search([])
+        pricelists = []
+        for config in configs:
+            pricelists.extend(
+                config.pricelist_id.ids + config.available_pricelist_ids.ids
+            )
+        product_pricelists = self.env["product.pricelist"].browse(pricelists)
         lists = {}
         for price in product_pricelists:
             lists.setdefault(price.id, {})
@@ -198,10 +173,12 @@ class ReportSaleDetails(models.AbstractModel):
         """Manage sale details for Biskot company case (Biskot and spoon product)"""
         out = super().get_sale_details(date_start, date_stop, config_ids, session_ids)
         orders = self._get_pos_order(date_start, date_stop, config_ids, session_ids)
-        payments_method = self.env["pos.payment.method"].search([])
+        payments_method = self.env["pos.payment.method"].search(
+            ["|", ("is_mvola", "=", True), ("is_cb", "=", True)]
+        )
         # payment_by_product = self._get_default_payment(payments_method)
         product_amount_info = {}
-        payments_by_method = self._get_default_payment(payments_method)
+        payments_by_method = self._get_default_payment()
         configs = []
         if config_ids:
             configs = self.env["pos.config"].search([("id", "in", config_ids)])
@@ -209,7 +186,7 @@ class ReportSaleDetails(models.AbstractModel):
             sessions = self.env["pos.session"].search([("id", "in", session_ids)])
             for session in sessions:
                 configs.append(session.config_id)
-        pricelists = self._get_pricelist()
+        pricelists = self._get_pricelist(configs)
         for order in orders:
             payment = self.env["pos.payment"].search(
                 [("pos_order_id", "in", order.ids)]

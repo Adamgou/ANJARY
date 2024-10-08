@@ -7,6 +7,8 @@
 		<field name="arch" type="xml">
 			<xpath expr="//field[@name='is_online_payment']" position="after">
 				<field name="is_spoon_method"/>
+				<field name="is_mvola"/>
+				<field name="is_cb"/>
 			</xpath>
 		</field>
 	</record>
