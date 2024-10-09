@@ -48,7 +48,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr t-foreach="products" t-as="category">
+							<tr t-foreach="biskot_categories" t-as="category">
 								<td style="background-color: #dadada;">
 									<span t-out="category['name']">Technical Stuffs</span>
 								</td>

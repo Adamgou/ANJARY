@@ -78,10 +78,10 @@ class ReportSaleDetails(models.AbstractModel):
 
     def _get_amount_per_category(self, categories, product_amount_info, product_info):
         """Get amount by category"""
-        tax_amount = 0
-        amount_incl_vat = 0
         product_ids = []
         for categ in categories:
+            tax_amount = 0
+            amount_incl_vat = 0
             products = categ.get("products")
             categ_name = categ.get("name")
             for product in products:
@@ -215,6 +215,7 @@ class ReportSaleDetails(models.AbstractModel):
 
         spoons_data = []
         removed = 0
+        biskot_categories = []
         for categ in categories:
             categ_products = categ.get("products")
             spoon_category = {
@@ -240,6 +241,8 @@ class ReportSaleDetails(models.AbstractModel):
                     categ["amount_incl_vat"] -= product["amount_incl_vat"]
                     categ_products.pop(i - removed)
                     removed += 1
+            if categ_products:
+                biskot_categories.append(categ)
             if spoon_category.get("products"):
                 spoons_data.append(spoon_category)
 
@@ -251,6 +254,7 @@ class ReportSaleDetails(models.AbstractModel):
                     lambda l: l.config_ids in configs
                 ),
                 "pricelists": pricelists,
+                "biskot_categories": biskot_categories,
             }
         )
 
