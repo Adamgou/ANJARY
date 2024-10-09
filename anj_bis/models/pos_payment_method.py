@@ -16,17 +16,22 @@ class POsPaymentMethod(models.Model):
         """
         Check if mvola and cb payment is unique
         """
-        mvola_payment = (
-            self.env["pos.payment.method"]
-            .search([("is_mvola", "=", True)])
-            .filtered(lambda l: l.id != self.id)
-        )
-        cb_payment = (
-            self.env["pos.payment.method"]
-            .search([("is_cb", "=", True)])
-            .filtered(lambda l: l.id != self.id)
-        )
-        if mvola_payment and self.is_mvola:
-            raise UserError(_("Mvola payment already exists"))
-        if cb_payment and self.is_cb:
-            raise UserError(_("CB payment already exists"))
+        mvola_payment = self.env["pos.payment.method"].search([("is_mvola", "=", True)])
+        cb_payment = self.env["pos.payment.method"].search([("is_cb", "=", True)])
+        for payment in self:
+            if (
+                mvola_payment
+                and payment.is_mvola
+                and mvola_payment.filtered(lambda l: l.id != payment.id)
+            ):
+                raise UserError(_("Mvola payment already exists"))
+            if (
+                cb_payment
+                and self.is_cb
+                and cb_payment.filtered(lambda l: l.id != payment.id)
+            ):
+                raise UserError(_("CB payment already exists"))
+            if payment.is_mvola and payment.is_cb:
+                raise UserError(
+                    _("Payment method can't be mvola and cb in the same time")
+                )
