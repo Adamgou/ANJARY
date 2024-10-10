@@ -4,6 +4,7 @@ import { ProductScreen } from "@point_of_sale/app/screens/product_screen/product
 import { patch } from "@web/core/utils/patch";
 import { onMounted } from "@odoo/owl";
 import { _t } from "@web/core/l10n/translation";
+
 patch(ProductScreen.prototype, {
     getNumpadButtons() {
         return [

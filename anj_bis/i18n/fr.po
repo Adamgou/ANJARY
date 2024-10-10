@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0+e-20240923\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-04 06:43+0000\n"
-"PO-Revision-Date: 2024-10-04 06:43+0000\n"
+"POT-Creation-Date: 2024-10-10 08:49+0000\n"
+"PO-Revision-Date: 2024-10-10 08:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,11 +16,13 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "0.00"
 msgstr ""
 
 #. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "10"
 msgstr ""
@@ -101,6 +103,41 @@ msgid "99.99"
 msgstr ""
 
 #. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "<span>10% royality Biskot</span>"
+msgstr "<span>Redevence Biskot 10%</span>"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "<span>10% royality Spoon</span>"
+msgstr "<span>Redevence Spoon 10%</span>"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "<span>TVA Biskot</span>"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "<span>TVA Spoon</span>"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "<span>Total average basket Biskot:</span>"
+msgstr "<span>Panier Moyen Biskot: </span>"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "<span>Total average basket speon:</span>"
+msgstr "<span>Panier Moyen spoon: </span>"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "<span>Total average basket:</span>"
+msgstr "<span>Panier Moyen Total: </span>"
+
+#. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "<strong>Amount of discounts</strong>:"
 msgstr "<strong>Montant des réductions</strong>:"
@@ -131,19 +168,71 @@ msgstr "<strong>Note d'ouverture de la séance :</strong>"
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
-msgid "<strong>Total Spoon</strong>"
+msgid "<strong>Sales revenues:</strong>"
+msgstr "<strong>Chiffre d'affaires: </strong>"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "<strong>Total Biskot</strong>"
 msgstr ""
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "<strong>Total Spoon</strong>"
+msgstr ""
+
+#. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "<strong>Total</strong>"
 msgstr ""
 
 #. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "Amount HT"
+msgstr "Montant HT"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "Amount TTC"
+msgstr "Montant TTC"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "Amount TVA"
+msgstr "Montant TVA"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "Amount incl VAT"
+msgstr "Montant TTC"
+
+#. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "Base Amount"
 msgstr "Montant de base"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "CA TTC BISKOT"
+msgstr ""
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "CA TTC SPOON"
+msgstr ""
+
+#. module: anj_bis
+#: model:ir.model.fields,field_description:anj_bis.field_pos_payment_method__is_cb
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "CB"
+msgstr ""
+
+#. module: anj_bis
+#. odoo-python
+#: code:addons/anj_bis/models/pos_payment_method.py:0
+#, python-format
+msgid "CB payment already exists"
+msgstr "Paiement CB existe déjà"
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
@@ -156,19 +245,21 @@ msgid "Cash Move 1"
 msgstr "Déplacement en espèces 1"
 
 #. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
+msgid "Category"
+msgstr "Catégorie"
+
+#. module: anj_bis
+#: model:ir.model.fields,field_description:anj_bis.field_res_partner__is_checking_partner
+#: model:ir.model.fields,field_description:anj_bis.field_res_users__is_checking_partner
+msgid "Checking partner"
+msgstr "Client à vérifier"
+
+#. module: anj_bis
 #: model:ir.model,name:anj_bis.model_res_company
 msgid "Companies"
 msgstr "Sociétés"
-
-#. module: anj_bis
-#: model:ir.model.fields,field_description:anj_bis.field_res_config_settings__config_address
-msgid "Config Address"
-msgstr "Adresse"
-
-#. module: anj_bis
-#: model:ir.model.fields,field_description:anj_bis.field_res_config_settings__config_info
-msgid "Config Info"
-msgstr "Info"
 
 #. module: anj_bis
 #: model:ir.model.fields,field_description:anj_bis.field_pos_config__config_logo
@@ -177,29 +268,32 @@ msgid "Config Logo"
 msgstr "Logo"
 
 #. module: anj_bis
-#: model:ir.model.fields,field_description:anj_bis.field_res_config_settings__config_phone
-msgid "Config Phone"
-msgstr "Téléphone"
-
-#. module: anj_bis
 #: model:ir.model,name:anj_bis.model_res_config_settings
 msgid "Config Settings"
 msgstr "Paramètres de configuration"
 
 #. module: anj_bis
 #: model:ir.model.fields,field_description:anj_bis.field_pos_config__config_address
+#: model:ir.model.fields,field_description:anj_bis.field_res_config_settings__config_address
 msgid "Config address"
 msgstr "Adresse"
 
 #. module: anj_bis
 #: model:ir.model.fields,field_description:anj_bis.field_pos_config__config_info
+#: model:ir.model.fields,field_description:anj_bis.field_res_config_settings__config_info
 msgid "Config info"
 msgstr "Info"
 
 #. module: anj_bis
 #: model:ir.model.fields,field_description:anj_bis.field_pos_config__config_phone
+#: model:ir.model.fields,field_description:anj_bis.field_res_config_settings__config_phone
 msgid "Config phone"
 msgstr "Téléphone"
+
+#. module: anj_bis
+#: model:ir.model,name:anj_bis.model_res_partner
+msgid "Contact"
+msgstr ""
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
@@ -248,6 +342,11 @@ msgid "Discounts:"
 msgstr "Réductions"
 
 #. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "Espèces"
+msgstr ""
+
+#. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "Expected"
 msgstr "Attendue"
@@ -289,11 +388,37 @@ msgid "Logo"
 msgstr ""
 
 #. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "MVOLA"
+msgstr ""
+
+#. module: anj_bis
+#: model:ir.model.fields,field_description:anj_bis.field_pos_payment_method__is_mvola
+msgid "Mvola"
+msgstr ""
+
+#. module: anj_bis
+#. odoo-python
+#: code:addons/anj_bis/models/pos_payment_method.py:0
+#, python-format
+msgid "Mvola payment already exists"
+msgstr "Paiement mvola existe déjà"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "Name"
 msgstr "Nom"
 
 #. module: anj_bis
+#. odoo-python
+#: code:addons/anj_bis/models/report_sale_details.py:0
+#, python-format
+msgid "Not Categorized"
+msgstr "Non catégorisé"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "Number of transactions:"
 msgstr "Nombre de transactions :"
@@ -314,6 +439,13 @@ msgid "Payment Name Demo"
 msgstr "Démo du nom de paiement"
 
 #. module: anj_bis
+#. odoo-python
+#: code:addons/anj_bis/models/pos_payment_method.py:0
+#, python-format
+msgid "Payment method can't be mvola and cb in the same time"
+msgstr "La methode de paiement ne peut être mvola et cb en même temps"
+
+#. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "Payments"
 msgstr "Paiements"
@@ -329,28 +461,36 @@ msgid "Point of Sale Details"
 msgstr "Détails du point de vente"
 
 #. module: anj_bis
+#: model:ir.model,name:anj_bis.model_pos_payment_method
+msgid "Point of Sale Payment Methods"
+msgstr "Modes de paiement du point de vente"
+
+#. module: anj_bis
 #: model:ir.model,name:anj_bis.model_pos_session
 msgid "Point of Sale Session"
 msgstr "Session du point de vente"
 
 #. module: anj_bis
-#: model:ir.model,name:anj_bis.model_product_template
 #: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "Product"
 msgstr "Produit"
 
 #. module: anj_bis
-#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
-#: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
-msgid "Product Category"
-msgstr "catégorie de produit"
+#: model:ir.model,name:anj_bis.model_product_template
+msgid "Product Template (Multi-Company)"
+msgstr "Produit"
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "Quantity"
 msgstr "Quantité"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "Receipt number:"
+msgstr "Nombre de ticket de caisse:"
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
@@ -453,13 +593,18 @@ msgstr "Tél. :"
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "Total"
-msgstr "Total"
+msgstr ""
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
 msgid "Total (Tax excluded)"
 msgstr "Total (hors taxes)"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "Total CA TTC"
+msgstr ""
 
 #. module: anj_bis
 #: model_terms:ir.ui.view,arch_db:anj_bis.report_saledetails
@@ -479,3 +624,8 @@ msgstr "Unité"
 msgid "Used on POS when managing spoon products"
 msgstr ""
 "Utilisé sur les points de vente lors de la gestion des produits en cuillère"
+
+#. module: anj_bis
+#: model_terms:ir.ui.view,arch_db:anj_bis.inerit_report_saledetails
+msgid "VAT amount"
+msgstr "Montant TVA"
