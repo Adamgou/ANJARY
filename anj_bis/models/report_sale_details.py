@@ -127,15 +127,19 @@ class ReportSaleDetails(models.AbstractModel):
         payment_by_product.setdefault("CB", 0.0)
         return payment_by_product
 
-    def _get_payment_by_method(self, line, payment, payment_by_product):
+    def _get_payment_by_method(self, line, payment, payment_by_product, config_ids):
         """Get payment amount according payment method"""
         methods = payment.payment_method_id
         if line.company_id.is_biskot:
             for method in methods:
-                if method.is_mvola:
-                    payment_by_product["mvola"] += line.price_subtotal_incl
-                if method.is_cb:
-                    payment_by_product["CB"] += line.price_subtotal_incl
+                method_configs = [
+                    config for config in method.config_ids if config in config_ids
+                ]
+                if method_configs:
+                    if method.is_mvola:
+                        payment_by_product["mvola"] += line.price_subtotal_incl
+                    if method.is_cb:
+                        payment_by_product["CB"] += line.price_subtotal_incl
         return payment_by_product
 
     def _get_pricelist(self, configs):
@@ -198,7 +202,7 @@ class ReportSaleDetails(models.AbstractModel):
                     line, product_amount_info
                 )
                 payments_by_method = self._get_payment_by_method(
-                    line, payment, payments_by_method
+                    line, payment, payments_by_method, configs
                 )
         categories = out.get("products")
         product_info = out.get("products_info")
