@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 17.0+e-20240528\n"
+"Project-Id-Version: Odoo Server 17.0+e-20240129\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-25 12:26+0000\n"
-"PO-Revision-Date: 2024-06-25 12:26+0000\n"
+"POT-Creation-Date: 2024-07-31 08:57+0000\n"
+"PO-Revision-Date: 2024-07-31 08:57+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,9 +16,24 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: anj_payroll
+#: model:ir.model.fields.selection,name:anj_payroll.selection__hr_payslip__gain_on_current_month__2_5
+msgid "2,5"
+msgstr ""
+
+#. module: anj_payroll
 #: model_terms:ir.ui.view,arch_db:anj_payroll.anj_report_payslip
 msgid "<strong>Payment mode: </strong>"
 msgstr "<strong>Mode de paiement: </strong>"
+
+#. module: anj_payroll
+#: model:ir.model.fields,field_description:anj_payroll.field_hr_payslip__balance_on_pay_slip
+msgid "Balance On Pay Slip"
+msgstr ""
+
+#. module: anj_payroll
+#: model:ir.model.fields,field_description:anj_payroll.field_hr_payslip__balance_to_date
+msgid "Balance To Date"
+msgstr ""
 
 #. module: anj_payroll
 #: model:ir.model.fields,field_description:anj_payroll.field_hr_payslip_payment_mode__create_uid
@@ -31,9 +46,24 @@ msgid "Created on"
 msgstr "Créé le"
 
 #. module: anj_payroll
+#: model:ir.model.fields,field_description:anj_payroll.field_hr_payslip__days_taken_in_the_month
+msgid "Days Taken In The Month"
+msgstr ""
+
+#. module: anj_payroll
 #: model:ir.model.fields,field_description:anj_payroll.field_hr_payslip_payment_mode__display_name
 msgid "Display Name"
 msgstr "Nom de l'affichage"
+
+#. module: anj_payroll
+#: model:ir.model.fields,field_description:anj_payroll.field_hr_payslip__gain_on_current_month
+msgid "Gain On Current Month"
+msgstr ""
+
+#. module: anj_payroll
+#: model_terms:ir.ui.view,arch_db:anj_payroll.hr_payslip_view_form
+msgid "Gain sur le mois actuel"
+msgstr ""
 
 #. module: anj_payroll
 #: model:ir.model,name:anj_payroll.model_hr_payslip_payment_mode
@@ -43,6 +73,21 @@ msgstr "Mode de paiement sur fiche de paie"
 #. module: anj_payroll
 #: model:ir.model.fields,field_description:anj_payroll.field_hr_payslip_payment_mode__id
 msgid "ID"
+msgstr ""
+
+#. module: anj_payroll
+#: model:ir.model.fields,field_description:anj_payroll.field_hr_payslip__is_can_modif_all_balance
+msgid "Is Can Modif All Balance"
+msgstr ""
+
+#. module: anj_payroll
+#: model:ir.model.fields,field_description:anj_payroll.field_hr_leave_type__is_paid_time_off
+msgid "Is paid time off"
+msgstr "Est un congé payé"
+
+#. module: anj_payroll
+#: model_terms:ir.ui.view,arch_db:anj_payroll.hr_payslip_view_form
+msgid "Jours pris dans le mois"
 msgstr ""
 
 #. module: anj_payroll
@@ -61,6 +106,16 @@ msgid "Name"
 msgstr "Nom"
 
 #. module: anj_payroll
+#: model:ir.model.fields,field_description:anj_payroll.field_hr_payslip__new_balance_in_the_month
+msgid "New Balance In The Month"
+msgstr ""
+
+#. module: anj_payroll
+#: model_terms:ir.ui.view,arch_db:anj_payroll.hr_payslip_view_form
+msgid "Nouveau solde"
+msgstr ""
+
+#. module: anj_payroll
 #: model:ir.model,name:anj_payroll.model_hr_payslip
 msgid "Pay Slip"
 msgstr "Fiche de paie"
@@ -74,6 +129,31 @@ msgstr "Mode de paiement"
 #: model_terms:ir.ui.view,arch_db:anj_payroll.hr_payslip_view_form
 msgid "Payment mode..."
 msgstr "Mode de paiement..."
+
+#. module: anj_payroll
+#: model:ir.model.fields,field_description:anj_payroll.field_hr_payslip__previous_paid_leave_balance
+msgid "Previous Paid Leave Balance"
+msgstr ""
+
+#. module: anj_payroll
+#: model_terms:ir.ui.view,arch_db:anj_payroll.hr_payslip_view_form
+msgid "RAFRAÎCHIR"
+msgstr ""
+
+#. module: anj_payroll
+#: model_terms:ir.ui.view,arch_db:anj_payroll.hr_payslip_view_form
+msgid "Situation des congés payés"
+msgstr ""
+
+#. module: anj_payroll
+#: model_terms:ir.ui.view,arch_db:anj_payroll.hr_payslip_view_form
+msgid "Solde antérieur"
+msgstr ""
+
+#. module: anj_payroll
+#: model:ir.model,name:anj_payroll.model_hr_leave_type
+msgid "Time Off Type"
+msgstr "Type de congés"
 
 #. module: anj_payroll
 #: model:ir.ui.menu,name:anj_payroll.menu_hr_payroll_work_entries_root
