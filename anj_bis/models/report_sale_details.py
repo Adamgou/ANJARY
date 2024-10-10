@@ -214,9 +214,9 @@ class ReportSaleDetails(models.AbstractModel):
         out.update({"spoons": spoons})
 
         spoons_data = []
-        removed = 0
         biskot_categories = []
         for categ in categories:
+            removed = 0
             categ_products = categ.get("products")
             spoon_category = {
                 "name": "",
