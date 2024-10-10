@@ -953,6 +953,5 @@
                    add="(('margin-top:100px;') if o.company_id.name.lower()=='societe immobiliere anjary' else '')"/>
       </xpath>
     </template>
-
   </data>
 </odoo>

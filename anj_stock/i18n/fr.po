@@ -143,8 +143,8 @@ msgstr ""
 
 #. module: anj_stock
 #: model:ir.model,name:anj_stock.model_product_category
-msgid "Product Category"
-msgstr "Catégorie d'article"
+msgid "Category"
+msgstr "Catégorie"
 
 #. module: anj_stock
 #: model:ir.model,name:anj_stock.model_product_template

@@ -16,6 +16,7 @@ class SaleSubscription(models.Model):
                 ("subscription_state", "=", "3_progress"),
                 ("product_id", "in", self.order_line.mapped("product_id").ids),
                 ("order_id", "!=", self.id),
+                ("is_renewing", "=", False),
             ]
         )
 

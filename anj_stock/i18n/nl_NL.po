@@ -21,7 +21,7 @@ msgstr ""
 
 #. module: product_multi_company
 #: model:ir.model,name:product_multi_company.model_product_category
-msgid "Product Category"
+msgid "Category"
 msgstr ""
 
 #. module: product_multi_company
