@@ -37,6 +37,18 @@ msgstr ""
 "Point de Vente"
 
 #. module: anj_pos
+#. odoo-python
+#: code:addons/anj_pos/models/pos_session.py:0
+#, python-format
+msgid "Please find attached the sales details report."
+msgstr "Veuillez trouver ci-joint le rapport détaillé des ventes."
+
+#. module: anj_pos
+#: model:ir.model,name:anj_pos.model_pos_session
+msgid "Point of Sale Session"
+msgstr "Session du point de vente"
+
+#. module: anj_pos
 #. odoo-javascript
 #: code:addons/anj_pos/static/src/app/screen/product_screen/product_screen.js:0
 #, python-format
@@ -54,3 +66,10 @@ msgstr "Produit"
 #, python-format
 msgid "Qty"
 msgstr "Qté"
+
+#. module: anj_pos
+#. odoo-python
+#: code:addons/anj_pos/models/pos_session.py:0
+#, python-format
+msgid "Sales Details Report"
+msgstr "Détails des ventes"
