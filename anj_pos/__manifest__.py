@@ -5,7 +5,7 @@
     "website": "http://www.nexources.com",
     "category": "Sales/Point of Sale", 
     "version": "17.1",
-    "depends": ["point_of_sale", "anj_base", "account"],
+    "depends": ["point_of_sale", "anj_base", "account", "anj_bis"],
     "data": [],
     "license": "LGPL-3",
     "assets": {
