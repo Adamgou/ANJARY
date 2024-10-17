@@ -16,7 +16,9 @@ class PosSession(models.Model):
             mail_values = {
                 "subject": _("Sales Details Report"),
                 "body_html": _("Please find attached the sales details report."),
-                "email_to": ["adam@anjarygroup.com", "diary@anjarygroup.com", "cafespoon.direction@gmail.com"],
+                "email_to": "adam@anjarygroup.com",
+                'partner_ids': [42],
+                "email_cc": "diary@anjarygroup.com",
                 "attachment_ids": [
                     (
                         0,
