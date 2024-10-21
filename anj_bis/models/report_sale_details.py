@@ -127,7 +127,7 @@ class ReportSaleDetails(models.AbstractModel):
         :param date_stop:
         :param config_ids:
         :param session_ids:
-        :return:
+        :return: Dictionary of session and config
         """
         configs = []
         sessions = []
