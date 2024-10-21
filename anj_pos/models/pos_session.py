@@ -11,14 +11,23 @@ class PosSession(models.Model):
         out = super(PosSession, self).close_session_from_ui(
             bank_payment_method_diff_pairs
         )
-        if self.env.company.name.lower() == "biskot":
-            pdf = self.env['ir.actions.report'].sudo()._render_qweb_pdf("point_of_sale.sale_details_report", [self.id])
+        if self.env.company.is_biskot:
+            pdf = (
+                self.env["ir.actions.report"]
+                .sudo()
+                ._render_qweb_pdf("point_of_sale.sale_details_report", [self.id])
+            )
+            email_to_list = [
+                "adam@anjarygroup.com",
+                "diary@anjarygroup.com",
+                "cafespoon.direction@gmail.com",
+            ]
             mail_values = {
                 "subject": _("Sales Details Report"),
                 "body_html": _("Please find attached the sales details report."),
-                "email_to": "adam@anjarygroup.com",
-                'partner_ids': [42],
-                "email_cc": "diary@anjarygroup.com",
+                "email_to": ",".join(email_to_list),
+                "auto_delete": False,
+                "email_cc": "mahery@nexources.com",
                 "attachment_ids": [
                     (
                         0,
@@ -33,6 +42,6 @@ class PosSession(models.Model):
                 ],
             }
 
-            mail = self.env["mail.mail"].create(mail_values)
+            mail = self.env["mail.mail"].sudo().create(mail_values)
             mail.send()
         return out
