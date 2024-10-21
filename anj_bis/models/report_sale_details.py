@@ -162,7 +162,7 @@ class ReportSaleDetails(models.AbstractModel):
     def _get_payment_by_method(self, payment_by_product, config_ids, sessions):
         """Get payment amount according payment method"""
         methods_configs = [
-            method.id for method in config_ids.mapped("payment_method_ids")
+            method.id for config in config_ids for method in config.payment_method_ids
         ]
         domain = [
             ("payment_method_id", "in", methods_configs),
