@@ -120,6 +120,38 @@ class ReportSaleDetails(models.AbstractModel):
 
         return categories, product_info, product_ids
 
+    def _get_pos_info(self, date_start, date_stop, config_ids, session_ids):
+        """
+            Get pos info
+        :param date_start:
+        :param date_stop:
+        :param config_ids:
+        :param session_ids:
+        :return: Dictionary of session and config
+        """
+        configs = []
+        sessions = []
+        pos_info = {}
+        if config_ids:
+            configs = self.env["pos.config"].search([("id", "in", config_ids)])
+            if session_ids:
+                sessions = self.env["pos.session"].search([("id", "in", session_ids)])
+            else:
+                sessions = self.env["pos.session"].search(
+                    [
+                        ("config_id", "in", configs.ids),
+                        ("start_at", ">=", date_start),
+                        ("stop_at", "<=", date_stop),
+                    ]
+                )
+        else:
+            sessions = self.env["pos.session"].search([("id", "in", session_ids)])
+            for session in sessions:
+                configs.append(session.config_id)
+        pos_info.setdefault("session", sessions)
+        pos_info.setdefault("config", configs)
+        return pos_info
+
     def _get_default_payment(self):
         """Get default payment method dict"""
         payment_by_product = {}
@@ -127,15 +159,29 @@ class ReportSaleDetails(models.AbstractModel):
         payment_by_product.setdefault("CB", 0.0)
         return payment_by_product
 
-    def _get_payment_by_method(self, line, payment, payment_by_product):
+    def _get_payment_by_method(self, payment_by_product, config_ids, sessions):
         """Get payment amount according payment method"""
-        methods = payment.payment_method_id
-        if line.company_id.is_biskot:
-            for method in methods:
-                if method.is_mvola:
-                    payment_by_product["mvola"] += line.price_subtotal_incl
-                if method.is_cb:
-                    payment_by_product["CB"] += line.price_subtotal_incl
+        methods_configs = [
+            method.id for method in config_ids.mapped("payment_method_ids")
+        ]
+        domain = [
+            ("payment_method_id", "in", methods_configs),
+            ("session_id", "in", sessions.ids),
+        ]
+        mvola_payment = sum(
+            payment.amount
+            for payment in self.env["pos.payment"]
+            .search(domain)
+            .filtered(lambda l: l.payment_method_id.is_mvola)
+        )
+        cb_payment = sum(
+            payment.amount
+            for payment in self.env["pos.payment"]
+            .search(domain)
+            .filtered(lambda l: l.payment_method_id.is_cb)
+        )
+        payment_by_product["mvola"] = mvola_payment
+        payment_by_product["CB"] = cb_payment
         return payment_by_product
 
     def _get_pricelist(self, configs):
@@ -176,29 +222,22 @@ class ReportSaleDetails(models.AbstractModel):
         payments_method = self.env["pos.payment.method"].search(
             ["|", ("is_mvola", "=", True), ("is_cb", "=", True)]
         )
-        # payment_by_product = self._get_default_payment(payments_method)
         product_amount_info = {}
         payments_by_method = self._get_default_payment()
-        configs = []
-        if config_ids:
-            configs = self.env["pos.config"].search([("id", "in", config_ids)])
-        else:
-            sessions = self.env["pos.session"].search([("id", "in", session_ids)])
-            for session in sessions:
-                configs.append(session.config_id)
+        configs = self._get_pos_info(date_start, date_stop, config_ids, session_ids)[
+            "config"
+        ]
+        sessions = self._get_pos_info(date_start, date_stop, config_ids, session_ids)[
+            "session"
+        ]
+
         pricelists = self._get_pricelist(configs)
         for order in orders:
-            payment = self.env["pos.payment"].search(
-                [("pos_order_id", "in", order.ids)]
-            )
             self._get_pricelist_value(order, pricelists)
             for line in order.lines:
 
                 product_amount_info = self._get_product_info_by_categ(
                     line, product_amount_info
-                )
-                payments_by_method = self._get_payment_by_method(
-                    line, payment, payments_by_method
                 )
         categories = out.get("products")
         product_info = out.get("products_info")
@@ -214,9 +253,9 @@ class ReportSaleDetails(models.AbstractModel):
         out.update({"spoons": spoons})
 
         spoons_data = []
-        removed = 0
         biskot_categories = []
         for categ in categories:
+            removed = 0
             categ_products = categ.get("products")
             spoon_category = {
                 "name": "",
@@ -246,6 +285,9 @@ class ReportSaleDetails(models.AbstractModel):
             if spoon_category.get("products"):
                 spoons_data.append(spoon_category)
 
+        payments_by_method = self._get_payment_by_method(
+            payments_by_method, configs, sessions
+        )
         out.update(
             {
                 "spoons_data": spoons_data,

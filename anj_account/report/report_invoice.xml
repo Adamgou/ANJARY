@@ -953,9 +953,5 @@
                    add="(('margin-top:100px;') if o.company_id.name.lower()=='societe immobiliere anjary' else '')"/>
       </xpath>
     </template>
-
-    <!-- <record id="account.account_invoices" model="ir.actions.report">
-        <field name="paperformat_id" ref="anj_account.paperformat_account_a4"></field>
-    </record> -->
   </data>
 </odoo>
