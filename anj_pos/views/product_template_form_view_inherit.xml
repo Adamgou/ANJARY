@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_form_view_inherit_module_name" model="ir.ui.view">
+        <field name="name">product.template.view.form.inherit.anj.pos</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="point_of_sale.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='pos']" position="inside">
+                <field name="related_biskot" invisible="1"/>
+                <field name="available_in_tsaralalana" invisible="not related_biskot"/>
+                <field name="available_in_ivato" invisible="not related_biskot" />     
+            </xpath>
+        </field>
+    </record>
+</odoo>

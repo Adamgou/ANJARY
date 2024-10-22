@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_config_view_form_inheri_anj_pos" model="ir.ui.view">
+        <field name="name">pos.config.view.form.inherit</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@class='oe_title']" position="after">
+            <field name="related_biskot" invisible="1"/>
+                <group invisible="not related_biskot">
+                    <group>
+                        <field name="pdv_tsaralalana" />
+                        <field name="pdv_ivato" />
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 17.0+e-20240923\n"
+"Project-Id-Version: Odoo Server 17.0+e-20240614\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-30 10:08+0000\n"
-"PO-Revision-Date: 2024-09-30 10:08+0000\n"
+"POT-Creation-Date: 2024-10-22 07:38+0000\n"
+"PO-Revision-Date: 2024-10-22 07:38+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -23,18 +23,51 @@ msgid "% Disc"
 msgstr "% Rem."
 
 #. module: anj_pos
+#: model:ir.model.fields,field_description:anj_pos.field_product_product__available_in_ivato
+#: model:ir.model.fields,field_description:anj_pos.field_product_template__available_in_ivato
+msgid "Available in IVAT0"
+msgstr "Disponible dans le PdV IVATO"
+
+#. module: anj_pos
 #: model:ir.model.fields,field_description:anj_pos.field_product_product__available_in_pos
 #: model:ir.model.fields,field_description:anj_pos.field_product_template__available_in_pos
 msgid "Available in POS"
 msgstr "Disponible dans le PdV"
 
 #. module: anj_pos
+#: model:ir.model.fields,field_description:anj_pos.field_product_product__available_in_tsaralalana
+#: model:ir.model.fields,field_description:anj_pos.field_product_template__available_in_tsaralalana
+msgid "Available in TSARALALANA"
+msgstr "Disponible dans le PdV TSARALALANA"
+
+#. module: anj_pos
+#: model:ir.model.fields,help:anj_pos.field_product_product__available_in_ivato
 #: model:ir.model.fields,help:anj_pos.field_product_product__available_in_pos
+#: model:ir.model.fields,help:anj_pos.field_product_product__available_in_tsaralalana
+#: model:ir.model.fields,help:anj_pos.field_product_template__available_in_ivato
 #: model:ir.model.fields,help:anj_pos.field_product_template__available_in_pos
+#: model:ir.model.fields,help:anj_pos.field_product_template__available_in_tsaralalana
 msgid "Check if you want this product to appear in the Point of Sale."
 msgstr ""
 "Cochez cette case si vous souhaitez faire apparaître ce produit dans le "
 "Point de Vente"
+
+#. module: anj_pos
+#: model:ir.model.fields,field_description:anj_pos.field_pos_config__related_biskot
+#: model:ir.model.fields,field_description:anj_pos.field_product_product__related_biskot
+#: model:ir.model.fields,field_description:anj_pos.field_product_template__related_biskot
+msgid "Is Biskot"
+msgstr ""
+
+#. module: anj_pos
+#: model:ir.model.fields,field_description:anj_pos.field_pos_config__pdv_ivato
+msgid "Pdv ivato"
+msgstr ""
+
+#. module: anj_pos
+#: model:ir.model.fields,field_description:anj_pos.field_pos_config__pdv_tsaralalana
+msgid "Pdv tsaralalana"
+msgstr ""
 
 #. module: anj_pos
 #. odoo-python
@@ -44,9 +77,14 @@ msgid "Please find attached the sales details report."
 msgstr "Veuillez trouver ci-joint le rapport détaillé des ventes."
 
 #. module: anj_pos
+#: model:ir.model,name:anj_pos.model_pos_config
+msgid "Point of Sale Configuration"
+msgstr "Configuration du point de vente"
+
+#. module: anj_pos
 #: model:ir.model,name:anj_pos.model_pos_session
 msgid "Point of Sale Session"
-msgstr "Session du point de vente"
+msgstr ""
 
 #. module: anj_pos
 #. odoo-javascript
@@ -57,7 +95,7 @@ msgstr "Prix"
 
 #. module: anj_pos
 #: model:ir.model,name:anj_pos.model_product_template
-msgid "Product"
+msgid "Product Template (Multi-Company)"
 msgstr "Produit"
 
 #. module: anj_pos
@@ -73,3 +111,10 @@ msgstr "Qté"
 #, python-format
 msgid "Sales Details Report"
 msgstr "Détails des ventes"
+
+#. module: anj_pos
+#: model:ir.model.fields,help:anj_pos.field_pos_config__related_biskot
+#: model:ir.model.fields,help:anj_pos.field_product_product__related_biskot
+#: model:ir.model.fields,help:anj_pos.field_product_template__related_biskot
+msgid "Used on POS when managing spoon products"
+msgstr ""
