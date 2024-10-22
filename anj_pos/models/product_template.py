@@ -12,13 +12,13 @@ class ProdcutTemplace(models.Model):
         help="Check if you want this product to appear in the Point of Sale.",
         default=True,
     ) # do we really need this??? 
-    available_in_tsaralalana = fields.Boolean(
+    available_in_pdv_tsaralalana = fields.Boolean(
         string="Available in TSARALALANA",
         help="Check if you want this product to appear in the Point of Sale.",
-        default=False,
+        default=True,
     ) 
-    available_in_ivato = fields.Boolean(
+    available_in_pdv_ivato = fields.Boolean(
         string="Available in IVAT0",
         help="Check if you want this product to appear in the Point of Sale.",
-        default=False,
+        default=True,
     ) 

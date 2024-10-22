@@ -7,8 +7,8 @@
         <field name="arch" type="xml">
             <xpath expr="//group[@name='pos']" position="inside">
                 <field name="related_biskot" invisible="1"/>
-                <field name="available_in_tsaralalana" invisible="not related_biskot"/>
-                <field name="available_in_ivato" invisible="not related_biskot" />     
+                <field name="available_in_pdv_tsaralalana" invisible="not related_biskot"/>
+                <field name="available_in_pdv_ivato" invisible="not related_biskot" />     
             </xpath>
         </field>
     </record>

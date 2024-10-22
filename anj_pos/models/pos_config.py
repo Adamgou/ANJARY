@@ -15,7 +15,7 @@ class PosConfig(models.Model):
     def _get_available_product_domain(self):
         res = super(PosConfig,self)._get_available_product_domain()
         if self.pdv_tsaralalana:
-            res += [ ('available_in_tsaralalana','=',True),]
+            res += [ ('available_in_pdv_tsaralalana','=',True),]
         elif self.pdv_ivato:
-            res += [('available_in_ivato','=',True),]
+            res += [('available_in_pdv_ivato','=',True),]
         return res
