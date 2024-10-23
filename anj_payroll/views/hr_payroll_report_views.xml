@@ -39,8 +39,8 @@
                         <field name="irsa03_wage" type="measure"/>
                         <field name="irsa02_wage" type="measure"/>
                         <field name="net_net_wage" type="measure"/>
-                        <field name="net_salary" type="measure"/>
                         <field name="alloc_wage" type="measure"/>
+                        <field name="net_salary" type="measure"/>
                         <field name="net_wage" type="measure"/>
                     </pivot>
                 </xpath>
