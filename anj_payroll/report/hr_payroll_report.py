@@ -54,6 +54,7 @@ class HrPayrollReport(models.Model):
     totalhsexo_wage = fields.Float("TOTAL avec HS éxonéré de IRSA (20h)", readonly=True)
     net_net_wage = fields.Float("SALAIRE NET", readonly=True)
     net_salary = fields.Float("SALAIRE NET À PAYER", readonly=True)
+    canteen = fields.Float("CANTINE", readonly=True)
     # base
     allocp_wage_base = fields.Float("Allocation des Congés payés (Base)", readonly=True)
     absmal3_wage_base = fields.Float("Congés maternité CNaPs (Base)", readonly=True)
@@ -179,6 +180,7 @@ class HrPayrollReport(models.Model):
                 CASE WHEN wd.id = min_id.min_line THEN netnet.total ELSE 0 END as net_net_wage,
                 CASE WHEN wd.id = min_id.min_line THEN netnetbase.base ELSE 0 END as net_net_wage_base,
                 CASE WHEN wd.id = min_id.min_line THEN netsalary.total ELSE 0 END as net_salary,
+                CASE WHEN wd.id = min_id.min_line THEN canteen.total ELSE 0 END as canteen,
                 CASE WHEN wd.id = min_id.min_line THEN paidsickbase.base ELSE 0 END as paid_sick_leave_base,
                 CASE WHEN wd.id = min_id.min_line THEN publicholidaysnotworked.total ELSE 0 END as public_holidays_not_worked_and_paid,
                 CASE WHEN wd.id = min_id.min_line THEN publicholidaysnotworkednumber.nombre ELSE 0 END as public_holidays_not_worked_and_paid_number,
@@ -263,6 +265,7 @@ class HrPayrollReport(models.Model):
                 left join hr_payslip_line netnet on (netnet.slip_id = p.id and netnet.code = 'SALNET')
                 left join hr_payslip_line netnetbase on (netnetbase.slip_id = p.id and netnetbase.code = 'SALNET')
                 left join hr_payslip_line netsalary on (netsalary.slip_id = p.id and netsalary.code = 'SALNETAP')
+                left join hr_payslip_line canteen on (canteen.slip_id = p.id and canteen.code = 'CANT')
                 left join hr_payslip_line paidsickbase on (paidsickbase.slip_id = p.id and paidsickbase.code = 'MALA')
                 left join hr_payslip_line publicholidaysnotworked on (publicholidaysnotworked.slip_id = p.id and publicholidaysnotworked.code = 'FERIE')
                 left join hr_payslip_line publicholidaysnotworkednumber on (publicholidaysnotworkednumber.slip_id = p.id and publicholidaysnotworkednumber.code = 'FERIE')
@@ -347,6 +350,7 @@ class HrPayrollReport(models.Model):
                 netnet.total,
                 netnetbase.base,
                 netsalary.total,
+                canteen.total,
                 paidsickbase.base,
                 publicholidaysnotworked.total,
                 publicholidaysnotworkednumber.nombre,
