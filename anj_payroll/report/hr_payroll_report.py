@@ -1,101 +1,111 @@
 # -*- coding: utf-8 -*-
 
-
-from psycopg2 import sql
-
-from odoo import tools
 from odoo import fields, models
 
 
 class HrPayrollReport(models.Model):
     _inherit = "hr.payroll.report"
 
-    idemnlog_wage = fields.Float('Indemnités transport', readonly=True)
-    idemnrepas_wage = fields.Float('Indemnités repas', readonly=True)
-    out_wage = fields.Float('Retenues pour absence', readonly=True)
-    absmal2_wage = fields.Float('Congés maternité', readonly=True)
-    primqu01_wage = fields.Float('Prime conditionnelle', readonly=True)
-    primeass01_wage = fields.Float('Prime trimestrielle', readonly=True)
-    primeperf01_wage = fields.Float('Prime exceptionnelle', readonly=True)
-    preav01_wage = fields.Float('Préavis', readonly=True)
-    idemn01_wage = fields.Float('Licenciement', readonly=True)
-    indemn02_wage = fields.Float('Indemnité compensatrice de congé non prise', readonly=True)
+    idemnlog_wage = fields.Float("Indemnités transport", readonly=True)
+    idemnrepas_wage = fields.Float("Indemnités repas", readonly=True)
+    out_wage = fields.Float("Retenues pour absence", readonly=True)
+    absmal2_wage = fields.Float("Congés maternité", readonly=True)
+    primqu01_wage = fields.Float("Prime conditionnelle", readonly=True)
+    primeass01_wage = fields.Float("Prime trimestrielle", readonly=True)
+    primeperf01_wage = fields.Float("Prime exceptionnelle", readonly=True)
+    preav01_wage = fields.Float("Préavis", readonly=True)
+    idemn01_wage = fields.Float("Licenciement", readonly=True)
+    indemn02_wage = fields.Float(
+        "Indemnité compensatrice de congé non prise", readonly=True
+    )
 
-    compcong01_wage = fields.Float('Compensatrice de Congés payés', readonly=True)
-    cnaps_ps_wage = fields.Float('CNAPS (part salariale)', readonly=True)
-    cnaps_pp_wage = fields.Float('CNaPS (part patronale)', readonly=True)
-    ostie_ps_wage = fields.Float('OSTIE (part salariale)', readonly=True)
-    ostie_pp_wage = fields.Float('OSTIE (part patronale)', readonly=True)
-    fmfp_wage = fields.Float('FMFP', readonly=True)
-    simpo_wage = fields.Float('SALAIRE IMPOSABLE', readonly=True)
-    childnum_wage = fields.Float('Nombre enfant', readonly=True)
-    irsa01_wage = fields.Float('IRSA', readonly=True)
-    irsa03_wage = fields.Float('IRSA intermediaire', readonly=True)
+    compcong01_wage = fields.Float("Compensatrice de Congés payés", readonly=True)
+    cnaps_ps_wage = fields.Float("CNAPS (part salariale)", readonly=True)
+    cnaps_pp_wage = fields.Float("CNaPS (part patronale)", readonly=True)
+    ostie_ps_wage = fields.Float("OSTIE (part salariale)", readonly=True)
+    ostie_pp_wage = fields.Float("OSTIE (part patronale)", readonly=True)
+    fmfp_wage = fields.Float("FMFP", readonly=True)
+    simpo_wage = fields.Float("SALAIRE IMPOSABLE", readonly=True)
+    childnum_wage = fields.Float("Nombre enfant", readonly=True)
+    irsa01_wage = fields.Float("IRSA", readonly=True)
+    irsa03_wage = fields.Float("IRSA intermediaire", readonly=True)
 
-    irsa02_wage = fields.Float('IRSA à payer', readonly=True)
-    fraisbanc_wage = fields.Float('Frais bancaire', readonly=True)
-    paid_sick_leave_total = fields.Float('Congés maladie payé (Total)', readonly=True)
-    alloc_wage = fields.Float('Allocation familiale', readonly=True)
-    alloc_wage_base = fields.Float('Allocation familiale (Base)', readonly=True)
-    ava15_wage = fields.Float('Avance sur salaire du 15', readonly=True)
-    avansp_wage = fields.Float('Avance spéciale', readonly=True)
-    rbstcnaps_wage = fields.Float('Remboursement CNAPS', readonly=True)
-    totpopcom_wage = fields.Float('Total opérations complémentaires', readonly=True)
-    ajustnet_wage = fields.Float('Ajustement de salaire net', readonly=True)
-    gross_gross_wage = fields.Float('Salaire brut réel', readonly=True)
-    allocp_wage = fields.Float('Allocation des Congés payés', readonly=True)
-    abs_wage = fields.Float('Absences', readonly=True)
-    tnh30_wage = fields.Float('TNH à 30%', readonly=True)
-    tnh50_wage = fields.Float('TNH à 50%', readonly=True)
-    tdim40_wage = fields.Float('Travail de Dimanche 40%', readonly=True)
-    hsupp100_wage = fields.Float('T.jours férié à 100%', readonly=True)
-    hsupp130_wage = fields.Float('HS à 130%', readonly=True)
-    hsupp150_wage = fields.Float('HS à 150%', readonly=True)
-    hsuppexo30_wage = fields.Float('HS à 130% (20h éxonéré)', readonly=True)
-    hsuppexo50_wage = fields.Float('HS à 150% (20h éxonéré)', readonly=True)
-    totalhsexo_wage = fields.Float('TOTAL avec HS éxonéré de IRSA (20h)', readonly=True)
-    net_net_wage = fields.Float('SALAIRE NET', readonly=True)
+    irsa02_wage = fields.Float("IRSA à payer", readonly=True)
+    fraisbanc_wage = fields.Float("Frais bancaire", readonly=True)
+    paid_sick_leave_total = fields.Float("Congés maladie payé (Total)", readonly=True)
+    alloc_wage = fields.Float("Allocation familiale", readonly=True)
+    alloc_wage_base = fields.Float("Allocation familiale (Base)", readonly=True)
+    ava15_wage = fields.Float("Avance sur salaire du 15", readonly=True)
+    avansp_wage = fields.Float("Avance spéciale", readonly=True)
+    rbstcnaps_wage = fields.Float("Remboursement CNAPS", readonly=True)
+    totpopcom_wage = fields.Float("Total opérations complémentaires", readonly=True)
+    ajustnet_wage = fields.Float("Ajustement de salaire net", readonly=True)
+    gross_gross_wage = fields.Float("Salaire brut réel", readonly=True)
+    allocp_wage = fields.Float("Allocation des Congés payés", readonly=True)
+    abs_wage = fields.Float("Absences", readonly=True)
+    tnh30_wage = fields.Float("TNH à 30%", readonly=True)
+    tnh50_wage = fields.Float("TNH à 50%", readonly=True)
+    tdim40_wage = fields.Float("Travail de Dimanche 40%", readonly=True)
+    hsupp100_wage = fields.Float("T.jours férié à 100%", readonly=True)
+    hsupp130_wage = fields.Float("HS à 130%", readonly=True)
+    hsupp150_wage = fields.Float("HS à 150%", readonly=True)
+    hsuppexo30_wage = fields.Float("HS à 130% (20h éxonéré)", readonly=True)
+    hsuppexo50_wage = fields.Float("HS à 150% (20h éxonéré)", readonly=True)
+    totalhsexo_wage = fields.Float("TOTAL avec HS éxonéré de IRSA (20h)", readonly=True)
+    net_net_wage = fields.Float("SALAIRE NET", readonly=True)
+    net_salary = fields.Float("SALAIRE NET À PAYER", readonly=True)
+    # base
+    allocp_wage_base = fields.Float("Allocation des Congés payés (Base)", readonly=True)
+    absmal3_wage_base = fields.Float("Congés maternité CNaPs (Base)", readonly=True)
+    basic_wage_base = fields.Float("Salaire de Base (Base)", readonly=True)
+    abs_wage_base = fields.Float("Absences (Base)", readonly=True)
+    tnh30_wage_base = fields.Float("TNH à 30% (Base)", readonly=True)
+    tnh50_wage_base = fields.Float("TNH à 50% (Base)", readonly=True)
+    tdim40_wage_base = fields.Float("Travail de Dimanche 40% (Base)", readonly=True)
+    hsupp100_wage_base = fields.Float("T.jours férié à 100% (Base)", readonly=True)
+    hsupp130_wage_base = fields.Float("HS à 130% (Base)", readonly=True)
+    hsupp150_wage_base = fields.Float("HS à 150% (Base)", readonly=True)
+    hsuppexo30_wage_base = fields.Float("HS à 130% (20h éxonéré) (Base)", readonly=True)
+    hsuppexo50_wage_base = fields.Float("HS à 150% (20h éxonéré) (Base)", readonly=True)
+    totalhsexo_wage_base = fields.Float(
+        "TOTAL avec HS éxonéré de IRSA (20h) (Base)", readonly=True
+    )
+    cnaps_ps_wage_base = fields.Float("CNAPS (part salariale) (Base)", readonly=True)
+    cnaps_pp_wage_base = fields.Float("CNaPS (part patronale) (Base)", readonly=True)
+    ostie_ps_wage_base = fields.Float("OSTIE (part salariale) (Base)", readonly=True)
+    ostie_pp_wage_base = fields.Float("OSTIE (part patronale) (Base)", readonly=True)
+    fmfp_wage_base = fields.Float("FMFP (Base)", readonly=True)
+    simpo_wage_base = fields.Float("SALAIRE IMPOSABLE (Base)", readonly=True)
+    childnum_wage = fields.Float("Déduction impot (Base)", readonly=True)
+    irsa01_wage_base = fields.Float("IRSA (Base)", readonly=True)
+    irsa03_wage_base = fields.Float("IRSA intermediaire (Base)", readonly=True)
 
-    #base
-    allocp_wage_base = fields.Float('Allocation des Congés payés (Base)', readonly=True)
-    absmal3_wage_base = fields.Float('Congés maternité CNaPs (Base)', readonly=True)
-    basic_wage_base = fields.Float('Salaire de Base (Base)', readonly=True)
-    abs_wage_base = fields.Float('Absences (Base)', readonly=True)
-    tnh30_wage_base = fields.Float('TNH à 30% (Base)', readonly=True)
-    tnh50_wage_base = fields.Float('TNH à 50% (Base)', readonly=True)
-    tdim40_wage_base = fields.Float('Travail de Dimanche 40% (Base)', readonly=True)
-    hsupp100_wage_base = fields.Float('T.jours férié à 100% (Base)', readonly=True)
-    hsupp130_wage_base = fields.Float('HS à 130% (Base)', readonly=True)
-    hsupp150_wage_base = fields.Float('HS à 150% (Base)', readonly=True)
-    hsuppexo30_wage_base = fields.Float('HS à 130% (20h éxonéré) (Base)', readonly=True)
-    hsuppexo50_wage_base = fields.Float('HS à 150% (20h éxonéré) (Base)', readonly=True)
-    totalhsexo_wage_base = fields.Float('TOTAL avec HS éxonéré de IRSA (20h) (Base)', readonly=True)
-    cnaps_ps_wage_base = fields.Float('CNAPS (part salariale) (Base)', readonly=True)
-    cnaps_pp_wage_base = fields.Float('CNaPS (part patronale) (Base)', readonly=True)
-    ostie_ps_wage_base = fields.Float('OSTIE (part salariale) (Base)', readonly=True)
-    ostie_pp_wage_base = fields.Float('OSTIE (part patronale) (Base)', readonly=True)
-    fmfp_wage_base = fields.Float('FMFP (Base)', readonly=True)
-    simpo_wage_base = fields.Float('SALAIRE IMPOSABLE (Base)', readonly=True)
-    childnum_wage = fields.Float('Déduction impot (Base)', readonly=True)
-    irsa01_wage_base = fields.Float('IRSA (Base)', readonly=True)
-    irsa03_wage_base = fields.Float('IRSA intermediaire (Base)', readonly=True)
+    irsa02_wage_base = fields.Float("IRSA à payer (Base)", readonly=True)
+    net_wage_base = fields.Float("NET A PAYER (Base)", readonly=True)
+    net_net_wage_base = fields.Float("SALAIRE NET (Base)", readonly=True)
+    paid_sick_leave_base = fields.Float("Congés maladie payés (Base)", readonly=True)
 
-    irsa02_wage_base = fields.Float('IRSA à payer (Base)', readonly=True)
-    net_wage_base = fields.Float('NET A PAYER (Base)', readonly=True)
-    net_net_wage_base = fields.Float('SALAIRE NET (Base)', readonly=True)
-    paid_sick_leave_base = fields.Float('Congés maladie payés (Base)', readonly=True)
+    # nombre
+    allocp_wage_number = fields.Float(
+        "Allocation des Congés payés (Nombre)", readonly=True
+    )
+    absmal3_number = fields.Float("Congés maternité CNaPs (Nombre)", readonly=True)
+    abs_wage_number = fields.Float("Absences (Nombre)", readonly=True)
+    paid_sick_number = fields.Float("Congés maladie payés (Nombre)", readonly=True)
+    public_holidays_not_worked_and_paid = fields.Float(
+        "Jours fériés non travaillés et payés", readonly=True
+    )
+    public_holidays_not_worked_and_paid_number = fields.Float(
+        "Jours fériés non travaillés et payés(Nombre)", readonly=True
+    )
+    public_holidays_not_worked_and_paid_base = fields.Float(
+        "Jours fériés non travaillés et payés(Base)", readonly=True
+    )
 
-    #nombre
-    allocp_wage_number = fields.Float('Allocation des Congés payés (Nombre)', readonly=True)
-    absmal3_number = fields.Float('Congés maternité CNaPs (Nombre)', readonly=True)
-    abs_wage_number = fields.Float('Absences (Nombre)', readonly=True)
-    paid_sick_number = fields.Float('Congés maladie payés (Nombre)', readonly=True)
-    public_holidays_not_worked_and_paid = fields.Float('Jours fériés non travaillés et payés', readonly=True)
-    public_holidays_not_worked_and_paid_number = fields.Float('Jours fériés non travaillés et payés(Nombre)', readonly=True)
-    public_holidays_not_worked_and_paid_base = fields.Float('Jours fériés non travaillés et payés(Base)', readonly=True)
-
-    def _select(self,additional_rules):
-        return super()._select(additional_rules) + """,
+    def _select(self, additional_rules):
+        return (
+            super()._select(additional_rules)
+            + """,
                 CASE WHEN wd.id = min_id.min_line THEN idemnlog.total ELSE 0 END as idemnlog_wage,
                 CASE WHEN wd.id = min_id.min_line THEN idemnrepas.total ELSE 0 END as idemnrepas_wage,
                 CASE WHEN wd.id = min_id.min_line THEN out.total ELSE 0 END as out_wage,
@@ -168,14 +178,18 @@ class HrPayrollReport(models.Model):
                 CASE WHEN wd.id = min_id.min_line THEN netbase.base ELSE 0 END as net_wage_base,
                 CASE WHEN wd.id = min_id.min_line THEN netnet.total ELSE 0 END as net_net_wage,
                 CASE WHEN wd.id = min_id.min_line THEN netnetbase.base ELSE 0 END as net_net_wage_base,
+                CASE WHEN wd.id = min_id.min_line THEN netsalary.total ELSE 0 END as net_salary,
                 CASE WHEN wd.id = min_id.min_line THEN paidsickbase.base ELSE 0 END as paid_sick_leave_base,
                 CASE WHEN wd.id = min_id.min_line THEN publicholidaysnotworked.total ELSE 0 END as public_holidays_not_worked_and_paid,
                 CASE WHEN wd.id = min_id.min_line THEN publicholidaysnotworkednumber.nombre ELSE 0 END as public_holidays_not_worked_and_paid_number,
                 CASE WHEN wd.id = min_id.min_line THEN publicholidaysnotworkedbase.base ELSE 0 END as public_holidays_not_worked_and_paid_base
                 """
+        )
 
-    def _from(self,additional_rules):
-        return super()._from(additional_rules) + """
+    def _from(self, additional_rules):
+        return (
+            super()._from(additional_rules)
+            + """
                 left join hr_payslip_line idemnlog on (idemnlog.slip_id = p.id and idemnlog.code = 'INDEMNLOG')
                 left join hr_payslip_line idemnrepas on (idemnrepas.slip_id = p.id and idemnrepas.code = 'INDEMNREPAS')
                 left join hr_payslip_line out on (out.slip_id = p.id and out.code = 'OUT')
@@ -248,14 +262,18 @@ class HrPayrollReport(models.Model):
                 left join hr_payslip_line netbase on (netbase.slip_id = p.id and netbase.code = 'NET')
                 left join hr_payslip_line netnet on (netnet.slip_id = p.id and netnet.code = 'SALNET')
                 left join hr_payslip_line netnetbase on (netnetbase.slip_id = p.id and netnetbase.code = 'SALNET')
+                left join hr_payslip_line netsalary on (netsalary.slip_id = p.id and netsalary.code = 'SALNETAP')
                 left join hr_payslip_line paidsickbase on (paidsickbase.slip_id = p.id and paidsickbase.code = 'MALA')
                 left join hr_payslip_line publicholidaysnotworked on (publicholidaysnotworked.slip_id = p.id and publicholidaysnotworked.code = 'FERIE')
                 left join hr_payslip_line publicholidaysnotworkednumber on (publicholidaysnotworkednumber.slip_id = p.id and publicholidaysnotworkednumber.code = 'FERIE')
                 left join hr_payslip_line publicholidaysnotworkedbase on (publicholidaysnotworkedbase.slip_id = p.id and publicholidaysnotworkedbase.code = 'FERIE')
                 """
+        )
 
-    def _group_by(self,additional_rules):
-        return super()._group_by(additional_rules) + """,
+    def _group_by(self, additional_rules):
+        return (
+            super()._group_by(additional_rules)
+            + """,
                 idemnlog.total,
                 idemnrepas.total,
                 out.total,
@@ -328,8 +346,10 @@ class HrPayrollReport(models.Model):
                 netbase.base,
                 netnet.total,
                 netnetbase.base,
+                netsalary.total,
                 paidsickbase.base,
                 publicholidaysnotworked.total,
                 publicholidaysnotworkednumber.nombre,
                 publicholidaysnotworkedbase.base
                 """
+        )
