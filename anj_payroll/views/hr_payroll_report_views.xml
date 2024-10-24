@@ -12,6 +12,7 @@
                         <field name="department_id" type="row"/>
                         <field name="basic_wage" string="Salaire de base" type="measure"/>
                         <field name="allocp_wage" type="measure"/>
+                        <field name="canteen" type="measure"/>
                         <field name="allocp_wage_number" type="measure"/>
                         <field name="public_holidays_not_worked_and_paid" type="measure"/>
                         <field name="abs_wage" type="measure"/>
@@ -40,6 +41,7 @@
                         <field name="irsa02_wage" type="measure"/>
                         <field name="net_net_wage" type="measure"/>
                         <field name="alloc_wage" type="measure"/>
+                        <field name="net_salary" type="measure"/>
                         <field name="net_wage" type="measure"/>
                     </pivot>
                 </xpath>
